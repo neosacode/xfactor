@@ -44,7 +44,7 @@ function($) {
 
 
 // === following js will activate the menu in left side bar based on url ====
-$(document).ready(function () {
+jQuery(function ($) {
     $(".navigation-menu a").each(function () {
         if (this.href == window.location.href) {
             $(this).parent().addClass("active"); // add active to li of the current link

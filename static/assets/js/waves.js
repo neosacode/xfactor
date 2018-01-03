@@ -493,6 +493,6 @@ Tabs
     }
   };
 
-  $(document).ready(function(){
+  jQuery(function($){
     $('ul.tabs').tabs();
   });

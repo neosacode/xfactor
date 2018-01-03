@@ -30,6 +30,12 @@
         <!-- Modernizr js -->
         <script src="{% static "assets/js/modernizr.min.js" %}"></script>
 
+        <script src="{% static "assets/js/jquery.min.js" %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+        
+        {% block head %}{% endblock %}
+
+
     </head>
 
 
@@ -381,7 +387,6 @@
         </script>
 
         <!-- jQuery  -->
-        <script src="{% static "assets/js/jquery.min.js" %}"></script>
         <script src="{% static "assets/js/popper.min.js" %}"></script>
         <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
         <script src="{% static "assets/js/waves.js" %}"></script>
@@ -400,9 +405,8 @@
         <script src="{% static "assets/js/jquery.core.js" %}"></script>
         <script src="{% static "assets/js/jquery.app.js" %}"></script>
 
-        {% include 'session_security/all.html' %}
+        {# include 'session_security/all.html' #}
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
 
         {% block scripts %}{% endblock %}
     </body>
