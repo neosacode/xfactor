@@ -21,9 +21,9 @@
             </thead>
             <tbody>
                 <tr v-for="item in wallets">
-                    <td></td>
-                    <td v-text="item.currency__name"></td>
-                    <td v-text="item.currency__symbol"></td>
+                    <td><img :src="item.icon" width="30"></td>
+                    <td v-text="item.name"></td>
+                    <td v-text="item.symbol"></td>
                     <td v-text="item.deposit + item.reserved"></td>
                     <td v-text="item.deposit"></td>
                     <td v-text="item.reserved"></td>

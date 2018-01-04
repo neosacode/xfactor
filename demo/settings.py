@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'exchange_core',
+    'exchange_payments',
 ]
 
 MIDDLEWARE = [
