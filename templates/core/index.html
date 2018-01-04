@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load thumbnail %}
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>{% trans "Exchange Demo System" %}</title>
+        <title>{% trans "Demo Exchange System" %}</title>
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{% static "assets/plugins/morris/morris.css" %}">
@@ -175,7 +176,11 @@
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
-                                    <img src="{% static "assets/images/users/avatar-1.jpg" %}" alt="user" class="rounded-circle">
+                                    {% if not request.user.avatar %}
+                                        <img src="https://api.adorable.io/avatars/50/abott@adorable.png" class="rounded-circle">
+                                    {% else %}
+                                        <img src="{% thumbnail request.user.avatar 50x50 crop %}" alt="user" class="rounded-circle">
+                                    {% endif %}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                                     <!-- item-->
@@ -191,11 +196,6 @@
                                     <!-- item-->
                                     <a href="{% url "core>settings" %}" class="dropdown-item notify-item">
                                         <i class="zmdi zmdi-settings"></i> <span>{% trans "Settings" %}</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="zmdi zmdi-lock-open"></i> <span>Lock Screen</span>
                                     </a>
 
                                     <!-- item-->
@@ -247,7 +247,17 @@
                 </div>
                 {% endif %}
 
+                {% if '/account/two_factor' in request.get_full_path %}
+                    <h2 class="page-title"><i class="zmdi zmdi-lock"></i> {% trans "Two Factor Authentication" %}</h2>
+
+                    <div class="card-box">
+                {% endif %}
+
                 {% block content %}{% endblock %}
+
+                {% if '/account/two_factor' in request.get_full_path %}
+                    </div>
+                {% endif %}
 
             </div> <!-- container -->
 
