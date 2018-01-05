@@ -22,6 +22,9 @@
         <!-- Switchery css -->
         <link href="{% static "assets/plugins/switchery/switchery.min.css" %}" rel="stylesheet" />
 
+        <!-- Sweet Alert -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" type="text/css" />
+
         <!-- Bootstrap CSS -->
         <link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
 
@@ -411,12 +414,43 @@
         <script src="{% static "assets/plugins/waypoints/lib/jquery.waypoints.min.js" %}"></script>
         <script src="{% static "assets/plugins/counterup/jquery.counterup.min.js" %}"></script>
 
+        <!-- Sweet Alert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
         <!-- App js -->
         <script src="{% static "assets/js/jquery.core.js" %}"></script>
         <script src="{% static "assets/js/jquery.app.js" %}"></script>
 
-        {# include 'session_security/all.html' #}
-
+        <!-- For do django csrf_token required requests -->
+        <script>
+            jQuery(function($) {
+                $.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
+                            function getCookie(name) {
+                                var cookieValue = null;
+                                if (document.cookie && document.cookie != '') {
+                                    var cookies = document.cookie.split(';');
+                                    for (var i = 0; i < cookies.length; i++) {
+                                        var cookie = jQuery.trim(cookies[i]);
+                                        // Does this cookie string begin with the name we want?
+                                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                            break;
+                                        }
+                                    }
+                                }
+                                return cookieValue;
+                            }
+                            if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                                // Only send the token to relative URLs i.e. locally.
+                                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
 
         {% block scripts %}{% endblock %}
     </body>
