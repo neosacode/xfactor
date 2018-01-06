@@ -1,0 +1,200 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+
+{% block head %}
+	<style>
+		.tx-12 {
+			font-size: 12px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<h2 class="page-title"><i class="zmdi zmdi-assignment"></i> {% trans "Orderbook" %}</h2>
+
+	<div class="card-box">
+		<div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <h6 class="mg-b-0 box-shadow tx-roboto tx-black"><i class="zmdi zmdi-chevron-down"></i>
+ {% trans "Buy BTC" %}</h6>
+                                    <p class="tx-12 mg-b-5">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    <button type="submit" class="btn btn-primary float-right"><i class="zmdi zmdi-chevron-down"></i> {% trans "Buy" %}</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                            	<label class="tx-12">{% trans "Price" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input type="text" class="form-control form-control-sm">
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>
+                            </div>
+
+                            <div class="form-group">
+                            	<label class="tx-12">{% trans "Amount" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input type="text" name="" class="form-control form-control-sm">
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>
+                            </div>
+
+                            <div class="form-group">
+                            	<label class="tx-12">{% trans "Total" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input disabled="disabled" type="text" name="" class="form-control form-control-sm" valu"0.0000000>
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>
+	                        </div>
+
+	                        <label class="tx-12"><strong>{% trans "Queue Position" %}: 1</strong></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <h6 class="mg-b-0 box-shadow tx-roboto tx-black"><i class="zmdi zmdi-chevron-up"></i>
+ {% trans "Sell BTC" %}</h6>
+                                    <p class="tx-12 mg-b-5">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    <button type="submit" class="btn btn-danger float-right"><i class="zmdi zmdi-chevron-up"></i> {% trans "Sell" %}</button>
+                                </div>
+                            </div>
+
+                            <div class="bd-danger bd-2 bd-b"></div>
+
+                            <div class="form-group">
+                            	<label class="tx-12">{% trans "Price" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input type="text" name="" class="form-control form-control-sm">
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>
+                            </div>  
+
+							<div class="form-group">
+	                            <label class="tx-12">{% trans "Amount" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input type="text" name="" class="form-control form-control-sm">
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>  
+                            </div>
+                            
+                            <div class="form-group">
+	                            <label class="tx-12">{% trans "Total" %}</label>
+	                            <div class="input-group input-group-sm">
+	                                <input disabled="disabled" type="text" name="" class="form-control form-control-sm" valu"0.0000000>
+	                                <span class="input-group-addon tx-size-sm lh-2">BTC</span>
+	                            </div>
+                            </div>
+                            
+                            <label class="tx-12"><strong>{% trans "Queue Position" %}: 1</strong></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                	<div class="row">
+                        <div class="col-sm-8">
+                            <h2 class="tx-roboto tx-black"><i class="zmdi zmdi-chart"></i> {% trans "Markets" %}</h2>
+                        </div>
+                        <div class="col-sm-4">
+                        	<div class="btn-group btn-group-sm pull-right" role="group" aria-label="Basic example">
+							  <button type="button" class="btn btn-dark active">BTC</button>
+							  <button type="button" class="btn btn-dark">EUR</button>
+							  <button type="button" class="btn btn-dark">USDT</button>
+							</div>
+                        </div>
+                    </div>
+                    <table class="table table-sm table-hover tx-12 m-t-10">
+                        <thead>
+                            <tr>
+                                <th class="text-right"><i class="zmdi zmdi-label-alt"></i> Coin</th>
+                                <th class="text-right"><i class="zmdi zmdi-balance"></i> Price</th>
+                                <th class="text-right"><i class="zmdi zmdi-chart"></i> Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-right">
+                                <td>BTM</td>
+                                <td>0.00001</td>
+                                <td>108.0000</td>
+                            </tr>
+                            <tr class="text-right">
+                                <td>XVG</td>
+                                <td>0.00001</td>
+                                <td>108.0000</td>
+                            </tr>
+                            <tr class="text-right">
+                                <td>BTC</td>
+                                <td>0.00001</td>
+                                <td>108.0000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr class="m-t-30">
+
+            <div class="row m-t-30">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 class="mg-b-0 box-shadow tx-roboto tx-black mg-b-20">{% trans "SELL ORDERS" %}</h6>
+                        </div>
+                    </div>
+                    <table class="bd table table-sm table-bordered table-striped table-hover tx-12 tx-roboto tx-gray-900">
+                        <thead>
+                            <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">Price</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 225px;">BTS</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 169px;">BTC</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 172px;">Sum(BTC)</th></tr>
+                        </thead>
+                        <tbody class="text-right">
+                            <tr id="0.000022asks" role="row" class="odd"><td class="orderRate">0.000022</td><td class="orderAmount">1310411.20758428</td><td class="orderTotal">28.48525080</td><td class="orderSum">28.48525080</td></tr><tr id="0.000023asks" role="row" class="even"><td class="orderRate">0.000023</td><td class="orderAmount">1600823.25053113</td><td class="orderTotal">35.66321221</td><td class="orderSum">64.14846301</td></tr><tr id="0.000024asks" role="row" class="odd"><td class="orderRate">0.000024</td><td class="orderAmount">501553.88822119</td><td class="orderTotal">11.88237802</td><td class="orderSum">76.03084103</td></tr><tr id="0.000025asks" role="row" class="even"><td class="orderRate">0.000025</td><td class="orderAmount">966053.99758169</td><td class="orderTotal">23.87453057</td><td class="orderSum">99.90537160</td></tr><tr id="0.000026asks" role="row" class="odd"><td class="orderRate">0.000026</td><td class="orderAmount">794192.99092598</td><td class="orderTotal">20.17222935</td><td class="orderSum">120.07760095</td></tr><tr id="0.000027asks" role="row" class="even"><td class="orderRate">0.000027</td><td class="orderAmount">1066775.49341922</td><td class="orderTotal">28.38326125</td><td class="orderSum">148.46086220</td></tr><tr id="0.000028asks" role="row" class="odd"><td class="orderRate">0.000028</td><td class="orderAmount">982414.32273733</td><td class="orderTotal">27.26827751</td><td class="orderSum">175.72913971</td></tr><tr id="0.000029asks" role="row" class="even"><td class="orderRate">0.000029</td><td class="orderAmount">740787.92135564</td><td class="orderTotal">21.26322760</td><td class="orderSum">196.99236731</td></tr><tr id="0.000030asks" role="row" class="odd"><td class="orderRate">0.000030</td><td class="orderAmount">1229593.91806576</td><td class="orderTotal">36.66247074</td><td class="orderSum">233.65483805</td></tr><tr id="0.000031asks" role="row" class="even"><td class="orderRate">0.000031</td><td class="orderAmount">291438.31861536</td><td class="orderTotal">8.97485525</td><td class="orderSum">242.62969330</td></tr><tr id="0.000032asks" role="row" class="odd"><td class="orderRate">0.000032</td><td class="orderAmount">235319.53308358</td><td class="orderTotal">7.44211198</td><td class="orderSum">250.07180528</td></tr><tr id="0.000033asks" role="row" class="even"><td class="orderRate">0.000033</td><td class="orderAmount">451170.22086584</td><td class="orderTotal">14.70444159</td><td class="orderSum">264.77624687</td></tr><tr id="0.000034asks" role="row" class="odd"><td class="orderRate">0.000034</td><td class="orderAmount">372619.24005944</td><td class="orderTotal">12.53326171</td><td class="orderSum">277.30950858</td></tr><tr id="0.000035asks" role="row" class="even"><td class="orderRate">0.000035</td><td class="orderAmount">557407.08540984</td><td class="orderTotal">19.42721494</td><td class="orderSum">296.73672352</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                        <div class="col-sm-12">
+                            <h6 class="mg-b-0 box-shadow tx-roboto tx-black mg-b-20">{% trans "BUY ORDERS" %}</h6>
+                        </div>
+                    </div>
+                    <table class="bd table table-sm table-bordered table-striped table-hover tx-12 tx-roboto tx-gray-900">
+                        <thead>
+                            <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 112px;">Price</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 225px;">BTS</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 169px;">BTC</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 172px;">Sum(BTC)</th></tr>
+                        </thead>
+                        <tbody class="text-right">
+                            <tr id="0.000022asks" role="row" class="odd"><td class="orderRate">0.000022</td><td class="orderAmount">1310411.20758428</td><td class="orderTotal">28.48525080</td><td class="orderSum">28.48525080</td></tr><tr id="0.000023asks" role="row" class="even"><td class="orderRate">0.000023</td><td class="orderAmount">1600823.25053113</td><td class="orderTotal">35.66321221</td><td class="orderSum">64.14846301</td></tr><tr id="0.000024asks" role="row" class="odd"><td class="orderRate">0.000024</td><td class="orderAmount">501553.88822119</td><td class="orderTotal">11.88237802</td><td class="orderSum">76.03084103</td></tr><tr id="0.000025asks" role="row" class="even"><td class="orderRate">0.000025</td><td class="orderAmount">966053.99758169</td><td class="orderTotal">23.87453057</td><td class="orderSum">99.90537160</td></tr><tr id="0.000026asks" role="row" class="odd"><td class="orderRate">0.000026</td><td class="orderAmount">794192.99092598</td><td class="orderTotal">20.17222935</td><td class="orderSum">120.07760095</td></tr><tr id="0.000027asks" role="row" class="even"><td class="orderRate">0.000027</td><td class="orderAmount">1066775.49341922</td><td class="orderTotal">28.38326125</td><td class="orderSum">148.46086220</td></tr><tr id="0.000028asks" role="row" class="odd"><td class="orderRate">0.000028</td><td class="orderAmount">982414.32273733</td><td class="orderTotal">27.26827751</td><td class="orderSum">175.72913971</td></tr><tr id="0.000029asks" role="row" class="even"><td class="orderRate">0.000029</td><td class="orderAmount">740787.92135564</td><td class="orderTotal">21.26322760</td><td class="orderSum">196.99236731</td></tr><tr id="0.000030asks" role="row" class="odd"><td class="orderRate">0.000030</td><td class="orderAmount">1229593.91806576</td><td class="orderTotal">36.66247074</td><td class="orderSum">233.65483805</td></tr><tr id="0.000031asks" role="row" class="even"><td class="orderRate">0.000031</td><td class="orderAmount">291438.31861536</td><td class="orderTotal">8.97485525</td><td class="orderSum">242.62969330</td></tr><tr id="0.000032asks" role="row" class="odd"><td class="orderRate">0.000032</td><td class="orderAmount">235319.53308358</td><td class="orderTotal">7.44211198</td><td class="orderSum">250.07180528</td></tr><tr id="0.000033asks" role="row" class="even"><td class="orderRate">0.000033</td><td class="orderAmount">451170.22086584</td><td class="orderTotal">14.70444159</td><td class="orderSum">264.77624687</td></tr><tr id="0.000034asks" role="row" class="odd"><td class="orderRate">0.000034</td><td class="orderAmount">372619.24005944</td><td class="orderTotal">12.53326171</td><td class="orderSum">277.30950858</td></tr><tr id="0.000035asks" role="row" class="even"><td class="orderRate">0.000035</td><td class="orderAmount">557407.08540984</td><td class="orderTotal">19.42721494</td><td class="orderSum">296.73672352</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="m-t-30">
+
+        <div class="row m-t-30">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h6 class="mg-b-0 box-shadow tx-roboto tx-black mg-b-20">{% trans "ORDERS HISTORY" %}</h6>
+                    </div>
+                </div>
+                <table class="bd table table-sm table-bordered table-striped table-hover tx-12 tx-roboto tx-gray-900">
+                    <thead>
+                        <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 426px;">Date</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 118px;">Type</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 261px;">Price (BTC)</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 360px;">Amount (BTS)</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 264px;">Total (BTC)</th></tr>
+                    </thead>
+                    <tbody class="text-right">
+                        <tr class="newRow"><td class="date"><span class="year">2017-</span>12-17 15:53<span class="seconds">:02</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002130</td><td>100.00000000</td><td>0.00213000</td></tr><tr class="newRow"><td class="date"><span class="year">2017-</span>12-17 15:52<span class="seconds">:57</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002124</td><td>414.92937853</td><td>0.00881310</td></tr><tr class="newRow"><td class="date"><span class="year">2017-</span>12-17 15:52<span class="seconds">:57</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002126</td><td>997.50000000</td><td>0.02120685</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:28</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002050</td><td>8062.18982465</td><td>0.16527489</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:26</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002050</td><td>2174.75693069</td><td>0.04458251</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:26</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002050</td><td>3.38397637</td><td>0.00006937</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:25</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002047</td><td>0.00097703</td><td>0.00000001</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:03</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>99.75000000</td><td>0.00204387</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:48<span class="seconds">:03</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>12535.69822142</td><td>0.25685645</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:44</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>146.41288434</td><td>0.00300000</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:43</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002047</td><td>929.49418877</td><td>0.01902674</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:42</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>300.00000000</td><td>0.00614700</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:40</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>1646.44360908</td><td>0.03373562</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:36</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>314.00097609</td><td>0.00643388</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:16</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002034</td><td>0.00004680</td><td>0.00000000</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>49.15384716</td><td>0.00100716</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>1618.05520246</td><td>0.03315395</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002049</td><td>1740.52543691</td><td>0.03566336</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002048</td><td>488.28125000</td><td>0.01000000</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>99.60794650</td><td>0.00203797</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>97.92408682</td><td>0.00200352</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>500.00000000</td><td>0.01023000</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>500.00000000</td><td>0.01023000</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>6.98875000</td><td>0.00014298</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002046</td><td>4.98722876</td><td>0.00010203</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>14540.74868972</td><td>0.29735831</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:47<span class="seconds">:04</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>100.00000000</td><td>0.00204500</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:57</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002044</td><td>2167.40330623</td><td>0.04430172</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:51</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002044</td><td>373.00000000</td><td>0.00762412</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:50</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>8400.00000000</td><td>0.17178000</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:48</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>0.05055296</td><td>0.00000103</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:43</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002034</td><td>49.16420845</td><td>0.00099999</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:37</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002030</td><td>23.66415000</td><td>0.00048038</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:36</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002030</td><td>8651.00147117</td><td>0.17561532</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:36</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002031</td><td>50.71393402</td><td>0.00102999</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:36</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002031</td><td>1298.28459481</td><td>0.02636816</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:28</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>11021.30757947</td><td>0.22538574</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:24</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002031</td><td>727.78780406</td><td>0.01478137</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:24</span></td><td class="type"><span class="sellClass">Sell</span></td><td>0.00002032</td><td>318.71008611</td><td>0.00647618</td></tr><tr role="row" class="odd"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:14</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>3309.86384458</td><td>0.06768671</td></tr><tr role="row" class="even"><td class="date"><span class="year">2017-</span>12-17 14:46<span class="seconds">:14</span></td><td class="type"><span class="buyClass">Buy</span></td><td>0.00002045</td><td>13.11700001</td><td>0.00026824</td></tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
+{% endblock %}
