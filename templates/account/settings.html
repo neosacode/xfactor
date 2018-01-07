@@ -7,19 +7,21 @@
 
 {% block content %}
     <div class="row">
-      <div class="col-md-6">
-        <h2 class="page-title"><i class="zmdi zmdi-settings"></i> {% trans "Account Settings" %}</h2>
-
-        <form method="POST" enctype="multipart/form-data" class="card-box" id="formUpload" action="{% url "core>avatar" %}">
+      <div class="col-md-4">
+        <form method="POST" enctype="multipart/form-data" class="card-box m-t-20" id="formUpload">
+          <h6><i class="zmdi zmdi-image"></i> {% trans "My Avatar" %}</h6>
+          <hr>
           <div class="row">
             <div class="col-md-8">
-              <label><i class="zmdi zmdi-image"></i> {% trans "Change your avatar image" %}</label>
               <p>{% trans "Select a new avatar image using the field below" %}</p>
               {% csrf_token %}
 
-              {% for field in form_avatar %}
-                {{ field }}
-              {% endfor %}
+              {{ form_avatar.form_name }}
+              <input type="file" name="avatar">
+
+              <div class="m-t-20">
+                <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
+              </div>
             </div>
 
             <div class="col-md-4 text-right">
@@ -30,45 +32,70 @@
                 {% endif %}
             </div>
           </div>
-          
-          <div class="m-t-20">
-            <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
-          </div>
         </form>
-      </div>
-
-      <div class="col-md-6">
-        <h5 class="page-title"><i class="zmdi zmdi-balance"></i> {% trans "Bank Account Settings" %}</h5>
 
         <form method="POST" class="card-box" novalidate>
-          {% csrf_token %}
-        <p>
-          {% trans "This bank account must belong to" %} <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>. <a href="#">{% trans "Click here to know why." %}</a><br>
-          {% trans "This bank account will be used for the withdrawals made with the BRL account" %}.
-        </p>
+          <h6><i class="zmdi zmdi-lock"></i> {% trans "Change My Password" %}</h6>
           <hr>
 
-          {% with WIDGET_ERROR_CLASS='parsley-error' %}
+          {% csrf_token %}
+            {% with WIDGET_ERROR_CLASS='parsley-error' %}
+                {% for field in form_change_password %}
+                    {% if not field.is_hidden %}
+                        <div class="form-group row">
+                            <div class="col-12">
+                                {{ field.label_tag }}
+                                {% render_field field class="form-control" placeholder=field.label %}
+                                {% if field.errors %}
+                                    <ul class="parsley-errors-list filled">
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
+
+            <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+          </form>
+      </div>
+
+      <div class="col-md-8">
+        <form method="POST" class="card-box m-t-20" novalidate>
+          <h6><i class="zmdi zmdi-balance"></i> {% trans "Bank Account" %}</h6>
+          <hr>
+          {% csrf_token %}
+          <p>
+            {% trans "This bank account must belong to" %} <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>. <a href="#">{% trans "Click here to know why." %}</a><br>
+            {% trans "This bank account will be used for the withdrawals made with the BRL account" %}.
+          </p>
+
+          <div class="row">
+            {% with WIDGET_ERROR_CLASS='parsley-error' %}
               {% for field in form_bank_account %}
                   {% if not field.is_hidden %}
-                      <div class="form-group row">
-                          <div class="col-12">
-                              {{ field.label_tag }}
-                              {% render_field field class="form-control" placeholder=field.label %}
-                              {% if field.errors %}
-                                  <ul class="parsley-errors-list filled">
-                                      {% for error in field.errors %}
-                                          <li>{{ error }}</li>
-                                      {% endfor %}
-                                  </ul>
-                              {% endif %}
-                          </div>
+                      <div class="form-group col-md-6">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" placeholder=field.label %}
+                        {% if field.errors %}
+                            <ul class="parsley-errors-list filled">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                       </div>
                   {% else %}
                       {{ field }}
                   {% endif %}
               {% endfor %}
           {% endwith %}
+          </div>
 
           <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
         </form>

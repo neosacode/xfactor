@@ -14,7 +14,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>{% trans "Demo Exchange System" %}</title>
+        <title>{{ PROJECT_NAME }}</title>
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="{% static "assets/plugins/morris/morris.css" %}">
@@ -60,7 +60,7 @@
                     <div class="topbar-left">
                         <a href="{% url "core>wallets" %}" class="logo">
                             <i class="zmdi zmdi-group-work icon-c-logo"></i>
-                            <span>DEMO EXCHANGE</span>
+                            <span>{{ PROJECT_NAME }}</span>
                         </a>
                     </div>
                     <!-- End Logo container-->
@@ -185,16 +185,16 @@
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                    aria-haspopup="false" aria-expanded="false">
-                                    {% if not request.user.avatar %}
+                                    {% if not user.avatar %}
                                         <img src="https://api.adorable.io/avatars/50/abott@adorable.png" class="rounded-circle">
                                     {% else %}
-                                        <img src="{% thumbnail request.user.avatar 50x50 crop %}" alt="user" class="rounded-circle">
+                                        <img src="{% thumbnail user.avatar 50x50 crop %}" alt="user" class="rounded-circle">
                                     {% endif %}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                                     <!-- item-->
                                     <div class="dropdown-item noti-title">
-                                        <h5 class="text-overflow"><small>{% trans "Hi, " %} {{ request.user.first_name }}</small> </h5>
+                                        <h5 class="text-overflow"><small>{% trans "Hi, " %} {{ user.first_name }}</small> </h5>
                                     </div>
 
                                     <!-- item-->
@@ -276,7 +276,7 @@
 
             <!-- Footer -->
             <footer class="footer">
-                2016 - 2017 © Uplon.
+                2016 - 2017 © {{ PROJECT_NAME }}.
             </footer>
             <!-- End Footer -->
 
