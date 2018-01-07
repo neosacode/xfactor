@@ -9,11 +9,39 @@
     <h2 class="page-title"><i class="zmdi zmdi-settings"></i> {% trans "Account Settings" %}</h2>
     <div class="row">
       <div class="col-md-6">
-        <form method="POST" class="card-box">
+        <form method="POST" enctype="multipart/form-data" class="card-box" id="formUpload" action="{% url "core>avatar" %}">
+          <div class="row">
+            <div class="col-md-8">
+              <label><i class="zmdi zmdi-image"></i> {% trans "Change your avatar image" %}</label>
+              <p>{% trans "Select a new avatar image using the field below" %}</p>
+              {% csrf_token %}
+
+              {% for field in form_avatar %}
+                {{ field }}
+              {% endfor %}
+            </div>
+
+            <div class="col-md-4 text-right">
+                {% if not request.user.avatar %}
+                    <img src="https://api.adorable.io/avatars/100/abott@adorable.png" class="rounded-circle">
+                {% else %}
+                    <img src="{% thumbnail request.user.avatar 100x100 crop %}" class="rounded-circle">
+                {% endif %}
+            </div>
+          </div>
+          
+          <div class="m-t-20">
+            <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <form method="POST" class="card-box" novalidate>
           {% csrf_token %}
 
           {% with WIDGET_ERROR_CLASS='parsley-error' %}
-              {% for field in form %}
+              {% for field in form_bank_account %}
                   {% if not field.is_hidden %}
                       <div class="form-group row">
                           <div class="col-12">
@@ -35,34 +63,6 @@
           {% endwith %}
 
           <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
-        </form>
-      </div>
-
-      <div class="col-md-6">
-        <form method="POST" enctype="multipart/form-data" class="card-box" id="formUpload" action="{% url "core>avatar" %}">
-          <div class="row">
-            <div class="col-md-8">
-              <label><i class="zmdi zmdi-image"></i> {% trans "Change your avatar image" %}</label>
-              <p>{% trans "Select a new avatar image using the field below" %}</p>
-              {% csrf_token %}
-
-              {% for field in avatar_form %}
-                {{ field }}
-              {% endfor %}
-            </div>
-
-            <div class="col-md-4 text-right">
-                {% if not request.user.avatar %}
-                    <img src="https://api.adorable.io/avatars/100/abott@adorable.png" class="rounded-circle">
-                {% else %}
-                    <img src="{% thumbnail request.user.avatar 100x100 crop %}" class="rounded-circle">
-                {% endif %}
-            </div>
-          </div>
-          
-          <div class="m-t-20">
-            <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
-          </div>
         </form>
       </div>
     </div>
