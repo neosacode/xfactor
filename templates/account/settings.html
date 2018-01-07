@@ -6,9 +6,10 @@
 
 
 {% block content %}
-    <h2 class="page-title"><i class="zmdi zmdi-settings"></i> {% trans "Account Settings" %}</h2>
     <div class="row">
       <div class="col-md-6">
+        <h2 class="page-title"><i class="zmdi zmdi-settings"></i> {% trans "Account Settings" %}</h2>
+
         <form method="POST" enctype="multipart/form-data" class="card-box" id="formUpload" action="{% url "core>avatar" %}">
           <div class="row">
             <div class="col-md-8">
@@ -37,8 +38,15 @@
       </div>
 
       <div class="col-md-6">
+        <h5 class="page-title"><i class="zmdi zmdi-balance"></i> {% trans "Bank Account Settings" %}</h5>
+
         <form method="POST" class="card-box" novalidate>
           {% csrf_token %}
+        <p>
+          {% trans "This bank account must belong to" %} <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>. <a href="#">{% trans "Click here to know why." %}</a><br>
+          {% trans "This bank account will be used for the withdrawals made with the BRL account" %}.
+        </p>
+          <hr>
 
           {% with WIDGET_ERROR_CLASS='parsley-error' %}
               {% for field in form_bank_account %}
