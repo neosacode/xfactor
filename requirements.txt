@@ -1,3 +1,5 @@
---process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-core.git#egg=exchange_core
---process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_core
---process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_core
+-e git+https://github.com/jazzband/django-widget-tweaks/tarball/35822bf5bd29fa8ec9976993b9a3bf9b5241c8d6#egg=django-widget-tweaks,
+-e git+https://github.com/yourlabs/django-session-security/tarball/aff5adb5f884ecd20f7c160ef26bd25c5114fd78#egg=django-session-security,
+-e git+https://neosacode@bitbucket.org/neosacode/exchange-core.git#egg=exchange_core
+-e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_core
+-e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_core
