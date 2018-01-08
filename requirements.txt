@@ -1,3 +1,3 @@
--e git+git@bitbucket.org:neosacode/exchange-core.git@e035cc8e3f0ed0fe5cb4b09be597cd280a5f0ff3#egg=exchange_core
--e git+git@bitbucket.org:neosacode/exchange-orderbook.git@aa6fcf8d28d43e70ed9ec7d8f20915277fea6c0c#egg=exchange_orderbook
--e git+git@bitbucket.org:neosacode/exchange-payments.git@20ea1e33e1bd1c2fcf4f0786586f9c0054197ecb#egg=exchange_payments
+--process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-core.git#egg=exchange_core
+--process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_core
+--process-dependency-links -e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_core
