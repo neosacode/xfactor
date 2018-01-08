@@ -1,5 +1,5 @@
 -e git+https://github.com/jazzband/django-widget-tweaks/#egg=django-widget-tweaks
 -e git+https://github.com/yourlabs/django-session-security/#egg=django-session-security
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-core.git#egg=exchange_core
--e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_core
+-e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_payments
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_core
