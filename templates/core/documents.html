@@ -22,8 +22,14 @@
 		            		{% endif%}
 			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 			                	<input type="hidden" name="form_name" value="id_front">
-			                	<button href="#" class="btn btn-custom waves-effect waves-light float-right"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
-			                	<input type="file" name="file">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-custom waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
 			                </form>
 		            	</div>
 		                
@@ -48,8 +54,14 @@
 		            		{% endif%}
 			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 			                	<input type="hidden" name="form_name" value="id_back">
-			                	<button href="#" class="btn btn-custom waves-effect waves-light float-right"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
-			                	<input type="file" name="file">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-custom waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
 			                </form>
 		            	</div>
 		                
@@ -75,8 +87,14 @@
 		            		{% endif%}
 			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 			                	<input type="hidden" name="form_name" value="selfie">
-			                	<button href="#" class="btn btn-custom waves-effect waves-light float-right"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
-			                	<input type="file" name="file">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-custom waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
 			                </form>
 		            	</div>
 		                
