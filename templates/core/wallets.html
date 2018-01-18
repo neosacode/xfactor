@@ -24,10 +24,10 @@
                     <td v-text="item.symbol"></td>
                     <td v-text="item.deposit"></td>
                     <td>
-                        <a href="" @click.prevent="createAddress(item.symbol, item.name)" :title="'{% trans "Deposit " %}' + item.symbol" class="btn btn-sm waves-effect waves-light btn-outline-primary">
+                        <a href="#" @click.prevent="createAddress(item.symbol, item.name)" :title="'{% trans "Deposit " %}' + item.symbol" class="btn btn-sm waves-effect waves-light btn-outline-primary">
                             <i class="fa fa-plus"></i>
                         </a>
-                        <a href="" :title="'{% trans "Withdrawal " %}' + item.symbol" class="btn btn-sm waves-effect waves-light btn-outline-danger">
+                        <a href="#" @click.prevent="createWithdraw(item.symbol, item.name)" :title="'{% trans "Withdrawal " %}' + item.symbol" class="btn btn-sm waves-effect waves-light btn-outline-danger">
                             <i class="fa fa-minus"></i>
                         </a>
                     </td>
