@@ -88,7 +88,7 @@
                                     <th><i class="zmdi zmdi-money"></i> {% trans "Amount" %}</th>
                                     <th><i class="zmdi zmdi-balance"></i> {% trans "Company Bank Account" %}</th>
                                     <th><i class="zmdi zmdi-label-alt"></i> {% trans "Status" %}</th>
-                                    <th><i class="zmdi zmdi-format-list-bulleted"></i> {% trans "Actions" %}</th>
+                                    <th width="100"><i class="zmdi zmdi-format-list-bulleted"></i> {% trans "Actions" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,7 +108,11 @@
                                         <span class="badge badge-{{ deposit.status_type }} tx-16">{% trans deposit.status_title %}</span>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="{% url "payments>confirm-deposit" deposit.pk %}" class="btn btn-dark"><i class="zmdi zmdi-shield-check"></i> {% trans "Confirm Deposit" %}</a>
+                                        {% if deposit.status == 'pending' or deposit.status == 'confirmed' %}
+                                            <a href="{% url "payments>confirm-deposit" deposit.pk %}" class="btn btn-dark"><i class="zmdi zmdi-shield-check"></i> {% trans "Confirm Deposit" %}</a>
+                                        {% else %}
+                                            {% trans "N/A" %}
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}

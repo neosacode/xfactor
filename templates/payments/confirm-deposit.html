@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load widget_tweaks %}
 {% load pagination_tags %}
+{% load thumbnail %}
 
 {% block content %}
 	<h6 class="page-title"><i class="zmdi zmdi-shield-check"></i> {% trans "Confirm Deposit" %}</h6>
@@ -83,7 +84,11 @@
                                         </ul>
                                     {% endif %}
                                     <div class="m-t-10">
-                                        <img src="http://via.placeholder.com/600x300?text=|" class="img-fluid">
+                                        {% if confirm_deposit_instance.receipt %}
+                                            <img src="{% thumbnail confirm_deposit_instance.receipt 400x400 crop='smart' %}" class="img-fluid">
+                                        {% else %}
+                                            <img src="http://via.placeholder.com/600x300?text=|" class="img-fluid">
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
