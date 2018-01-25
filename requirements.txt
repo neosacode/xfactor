@@ -3,4 +3,5 @@
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-core.git#egg=exchange_core
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-payments.git#egg=exchange_payments
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_orderbook
+-e git+https://neosacode@bitbucket.org/neosacode/exchange-comissions.git#egg=exchange_comissions
 uwsgi
