@@ -1,0 +1,39 @@
+{% load i18n %}
+{% load widget_tweaks %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h6 class="text-muted text-uppercase m-b-0 m-t-0">{% trans "Sign Up" %}</h6>
+    </div>
+</div>
+<form class="m-t-20" method="POST" novalidate>
+    {% csrf_token %}
+
+    {% with WIDGET_ERROR_CLASS='parsley-error' %}
+        {% for field in form %}
+            {% if not field.is_hidden %}
+                <div class="form-group row">
+                    <div class="col-12">
+                        {% render_field field class="form-control" placeholder=field.label %}
+                        {% if field.errors %}
+                            <ul class="parsley-errors-list filled">
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+
+    <div class="form-group text-center row m-t-10">
+        <div class="col-12">
+            <button class="btn btn-success btn-block waves-effect waves-light" type="submit">{% trans "Sign Up" %}</button>
+        </div>
+    </div>
+
+</form>

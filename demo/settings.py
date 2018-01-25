@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'exchange_core',
     'exchange_payments',
     'exchange_orderbook',
+    'exchange_comissions',
 ]
 
 MIDDLEWARE = [

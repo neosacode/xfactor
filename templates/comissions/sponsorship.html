@@ -1,6 +1,7 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load thumbnail %}
 
 {% block body %}
 
@@ -17,8 +18,19 @@
                     </a>
                 </div>
                 <div class="m-t-10 p-20">
-                    {% include "account/signup-form.html" with form=form %}
+                    <p class="text-center">{% trans "Your sponsor is:" %}</p>
+                    <h4 class="text-center m-b-20">
+                        {% if sponsor.avatar %}
+                            <div>
+                                <img src="{% thumbnail sponsor.avatar 100x100 crop %}" class="rounded-circle">
+                            </div>
+                        {% endif %}
 
+                        {{ sponsor.first_name }} {{ sponsor.last_name }}<br>
+                        {{ sponsor.email }}
+                    </h4>
+
+                    {% include "account/signup-form.html" with form=form %}
                 </div>
 
                 <div class="clearfix"></div>
