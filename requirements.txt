@@ -5,4 +5,3 @@
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-orderbook.git#egg=exchange_orderbook
 -e git+https://neosacode@bitbucket.org/neosacode/exchange-comissions.git#egg=exchange_comissions
 uwsgi
-
