@@ -4,9 +4,7 @@ from django.conf import settings
 
 from two_factor.urls import urlpatterns as tf_urls
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+urlpatterns = []
 
 
 # Carrega dinamicamente as URLs dos pacotes pertencentes a exchange 
