@@ -1,0 +1,365 @@
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+{% load lang %}
+{% load exchange %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App Favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- App title -->
+        <title>{{ PROJECT_NAME }}</title>
+
+        <!--Morris Chart CSS -->
+        <link rel="stylesheet" href="{% static "assets/plugins/morris/morris.css" %}">
+
+        <!-- Switchery css -->
+        <link href="{% static "assets/plugins/switchery/switchery.min.css" %}" rel="stylesheet" />
+
+        <!-- Bootstrap CSS -->
+        <link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
+
+        <!-- Flags CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.9.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- App CSS -->
+        <link href="{% static "assets/css/style.css" %}" rel="stylesheet" type="text/css" />
+
+        <!-- Modernizr js -->
+        <script src="{% static "assets/js/modernizr.min.js" %}"></script>
+
+        <style>
+            .swal2-popup .swal2-title {
+                font-size: 24px !important;
+            }
+
+            input[type="file"].form-control {
+                border: 0;
+                padding: 0;
+            }
+        </style>
+
+        {% include "core/head.html" %}
+        {% block head %}{% endblock %}
+
+
+    </head>
+
+
+    <body>
+
+        <!-- Navigation Bar-->
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container">
+
+                    <!-- LOGO -->
+                    <div class="topbar-left">
+                        <a href="{% url "core>wallets" %}" class="logo">
+                            <i class="zmdi zmdi-group-work icon-c-logo"></i>
+                            <span>{{ PROJECT_NAME }}</span>
+                        </a>
+                    </div>
+                    <!-- End Logo container-->
+
+
+                    <div class="menu-extras navbar-topbar">
+
+                        <ul class="list-inline float-right mb-0">
+
+                            <li class="list-inline-item">
+                                <!-- Mobile menu toggle-->
+                                <a class="navbar-toggle">
+                                    <div class="lines">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <!-- End mobile menu toggle-->
+                            </li>
+
+                            {% get_current_language as LANGUAGE_CODE %}
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span class="flag-icon {{ LANGUAGE_CODE|language_css_class }}"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg" aria-labelledby="Preview" x-placement="bottom-end" style="position: absolute; transform: translate3d(-241px, 60px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+
+                                    <div id="change-language-app">
+                                        <form action="{% url 'set_language' %}" method="post" id="change-language-form">{% csrf_token %}
+                                            <input type="hidden" name="language" v-model="language">
+                                            {% for language in languages %}
+                                            <a href="#" @click.prevent="set_language('{{ language.code }}')" class="dropdown-item notify-item">
+                                                <div class="notify-icon">
+                                                    <span class="flag-icon {{ language.code|language_css_class }}"></span>
+                                                </div>
+                                                <p class="notify-details">{{ language.name_local }}<span class="text-muted">{% trans "Change for this" %}</span></p>
+                                            </a>
+                                            {% endfor %}
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </li>
+
+
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                                   aria-haspopup="false" aria-expanded="false">
+                                    {% if not user.avatar %}
+                                        <img src="https://api.adorable.io/avatars/50/abott@adorable.png" class="rounded-circle">
+                                    {% else %}
+                                        <img src="{% thumbnail user.avatar 50x50 crop %}" alt="user" class="rounded-circle">
+                                    {% endif %}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5 class="text-overflow"><small>{% trans "Hi, " %} {{ user.first_name }}</small> </h5>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="{% url "two_factor:profile" %}" class="dropdown-item notify-item">
+                                        <i class="zmdi zmdi-lock"></i> <span>{% trans "Two Factor Auth" %}</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="{% url "core>documents" %}" class="dropdown-item notify-item">
+                                        <i class="zmdi zmdi-receipt"></i> <span>{% trans "Documents" %}</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="{% url "core>settings" %}" class="dropdown-item notify-item">
+                                        <i class="zmdi zmdi-settings"></i> <span>{% trans "Settings" %}</span>
+                                    </a>
+
+
+                                    <!-- item-->
+                                    <a href="{% url "core>logout" %}" class="dropdown-item notify-item">
+                                        <i class="zmdi zmdi-power"></i> <span>{% trans "Logout" %}</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div> <!-- end menu-extras -->
+                    <div class="clearfix"></div>
+
+                </div> <!-- end container -->
+            </div>
+            <!-- end topbar-main -->
+
+
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+                            <li>
+                                <a href="{% url "core>wallets" %}"><i class="zmdi zmdi-balance-wallet"></i> <span> {% trans "Wallets" %} </span> </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url "core>statement" %}"><i class="zmdi zmdi-attachment-alt"></i> <span> {% trans "Statement" %} </span> </a>
+                            </li>
+                            <li>
+                                <a href="{% url "boleto>pay" %}"><i class="fa fa-barcode"></i> <span> {% trans "Pay Bill" %} </span> </a>
+                            </li>
+                            <li>
+                                <a href="{% url "phone>recharge" %}"><i class="zmdi zmdi-smartphone-iphone"></i> <span> {% trans "Phone Recharge" %} </span> </a>
+                            </li>
+                        </ul>
+                        <!-- End navigation menu  -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Navigation Bar-->
+
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="wrapper">
+            <div class="container">
+                {% if messages %}
+                <div class="messages m-t-20">
+                    {% for message in messages %}
+                        <div{% if message.tags %} class="alert {{ message.tags }}"{% endif %}><strong>{{ message }}</strong></div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if '/account/two_factor' in request.get_full_path %}
+                    <h2 class="page-title"><i class="zmdi zmdi-lock"></i> {% trans "Two Factor Authentication" %}</h2>
+
+                    <div class="card-box">
+                {% endif %}
+
+                {% block content %}{% endblock %}
+
+                {% if '/account/two_factor' in request.get_full_path %}
+                    </div>
+                {% endif %}
+
+            </div> <!-- container -->
+
+
+            <!-- Footer -->
+            <footer class="footer">
+                2016 - 2017 © {{ PROJECT_NAME }}.
+            </footer>
+            <!-- End Footer -->
+
+
+
+            <!-- Right Sidebar -->
+            <div class="side-bar right-bar">
+                <div class="nicescroll">
+                    <ul class="nav nav-pills nav-justified text-xs-center">
+                        <li class="nav-item">
+                            <a href="#home-2"  class="nav-link active" data-toggle="tab" aria-expanded="false">
+                                Activity
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#messages-2" class="nav-link" data-toggle="tab" aria-expanded="true">
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="home-2">
+                            <div class="timeline-2">
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">5 minutes ago</small>
+                                        <p><strong><a href="#" class="text-info">John Doe</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
+                                    </div>
+                                </div>
+
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">30 minutes ago</small>
+                                        <p><a href="" class="text-info">Lorem</a> commented your post.</p>
+                                        <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+                                    </div>
+                                </div>
+
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">59 minutes ago</small>
+                                        <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
+                                        <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+                                    </div>
+                                </div>
+
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">1 hour ago</small>
+                                        <p><strong><a href="#" class="text-info">John Doe</a></strong>Uploaded 2 new photos</p>
+                                    </div>
+                                </div>
+
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">3 hours ago</small>
+                                        <p><a href="" class="text-info">Lorem</a> commented your post.</p>
+                                        <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+                                    </div>
+                                </div>
+
+                                <div class="time-item">
+                                    <div class="item-info">
+                                        <small class="text-muted">5 hours ago</small>
+                                        <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
+                                        <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="messages-2">
+
+                            <div class="row m-t-10">
+                                <div class="col-8">
+                                    <h5 class="m-0">Notifications</h5>
+                                    <p class="text-muted m-b-0"><small>Do you need them?</small></p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <input type="checkbox" checked data-plugin="switchery" data-color="#1bb99a" data-size="small"/>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-10">
+                                <div class="col-8">
+                                    <h5 class="m-0">API Access</h5>
+                                    <p class="m-b-0 text-muted"><small>Enable/Disable access</small></p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <input type="checkbox" checked data-plugin="switchery" data-color="#1bb99a" data-size="small"/>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-10">
+                                <div class="col-8">
+                                    <h5 class="m-0">Auto Updates</h5>
+                                    <p class="m-b-0 text-muted"><small>Keep up to date</small></p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <input type="checkbox" checked data-plugin="switchery" data-color="#1bb99a" data-size="small"/>
+                                </div>
+                            </div>
+
+                            <div class="row m-t-10">
+                                <div class="col-8">
+                                    <h5 class="m-0">Online Status</h5>
+                                    <p class="m-b-0 text-muted"><small>Show your status to all</small></p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <input type="checkbox" checked data-plugin="switchery" data-color="#1bb99a" data-size="small"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> <!-- end nicescroll -->
+            </div>
+            <!-- /Right-bar -->
+
+
+
+        </div> <!-- End wrapper -->
+
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static "assets/js/jquery.min.js" %}"></script>
+        <script src="{% static "assets/js/popper.min.js" %}"></script>
+        <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+        
+        {% include "core/scripts.html" %}
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

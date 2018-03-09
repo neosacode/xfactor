@@ -4,7 +4,12 @@ from django.conf import settings
 
 from two_factor.urls import urlpatterns as tf_urls
 
-urlpatterns = []
+from .views import SelectAccountView
+
+
+urlpatterns = [
+	path('account/select/', SelectAccountView.as_view(), name='xfactor>select-account'),
+]
 
 
 # Carrega dinamicamente as URLs dos pacotes pertencentes a exchange 

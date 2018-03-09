@@ -2,6 +2,7 @@ import os
 
 import dj_database_url
 from prettyconf.configuration import Configuration
+from django_replicated.settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,8 +34,8 @@ INSTALLED_APPS = [
 
     'exchange_core',
     'exchange_payments',
-    'exchange_orderbook',
-    'exchange_comissions',
+    'exchange_boleto',
+    'exchange_phone',
 ]
 
 MIDDLEWARE = [
@@ -48,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bootstrap.urls'
+ROOT_URLCONF = 'xfactor.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bootstrap.wsgi.application'
+WSGI_APPLICATION = 'xfactor.wsgi.application'
 
 
 # Database
@@ -76,6 +77,7 @@ WSGI_APPLICATION = 'bootstrap.wsgi.application'
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
+DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 
 # Password validation
