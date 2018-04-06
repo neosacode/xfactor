@@ -1,0 +1,91 @@
+[
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 1",
+      "binary": 5.00,
+      "daily_income": 2.2,
+      "daily_limit": 0.10,
+      "down": 0.05,
+      "status": "active",
+      "is_entrance": true
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 2",
+      "binary": 6.00,
+      "daily_income": 2.2,
+      "daily_limit": 0.20,
+      "down": 0.10,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 3",
+      "binary": 7.00,
+      "daily_income": 2.2,
+      "daily_limit": 0.60,
+      "down": 0.30,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 4",
+      "binary": 9.00,
+      "daily_income": 2.2,
+      "daily_limit": 1.00,
+      "down": 0.50,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 5",
+      "binary": 11.00,
+      "daily_income": 2.2,
+      "daily_limit": 2.00,
+      "down": 1.00,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 6",
+      "binary": 13.00,
+      "daily_income": 2.2,
+      "daily_limit": 4.00,
+      "down": 2.00,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 7",
+      "binary": 16.00,
+      "daily_income": 2.2,
+      "daily_limit": 8.00,
+      "down": 4.00,
+      "status": "active"
+    }
+  },
+  {
+    "model": "financial.Plans",
+    "fields": {
+      "name": "Binary 8",
+      "binary": 17.00,
+      "daily_income": 2.2,
+      "daily_limit": 10.00,
+      "down": 5.00,
+      "status": "active"
+    }
+  }
+]

@@ -10,7 +10,7 @@ from django.urls import reverse
 from account.decorators import login_required
 
 
-from exchange_core.models import Accounts
+from exchange_core.models import Accounts, Currencies
 from exchange_core.rates import CurrencyPrice
 
 
@@ -19,16 +19,44 @@ class SelectAccountView(TemplateView):
 	template_name = 'select-account.html'
 
 	def get_context_data(self, **kwargs):
-		usd_price = CurrencyPrice('coinbase')
-		br_price = CurrencyPrice('mercadobitcoin')
-		checking_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC')
-		investments_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTCI')
+		usd = CurrencyPrice('coinbase')
+		br = CurrencyPrice('mercadobitcoin')
+		checking_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
+		investments_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
 
 		context = super().get_context_data(**kwargs)
 		context['checking_account'] = checking_account
 		context['investments_account'] = investments_account
-		context['checking_account_usd_price'] = usd_price.to_usd(checking_account.balance)
-		context['investments_account_usd_price'] = usd_price.to_usd(investments_account.balance)
-		context['checking_account_br_price'] = br_price.to_br(checking_account.balance)
-		context['investments_account_br_price'] = br_price.to_br(investments_account.balance)
+		context['checking_account_usd_price'] = usd.to_usd(checking_account.balance)
+		context['investments_account_usd_price'] = usd.to_usd(investments_account.balance)
+		context['checking_account_br_price'] = br.to_br(checking_account.balance)
+		context['investments_account_br_price'] = br.to_br(investments_account.balance)
+		return context
+
+
+@method_decorator([login_required], name='dispatch')
+class SetAccountView(TemplateView):
+	def post(self, request):
+		account = get_object_or_404(Accounts, pk=request.POST['account'])
+		request.session['CURRENT_ACCOUNT'] = account.pk
+		return redirect(reverse('xfactor>'.format(account.currency.type)))
+
+
+@method_decorator([login_required], name='dispatch')
+class CheckingAccountView	(TemplateView):
+	template_name = 'accounts/checking.html'
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['account'] = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
+		return context
+
+
+@method_decorator([login_required], name='dispatch')
+class InvestmentAccountView(TemplateView):
+	template_name = 'accounts/investment.html'
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['account'] = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
 		return context

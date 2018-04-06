@@ -1,0 +1,31 @@
+{% load i18n %}
+
+<script>
+	jQuery(function($) {
+		var app = new Vue({
+			el: '#checking-account-app',
+			methods: {
+				createAddress: function(coin, name) {
+					swal.showLoading();
+					
+					$.post('{% url "payments>get-address" %}', {coin: coin}, function(response) {
+						var qrcode_src = 'https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl=' + name.toLowerCase() + ':' + response.address
+						swal({
+							title: '<i class="zmdi zmdi-balance-wallet"></i> {% trans "Your {coin} address" %}<br> <img src="{qrcode}">'.replace('{coin}', coin).replace('{qrcode}', qrcode_src), 
+							html: response.address,
+							confirmButtonClass: 'btn btn-primary'
+						});
+					});
+				},
+				createWithdraw: function(currency, coin, name, deposit) {
+					var withdraw_amount_modal = $('#withdraw-app');
+					withdraw_amount_modal.modal('show');
+					withdraw_app.available_amount = deposit;
+					withdraw_app.coin = coin;
+					withdraw_app.is_br_withdraw = false;
+					withdraw_app.currency = currency;
+				}
+			}
+		});
+	});
+</script>
