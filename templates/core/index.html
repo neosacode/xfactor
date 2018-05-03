@@ -1,0 +1,135 @@
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+{% load lang %}
+{% load exchange %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>X-Factor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/geral.css" %}">
+    <link rel="stylesheet" href="{% static "css/plugins.css" %}">
+        <script>
+function mostra(theId){
+var theArray= new Array('item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8');
+w=document.getElementById(theId)
+if(w.style.display=="block"){w.style.display='none';}else{ 
+
+ 
+ 
+       for(i=0; i<theArray.length; i++){
+            if(theArray[i] == theId){
+                w.style.display='block';
+            }else{
+                document.getElementById(theArray[i]).style.display='none';
+            }
+      }
+      }
+      
+}
+</script>
+
+    {% include "core/head.html" %}
+    {% block head %}{% endblock %}
+</head>
+<body>
+    
+            <header>
+        <div class="back-menu">
+            <div class="container-fluid">
+                <div class="logo">
+                    <img src="{% static "img/logo.png" %}" alt="">
+                </div>
+
+                <div class="toggle-1">
+                    <!-- <a onclick="mostra('item1');"><i class="fa fa-bars"></i></a> -->
+                </div>
+
+
+                <div class="toggle-2">
+                    <!-- <a onclick="mostra('item1');"><i class="fa fa-times"></i></a> -->
+                </div>
+
+
+                <div class="menu">
+                    <!-- <ul>
+                        <li><a href="index.php"><img src="{% static "img/logo-1.png" %}" alt=""><span>Dashboard</span></a></li>
+                        <li><a href="investing.php"><img src="{% static "img/logo-2.png" %}" alt=""><span>Investing Plans</span></a></li>
+                        <li><a href="credit.php"><img src="{% static "img/logo-3.png" %}" alt=""><span>Credit Line</span></a></li>
+                        <li><a href="statement.php"><img src="{% static "img/logo-4.png" %}" alt=""><span>Statement</span></a></li>
+                        <li><a href="customers.php"><img src="{% static "img/logo-5.png" %}" alt=""><span>Customers</span></a></li>
+                    </ul> -->
+                </div>
+                <div class="settings">
+                    <ul>
+                        <li><a href=""><img src="{% static "img/foto.png" %}" alt=""><span>{% trans "Welcome: " %}{{ request.user.first_name }}</span><i class="fa fa-angle-down"></i></a></li>
+                        <li><a href=""><img src="{% static "img/settings.png" %}" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="back-menu-2"id="item1">
+    <div class="container">
+        <div class="menu-2">
+            <ul>
+                <li><a href=""><img src="{% static "img/logo-6.png" %}" alt=""><span>Carteiras</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-7.png" %}" alt=""><span>Extratos</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-8.png" %}" alt=""><span>Pay Bill</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-9.png" %}" alt=""><span>Phone Recharge</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>      
+        <div class="box-nome">
+            <div class="container">
+                <div class="bread">
+                    <div class="box-1">
+                        <img src="{% static "img/icone-rosa-3.png" %}" alt="">
+                        <h1>{% block page_title %}{% endblock %}</span></h1>
+                        <h3>{% block page_subtitle %}{% endblock %}</h3>
+                    </div>
+                    <div class="box-2">
+                        <a class="imagem-1" href="{% url "xfactor>investment" %}">
+                            <img src="{% static "img/bit-grande-azul.png" %}" alt="">
+                            <div class="conteudo-botao">
+                                <h2>{% trans "Investment Account" %}</h2>
+                                <h3>R$ </h3>
+                                <h4>0.0345 BTC</h4>
+                            </div>
+                        </a>
+                        <a class="imagem-2" href="{% url "xfactor>checking" %}">
+                            <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
+                            <div class="conteudo-botao">
+                                <h2>Conta Corrente</h2>
+                                <h3>R$600.00</h3>
+                                <h4>0.0345 BTC</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="content content-container">
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    {% include "core/scripts.html" %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -20,7 +20,7 @@ from apps.investment.models import Graduations, Referrals
 
 @method_decorator(login_required, name='dispatch')
 class PlansView(TemplateView):
-    template_name = 'financial/plans.html'
+    template_name = 'investment/plans.html'
 
     def get(self, request):
         plans_no_fidelity = Plans.active.filter(grace_periods__grace_period__months=0).order_by('order')

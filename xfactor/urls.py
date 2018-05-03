@@ -4,13 +4,14 @@ from django.conf import settings
 
 from two_factor.urls import urlpatterns as tf_urls
 
-from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView
+from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView, MyCardView
 
 
 urlpatterns = [
 	path('account/select/', SelectAccountView.as_view(), name='xfactor>select-account'),
 	path('account/checking/', CheckingAccountView.as_view(), name='xfactor>checking'),
 	path('account/investment/', InvestmentAccountView.as_view(), name='xfactor>investment'),
+	path('account/my-card/', MyCardView.as_view(), name='xfactor>my-card'),
 ]
 
 
@@ -21,3 +22,4 @@ for app_name in settings.INSTALLED_APPS:
 		urlpatterns.append(path('', include(urls_path)))
 
 urlpatterns.append(path('', include('apps.investment.urls')))
+urlpatterns.append(path('', include('apps.boleto.urls')))

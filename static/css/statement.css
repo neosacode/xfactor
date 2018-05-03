@@ -1,0 +1,376 @@
+main .back-menu-2 {
+    border-bottom: solid 1px #a7a7a7
+}
+
+main .back-menu-2 ul li {
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+main .back-menu-2 ul li a {
+    color: #0a2357;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+main .back-menu-2 ul li a span {
+    margin-left: 7px
+}
+
+@media (max-width: 991px) {
+    main .back-menu-2 {
+        text-align: center
+    }
+    main .back-menu-2 ul li {
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        display: table
+    }
+    main .back-menu-2 ul li a img {
+        width: 25px
+    }
+    main .back-menu-2 ul li a span {
+        font-size: 30px !important
+    }
+}
+
+main .content {
+    background-color: #f3f3f4
+}
+
+main .content .conteudo-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+@media (min-width: 992px) {
+    main .content .conteudo-1 {
+        float: left;
+        width: 66.66667%
+    }
+}
+
+main .content .box-1 .welcome {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+main .content .box-1 .welcome h2 {
+    color: #0950a0
+}
+
+main .content .box-1 .welcome h2 span {
+    font-weight: bold
+}
+
+main .content .box-1 .welcome p {
+    color: #0950a0;
+    margin-left: 20px
+}
+
+@media (max-width: 991px) {
+    main .content .box-1 .welcome h2 {
+        font-size: 30px !important
+    }
+    main .content .box-1 .welcome p {
+        margin-left: 10px;
+        font-size: 20px !important
+    }
+}
+
+main .content .box-1 .content-box-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ef2e88;
+    border-radius: 3px;
+    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px
+}
+
+@media (min-width: 992px) {
+    main .content .box-1 .content-box-1 {
+        float: left;
+        width: 41.66667%
+    }
+}
+
+main .content .box-1 .content-box-1 .item-1 .interno {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    margin-top: 5px
+}
+
+main .content .box-1 .content-box-1 .item-1 h2 {
+    font-size: 25px !important;
+    font-weight: bold;
+    border-bottom: solid 1px #fff;
+    padding-bottom: 20px
+}
+
+main .content .box-1 .content-box-1 .item-1 h3 {
+    font-size: 15px !important;
+    padding-top: 20px
+}
+
+@media (max-width: 991px) {
+    main .content .box-1 .content-box-1 {
+        margin-bottom: 60px
+    }
+}
+
+main .content .box-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+main .content .box-2 .item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #fff;
+    width: 24.5%;
+    border: solid 1px #e2e2e2;
+    margin-right: 0.7%;
+    padding: 20px 20px;
+}
+
+main .content .box-2 .item img {
+    margin-right: 20px
+}
+
+main .content .box-2 .item p {
+    color: #0a3676;
+    font-size: 10px !important
+}
+
+main .content .box-2 .item p span {
+    font-weight: bold;
+    font-size: 20px !important
+}
+
+@media (max-width: 991px) {
+    main .content .box-2 .item p {
+        font-size: 20px !important
+    }
+    main .content .box-2 .item p span {
+        font-size: 30px !important
+    }
+}
+
+@media (max-width: 991px) {
+    main .content .box-2 {
+        display: block
+    }
+    main .content .box-2 .item {
+        margin: 0 auto;
+        margin-bottom: 20px;
+        width: 100%
+    }
+}
+
+main .content .box-3 .title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 15px;
+    margin-bottom: 15px
+}
+
+main .content .box-3 .title h2 {
+    margin-right: 20px;
+    color: #ef2e88;
+    font-weight: bold
+}
+
+main .content .box-3 .title p {
+    margin-right: 10px;
+    color: #0a2357;
+    font-size: 15px !important
+}
+
+@media (max-width: 991px) {
+    main .content .box-3 .title h2 {
+        font-size: 30px !important
+    }
+    main .content .box-3 .title p {
+        font-size: 20px !important
+    }
+}
+
+main .content .box-4 .investiments {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between
+}
+
+main .content .box-4 .investiments .item {
+    width: 32%;
+    text-align: center
+}
+
+main .content .box-4 .investiments .item h3 {
+    background-color: #0a428a;
+    border-radius: 3px;
+    padding-top: 3px;
+    padding-bottom: 5px
+}
+
+main .content .box-4 .investiments .item h3 img {
+    vertical-align: middle;
+    margin-right: 5px
+}
+
+main .content .box-4 .investiments .item h3 a {
+    color: #fff;
+    font-size: 13px
+}
+
+main .content .box-4 .investiments .item h4 {
+    border: solid 1px #0a428a;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+    margin-top: 10px;
+    color: #0a428a;
+    font-size: 13px !important
+}
+
+main .content .box-4 .investiments .item .rosa {
+    background-color: #ef2e88
+}
+
+main .content .box-4 .investiments .item .cinza {
+    background-color: #bebebe;
+    color: #fff;
+    border: solid 1px #bebebe
+}
+
+@media (max-width: 991px) {
+    main .content .box-4 {
+        margin-right: -15px
+    }
+    main .content .box-4 .investiments .item h3 {
+        padding-top: 10px;
+        padding-bottom: 10px
+    }
+    main .content .box-4 .investiments .item h3 img {
+        width: 13px
+    }
+    main .content .box-4 .investiments .item h3 a {
+        font-size: 20px !important
+    }
+    main .content .box-4 .investiments .item h4 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 20px !important
+    }
+}
+
+@media (max-width: 768px) {
+    main .content .box-4 .investiments .item h3,
+    main .content .box-4 .investiments .item h4 {
+        height: 80px;
+        padding-top: 40px
+    }
+}
+
+main .content .conteudo-1 {
+	margin-top: 80px;
+}
+
+main .content .conteudo-2 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 80px
+}
+
+@media (min-width: 992px) {
+    main .content .conteudo-2 {
+        float: left;
+        width: 33.33333%
+    }
+}
+
+main .content .conteudo-2 img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: 350px;
+    margin: 0 auto
+}

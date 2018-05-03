@@ -25,6 +25,8 @@ class SelectAccountView(TemplateView):
 		investments_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
 
 		context = super().get_context_data(**kwargs)
+		context['btc_usd_price'] = usd.to_usd(1)
+		context['btc_br_price'] = br.to_br(1)
 		context['checking_account'] = checking_account
 		context['investments_account'] = investments_account
 		context['checking_account_usd_price'] = usd.to_usd(checking_account.balance)
@@ -32,14 +34,6 @@ class SelectAccountView(TemplateView):
 		context['checking_account_br_price'] = br.to_br(checking_account.balance)
 		context['investments_account_br_price'] = br.to_br(investments_account.balance)
 		return context
-
-
-@method_decorator([login_required], name='dispatch')
-class SetAccountView(TemplateView):
-	def post(self, request):
-		account = get_object_or_404(Accounts, pk=request.POST['account'])
-		request.session['CURRENT_ACCOUNT'] = account.pk
-		return redirect(reverse('xfactor>'.format(account.currency.type)))
 
 
 @method_decorator([login_required], name='dispatch')
@@ -60,3 +54,8 @@ class InvestmentAccountView(TemplateView):
 		context = super().get_context_data(**kwargs)
 		context['account'] = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
 		return context
+
+
+@method_decorator([login_required], name='dispatch')
+class MyCardView(TemplateView):
+	template_name = 'card.html'

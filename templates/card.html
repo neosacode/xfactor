@@ -1,0 +1,110 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}
+    {% trans "My <span>Card</span>" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor - My Card" %}
+{% endblock %}
+
+{% block head %}
+    <style>
+        #boleto-svg svg {
+            max-height: 40px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="{% static "css/cartao.css" %}">
+{% endblock %}
+
+{% block content %}
+
+	<div class="conteudo-1">
+		<div class="box-1">
+			<h2>MEU CARTÃO</h2>
+			<p>Este é seu cartão pre-pago. Você pode adicionar saldo nele sempre que precisar, usando para isto o saldo disponivel em sua conta corrente.</p>
+		</div>
+		<div class="box-2">
+			<img src="{% static "img/card.png" %}" alt="">
+			<div class="saldo">
+				<h3>R$300.00</h3>
+				<p>Disponível para uso:</p>
+			</div>
+		</div>
+		<div class="box-3">
+			<h2>NOVA RECARGA</h2>
+			<form action="">
+				<input type="text" placeholder="Valor em Reais R$">
+				<input type="text" placeholder="Total em BTC"><br>
+				<input type="password" placeholder="Senha">
+				<input type="text" placeholder="Código Two-Factor">
+				<div class="enviar">
+					<div class="botao">
+						<img src="{% static "img/logo-3.png" %}" alt="">
+						<input type="submit" value="RECARREGAR">
+					</div>
+					<h3><span>Saldo conta corrente</span> R$1500,00</h3>
+				</div>
+			</form>
+		</div>
+		<div class="box-4">
+			<h2>RECARGAS REALIZADAS</h2>
+			<div class="titulos">
+				<div class="data">
+					<img src="{% static "img/investiment-1.png" %}" alt="">
+					<p>DATA</p>
+				</div>
+				<div class="valor">
+					<img src="{% static "img/insvestiment-2.png" %}" alt="">
+					<p>VALOR</p>
+				</div>
+				<div class="valor-btc">
+					<img src="{% static "img/bit-branco.png" %}" alt="">
+					<p>VALOR BTC</p>
+				</div>
+			</div>
+
+
+			<div class="recargas">
+				<div class="item-1">
+					<p>01|NOVEMBRO|2018</p>
+				</div>
+				<div class="item-2">
+					<p>R$100.00</p>
+				</div>
+				<div class="item-3">
+					<p>0.03462000000</p>
+				</div>
+			</div>
+
+			<div class="recargas">
+				<div class="item-1">
+					<p>01|NOVEMBRO|2018</p>
+				</div>
+				<div class="item-2">
+					<p>R$100.00</p>
+				</div>
+				<div class="item-3">
+					<p>0.03462000000</p>
+				</div>
+			</div>
+			
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<div class="conteudo-2">
+		<img src="{% static "img/banner-home.jpg" %}" alt="">
+	</div>
+
+
+{% endblock %}

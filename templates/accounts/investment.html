@@ -1,0 +1,63 @@
+{% extends "core/index.html" %}
+{% load static i18n %}
+
+{% block page_title %}
+    {% trans "Investments" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor - Investments" %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/investimentos.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="conteudo-1">
+        <div class="box-1">
+            <div class="codigo">
+                <img src="{% static "img/codigo.png" %}" alt="">
+            </div>
+            <div class="texto-codigo">
+                <h2><span>{% trans "Deposite qualquer valor na carteira ao lado para aumentar o seu investimento." %}</span> {% trans "Nosso sistema reconhece automaticamenteseu depósito e o adiciona ao seu investimento. Comece agora com 0.001 BTC" %}</h2>
+                <h3><span>{% trans "Valor investido:" %}</span> 0.1 BTC</h3>
+                <h3><span>{% trans "Tipo de rendimento:" %}</span> Composto</h3>
+                <h3><span>{% trans "Período de Carência:" %}</span> 06 meses com 3% ao mês</h3>
+            </div>
+
+        </div>
+
+        <div class="box-2">
+            <a href=""><h4>MUDAR CARÊNCIA</h4></a>
+            <a href=""><h4>MUDAR TIPO DE RENDIMENTO</h4></a>
+            <a href="{% url "investment>plans" %}"><h5>CONSULTAR PLANOS</h5></a>
+        </div>
+
+        <div class="box-3">
+            <div class="part-1">
+                <h4>GRÁFICOS DE RENDIMENTO</h4>
+                <img src="{% static "img/graficos.jpg" %}" alt="">
+            </div>
+            <div class="part-2">
+                <h4>MINHAS COMISSÕES</h4>
+                <h3><span>Graduação atual: </span>Investiment promoter</h3>
+                <h3><span>Total em Comissões: </span>0.04500000 BTC</h3>
+                <h3><span>Comissões do mês: </span>0.00367000 BTC</h3>
+                <h3><span>Comissões de hoje: </span>0.07270 BTC</h3>
+                <a href=""><h5>UPGRADE DE GRADUAÇÃO</h5></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="conteudo-2">
+        <img src="{% static "img/banner-credit.jpg" %}" alt="">
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    
+    {% include "accounts/scripts/checking.vue.html" with wallets=wallets %}
+
+{% endblock %}

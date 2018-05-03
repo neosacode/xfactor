@@ -1,0 +1,64 @@
+@import ../molecules/mixins
+@import ../bower_components/breakpoint-sass/stylesheets/breakpoint
+
+
+
+
+main 
+
+body
+  font-family: 'Gotham', sans-serif !important
+  font-weight: $regular
+  line-height: 1
+  strong
+    font-weight: $bold
+
+  
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  vertical-align: baseline
+  -webkit-font-smoothing: antialiased
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+a
+  +transition(.3s)
+  &:hover,
+  &:focus
+    text-decoration: none !important
+
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+.slick-dots li.slick-active button:before 
+
+
+.slick-dots li button:before
+  font-size: 10px  
+  opacity: 1 
+
+p 
+  font-size: 14px !important  
+

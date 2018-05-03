@@ -6,144 +6,116 @@
 {% load mathfilters %}
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-        <meta name="author" content="Coderthemes">
-
-        <!-- App Favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-        <!-- App title -->
-        <title>{{ PROJECT_NAME }}</title>
-
-        <!--Morris Chart CSS -->
-        <link rel="stylesheet" href="{% static "assets/plugins/morris/morris.css" %}">
-
-        <!-- Switchery css -->
-        <link href="{% static "assets/plugins/switchery/switchery.min.css" %}" rel="stylesheet" />
-
-        <!-- Bootstrap CSS -->
-        <link href="{% static "assets/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
-
-        <!-- Flags CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.9.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
-
-        <!-- App CSS -->
-        <link href="{% static "assets/css/style.css" %}" rel="stylesheet" type="text/css" />
-
-        <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-        <!-- Modernizr js -->
-        <script src="{% static "assets/js/modernizr.min.js" %}"></script>
-
-        <style>
-            .swal2-popup .swal2-title {
-                font-size: 24px !important;
-            }
-
-            input[type="file"].form-control {
-                border: 0;
-                padding: 0;
-            }
-        </style>
-
-        {% include "core/head.html" %}
-        {% block head %}{% endblock %}
-
-
-    </head>
-
-
-    <body>
-
-        <!-- Navigation Bar-->
-        <header id="topnav">
-            <div class="topbar-main">
-                <div class="container">
-
-                    <!-- LOGO -->
-                    <div class="topbar-left text-center">
-                        <a href="{% url "core>wallets" %}" class="logo" style="float: none;">
-                            <i class="zmdi zmdi-group-work icon-c-logo"></i>
-                            <span>{{ PROJECT_NAME }}</span>
-                        </a>
-                    </div>
-                    <!-- End Logo container-->
-                    <div class="clearfix"></div>
-
-                </div> <!-- end container -->
-            </div>
-            <!-- end topbar-main -->
-
-
-            <div class="navbar-custom">
-                <div class="container">
-                    
-                </div>
-            </div>
-        </header>
-        <!-- End Navigation Bar-->
-
-
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="wrapper">
-            <div class="container" style="max-width: 700px;">
-                <div class="text-center" style="margin-bottom: 40px;">
-                    <h3>{% trans "Total accounts balance" %}</h3>
-                    <h2>$ {{ checking_account_usd_price|addition:investments_account_usd_price|floatformat:2 }}</h2>
-                    <h2>R$ {{ checking_account_br_price|addition:investments_account_br_price|floatformat:2 }}</h2>
-                </div>
-
-                <div class="card-group text-center">
-                    <a href="{% url "xfactor>checking" %}" class="card m-b-20">
-                        <div class="card-body">
-                            <h1><i class="fa fa-credit-card"></i></h1>
-                            <h3 class="card-title">{% trans "Checking Account" %}</h3>
-                            <h5>$ {{ checking_account_usd_price|floatformat:2 }}</h5>
-                            <h5>R$ {{ checking_account_br_price|floatformat:2 }}</h5>
-                            <h4><i class="fab fa-bitcoin"></i> {{ checking_account.balance }}</h4>
-                        </div>
-                    </a>
-                    <a href="{% url "xfactor>investment" %}" class="card m-b-20">
-                        <div class="card-body">
-                            <h1><i class="fa fa-chart-pie"></i></h1>
-                            <h3 class="card-title">{% trans "Investments Account" %}</h3>
-                            <h5>$ {{ investments_account_usd_price|floatformat:2 }}</h5>
-                            <h5>R$ {{ investments_account_br_price|floatformat:2 }}</h5>
-                            <h4><i class="fab fa-bitcoin"></i> {{ investments_account.balance }}</h4>
-                        </div>
-                    </a>
-                </div>
-            </div> <!-- container -->
-
-
-            <!-- Footer -->
-            <footer class="footer">
-                2018 © {{ PROJECT_NAME }}.
-            </footer>
-            <!-- End Footer -->
-
-
-        </div> <!-- End wrapper -->
-
-
-
-
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>X-Factor</title>
+    <link rel="stylesheet" href="{% static "css/geral.css" %}">
+    <link rel="stylesheet" href="{% static "css/cotacao.css" %}">
+    <link rel="stylesheet" href="{% static "css/plugins.css" %}">
         <script>
-            var resizefunc = [];
-        </script>
+function mostra(theId){
+var theArray= new Array('item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8');
+w=document.getElementById(theId)
+if(w.style.display=="block"){w.style.display='none';}else{ 
 
-        <!-- jQuery  -->
-        <script src="{% static "assets/js/jquery.min.js" %}"></script>
-        <script src="{% static "assets/js/popper.min.js" %}"></script>
-        <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
-        
-        {% include "core/scripts.html" %}
-        {% block scripts %}{% endblock %}
-    </body>
+ 
+ 
+       for(i=0; i<theArray.length; i++){
+            if(theArray[i] == theId){
+                w.style.display='block';
+            }else{
+                document.getElementById(theArray[i]).style.display='none';
+            }
+      }
+      }
+      
+}
+</script>
+</head>
+<body>
+    
+            <header>
+        <div class="back-menu">
+            <div class="container-fluid">
+                <div class="logo">
+                    <img src="{% static "img/logo.png" %}" alt="">
+                </div>
+
+                <div class="toggle-1">
+                    <a onclick="mostra('item1');"><i class="fa fa-bars"></i></a>
+                </div>
+
+
+                <div class="toggle-2">
+                    <a onclick="mostra('item1');"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="back-menu-2"id="item1">
+    <div class="container">
+        <div class="menu-2">
+            <ul>
+                <li><a href=""><img src="{% static "img/logo-6.png" %}" alt=""><span>Carteiras</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-7.png" %}" alt=""><span>Extratos</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-8.png" %}" alt=""><span>Pay Bill</span></a></li>
+                <li><a href=""><img src="{% static "img/logo-9.png" %}" alt=""><span>Phone Recharge</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>  
+        <div class="content">
+            <div class="container">
+                <div class="conteudo-1">
+                    <h1>COTAÇÃO DO BITCOIN</h1>
+                    <div class="cotacao">
+                        <div class="real">
+                            <div class="valor">
+                                <img src="{% static "img/bit-rosa.png" %}" alt="">
+                                <h2>R$ {{ btc_br_price|floatformat:2 }}</h2>
+                            </div>
+                            <p>{% trans "Bitcoin/REAL quote" %} | <span><a href="https://bitvalor.com/" target="_blank">Bitvalor</a></span></p>
+                        </div>
+                        <div class="dolar">
+                            <div class="valor">
+                                <img src="{% static "img/bit-rosa.png" %}" alt="">
+                                <h2>$ {{ btc_usd_price|floatformat:2 }}</h2>
+                            </div>
+                            <p>{% trans "Bitcoin/Dollar quote" %} | <span><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></span></p>
+                        </div>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+
+        <div class="conteudo-2">
+            <div class="investimentos">
+                <div class="conta-1">
+                    <h2>{% trans "Checking <br>Account" %}</h2>
+                    <h3>$ {{ checking_account_usd_price|floatformat:2 }}</h3>
+                    <h4>R$ {{ checking_account_br_price|floatformat:2 }}</h4>
+                    <h5>{{ checking_account.balance }} BTC</h5>
+                    <a href="{% url "xfactor>checking" %}">{% trans "Enter" %}</a>
+                </div>
+                <div class="conta-2">
+                    <h2>{% trans "Investments <br>Account" %}</h2>
+                    <h3>$ {{ investments_account_usd_price|floatformat:2 }}</h3>
+                    <h4>R$ {{ investments_account_br_price|floatformat:2 }}</h4>
+                    <h5>{{ investments_account.balance }} BTC</h5>
+                    <a href="{% url "xfactor>investment" %}">{% trans "Enter" %}</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+    <script src="{% static "bower_components/slick-carousel/slick/slick.min.js" %}"></script>
+    <script src="{% static "bower_components/font-awesome/svg-with-js/js/fontawesome-all.js" %}"></script>
+
+</body>
 </html>

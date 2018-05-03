@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'exchange_core',
     'exchange_payments',
     'apps.investment',
+    'apps.boleto',
 ]
 
 MIDDLEWARE = [

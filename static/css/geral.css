@@ -1,0 +1,443 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
+header .back-menu {
+    background-color: #0a2357;
+    background-image: -webkit-gradient(linear, 90deg, from(#0950a0), to(#0a2357));
+    background-image: -webkit-linear-gradient(90deg, #0950a0, #0a2357);
+    background-image: -moz-linear-gradient(90deg, #0950a0, #0a2357);
+    background-image: -ms-linear-gradient(90deg, #0950a0, #0a2357);
+    background-image: -o-linear-gradient(90deg, #0950a0, #0a2357);
+    background-image: linear-gradient(90deg, #0950a0, #0a2357);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#0950a0', EndColorStr='#0a2357')
+}
+
+header .back-menu .logo {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center
+}
+
+@media (min-width: 992px) {
+    header .back-menu .logo {
+        float: left;
+        width: 16.66667%
+    }
+}
+
+@media (max-width: 991px) {
+    header .back-menu .logo img {
+        width: 250px
+    }
+}
+
+header .back-menu .toggle-1,
+header .back-menu .toggle-2 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 40px;
+    text-align: center;
+    cursor: pointer
+}
+
+@media (min-width: 992px) {
+    header .back-menu .toggle-1,
+    header .back-menu .toggle-2 {
+        float: left;
+        width: 16.66667%
+    }
+}
+
+header .back-menu .toggle-1 a,
+header .back-menu .toggle-2 a {
+    background-color: #0a2357;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 35px;
+    padding-right: 35px;
+    color: #fff;
+    font-size: 30px
+}
+
+@media (max-width: 991px) {
+    header .back-menu .toggle-1,
+    header .back-menu .toggle-2 {
+        background-color: #0a2357;
+        padding-bottom: 40px;
+        margin-left: -15px;
+        margin-right: -15px
+    }
+    header .back-menu .toggle-1 a,
+    header .back-menu .toggle-2 a {
+        padding-top: 33px
+    }
+}
+
+header .back-menu .toggle-2 {
+    display: none
+}
+
+header .back-menu .menu {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 40px
+}
+
+@media (min-width: 992px) {
+    header .back-menu .menu {
+        float: left;
+        width: 50%
+    }
+}
+
+header .back-menu .menu ul li {
+    display: inline-block;
+    margin-left: 10px
+}
+
+header .back-menu .menu ul li a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    color: #fff;
+    font-size: 15px
+}
+
+header .back-menu .menu ul li a span {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+@media (max-width: 991px) {
+    header .back-menu .menu {
+        margin-top: 50px;
+        text-align: center
+    }
+    header .back-menu .menu ul {
+        text-align: center
+    }
+    header .back-menu .menu ul li {
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        display: table
+    }
+    header .back-menu .menu ul li a {
+        font-size: 30px !important
+    }
+}
+
+header .back-menu .settings {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 30px;
+    margin-left: -50px
+}
+
+@media (min-width: 992px) {
+    header .back-menu .settings {
+        float: left;
+        width: 16.66667%
+    }
+}
+
+header .back-menu .settings ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    justify-content: space-around
+}
+
+header .back-menu .settings ul li {
+    display: inline-block;
+    margin-left: 20px
+}
+
+header .back-menu .settings ul li a {
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+header .back-menu .settings ul li a span {
+    margin-left: 10px;
+    font-size: 13px
+}
+
+header .back-menu .settings ul li a .fa-angle-down {
+    margin-left: 5px
+}
+
+@media (max-width: 991px) {
+    header .back-menu .settings {
+        margin-top: 50px;
+        margin-bottom: 50px
+    }
+    header .back-menu .settings img {
+        width: 50px
+    }
+    header .back-menu .settings ul {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center
+    }
+    header .back-menu .settings ul li a span {
+        font-size: 20px !important
+    }
+}
+
+main #item1 {
+    display: none
+}
+
+@font-face {
+    font-family: Brandon1;
+    src: url("../fonts/Brandon_light.otf")
+}
+
+@font-face {
+    font-family: Brandon2;
+    src: url("../fonts/Brandon_reg.otf")
+}
+
+@font-face {
+    font-family: Brandon3;
+    src: url("../fonts/Brandon_bld.otf")
+}
+
+@font-face {
+    font-family: Gotham;
+    src: url("../fonts/Gotham-Light.ttf")
+}
+
+@font-face {
+    font-family: GothamB;
+    src: url("../fonts/Gotham-Medium.ttf")
+}
+
+@font-face {
+    font-family: London;
+    src: url("../fonts/LondonBetween.ttf")
+}
+
+.form-control-feedback {
+    position: static;
+    width: 100%;
+}
+
+.form-control-feedback {
+    position: static !important;
+    width: 100% !important;
+}
+
+.form-control-feedback ul li {
+    text-align: left;
+    font-size: 14px;
+    color: red;
+}
+
+main>.content-container {
+    min-height: 710px;
+}
+
+main .box-nome {
+    border-bottom: solid 1px #e2e2e2;
+    min-height: 80px
+}
+
+main .box-nome .bread {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-top: 30px
+}
+
+@media (max-width: 991px) {
+    main .box-nome .bread {
+        display: inline-block
+    }
+}
+
+main .box-nome .bread .box-1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+main .box-nome .bread .box-1 img {
+    margin-right: 10px
+}
+
+main .box-nome .bread .box-1 h1 {
+    margin-right: 10px;
+    color: #0950a0
+}
+
+main .box-nome .bread .box-1 h1 span {
+    font-weight: bold
+}
+
+main .box-nome .bread .box-1 h3 {
+    margin-right: 10px;
+    color: #a7a7a7;
+    font-size: 15px !important
+}
+
+@media (max-width: 991px) {
+    main .box-nome .bread .box-1 img {
+        width: 30px
+    }
+    main .box-nome .bread .box-1 h1 {
+        font-size: 25px
+    }
+    main .box-nome .bread .box-1 h3 {
+        font-size: 20px !important
+    }
+}
+
+main .box-nome .bread .box-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+main .box-nome .bread .box-2 .imagem-1,
+main .box-nome .bread .box-2 .imagem-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    border-radius: 3px;
+    color: #fff;
+    width: 350px;
+    margin-right: 15px;
+    margin-bottom: 30px
+}
+
+main .box-nome .bread .box-2 .imagem-1 img,
+main .box-nome .bread .box-2 .imagem-2 img {
+    padding-right: 50px;
+    width: 130px;
+    height: auto
+}
+
+main .box-nome .bread .box-2 .imagem-1 .conteudo-botao,
+main .box-nome .bread .box-2 .imagem-2 .conteudo-botao {
+    text-align: center
+}
+
+main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h2,
+main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h2 {
+    font-size: 13px !important;
+    margin-bottom: 8px
+}
+
+main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h3,
+main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h3 {
+    font-weight: bold;
+    margin-bottom: 7px
+}
+
+main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h4,
+main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h4 {
+    font-weight: 300;
+    font-size: 25px !important
+}
+
+main .box-nome .bread .box-2 .imagem-1 {
+    background-color: #0b2254;
+    background-image: -webkit-gradient(linear, 90deg, from(#0a50a0), to(#0b2254));
+    background-image: -webkit-linear-gradient(90deg, #0a50a0, #0b2254);
+    background-image: -moz-linear-gradient(90deg, #0a50a0, #0b2254);
+    background-image: -ms-linear-gradient(90deg, #0a50a0, #0b2254);
+    background-image: -o-linear-gradient(90deg, #0a50a0, #0b2254);
+    background-image: linear-gradient(90deg, #0a50a0, #0b2254);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#0a50a0', EndColorStr='#0b2254')
+}
+
+main .box-nome .bread .box-2 .imagem-2 {
+    background-color: #ef2e88
+}
+
+@media (max-width: 991px) {
+    main .box-nome .bread .box-2 {
+        margin-top: 50px
+    }
+}
+
+@media (max-width: 768px) {
+    main .box-nome .bread .box-2 .imagem-1,
+    main .box-nome .bread .box-2 .imagem-2 {
+        width: auto;
+        padding-right: 5px
+    }
+    main .box-nome .bread .box-2 .imagem-1 img,
+    main .box-nome .bread .box-2 .imagem-2 img {
+        padding-right: 20px
+    }
+}
