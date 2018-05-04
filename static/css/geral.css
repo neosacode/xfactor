@@ -441,3 +441,23 @@ main .box-nome .bread .box-2 .imagem-2 {
         padding-right: 20px
     }
 }
+
+.text-white {
+    color: #FFF;
+}
+
+.text-pink {
+    color: #f05389;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.tx-size-20 {
+    font-size: 20px;
+}

@@ -99,7 +99,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                             <img src="{% static "img/bit-grande-azul.png" %}" alt="">
                             <div class="conteudo-botao">
                                 <h2>{% trans "Investment Account" %}</h2>
-                                <h3>R$ </h3>
+                                <h3>R$ {% trans "" %}</h3>
                                 <h4>0.0345 BTC</h4>
                             </div>
                         </a>
@@ -121,9 +121,6 @@ if(w.style.display=="block"){w.style.display='none';}else{
                 {% block content %}{% endblock %}
             </div>
         </div>
-
-
-
 
     </main>
 
