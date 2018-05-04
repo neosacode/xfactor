@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-04 15:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/boleto/models.py:23
+msgid "Receipt"
+msgstr "Comprovante"
+
+#: apps/boleto/views.py:21
+msgid "Services > Bank Slip"
+msgstr "Serviços > Boleto"
+
+#: apps/boleto/views.py:28
+msgid "Your bank slip payment request was created"
+msgstr ""
+
+#: apps/boleto/views.py:37
+msgid "This bank slip is already registered in our system"
+msgstr ""
+
+#: apps/boleto/views.py:40
+msgid "Insufficient funds"
+msgstr ""
+
+#: apps/investment/forms.py:18
+msgid "Payment Type"
+msgstr ""
+
+#: apps/investment/forms.py:20
+msgid "User plan"
+msgstr ""
+
+#: apps/investment/forms.py:20
+msgid "Course"
+msgstr ""
+
+#: apps/investment/forms.py:23 apps/investment/forms.py:25
+msgid "Payment Code"
+msgstr ""
+
+#: apps/investment/forms.py:38 apps/investment/forms.py:40
+msgid "2FA Code"
+msgstr ""
+
+#: apps/investment/forms.py:51
+msgid "The 2FA code is invalid"
+msgstr ""
+
+#: apps/investment/forms.py:58
+msgid "First name"
+msgstr ""
+
+#: apps/investment/forms.py:59
+msgid "Last name"
+msgstr ""
+
+#: apps/investment/forms.py:60
+msgid "Confirm e-mail"
+msgstr ""
+
+#: apps/investment/forms.py:61
+msgid "Password"
+msgstr ""
+
+#: apps/investment/forms.py:62
+msgid "I have read and agree to the terms of use"
+msgstr ""
+
+#: apps/investment/forms.py:72
+msgid "The e-mails aren't equal"
+msgstr ""
+
+#: apps/investment/models.py:21
+msgid "Min down"
+msgstr ""
+
+#: apps/investment/models.py:22
+msgid "Max down"
+msgstr ""
+
+#: apps/investment/models.py:23
+msgid "Membership fee"
+msgstr ""
+
+#: apps/investment/models.py:25
+msgid "Allow monthly draw"
+msgstr ""
+
+#: apps/investment/models.py:29
+msgid "Plan"
+msgstr ""
+
+#: apps/investment/models.py:30
+msgid "Plans"
+msgstr ""
+
+#: apps/investment/models.py:38
+msgid "Months"
+msgstr ""
+
+#: apps/investment/models.py:41
+msgid "Grace period"
+msgstr ""
+
+#: apps/investment/models.py:42
+msgid "Grace periods"
+msgstr ""
+
+#: apps/investment/models.py:54
+msgid "Daily income percent"
+msgstr ""
+
+#: apps/investment/models.py:55
+msgid "Currency"
+msgstr ""
+
+#: apps/investment/models.py:58 apps/investment/models.py:75
+msgid "Plan grace period"
+msgstr ""
+
+#: apps/investment/models.py:59
+msgid "Plan grace periods"
+msgstr ""
+
+#: apps/investment/models.py:105
+msgid "Date to be ignored"
+msgstr ""
+
+#: apps/investment/models.py:108
+msgid "Ignore income date"
+msgstr ""
+
+#: apps/investment/models.py:109
+msgid "Ignore income dates"
+msgstr ""
+
+#: apps/investment/models.py:119
+msgid "Investment Promoter"
+msgstr ""
+
+#: apps/investment/models.py:119
+msgid "Investment Advisor"
+msgstr ""
+
+#: apps/investment/templates/investment/signup.html:24
+msgid "Your investment promoter is"
+msgstr ""
+
+#: apps/investment/templates/investment/signup.html:48
+msgid "Sign Up"
+msgstr ""
+
+#: apps/investment/templates/investment/signup.html:61
+msgid "Already have an account?"
+msgstr ""
+
+#: apps/investment/templates/investment/signup.html:61
+msgid "Log In"
+msgstr ""
+
+#: apps/investment/views.py:32
+msgid "Investing > Plans"
+msgstr ""
+
+#: apps/investment/views.py:52
+msgid "This plan can't be cancelled"
+msgstr ""
+
+#: apps/investment/views.py:63
+msgid "Your non-fidelity investment has been cancelled"
+msgstr ""
+
+#: apps/investment/views.py:75 apps/investment/views.py:120
+msgid "Plan Details"
+msgstr ""
+
+#: apps/investment/views.py:91
+msgid "ERROR! The investment amount it is out of the plan limit"
+msgstr ""
+
+#: apps/investment/views.py:94
+msgid "ERROR! Your {} account does not have enought deposit amount"
+msgstr ""
+
+#: apps/investment/views.py:117
+msgid "Congratulations! Your investing plan was created."
+msgstr ""
+
+#: templates/accounts/checking.html:24
+msgid "Your are in your checking account"
+msgstr "Você está na sua conta corrente"
+
+#: templates/accounts/checking.html:28
+msgid "available balance"
+msgstr "saldo disponível"
+
+#: templates/accounts/checking.html:33
+msgid "Receive"
+msgstr "Receber"
+
+#: templates/accounts/checking.html:37
+msgid "To withdraw"
+msgstr "Sacar"
+
+#: templates/accounts/checking.html:41
+msgid "Transfer"
+msgstr "Transferir"
+
+#: templates/accounts/checking.html:45
+msgid "Invest"
+msgstr "Investir"
+
+#: templates/accounts/checking.html:52
+msgid "Pay Bill"
+msgstr "Pagar Conta"
+
+#: templates/accounts/checking.html:56
+msgid "Statement"
+msgstr "Extrato"
+
+#: templates/accounts/checking.html:60
+msgid "My Card"
+msgstr "Meu Cartão"
+
+#: templates/accounts/checking.html:64
+msgid "Sell BTC"
+msgstr "Vender BTC"
+
+#: templates/accounts/investment.html:5
+msgid "Investments Account"
+msgstr "Conta de Investimentos"
+
+#: templates/accounts/investment.html:23
+msgid ""
+"Deposite qualquer valor na carteira ao lado para aumentar o seu investimento."
+msgstr ""
+
+#: templates/accounts/investment.html:23
+msgid ""
+"Nosso sistema reconhece automaticamenteseu depósito e o adiciona ao seu "
+"investimento. Comece agora com 0.001 BTC"
+msgstr ""
+
+#: templates/accounts/investment.html:24
+msgid "Valor investido:"
+msgstr ""
+
+#: templates/accounts/investment.html:25
+msgid "Tipo de rendimento:"
+msgstr ""
+
+#: templates/accounts/investment.html:26
+msgid "Período de Carência:"
+msgstr ""
+
+#: templates/accounts/scripts/checking.vue.html:21
+#, python-brace-format
+msgid "Available {coin} amount for withdraw is:"
+msgstr ""
+
+#: templates/accounts/scripts/checking.vue.html:45
+msgid "Withdraw error!"
+msgstr ""
+
+#: templates/accounts/scripts/checking.vue.html:63
+#, python-brace-format
+msgid "Your {coin} address"
+msgstr ""
+
+#: templates/boleto/pay.html:6
+msgid "Pay <span>Bill</span>"
+msgstr ""
+
+#: templates/boleto/pay.html:10
+msgid "Xfactor - Pay Bill"
+msgstr ""
+
+#: templates/boleto/pay.html:117
+msgid "Bank Slip Not Found"
+msgstr ""
+
+#: templates/boleto/pay.html:117
+msgid "Please manually type below your bank slip data"
+msgstr ""
+
+#: templates/boleto/pay.html:122 templates/boleto/pay.html:125
+msgid "Missing Data!"
+msgstr ""
+
+#: templates/boleto/pay.html:122
+msgid "Please type your name or your company name"
+msgstr ""
+
+#: templates/boleto/pay.html:125
+msgid "Please type your CPF or CNPJ number"
+msgstr ""
+
+#: templates/card.html:6
+msgid "My <span>Card</span>"
+msgstr ""
+
+#: templates/card.html:10
+msgid "Xfactor - My Card"
+msgstr ""
+
+#: templates/core/index.html:69
+msgid "Welcome: "
+msgstr ""
+
+#: templates/core/index.html:101
+msgid "Investment Account"
+msgstr ""
+
+#: templates/core/statement.html:8
+msgid "<span>Statement</span>"
+msgstr ""
+
+#: templates/core/statement.html:12
+msgid "Xfactor - Account Statement"
+msgstr ""
+
+#: templates/investment/plans.html:5
+msgid "Investment Plans"
+msgstr ""
+
+#: templates/investment/plans.html:9
+msgid "Xfactor - Plans"
+msgstr ""
+
+#: templates/select-account.html:79
+msgid "Bitcoin/REAL quote"
+msgstr ""
+
+#: templates/select-account.html:86
+msgid "Bitcoin/Dollar quote"
+msgstr ""
+
+#: templates/select-account.html:98
+msgid "Checking <br>Account"
+msgstr ""
+
+#: templates/select-account.html:102 templates/select-account.html:109
+msgid "Enter"
+msgstr ""
+
+#: templates/select-account.html:105
+msgid "Investments <br>Account"
+msgstr ""
+
+#: templates/select-account2.html:97
+msgid "Total accounts balance"
+msgstr ""
+
+#: templates/select-account2.html:106
+msgid "Checking Account"
+msgstr ""
+
+#: templates/two_factor/core/login.html:38
+msgid "Back to site"
+msgstr ""
+
+#: templates/two_factor/core/login.html:55
+msgid "Login in, to access your back office"
+msgstr "Informe seus dados para acessar sua conta"
+
+#: templates/two_factor/core/login.html:75
+msgid "Log in"
+msgstr "Acessar Conta"
+
+#: templates/two_factor/core/login.html:77
+msgid "Forgot your password?"
+msgstr "Esqueceu sua senha?"
+
+#: templates/two_factor/core/login.html:79
+msgid "Don't have an account?"
+msgstr "Não possui uma conta?"
+
+#: templates/two_factor/core/login.html:79
+msgid "Open Account"
+msgstr "Abrir Conta"

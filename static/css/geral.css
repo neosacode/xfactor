@@ -318,7 +318,7 @@ main .box-nome .bread .box-1 {
     -ms-flex-align: center;
     -webkit-align-items: center;
     -moz-align-items: center;
-    align-items: center
+    align-items: center;
 }
 
 main .box-nome .bread .box-1 img {
@@ -460,4 +460,11 @@ main .box-nome .bread .box-2 .imagem-2 {
 
 .tx-size-20 {
     font-size: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 30px;
 }

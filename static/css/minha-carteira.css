@@ -166,7 +166,8 @@ main .content .conteudo-1 .box-3 .item img {
 }
 
 main .content .conteudo-1 .box-3 .item h4 {
-    color: #fff
+    color: #fff;
+    font-weight: bold;
 }
 
 main .content .conteudo-1 .box-3 .item-rosa {
@@ -191,7 +192,8 @@ main .content .conteudo-1 .box-3 .item-rosa img {
 }
 
 main .content .conteudo-1 .box-3 .item-rosa h4 {
-    color: #fff
+    color: #fff;
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {
