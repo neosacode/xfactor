@@ -49,7 +49,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                     <div class="col-md-3">
                         <div class="logo"><img src="{% static "img/logo.png" %}" alt=""></div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <!-- <ul>
                             <li><a href="index.php"><img src="{% static "img/logo-1.png" %}" alt=""><span>Dashboard</span></a></li>
                             <li><a href="investing.php"><img src="{% static "img/logo-2.png" %}" alt=""><span>Investing Plans</span></a></li>
@@ -83,11 +83,22 @@ if(w.style.display=="block"){w.style.display='none';}else{
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="settings">
                             <ul>
-                                <li><a href=""><img src="{% static "img/foto.png" %}" alt=""><span>{% trans "Welcome: " %}{{ request.user.first_name }}</span><i class="fa fa-angle-down"></i></a></li>
-                                <li><a href=""><img src="{% static "img/settings.png" %}" alt=""></a></li>
+                                <li>
+                                    <a href="">
+                                        <table>
+                                            <tr>
+                                                <td><img src="{% static "img/foto.png" %}" alt=""></td>
+                                                <td><span>{% trans "Welcome: " %}{{ request.user.first_name }}</span> <i class="fa fa-angle-down"></i></td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href=""><img src="{% static "img/settings.png" %}" alt=""></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

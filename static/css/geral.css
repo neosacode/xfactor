@@ -68,6 +68,10 @@ header .back-menu .settings {
     margin-bottom: 30px;
 }
 
+header .back-menu .settings table tr td {
+    vertical-align: middle;
+}
+
 header .back-menu .settings ul {
     display: -webkit-box;
     display: -webkit-flex;
