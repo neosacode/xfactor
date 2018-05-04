@@ -10,7 +10,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -45,10 +44,6 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-
-# Translations
-*.mo
-*.pot
 
 # Django stuff:
 *.log

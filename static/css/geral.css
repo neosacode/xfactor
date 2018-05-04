@@ -319,6 +319,7 @@ main .box-nome .bread .box-1 {
     -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center;
+    margin-top: -30px;
 }
 
 main .box-nome .bread .box-1 img {
@@ -377,6 +378,12 @@ main .box-nome .bread .box-2 .imagem-2 {
     width: 350px;
     margin-right: 15px;
     margin-bottom: 30px
+}
+
+main .box-nome .bread .box-2 .imagem-1:hover,
+main .box-nome .bread .box-2 .imagem-2:hover {
+    position: relative;
+    top: -5px;
 }
 
 main .box-nome .bread .box-2 .imagem-1 img,
