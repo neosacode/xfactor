@@ -10,6 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>X-Factor</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static "css/geral.css" %}">
     <link rel="stylesheet" href="{% static "css/plugins.css" %}">
@@ -33,43 +34,63 @@ if(w.style.display=="block"){w.style.display='none';}else{
 }
 </script>
 
+    <!-- Flags CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.9.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     {% include "core/head.html" %}
     {% block head %}{% endblock %}
 </head>
 <body>
     
-            <header>
+    <header>
         <div class="back-menu">
             <div class="container-fluid">
-                <div class="logo">
-                    <img src="{% static "img/logo.png" %}" alt="">
-                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo"><img src="{% static "img/logo.png" %}" alt=""></div>
+                    </div>
+                    <div class="col-md-5">
+                        <!-- <ul>
+                            <li><a href="index.php"><img src="{% static "img/logo-1.png" %}" alt=""><span>Dashboard</span></a></li>
+                            <li><a href="investing.php"><img src="{% static "img/logo-2.png" %}" alt=""><span>Investing Plans</span></a></li>
+                            <li><a href="credit.php"><img src="{% static "img/logo-3.png" %}" alt=""><span>Credit Line</span></a></li>
+                            <li><a href="statement.php"><img src="{% static "img/logo-4.png" %}" alt=""><span>Statement</span></a></li>
+                            <li><a href="customers.php"><img src="{% static "img/logo-5.png" %}" alt=""><span>Customers</span></a></li>
+                        </ul> -->
+                    </div>
+                    <div class="col-md-2">
+                        <div class="dropdown show change-language-dropdown float-right">
+                          <a class="btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            <span class="flag-icon {{ LANGUAGE_CODE|language_css_class }}"></span>
+                          </a>
 
-                <div class="toggle-1">
-                    <!-- <a onclick="mostra('item1');"><i class="fa fa-bars"></i></a> -->
-                </div>
+                          {% get_available_languages as LANGUAGES %}
+                          {% get_language_info_list for LANGUAGES as languages %}
 
-
-                <div class="toggle-2">
-                    <!-- <a onclick="mostra('item1');"><i class="fa fa-times"></i></a> -->
-                </div>
-
-
-                <div class="menu">
-                    <!-- <ul>
-                        <li><a href="index.php"><img src="{% static "img/logo-1.png" %}" alt=""><span>Dashboard</span></a></li>
-                        <li><a href="investing.php"><img src="{% static "img/logo-2.png" %}" alt=""><span>Investing Plans</span></a></li>
-                        <li><a href="credit.php"><img src="{% static "img/logo-3.png" %}" alt=""><span>Credit Line</span></a></li>
-                        <li><a href="statement.php"><img src="{% static "img/logo-4.png" %}" alt=""><span>Statement</span></a></li>
-                        <li><a href="customers.php"><img src="{% static "img/logo-5.png" %}" alt=""><span>Customers</span></a></li>
-                    </ul> -->
-                </div>
-                <div class="settings">
-                    <ul>
-                        <li><a href=""><img src="{% static "img/foto.png" %}" alt=""><span>{% trans "Welcome: " %}{{ request.user.first_name }}</span><i class="fa fa-angle-down"></i></a></li>
-                        <li><a href=""><img src="{% static "img/settings.png" %}" alt=""></a></li>
-                    </ul>
+                          <div class="dropdown-menu">
+                            <div id="change-language-app">
+                                <form action="{% url 'set_language' %}" method="post" id="change-language-form">{% csrf_token %}
+                                    <input type="hidden" name="language" v-model="language">
+                                    {% for language in languages %}
+                                    <a href="#" @click.prevent="set_language('{{ language.code }}')" class="dropdown-item">
+                                        <span class="flag-icon {{ language.code|language_css_class }}"></span>
+                                        {{ language.name_local }}
+                                    </a>
+                                    {% endfor %}
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="settings">
+                            <ul>
+                                <li><a href=""><img src="{% static "img/foto.png" %}" alt=""><span>{% trans "Welcome: " %}{{ request.user.first_name }}</span><i class="fa fa-angle-down"></i></a></li>
+                                <li><a href=""><img src="{% static "img/settings.png" %}" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,7 +128,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                         <a class="imagem-2" href="{% url "xfactor>checking" %}">
                             <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
                             <div class="conteudo-botao">
-                                <h2>Conta Corrente</h2>
+                                <h2>{% trans "Checking Account" %}</h2>
                                 <h3>R$600.00</h3>
                                 <h4>0.0345 BTC</h4>
                             </div>
@@ -126,7 +147,8 @@ if(w.style.display=="block"){w.style.display='none';}else{
     </main>
 
     <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+
     {% include "core/scripts.html" %}
     {% block scripts %}{% endblock %}
 </body>

@@ -16,69 +16,7 @@ header .back-menu .logo {
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 10px;
-    margin-bottom: 20px;
     text-align: center
-}
-
-@media (min-width: 992px) {
-    header .back-menu .logo {
-        float: left;
-        width: 16.66667%
-    }
-}
-
-@media (max-width: 991px) {
-    header .back-menu .logo img {
-        width: 250px
-    }
-}
-
-header .back-menu .toggle-1,
-header .back-menu .toggle-2 {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 40px;
-    text-align: center;
-    cursor: pointer
-}
-
-@media (min-width: 992px) {
-    header .back-menu .toggle-1,
-    header .back-menu .toggle-2 {
-        float: left;
-        width: 16.66667%
-    }
-}
-
-header .back-menu .toggle-1 a,
-header .back-menu .toggle-2 a {
-    background-color: #0a2357;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    padding-left: 35px;
-    padding-right: 35px;
-    color: #fff;
-    font-size: 30px
-}
-
-@media (max-width: 991px) {
-    header .back-menu .toggle-1,
-    header .back-menu .toggle-2 {
-        background-color: #0a2357;
-        padding-bottom: 40px;
-        margin-left: -15px;
-        margin-right: -15px
-    }
-    header .back-menu .toggle-1 a,
-    header .back-menu .toggle-2 a {
-        padding-top: 33px
-    }
-}
-
-header .back-menu .toggle-2 {
-    display: none
 }
 
 header .back-menu .menu {
@@ -121,39 +59,13 @@ header .back-menu .menu ul li a span {
     margin-right: 10px
 }
 
-@media (max-width: 991px) {
-    header .back-menu .menu {
-        margin-top: 50px;
-        text-align: center
-    }
-    header .back-menu .menu ul {
-        text-align: center
-    }
-    header .back-menu .menu ul li {
-        margin: 0 auto;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        display: table
-    }
-    header .back-menu .menu ul li a {
-        font-size: 30px !important
-    }
-}
-
 header .back-menu .settings {
     position: relative;
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
     margin-top: 30px;
-    margin-left: -50px
-}
-
-@media (min-width: 992px) {
-    header .back-menu .settings {
-        float: left;
-        width: 16.66667%
-    }
+    margin-bottom: 30px;
 }
 
 header .back-menu .settings ul {
@@ -181,17 +93,6 @@ header .back-menu .settings ul li {
 header .back-menu .settings ul li a {
     color: #fff;
     font-weight: bold;
-    white-space: nowrap;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center
 }
 
 header .back-menu .settings ul li a span {
@@ -203,58 +104,8 @@ header .back-menu .settings ul li a .fa-angle-down {
     margin-left: 5px
 }
 
-@media (max-width: 991px) {
-    header .back-menu .settings {
-        margin-top: 50px;
-        margin-bottom: 50px
-    }
-    header .back-menu .settings img {
-        width: 50px
-    }
-    header .back-menu .settings ul {
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        -moz-justify-content: center;
-        justify-content: center
-    }
-    header .back-menu .settings ul li a span {
-        font-size: 20px !important
-    }
-}
-
 main #item1 {
     display: none
-}
-
-@font-face {
-    font-family: Brandon1;
-    src: url("../fonts/Brandon_light.otf")
-}
-
-@font-face {
-    font-family: Brandon2;
-    src: url("../fonts/Brandon_reg.otf")
-}
-
-@font-face {
-    font-family: Brandon3;
-    src: url("../fonts/Brandon_bld.otf")
-}
-
-@font-face {
-    font-family: Gotham;
-    src: url("../fonts/Gotham-Light.ttf")
-}
-
-@font-face {
-    font-family: GothamB;
-    src: url("../fonts/Gotham-Medium.ttf")
-}
-
-@font-face {
-    font-family: London;
-    src: url("../fonts/LondonBetween.ttf")
 }
 
 .form-control-feedback {
@@ -475,4 +326,12 @@ main .box-nome .bread .box-2 .imagem-2 {
     font-size: 25px;
     margin-bottom: 30px;
     color: #0a50a0;
+}
+
+.dropdown .dropdown-item {
+    padding: 10px 15px;
+}
+
+.change-language-dropdown {
+    margin-top: 40px;
 }
