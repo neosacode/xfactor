@@ -325,19 +325,19 @@ msgstr ""
 
 #: templates/core/index.html:101
 msgid "Investment Account"
-msgstr ""
+msgstr "Conta de Investimentos"
 
 #: templates/core/statement.html:8
 msgid "<span>Statement</span>"
-msgstr ""
+msgstr "<span>Extrato</span>"
 
 #: templates/core/statement.html:12
 msgid "Xfactor - Account Statement"
-msgstr ""
+msgstr "Xfactor - Extrato da Conta"
 
 #: templates/investment/plans.html:5
 msgid "Investment Plans"
-msgstr ""
+msgstr "Planos de Investimento"
 
 #: templates/investment/plans.html:9
 msgid "Xfactor - Plans"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: templates/select-account2.html:106
 msgid "Checking Account"
-msgstr ""
+msgstr "Conta Corrente"
 
 #: templates/two_factor/core/login.html:38
 msgid "Back to site"
