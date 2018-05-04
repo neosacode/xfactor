@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-04 15:34+0000\n"
+"POT-Creation-Date: 2018-05-04 18:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,47 +202,55 @@ msgstr ""
 msgid "Congratulations! Your investing plan was created."
 msgstr ""
 
-#: templates/accounts/checking.html:24
+#: templates/accounts/checking.html:5 templates/select-account2.html:106
+msgid "Checking Account"
+msgstr "Conta Corrente"
+
+#: templates/accounts/checking.html:9 templates/accounts/investment.html:9
+msgid "Xfactor"
+msgstr ""
+
+#: templates/accounts/checking.html:27
 msgid "Your are in your checking account"
 msgstr "Você está na sua conta corrente"
 
-#: templates/accounts/checking.html:28
+#: templates/accounts/checking.html:31
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:33
+#: templates/accounts/checking.html:36
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:37
+#: templates/accounts/checking.html:40
 msgid "To withdraw"
 msgstr "Sacar"
 
-#: templates/accounts/checking.html:41
+#: templates/accounts/checking.html:44
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:45
+#: templates/accounts/checking.html:48
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:52
+#: templates/accounts/checking.html:55
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:56
+#: templates/accounts/checking.html:59
 msgid "Statement"
 msgstr "Extrato"
 
-#: templates/accounts/checking.html:60
+#: templates/accounts/checking.html:63
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:64
+#: templates/accounts/checking.html:67
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
-#: templates/accounts/investment.html:5
+#: templates/accounts/investment.html:5 templates/select-account2.html:115
 msgid "Investments Account"
 msgstr "Conta de Investimentos"
 
@@ -283,6 +291,10 @@ msgstr ""
 msgid "Your {coin} address"
 msgstr ""
 
+#: templates/back-button.html:3
+msgid "Back to previous page"
+msgstr "Voltar a página anterior"
+
 #: templates/boleto/pay.html:6
 msgid "Pay <span>Bill</span>"
 msgstr ""
@@ -319,11 +331,11 @@ msgstr ""
 msgid "Xfactor - My Card"
 msgstr ""
 
-#: templates/core/index.html:69
+#: templates/core/index.html:70
 msgid "Welcome: "
 msgstr ""
 
-#: templates/core/index.html:101
+#: templates/core/index.html:102
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
@@ -366,10 +378,6 @@ msgstr ""
 #: templates/select-account2.html:97
 msgid "Total accounts balance"
 msgstr ""
-
-#: templates/select-account2.html:106
-msgid "Checking Account"
-msgstr "Conta Corrente"
 
 #: templates/two_factor/core/login.html:38
 msgid "Back to site"

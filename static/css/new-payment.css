@@ -1,1 +1,291 @@
-main .back-menu-2{border-bottom:solid 1px #a7a7a7}main .back-menu-2 ul li{display:inline-block;margin-right:50px;margin-top:30px;margin-bottom:30px}main .back-menu-2 ul li a{color:#0a2357;font-weight:bold;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-moz-align-items:center;align-items:center}main .back-menu-2 ul li a span{margin-left:7px}@media (max-width: 991px){main .back-menu-2{text-align:center}main .back-menu-2 ul li{margin:0 auto;margin-top:25px;margin-bottom:25px;display:table}main .back-menu-2 ul li a img{width:25px}main .back-menu-2 ul li a span{font-size:30px !important}}main .content{background-color:#f3f3f4;min-height:800px}main .content .box-1{position:relative;min-height:1px;padding-left:15px;padding-right:15px;margin-top:50px}@media (min-width: 992px){main .content .box-1{float:left;width:41.66667%}}main .content .box-1 .margem{border:solid 2px #e2e2e2;background-color:#fff;padding:20px 25px}main .content .box-1 .margem h2{color:#0950a0;font-family:GothamB;border-bottom:solid 2px #e2e2e2;padding-bottom:15px}main .content .box-1 .margem p{color:#0a2357;padding-top:15px;padding-bottom:15px}main .content .box-1 .margem p span{font-weight:bold}main .content .box-1 .margem button{background-color:#ef2e88;border:none;border-radius:50px;padding:8px 30px;color:#fff;font-family:GothamB;font-size:10px !important;font-weight:bold;margin-top:10px}main .content .box-1 .margem .avatar{display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-justify-content:space-between;-moz-justify-content:space-between;justify-content:space-between}main .content .box-1 .margem .avatar .selecione input{background-color:#a1a1a1;background-image:-webkit-gradient(linear, 180deg, from(#d4d4d4), to(#a1a1a1));background-image:-webkit-linear-gradient(180deg, #d4d4d4, #a1a1a1);background-image:-moz-linear-gradient(180deg, #d4d4d4, #a1a1a1);background-image:-ms-linear-gradient(180deg, #d4d4d4, #a1a1a1);background-image:-o-linear-gradient(180deg, #d4d4d4, #a1a1a1);background-image:linear-gradient(180deg, #d4d4d4, #a1a1a1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=$angle,StartColorStr='#d4d4d4', EndColorStr='#a1a1a1');border:solid 1px #a1a1a1;border-radius:50px;padding:7px 20px;color:#555555;font-family:GothamB;font-size:13px !important}main .content .box-1 .margem .avatar .selecione p{font-family:GothamB;color:#a7a7a7}main .content .box-2{position:relative;min-height:1px;padding-left:15px;padding-right:15px;margin-top:50px;margin-bottom:100px}@media (min-width: 992px){main .content .box-2{float:left;width:58.33333%}}main .content .box-2 .margem{border:solid 2px #e2e2e2;background-color:#fff;padding:20px 25px}main .content .box-2 .margem h2{color:#0950a0;font-family:GothamB;border-bottom:solid 2px #e2e2e2;padding-bottom:15px}main .content .box-2 .margem p{color:#0a2357;padding-top:15px;padding-bottom:15px}main .content .box-2 .margem p span{font-weight:bold}main .content .box-2 .margem img{display:block;max-width:100%;height:auto;margin-top:10px;margin-bottom:15px}main .content .box-2 .margem input{background-color:transparent;border:solid 1px #e2e2e2;outline:none;height:40px;font-size:12px !important;font-family:GothamB;font-weight:bold;padding-left:20px;width:30%;margin:7px}main .content .box-2 .margem ::-webkit-input-placeholder{color:#0a2357}main .content .box-2 .margem button{background-color:#ef2e88;border:none;border-radius:50px;padding:8px 30px;color:#fff;font-family:GothamB;font-size:10px !important;font-weight:bold;margin-top:10px}@media (max-width: 768px){main .content .box-2 .margem input{width:100%}}main .content .box-3{position:relative;min-height:1px;padding-left:15px;padding-right:15px;margin-top:50px;margin-bottom:100px}@media (min-width: 992px){main .content .box-3{float:left;width:41.66667%}}main .content .box-3 .margem{border:solid 2px #e2e2e2;background-color:#fff;padding:20px 25px}main .content .box-3 .margem h2{color:#0950a0;font-family:GothamB;border-bottom:solid 2px #e2e2e2;padding-bottom:15px}main .content .box-3 .margem p{color:#0a2357;padding-top:15px;padding-bottom:15px}main .content .box-3 .margem p span{font-weight:bold}main .content .box-3 .margem input{background-color:transparent;border:solid 1px #e2e2e2;outline:none;height:40px;font-size:12px !important;font-family:GothamB;font-weight:bold;padding-left:20px;width:100%;margin:7px}main .content .box-3 .margem ::-webkit-input-placeholder{color:#0a2357}main .content .box-3 .margem button{background-color:#ef2e88;border:none;border-radius:50px;padding:8px 30px;color:#fff;font-family:GothamB;font-size:10px !important;font-weight:bold;margin-top:10px}
+main .back-menu-2 {
+    border-bottom: solid 1px #a7a7a7
+}
+
+main .back-menu-2 ul li {
+    display: inline-block;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+main .back-menu-2 ul li a {
+    color: #0a2357;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+main .back-menu-2 ul li a span {
+    margin-left: 7px
+}
+
+@media (max-width: 991px) {
+    main .back-menu-2 {
+        text-align: center
+    }
+    main .back-menu-2 ul li {
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        display: table
+    }
+    main .back-menu-2 ul li a img {
+        width: 25px
+    }
+    main .back-menu-2 ul li a span {
+        font-size: 30px !important
+    }
+
+    main .content .box-2 {
+    	margin-top: 30px;
+    }
+}
+
+main .content {
+    background-color: #f3f3f4;
+    min-height: 800px
+}
+
+main .content .box-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 50px
+}
+
+@media (min-width: 992px) {
+    main .content .box-1 {
+        float: left;
+        width: 41.66667%
+    }
+}
+
+main .content .box-1 .margem {
+    border: solid 2px #e2e2e2;
+    background-color: #fff;
+    padding: 20px 25px
+}
+
+main .content .box-1 .margem h2 {
+    color: #0950a0;
+    font-family: GothamB;
+    border-bottom: solid 2px #e2e2e2;
+    padding-bottom: 15px
+}
+
+main .content .box-1 .margem p {
+    color: #0a2357;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+main .content .box-1 .margem p span {
+    font-weight: bold
+}
+
+main .content .box-1 .margem button {
+    background-color: #ef2e88;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 30px;
+    color: #fff;
+    font-family: GothamB;
+    font-size: 10px !important;
+    font-weight: bold;
+    margin-top: 10px
+}
+
+main .content .box-1 .margem .avatar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between
+}
+
+main .content .box-1 .margem .avatar .selecione input {
+    background-color: #a1a1a1;
+    background-image: -webkit-gradient(linear, 180deg, from(#d4d4d4), to(#a1a1a1));
+    background-image: -webkit-linear-gradient(180deg, #d4d4d4, #a1a1a1);
+    background-image: -moz-linear-gradient(180deg, #d4d4d4, #a1a1a1);
+    background-image: -ms-linear-gradient(180deg, #d4d4d4, #a1a1a1);
+    background-image: -o-linear-gradient(180deg, #d4d4d4, #a1a1a1);
+    background-image: linear-gradient(180deg, #d4d4d4, #a1a1a1);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#d4d4d4', EndColorStr='#a1a1a1');
+    border: solid 1px #a1a1a1;
+    border-radius: 50px;
+    padding: 7px 20px;
+    color: #555555;
+    font-family: GothamB;
+    font-size: 13px !important
+}
+
+main .content .box-1 .margem .avatar .selecione p {
+    font-family: GothamB;
+    color: #a7a7a7
+}
+
+main .content .box-2 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 109px;
+    margin-bottom: 100px
+}
+
+@media (min-width: 992px) {
+    main .content .box-2 {
+        float: left;
+        width: 58.33333%
+    }
+}
+
+main .content .box-2 .margem {
+    border: solid 2px #e2e2e2;
+    background-color: #fff;
+    padding: 20px 25px
+}
+
+main .content .box-2 .margem h2 {
+    color: #0950a0;
+    font-family: GothamB;
+    border-bottom: solid 2px #e2e2e2;
+    padding-bottom: 15px
+}
+
+main .content .box-2 .margem p {
+    color: #0a2357;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+main .content .box-2 .margem p span {
+    font-weight: bold
+}
+
+main .content .box-2 .margem img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 15px
+}
+
+main .content .box-2 .margem input {
+    background-color: transparent;
+    border: solid 1px #e2e2e2;
+    outline: none;
+    height: 40px;
+    font-size: 12px !important;
+    font-family: GothamB;
+    font-weight: bold;
+    padding-left: 20px;
+    width: 30%;
+    margin: 7px
+}
+
+main .content .box-2 .margem ::-webkit-input-placeholder {
+    color: #0a2357
+}
+
+main .content .box-2 .margem button {
+    background-color: #ef2e88;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 30px;
+    color: #fff;
+    font-family: GothamB;
+    font-size: 10px !important;
+    font-weight: bold;
+    margin-top: 10px
+}
+
+@media (max-width: 768px) {
+    main .content .box-2 .margem input {
+        width: 100%
+    }
+}
+
+main .content .box-3 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 50px;
+    margin-bottom: 100px
+}
+
+@media (min-width: 992px) {
+    main .content .box-3 {
+        float: left;
+        width: 41.66667%
+    }
+}
+
+main .content .box-3 .margem {
+    border: solid 2px #e2e2e2;
+    background-color: #fff;
+    padding: 20px 25px
+}
+
+main .content .box-3 .margem h2 {
+    color: #0950a0;
+    font-family: GothamB;
+    border-bottom: solid 2px #e2e2e2;
+    padding-bottom: 15px
+}
+
+main .content .box-3 .margem p {
+    color: #0a2357;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+main .content .box-3 .margem p span {
+    font-weight: bold
+}
+
+main .content .box-3 .margem input {
+    background-color: transparent;
+    border: solid 1px #e2e2e2;
+    outline: none;
+    height: 40px;
+    font-size: 12px !important;
+    font-family: GothamB;
+    font-weight: bold;
+    padding-left: 20px;
+    width: 100%;
+    margin: 7px
+}
+
+main .content .box-3 .margem ::-webkit-input-placeholder {
+    color: #0a2357
+}
+
+main .content .box-3 .margem button {
+    background-color: #ef2e88;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 30px;
+    color: #fff;
+    font-family: GothamB;
+    font-size: 10px !important;
+    font-weight: bold;
+    margin-top: 10px
+}
