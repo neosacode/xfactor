@@ -133,15 +133,15 @@ if(w.style.display=="block"){w.style.display='none';}else{
                             <div class="conteudo-botao">
                                 <h2>{% trans "Investment Account" %}</h2>
                                 <h3>R$ </h3>
-                                <h4>0.0345 BTC</h4>
+                                <h4>{{ user_investment_account.balance }} BTC</h4>
                             </div>
                         </a>
                         <a class="imagem-2" href="{% url "xfactor>checking" %}">
                             <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
                             <div class="conteudo-botao">
                                 <h2>{% trans "Checking Account" %}</h2>
-                                <h3>R$600.00</h3>
-                                <h4>0.0345 BTC</h4>
+                                <h3>R$</h3>
+                                <h4>{{ user_checking_account.balance }} BTC</h4>
                             </div>
                         </a>
                     </div>

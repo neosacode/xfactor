@@ -23,10 +23,10 @@
                 <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={% url "investment>signup" %}" alt="">
             </div>
             <div class="col-md-8 texto-codigo">
-                <h3><span>{% trans "Available for withdraw:" %}</span> 0.02388800</h3>
+                <h3><span>{% trans "Available for withdraw:" %}</span> {{ user_investment_account.deposit }}</h3>
                 <h3><span>{% trans "Incomes:" %}</span> 0.02388800</h3>
                 <h3><span>{% trans "Current investment plan:" %}</span> Stocks</h3>
-                <h3><span>{% trans "Invest amount:" %}</span> 0.1 BTC</h3>
+                <h3><span>{% trans "Invest amount:" %}</span> {{ user_investment_account.reserved }} BTC</h3>
                 <h3><span>{% trans "Selected lack:" %}</span> 06 meses com 3% ao mês</h3>
 
                 <h4 class="title"><i class="fas fa-chart-pie"></i> {% trans "My Comissions" %}</h4>
