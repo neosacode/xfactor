@@ -2,6 +2,18 @@
 
 <script>
 	jQuery(function($) {
+		var copy_text = '';
+		var copy_btn = $('.copy-address-btn');
+		var copy_instance = new ClipboardJS('.copy-address-btn', {
+		    text: function(trigger) {
+		        return copy_text;
+		    }
+		});
+
+		copy_btn.on('click', function() {
+			swal('{% trans "Success!" %}', '{% trans "Wallet address has been copied!" %}', 'success');
+		});
+
 		var withdraw_app = new Vue({
 			el: '#withdraw-app',
 			data: {
@@ -57,12 +69,20 @@
 				createAddress: function(coin, name) {
 					swal.showLoading();
 					
+					var address = '';
+
 					$.post('{% url "payments>get-address" %}', {coin: coin}, function(response) {
 						var qrcode_src = 'https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl=' + name.toLowerCase() + ':' + response.address
+						address = response.address
+
 						swal({
 							title: '<i class="zmdi zmdi-balance-wallet"></i> {% trans "Your {coin} address" %}<br> <img src="{qrcode}">'.replace('{coin}', coin).replace('{qrcode}', qrcode_src), 
 							html: response.address,
-							confirmButtonClass: 'btn btn-primary'
+							confirmButtonClass: 'btn btn-primary copy-address-btn',
+							confirmButtonText: '{% trans "Copy address" %}'
+						}).then(function() {
+							copy_text = address;
+							copy_btn.click();
 						});
 					});
 				},

@@ -1,0 +1,69 @@
+{% load i18n %}
+
+<div class="modal" tabindex="-1" role="dialog" id="withdraw-app">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" v-text="'{% trans "Withdraw " %} ' + coin"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="number" :class="{'form-control': true, 'parsley-error': errors.amount}" :placeholder="'{% trans " withdraw amount" %}'" step="0.0001" v-model="amount">
+          <div class="help-block form-text text-muted form-control-feedback" v-show="errors.amount">
+          	<ul class="parsley-errors-list filled">
+          		<li v-for="error_message in errors.amount" v-text="error_message"></li>
+          	</ul>
+          </div>
+          <p style="font-size: 14px; margin-top: 10px;">
+            <span v-text="available_amount_text"></span> <strong v-text="available_amount"></strong><br>
+            {% trans "Min withdraw amount is:" %} <strong v-text="currency.withdraw_min"></strong><br>
+            {% trans "Max withdraw amount is:" %} <strong v-text="currency.withdraw_max"></strong><br>
+            {% trans "Withdraw fee is:" %} <strong v-text="currency.withdraw_fee + '%'"></strong><br>
+            {% trans "Max receive hours is:" %} <strong v-text="currency.withdraw_receive_hours + ' {% trans "hours" %}'"></strong>
+          </p>
+        </div>
+
+		
+        <div class="form-group" v-show="!is_br_withdraw">
+          <input type="text" :class="{'form-control': true, 'parsley-error': errors.address}" :placeholder="coin + ' {% trans "wallet address" %}'" v-model="address">
+          <div class="help-block form-text text-muted form-control-feedback" v-show="errors.address">
+          	<ul class="parsley-errors-list filled">
+          		<li v-for="error_message in errors.address" v-text="error_message"></li>
+          	</ul>
+          </div>
+          <p class="text-muted" style="font-size: 14px;">{% trans "The wallet address to the amount be transfered to" %}</p>
+        </div>
+
+        <div class="form-group">
+          <input type="password" :class="{'form-control': true, 'parsley-error': errors.password}" placeholder="{% trans "account password" %}" v-model="password">
+          <div class="help-block form-text text-muted form-control-feedback" v-show="errors.password">
+          	<ul class="parsley-errors-list filled">
+          		<li v-for="error_message in errors.password" v-text="error_message"></li>
+          	</ul>
+          </div>
+          <p class="text-muted" style="font-size: 14px;">{% trans "We use this for security reasons" %}</p>
+        </div>
+
+		{% if USER_HAS_DEVICE %}
+
+        <div class="{'form-group': true, 'has-error': errors.code, 'has-danger': errors.code}">
+          <label>{% trans "Your account two factor code" %}</label>
+          <input type="text" :class="{'form-control': true, 'parsley-error': errors.code}" placeholder="{% trans "two factor code" %}" v-model="code">
+          <div class="help-block form-text text-muted form-control-feedback" v-show="errors.code">
+          	<ul class="parsley-errors-list filled">
+          		<li v-for="error_message in errors.code" v-text="error_message"></li>
+          	</ul>
+          </div>
+          <p class="text-muted" style="font-size: 14px;">{% trans "We use this for security reasons" %}</p>
+        </div>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-pink" style="margin-top: -20px;" :disabled="is_loading" @click.prevent="new_withdraw()">{% trans "Finish Withdraw" %}</button>
+      </div>
+    </div>
+  </div>
+</div>

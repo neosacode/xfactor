@@ -14,52 +14,74 @@
 {% endblock %}
 
 {% block content %}
-    <div class="conteudo-1">
-        {% include "back-button.html" with margin_top='50px' %}/
+<div class="row">
+    <div class="conteudo-1 col-md-8">
+        {% include "back-button.html" with margin_top='50px' %}
 
-        <div class="box-1">
-            <div class="codigo">
-                <img src="{% static "img/codigo.png" %}" alt="">
+        <div class="row box-1">
+            <div class="col-md-4 codigo">
+                <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={% url "investment>signup" %}" alt="">
             </div>
-            <div class="texto-codigo">
-                <h2><span>{% trans "Deposite qualquer valor na carteira ao lado para aumentar o seu investimento." %}</span> {% trans "Nosso sistema reconhece automaticamenteseu depósito e o adiciona ao seu investimento. Comece agora com 0.001 BTC" %}</h2>
-                <h3><span>{% trans "Valor investido:" %}</span> 0.1 BTC</h3>
-                <h3><span>{% trans "Tipo de rendimento:" %}</span> Composto</h3>
-                <h3><span>{% trans "Período de Carência:" %}</span> 06 meses com 3% ao mês</h3>
-            </div>
+            <div class="col-md-8 texto-codigo">
+                <h3><span>{% trans "Available for withdraw:" %}</span> 0.02388800</h3>
+                <h3><span>{% trans "Incomes:" %}</span> 0.02388800</h3>
+                <h3><span>{% trans "Current investment plan:" %}</span> Stocks</h3>
+                <h3><span>{% trans "Invest amount:" %}</span> 0.1 BTC</h3>
+                <h3><span>{% trans "Selected lack:" %}</span> 06 meses com 3% ao mês</h3>
 
-        </div>
-
-        <div class="box-2">
-            <a href=""><h4>MUDAR CARÊNCIA</h4></a>
-            <a href=""><h4>MUDAR TIPO DE RENDIMENTO</h4></a>
-            <a href="{% url "investment>plans" %}"><h5>CONSULTAR PLANOS</h5></a>
-        </div>
-
-        <div class="box-3">
-            <div class="part-1">
-                <h4>GRÁFICOS DE RENDIMENTO</h4>
-                <img src="{% static "img/graficos.jpg" %}" alt="">
-            </div>
-            <div class="part-2">
-                <h4>MINHAS COMISSÕES</h4>
+                <h4 class="title"><i class="fas fa-chart-pie"></i> {% trans "My Comissions" %}</h4>
                 <h3><span>Graduação atual: </span>Investiment promoter</h3>
                 <h3><span>Total em Comissões: </span>0.04500000 BTC</h3>
                 <h3><span>Comissões do mês: </span>0.00367000 BTC</h3>
                 <h3><span>Comissões de hoje: </span>0.07270 BTC</h3>
-                <a href=""><h5>UPGRADE DE GRADUAÇÃO</h5></a>
+            </div>
+
+        </div>
+
+        <div class="box-2 mt-20">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{% url "investment>plans" %}"><h5><i class="fas fa-upload"></i> {% trans "REINVEST" %}</h5></a>
+                </div>
+                <div class="col-md-4">
+                    <a href=""><h4><i class="fas fa-calendar-alt"></i> {% trans "CHANGE LACK" %}</h4></a>  
+                </div>
+                <div class="col-md-4">
+                    <a href=""><h4><i class="fab fa-btc"></i> {% trans "TO WITHDRAW INCOMES" %}</h4></a>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="conteudo-2">
+    <div class="conteudo-2 col-md-4">
         <img src="{% static "img/banner-credit.jpg" %}" alt="">
     </div>
+</div>
+
+<h2 class="chart-investments-title"><i class="fas fa-chart-line"></i> {% trans "Follow your investment" %}</h2>
+
+<canvas id="incomes-chart" height="120" style="background-color: #FFF; padding: 30px; box-sizing: border-box;"></canvas>
 
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script>
+        jQuery(function($) {
+            var ctx = $("#incomes-chart");
+            var income_chart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [
+                  {
+                    label: "2015",
+                    data: [10,8,6,5,12,8,16,17,6,7,6,10]
+                  }
+                ]
+              }
+            });
+        });
+    </script>
     
-    {% include "accounts/scripts/checking.vue.html" with wallets=wallets %}
-
 {% endblock %}

@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-04 18:40+0000\n"
+"POT-Creation-Date: 2018-05-08 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,7 +201,8 @@ msgstr ""
 msgid "Congratulations! Your investing plan was created."
 msgstr ""
 
-#: templates/accounts/checking.html:5 templates/select-account2.html:106
+#: templates/accounts/checking.html:5 templates/core/index.html:142
+#: templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
@@ -210,43 +210,43 @@ msgstr "Conta Corrente"
 msgid "Xfactor"
 msgstr ""
 
-#: templates/accounts/checking.html:27
+#: templates/accounts/checking.html:28
 msgid "Your are in your checking account"
 msgstr "Você está na sua conta corrente"
 
-#: templates/accounts/checking.html:31
+#: templates/accounts/checking.html:32
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:36
+#: templates/accounts/checking.html:37
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:40
+#: templates/accounts/checking.html:41
 msgid "To withdraw"
 msgstr "Sacar"
 
-#: templates/accounts/checking.html:44
+#: templates/accounts/checking.html:45
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:48
+#: templates/accounts/checking.html:49
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:55
+#: templates/accounts/checking.html:56
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:59
+#: templates/accounts/checking.html:60
 msgid "Statement"
 msgstr "Extrato"
 
-#: templates/accounts/checking.html:63
+#: templates/accounts/checking.html:64
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:67
+#: templates/accounts/checking.html:68
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
@@ -254,42 +254,72 @@ msgstr "Vender BTC"
 msgid "Investments Account"
 msgstr "Conta de Investimentos"
 
-#: templates/accounts/investment.html:23
-msgid ""
-"Deposite qualquer valor na carteira ao lado para aumentar o seu investimento."
-msgstr ""
-
-#: templates/accounts/investment.html:23
-msgid ""
-"Nosso sistema reconhece automaticamenteseu depósito e o adiciona ao seu "
-"investimento. Comece agora com 0.001 BTC"
-msgstr ""
-
-#: templates/accounts/investment.html:24
-msgid "Valor investido:"
-msgstr ""
-
-#: templates/accounts/investment.html:25
-msgid "Tipo de rendimento:"
-msgstr ""
-
 #: templates/accounts/investment.html:26
-msgid "Período de Carência:"
-msgstr ""
+msgid "Available for withdraw:"
+msgstr "Disponível para saque:"
 
-#: templates/accounts/scripts/checking.vue.html:21
+#: templates/accounts/investment.html:27
+msgid "Incomes:"
+msgstr "Rendimentos:"
+
+#: templates/accounts/investment.html:28
+msgid "Current investment plan:"
+msgstr "Plano de investimento atual:"
+
+#: templates/accounts/investment.html:29
+msgid "Invest amount:"
+msgstr "Valor investido:"
+
+#: templates/accounts/investment.html:30
+msgid "Selected lack:"
+msgstr "Carência selecionada:"
+
+#: templates/accounts/investment.html:32
+msgid "My Comissions"
+msgstr "Minhas Comissões"
+
+#: templates/accounts/investment.html:44
+msgid "REINVEST"
+msgstr "REINVESTIR"
+
+#: templates/accounts/investment.html:47
+msgid "CHANGE LACK"
+msgstr "MUDAR CARÊNCIA"
+
+#: templates/accounts/investment.html:50
+msgid "TO WITHDRAW INCOMES"
+msgstr "SACAR RENDIMENTOS"
+
+#: templates/accounts/investment.html:61
+#| msgid "Current investment plan:"
+msgid "Follow your investment"
+msgstr "Acompanhe seu investimento"
+
+#: templates/accounts/scripts/checking.vue.html:14
+msgid "Success!"
+msgstr "Sucesso!"
+
+#: templates/accounts/scripts/checking.vue.html:14
+msgid "Wallet address has been copied!"
+msgstr "Endereço da carteira foi copiado!"
+
+#: templates/accounts/scripts/checking.vue.html:33
 #, python-brace-format
 msgid "Available {coin} amount for withdraw is:"
 msgstr ""
 
-#: templates/accounts/scripts/checking.vue.html:45
+#: templates/accounts/scripts/checking.vue.html:57
 msgid "Withdraw error!"
 msgstr ""
 
-#: templates/accounts/scripts/checking.vue.html:63
+#: templates/accounts/scripts/checking.vue.html:79
 #, python-brace-format
 msgid "Your {coin} address"
 msgstr ""
+
+#: templates/accounts/scripts/checking.vue.html:82
+msgid "Copy address"
+msgstr "Copiar endereço"
 
 #: templates/back-button.html:3
 msgid "Back to previous page"
@@ -303,23 +333,23 @@ msgstr ""
 msgid "Xfactor - Pay Bill"
 msgstr ""
 
-#: templates/boleto/pay.html:117
+#: templates/boleto/pay.html:119
 msgid "Bank Slip Not Found"
 msgstr ""
 
-#: templates/boleto/pay.html:117
+#: templates/boleto/pay.html:119
 msgid "Please manually type below your bank slip data"
 msgstr ""
 
-#: templates/boleto/pay.html:122 templates/boleto/pay.html:125
+#: templates/boleto/pay.html:124 templates/boleto/pay.html:127
 msgid "Missing Data!"
 msgstr ""
 
-#: templates/boleto/pay.html:122
+#: templates/boleto/pay.html:124
 msgid "Please type your name or your company name"
 msgstr ""
 
-#: templates/boleto/pay.html:125
+#: templates/boleto/pay.html:127
 msgid "Please type your CPF or CNPJ number"
 msgstr ""
 
@@ -331,11 +361,15 @@ msgstr ""
 msgid "Xfactor - My Card"
 msgstr ""
 
-#: templates/core/index.html:70
+#: templates/core/index.html:94
 msgid "Welcome: "
+msgstr "Bem-vindo: "
+
+#: templates/core/index.html:100
+msgid "Logout from my account"
 msgstr ""
 
-#: templates/core/index.html:102
+#: templates/core/index.html:134
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
@@ -355,50 +389,110 @@ msgstr "Planos de Investimento"
 msgid "Xfactor - Plans"
 msgstr ""
 
-#: templates/select-account.html:79
+#: templates/payments/withdraw.html:7
+msgid "Withdraw "
+msgstr "Sacar"
+
+#: templates/payments/withdraw.html:14
+msgid " withdraw amount"
+msgstr "Sacar"
+
+#: templates/payments/withdraw.html:22
+msgid "Min withdraw amount is:"
+msgstr ""
+
+#: templates/payments/withdraw.html:23
+msgid "Max withdraw amount is:"
+msgstr ""
+
+#: templates/payments/withdraw.html:24
+msgid "Withdraw fee is:"
+msgstr ""
+
+#: templates/payments/withdraw.html:25
+msgid "Max receive hours is:"
+msgstr ""
+
+#: templates/payments/withdraw.html:25
+msgid "hours"
+msgstr ""
+
+#: templates/payments/withdraw.html:31
+msgid "wallet address"
+msgstr ""
+
+#: templates/payments/withdraw.html:37
+msgid "The wallet address to the amount be transfered to"
+msgstr ""
+
+#: templates/payments/withdraw.html:41
+msgid "account password"
+msgstr ""
+
+#: templates/payments/withdraw.html:47 templates/payments/withdraw.html:60
+msgid "We use this for security reasons"
+msgstr ""
+
+#: templates/payments/withdraw.html:53
+msgid "Your account two factor code"
+msgstr ""
+
+#: templates/payments/withdraw.html:54
+msgid "two factor code"
+msgstr ""
+
+#: templates/payments/withdraw.html:65
+msgid "Finish Withdraw"
+msgstr "Sacar"
+
+#: templates/select-account.html:56
+msgid "BITCOIN QUOTE"
+msgstr "COTAÇÃO DO BITCOIN"
+
+#: templates/select-account.html:63
 msgid "Bitcoin/REAL quote"
-msgstr ""
+msgstr "Cotação Bitcoin/REAL"
 
-#: templates/select-account.html:86
+#: templates/select-account.html:70
 msgid "Bitcoin/Dollar quote"
-msgstr ""
+msgstr "Cotação Bitcoin/Dólar"
 
-#: templates/select-account.html:98
+#: templates/select-account.html:82
 msgid "Checking <br>Account"
-msgstr ""
+msgstr "Conta <br>Corrente"
 
-#: templates/select-account.html:102 templates/select-account.html:109
+#: templates/select-account.html:86 templates/select-account.html:93
 msgid "Enter"
-msgstr ""
+msgstr "Entrar"
 
-#: templates/select-account.html:105
+#: templates/select-account.html:89
 msgid "Investments <br>Account"
-msgstr ""
+msgstr "Conta <br> Investimentos"
 
 #: templates/select-account2.html:97
 msgid "Total accounts balance"
 msgstr ""
 
-#: templates/two_factor/core/login.html:38
+#: templates/two_factor/core/login.html:40
 msgid "Back to site"
-msgstr ""
+msgstr "Voltar ao site"
 
-#: templates/two_factor/core/login.html:55
+#: templates/two_factor/core/login.html:57
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
 
-#: templates/two_factor/core/login.html:75
+#: templates/two_factor/core/login.html:77
 msgid "Log in"
 msgstr "Acessar Conta"
 
-#: templates/two_factor/core/login.html:77
+#: templates/two_factor/core/login.html:79
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/two_factor/core/login.html:79
+#: templates/two_factor/core/login.html:81
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/login.html:79
+#: templates/two_factor/core/login.html:81
 msgid "Open Account"
 msgstr "Abrir Conta"

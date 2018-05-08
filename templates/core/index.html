@@ -49,7 +49,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                     <div class="col-md-3">
                         <div class="logo"><img src="{% static "img/logo.png" %}" alt=""></div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <!-- <ul>
                             <li><a href="index.php"><img src="{% static "img/logo-1.png" %}" alt=""><span>Dashboard</span></a></li>
                             <li><a href="investing.php"><img src="{% static "img/logo-2.png" %}" alt=""><span>Investing Plans</span></a></li>
@@ -83,7 +83,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="settings">
                             <ul>
                                 <li>
@@ -97,7 +97,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                                     </a>
                                 </li>
                                 <li>
-                                    <a href=""><img src="{% static "img/settings.png" %}" alt=""></a>
+                                    <a href="{% url 'core>logout' %}" data-toggle="tooltip" data-placement="bottom" title="{% trans "Logout from my account" %}"><i class="fas fa-sign-out-alt"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -159,7 +159,11 @@ if(w.style.display=="block"){w.style.display='none';}else{
 
     <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        jQuery(function() {
+            $('[data-toggle="tooltip"]').tooltip({});
+        });
+    </script>
     {% include "core/scripts.html" %}
     {% block scripts %}{% endblock %}
 </body>

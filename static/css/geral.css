@@ -113,22 +113,6 @@ main #item1 {
     display: none
 }
 
-.form-control-feedback {
-    position: static;
-    width: 100%;
-}
-
-.form-control-feedback {
-    position: static !important;
-    width: 100% !important;
-}
-
-.form-control-feedback ul li {
-    text-align: left;
-    font-size: 14px;
-    color: red;
-}
-
 main>.content-container {
     min-height: 710px;
 }
@@ -339,4 +323,73 @@ main .box-nome .bread .box-2 .imagem-2 {
 
 .change-language-dropdown {
     margin-top: 40px;
+}
+
+.modal-content {
+    background-color: #485e89;
+    background-image: -webkit-gradient(linear, 90deg, from(#4a6699), to(#485e89));
+    background-image: -webkit-linear-gradient(45deg, #0b2254, #0a50a0);
+    background-image: -moz-linear-gradient(45deg, #0b2254, #0a50a0);
+    background-image: -ms-linear-gradient(45deg, #0b2254, #0a50a0);
+    background-image: -o-linear-gradient(45deg, #0b2254, #0a50a0);
+    background-image: linear-gradient(45deg, #0b2254, #0a50a0);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#4a6699', EndColorStr='#485e89');
+    border-radius: 3px;
+    color: #fff;
+    border-bottom: solid 7px #ef2e88;
+}
+
+.modal-content .modal-header {
+    border-bottom: 0;
+    text-align: center;
+}
+
+.modal-content .modal-header .modal-title {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 30px;
+    margin-bottom: 15px;
+}
+
+.modal-content .modal-body p {
+    line-height: 25px;
+}
+
+.modal-content .modal-footer {
+    border: 0;
+}
+
+.modal-content .text-muted {
+    color: #fff !important;
+}
+
+.modal-content .modal-header .close {
+    color: #FFF;
+    font-size: 30px;
+    opacity: 1 !important;
+}
+
+.btn-pink {
+    background-color: #ef2e88;
+    width: 40%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 50px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center
 }

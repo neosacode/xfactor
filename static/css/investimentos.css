@@ -121,14 +121,6 @@ main .box-nome .bread .box-1 h3 {
     }
 }
 
-main .box-nome .bread .box-2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex
-}
-
 main .box-nome .bread .box-2 .imagem-1,
 main .box-nome .bread .box-2 .imagem-2 {
     display: -webkit-box;
@@ -274,15 +266,6 @@ main .content-2 .conteudo-1 {
     }
 }
 
-main .content .conteudo-1 .box-1,
-main .content-2 .conteudo-1 .box-1 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 0;
-}
 
 main .content .conteudo-1 .box-1 .codigo img,
 main .content-2 .conteudo-1 .box-1 .codigo img {
@@ -292,6 +275,14 @@ main .content-2 .conteudo-1 .box-1 .codigo img {
 main .content .conteudo-1 .box-1 .texto-codigo,
 main .content-2 .conteudo-1 .box-1 .texto-codigo {
     color: #0a2357
+}
+
+main .content .conteudo-1 .box-1 .texto-codigo .title,
+main .content-2 .conteudo-1 .box-1 .texto-codigo .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
 main .content .conteudo-1 .box-1 .texto-codigo h2,
@@ -322,22 +313,6 @@ main .content-2 .conteudo-1 .box-1 .texto-codigo h3 span {
     font-weight: bold
 }
 
-main .content .conteudo-1 .box-2,
-main .content-2 .conteudo-1 .box-2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    justify-content: space-between;
-    margin-top: 50px;
-    margin-bottom: 50px
-}
-
 main .content .conteudo-1 .box-2 a,
 main .content-2 .conteudo-1 .box-2 a {
     color: #fff;
@@ -350,9 +325,18 @@ main .content-2 .conteudo-1 .box-2 a h4 {
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 43px;
-    padding-right: 43px;
-    border-radius: 3px
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+main .content .conteudo-1 .box-2 a h4:hover,
+main .content-2 .conteudo-1 .box-2 a h4:hover {
+    background-color: #07264e;
 }
 
 main .content .conteudo-1 .box-2 a h5,
@@ -361,9 +345,18 @@ main .content-2 .conteudo-1 .box-2 a h5 {
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 43px;
-    padding-right: 43px;
-    border-radius: 3px
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+main .content .conteudo-1 .box-2 a h5:hover,
+main .content-2 .conteudo-1 .box-2 a h5:hover {
+    background-color: #c72671;
 }
 
 @media (max-width: 991px) {
@@ -482,4 +475,11 @@ main .content-2 .conteudo-2 img {
     height: auto;
     width: 350px;
     margin: 0 auto
+}
+
+.chart-investments-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
