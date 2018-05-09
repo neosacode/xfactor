@@ -25,6 +25,10 @@
 	<div class="conteudo-1">
 		{% include "back-button.html" with margin_top='0' %}
 
+		<div class="alert alert-danger text-center" style="font-size: 18px;">
+			<h2><strong>Você ainda não possui um cartão xfactor:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a></h2>
+		</div>
+
 		<div class="box-1">
 			<h2>MEU CARTÃO</h2>
 			<p>Este é seu cartão pre-pago. Você pode adicionar saldo nele sempre que precisar, usando para isto o saldo disponivel em sua conta corrente.</p>
@@ -32,7 +36,7 @@
 		<div class="box-2">
 			<img src="{% static "img/card.png" %}" alt="">
 			<div class="saldo">
-				<h3>R$300.00</h3>
+				<h3>R$ 0,00</h3>
 				<p>Disponível para uso:</p>
 			</div>
 		</div>
@@ -48,7 +52,7 @@
 						<img src="{% static "img/logo-3.png" %}" alt="">
 						<input type="submit" value="RECARREGAR">
 					</div>
-					<h3><span>Saldo conta corrente</span> R$1500,00</h3>
+					<h3><span>Saldo conta corrente</span> R$ 0,00</h3>
 				</div>
 			</form>
 		</div>
@@ -66,31 +70,6 @@
 				<div class="valor-btc">
 					<img src="{% static "img/bit-branco.png" %}" alt="">
 					<p>VALOR BTC</p>
-				</div>
-			</div>
-
-
-			<div class="recargas">
-				<div class="item-1">
-					<p>01|NOVEMBRO|2018</p>
-				</div>
-				<div class="item-2">
-					<p>R$100.00</p>
-				</div>
-				<div class="item-3">
-					<p>0.03462000000</p>
-				</div>
-			</div>
-
-			<div class="recargas">
-				<div class="item-1">
-					<p>01|NOVEMBRO|2018</p>
-				</div>
-				<div class="item-2">
-					<p>R$100.00</p>
-				</div>
-				<div class="item-3">
-					<p>0.03462000000</p>
 				</div>
 			</div>
 			

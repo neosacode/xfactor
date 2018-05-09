@@ -7,10 +7,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django import forms
 from model_utils.models import TimeStampedModel, StatusModel
 from model_utils import Choices
 
 from exchange_core.models import Users, Currencies, Accounts
+from exchange_core.admin import BaseAdmin
 
 
 class Plans(TimeStampedModel, StatusModel, models.Model):
@@ -20,8 +22,8 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
     name = models.CharField(max_length=100)
     min_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min down"))
     max_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Max down"))
-    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee"),
-                                         default=Decimal('0.00'))
+    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee")),
+    min_reinvest = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min reinvest"), default=Decimal('0.00'))
     allow_monthly_draw = models.BooleanField(default=True, verbose_name=_("Allow monthly draw"))
     order = models.IntegerField(default=0)
 
@@ -98,8 +100,8 @@ class Charges(TimeStampedModel, StatusModel, models.Model):
         return str(self.amount)
 
     class Meta:
-        verbose_name = 'Charge'
-        verbose_name_plural = 'Charges'
+        verbose_name = _("Charge")
+        verbose_name_plural = _("Charges")
 
 
 class IgnoreIncomeDays(models.Model):
@@ -125,6 +127,10 @@ class Graduations(models.Model):
     user = models.ForeignKey('exchange_core.Users', related_name='graduations', on_delete=models.CASCADE)
     type = models.CharField(max_length=30, choices=TYPES)
 
+    class Meta:
+        verbose_name = _("Graduation")
+        verbose_name_plural = _("Graduations")
+
     @classmethod
     def get_present(cls, user):
         return Graduations.objects.filter(user=user).order_by('-created').first()
@@ -137,38 +143,46 @@ class Referrals(TimeStampedModel, models.Model):
     advisor = models.ForeignKey('exchange_core.Users', related_name='advisor', null=True, on_delete=models.CASCADE)
 
 
+class PlanGracePeriodForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['currency'].queryset = Currencies.objects.filter(type=Currencies.TYPES.investment)
+
+
 @admin.register(Plans)
-class PlansAdmin(admin.ModelAdmin):
+class PlansAdmin(BaseAdmin):
     list_display = ['name', 'min_down', 'max_down', 'membership_fee', 'allow_monthly_draw', 'status',
                     'created']
     ordering = ('-created',)
 
 
 @admin.register(GracePeriods)
-class GracePeriodsAdmin(admin.ModelAdmin):
+class GracePeriodsAdmin(BaseAdmin):
     list_display = ['months']
     ordering = ('-created',)
 
 
 @admin.register(PlanGracePeriods)
-class PlanGracePeriodsAdmin(admin.ModelAdmin):
+class PlanGracePeriodsAdmin(BaseAdmin):
     list_display = ['plan', 'grace_period', 'income_percent', 'status']
     ordering = ('-created',)
+    form = PlanGracePeriodForm
+    save_as = True
 
 
 @admin.register(Charges)
-class ChargesAdmin(admin.ModelAdmin):
+class ChargesAdmin(BaseAdmin):
     list_display = ['plan_grace_period', 'account', 'created', 'status']
     ordering = ('-created',)
 
 
 @admin.register(IgnoreIncomeDays)
-class IgnoreIncomeDaysAdmin(admin.ModelAdmin):
+class IgnoreIncomeDaysAdmin(BaseAdmin):
     list_display = ['date']
     ordering = ('-date',)
 
 @admin.register(Graduations)
-class GraduationsAdmin(admin.ModelAdmin):
+class GraduationsAdmin(BaseAdmin):
     list_display = ['user', 'type']
     ordering = ('-created',)
 

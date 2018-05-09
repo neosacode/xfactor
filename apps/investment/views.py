@@ -23,13 +23,9 @@ class PlansView(TemplateView):
     template_name = 'investment/plans.html'
 
     def get(self, request):
-        plans_no_fidelity = Plans.active.filter(grace_periods__grace_period__months=0).order_by('order')
-        plans_fidelity = Plans.active.filter(grace_periods__grace_period__months__gt=0).order_by('order')
-        user = request.user
-        charges = Charges.objects.filter(account__user=user)
-
-        return render(request, self.template_name,
-                      {'plans_fidelity': plans_fidelity, 'plans_no_fidelity': plans_no_fidelity, 'page_title': _('Investing > Plans'), 'charges': charges})
+        plans = Plans.objects.filter(status=Plans.STATUS.active).order_by('order')
+        charges = Charges.objects.filter(account__user=request.user)
+        return render(request, self.template_name, {'plans': plans, 'charges': charges})
 
 
 @method_decorator(login_required, name='dispatch')

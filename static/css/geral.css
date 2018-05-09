@@ -228,8 +228,8 @@ main .box-nome .bread .box-2 .imagem-2:hover {
 
 main .box-nome .bread .box-2 .imagem-1 img,
 main .box-nome .bread .box-2 .imagem-2 img {
-    padding-right: 50px;
-    width: 130px;
+    padding-right: 20px;
+    width: 100px;
     height: auto
 }
 
@@ -305,6 +305,10 @@ main .box-nome .bread .box-2 .imagem-2 {
     margin-top: 20px;
 }
 
+.mb-100 {
+    margin-bottom: 100px;
+}
+
 .tx-size-20 {
     font-size: 20px;
 }
@@ -372,6 +376,7 @@ main .box-nome .bread .box-2 .imagem-2 {
 
 .btn-pink {
     background-color: #ef2e88;
+    color: #FFF;
     width: 40%;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -392,4 +397,45 @@ main .box-nome .bread .box-2 .imagem-2 {
     -webkit-justify-content: center;
     -moz-justify-content: center;
     justify-content: center
+}
+
+.btn-pink:hover {
+    color: #FFF;
+    background-color: #ca2672;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background-color: #a5a5a5;
+    color: #FFF;
+    padding: 10px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-top: 60px;
+}
+
+.section-sub-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #696969;
+}
+
+.white-box {
+    background-color: #fff;
+    padding: 20px;
+    border: solid 1px #a7a7a7;
+    margin-bottom: 20px;
+}
+
+.paragraph {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 15px;
 }

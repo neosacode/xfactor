@@ -16,58 +16,52 @@
 
 {% block content %}
 
+
 <div class="conteudo-1">
-	<div class="plano-1">
-		<div class="titulo">
-			<img src="{% static "img/logo-4.png" %}">
-			<h2>SAVINGS</h2>
-		</div>
-		<p><span>Min Down:</span> 0.0100000 BTC</p>
-		<p><span>Max Down:</span> 0.0999999 BTC</p>
-		<p><span>Membership fee:</span> 0.00035 BTC</p>
-		<p class="no-border"><span>Allow Monthy Draw:</span> Yes</p>
-		<h3>6 Months - 3% Monthly income</h3>
-		<h3>12 Months - 4% Monthly income</h3>
-		<h4>Read the details with attention</h4>
+	<h2 class="section-title">1 - {% trans "Select your plan" %}</h2>
+
+	<div class="row">
+		{% for plan in plans %}
+			<div class="col-md-3">
+					<div class="plano plano-{{ forloop.counter }} unselected" data-toggle="tooltip" data-placement="bottom" title="{% trans "Select this one" %}">
+					<div class="titulo">
+						<h2 class="text-center"><i class="fas fa-trophy"></i> {{ plan.name }}</h2>
+					</div>
+					<p><span>{% trans "Min down" %}:</span> {{ plan.min_down|floatformat:2 }} BTC</p>
+					<p><span>{% trans "Max down" %}:</span> {{ plan.max_down|floatformat:2 }} BTC</p>
+					<p><span>{% trans "Subscription" %}:</span> {{ plan.membership_fee|floatformat:4 }} BTC</p>
+					<p><span>{% trans "Min reinvest" %}:</span> {{ plan.min_reinvest|floatformat:2 }} BTC</p>
+					<p class="no-border"><span>{% trans "Allow monthly withdraw" %}:</span> {% if plan.allow_monthly_draw %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
+				</div>
+			</div>
+		{% endfor %}
 	</div>
-	<div class="plano-2">
-		<div class="titulo">
-			<img src="{% static "img/logo-4.png" %}">
-			<h2>MUTUAL FUNDS</h2>
+
+	<h2 class="section-title">2 - {% trans "Start your investment" %}</h2>
+
+	<div class="row mb-100">
+		<div class="col-md-6">
+			<div class="white-box">
+				<h3 class="section-sub-title"><i class="fas fa-calendar-alt"></i> {% trans "Grace Period" %}</h3>
+				<p class="paragraph">{% trans "Choose your plan grace period for this plan" %}</p>
+				<ul class="list-group">
+				  <li class="list-group-item"><label><input type="radio"> 6 meses com minimo de 3% ao mes</label></li>
+				  <li class="list-group-item"><label><input type="radio"> 12 meses com minimo de 4% ao mes</label></li>
+				</ul>
+			</div>
 		</div>
-		<p><span>Min Down:</span> 0.0100000 BTC</p>
-		<p><span>Max Down:</span> 0.0999999 BTC</p>
-		<p><span>Membership fee:</span> 0.00035 BTC</p>
-		<p class="no-border"><span>Allow Monthy Draw:</span> Yes</p>
-		<h3>6 Months - 3% Monthly income</h3>
-		<h3>12 Months - 4% Monthly income</h3>
-		<h4>Read the details with attention</h4>
-	</div>
-	<div class="plano-3">
-		<div class="titulo">
-			<img src="{% static "img/logo-4.png" %}">
-			<h2>STOCKS</h2>
+
+		<div class="col-md-6">
+			<div class="white-box">
+				<h3 class="section-sub-title"><i class="fas fa-check"></i> {% trans "Select the desired grace period" %}</h3>
+
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="{% trans "Desired BTC amount to be invested" %}">
+				</div>
+
+				<a class="btn btn-pink btn-block" href=""><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></a>
+			</div>
 		</div>
-		<p><span>Min Down:</span> 0.0100000 BTC</p>
-		<p><span>Max Down:</span> 0.0999999 BTC</p>
-		<p><span>Membership fee:</span> 0.00035 BTC</p>
-		<p class="no-border"><span>Allow Monthy Draw:</span> Yes</p>
-		<h3>6 Months - 3% Monthly income</h3>
-		<h3>12 Months - 4% Monthly income</h3>
-		<h4>Read the details with attention</h4>
-	</div>
-	<div class="plano-4">
-		<div class="titulo">
-			<img src="{% static "img/logo-4.png" %}">
-			<h2>STOCKS</h2>
-		</div>
-		<p><span>Min Down:</span> 0.0100000 BTC</p>
-		<p><span>Max Down:</span> 0.0999999 BTC</p>
-		<p><span>Membership fee:</span> 0.00035 BTC</p>
-		<p class="no-border"><span>Allow Monthy Draw:</span> Yes</p>
-		<h3>6 Months - 3% Monthly income</h3>
-		<h3>12 Months - 4% Monthly income</h3>
-		<h4>Read the details with attention</h4>
 	</div>
 </div>
 

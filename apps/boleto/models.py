@@ -23,6 +23,10 @@ class Boletos(TimeStampedModel, models.Model):
 	receipt = models.ImageField(null=True, blank=True, verbose_name=_("Receipt"))
 	status = models.CharField(max_length=15, choices=STATUS, default=STATUS.created)
 
+	class Meta:
+		verbose_name = _("Boleto")
+		verbose_name_plural = _("Boletos")
+
 
 @admin.register(Boletos)
 class BoletosAdmin(admin.ModelAdmin):
