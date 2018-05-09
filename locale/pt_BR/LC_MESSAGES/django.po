@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-08 15:57+0000\n"
+"POT-Creation-Date: 2018-05-08 20:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,39 +121,41 @@ msgstr ""
 msgid "Grace periods"
 msgstr ""
 
-#: apps/investment/models.py:54
-msgid "Daily income percent"
-msgstr ""
-
 #: apps/investment/models.py:55
+#, fuzzy
+#| msgid "Income percent:"
+msgid "Income percent"
+msgstr "Porcentagem de rendimento:"
+
+#: apps/investment/models.py:57
 msgid "Currency"
 msgstr ""
 
-#: apps/investment/models.py:58 apps/investment/models.py:75
+#: apps/investment/models.py:60 apps/investment/models.py:77
 msgid "Plan grace period"
 msgstr ""
 
-#: apps/investment/models.py:59
+#: apps/investment/models.py:61
 msgid "Plan grace periods"
 msgstr ""
 
-#: apps/investment/models.py:105
+#: apps/investment/models.py:107
 msgid "Date to be ignored"
 msgstr ""
 
-#: apps/investment/models.py:108
+#: apps/investment/models.py:110
 msgid "Ignore income date"
 msgstr ""
 
-#: apps/investment/models.py:109
+#: apps/investment/models.py:111
 msgid "Ignore income dates"
 msgstr ""
 
-#: apps/investment/models.py:119
+#: apps/investment/models.py:121
 msgid "Investment Promoter"
 msgstr ""
 
-#: apps/investment/models.py:119
+#: apps/investment/models.py:121
 msgid "Investment Advisor"
 msgstr ""
 
@@ -207,6 +209,7 @@ msgid "Checking Account"
 msgstr "Conta Corrente"
 
 #: templates/accounts/checking.html:9 templates/accounts/investment.html:9
+#: templates/request-card.html:10
 msgid "Xfactor"
 msgstr ""
 
@@ -254,13 +257,13 @@ msgstr "Vender BTC"
 msgid "Investments Account"
 msgstr "Conta de Investimentos"
 
-#: templates/accounts/investment.html:26
-msgid "Available for withdraw:"
-msgstr "Disponível para saque:"
+#: templates/accounts/investment.html:24
+msgid "Copy my referrer link"
+msgstr "Copiar meu link"
 
 #: templates/accounts/investment.html:27
-msgid "Incomes:"
-msgstr "Rendimentos:"
+msgid "My Investment"
+msgstr "Meu Investimento"
 
 #: templates/accounts/investment.html:28
 msgid "Current investment plan:"
@@ -274,24 +277,39 @@ msgstr "Valor investido:"
 msgid "Selected lack:"
 msgstr "Carência selecionada:"
 
-#: templates/accounts/investment.html:32
+#: templates/accounts/investment.html:31
+msgid "Income percent:"
+msgstr "Porcentagem de rendimento:"
+
+#: templates/accounts/investment.html:33
+msgid "My Incomes"
+msgstr "Meus Rendimentos"
+
+#: templates/accounts/investment.html:34
+msgid "Available for withdraw:"
+msgstr "Disponível para saque:"
+
+#: templates/accounts/investment.html:35
+msgid "Your total incomes:"
+msgstr "Seu total de rendimentos:"
+
+#: templates/accounts/investment.html:37
 msgid "My Comissions"
 msgstr "Minhas Comissões"
 
-#: templates/accounts/investment.html:44
+#: templates/accounts/investment.html:49
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
-#: templates/accounts/investment.html:47
+#: templates/accounts/investment.html:52
 msgid "CHANGE LACK"
 msgstr "MUDAR CARÊNCIA"
 
-#: templates/accounts/investment.html:50
+#: templates/accounts/investment.html:55
 msgid "TO WITHDRAW INCOMES"
 msgstr "SACAR RENDIMENTOS"
 
-#: templates/accounts/investment.html:61
-#| msgid "Current investment plan:"
+#: templates/accounts/investment.html:66
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
@@ -367,7 +385,7 @@ msgstr "Bem-vindo: "
 
 #: templates/core/index.html:100
 msgid "Logout from my account"
-msgstr ""
+msgstr "Sair da minha conta"
 
 #: templates/core/index.html:134
 msgid "Investment Account"
@@ -444,6 +462,22 @@ msgstr ""
 #: templates/payments/withdraw.html:65
 msgid "Finish Withdraw"
 msgstr "Sacar"
+
+#: templates/request-card.html:6
+msgid "Request <span>Card</span>"
+msgstr "Solicitar <span>Cartão</span>"
+
+#: templates/request-card.html:92
+msgid "REQUEST YOUR CARD"
+msgstr "SOLICITE SEU CARTÃO"
+
+#: templates/request-card.html:93
+msgid "Here on Xfactor, you have a card for each type of investment"
+msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
+
+#: templates/request-card.html:114
+msgid "Request now"
+msgstr "Solicitar Agora"
 
 #: templates/select-account.html:56
 msgid "BITCOIN QUOTE"

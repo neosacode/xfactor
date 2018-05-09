@@ -4,7 +4,7 @@ from django.conf import settings
 
 from two_factor.urls import urlpatterns as tf_urls
 
-from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView, MyCardView
+from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView, MyCardView, RequestCardView
 
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
 	path('account/checking/', CheckingAccountView.as_view(), name='xfactor>checking'),
 	path('account/investment/', InvestmentAccountView.as_view(), name='xfactor>investment'),
 	path('account/my-card/', MyCardView.as_view(), name='xfactor>my-card'),
+	path('account/request-card/', RequestCardView.as_view(), name='xfactor>request-card'),
 ]
 
 

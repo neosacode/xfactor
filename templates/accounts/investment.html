@@ -21,15 +21,20 @@
         <div class="row box-1">
             <div class="col-md-4 codigo">
                 <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={% url "investment>signup" %}" alt="">
+                <a href="#" class="text-center btn-block mt-20 btn btn-link"><i class="fas fa-link"></i> {% trans "Copy my referrer link" %}</a>
             </div>
             <div class="col-md-8 texto-codigo">
-                <h3><span>{% trans "Available for withdraw:" %}</span> {{ user_investment_account.deposit }}</h3>
-                <h3><span>{% trans "Incomes:" %}</span> 0.02388800</h3>
+                <h4 class="title" style="margin-top: 0;">{% trans "My Investment" %}</h4>
                 <h3><span>{% trans "Current investment plan:" %}</span> Stocks</h3>
                 <h3><span>{% trans "Invest amount:" %}</span> {{ user_investment_account.reserved }} BTC</h3>
-                <h3><span>{% trans "Selected lack:" %}</span> 06 meses com 3% ao mês</h3>
+                <h3><span>{% trans "Selected lack:" %}</span> 06 meses</h3>
+                <h3><span>{% trans "Income percent:" %}</span> 3% ao mês</h3>
 
-                <h4 class="title"><i class="fas fa-chart-pie"></i> {% trans "My Comissions" %}</h4>
+                <h4 class="title">{% trans "My Incomes" %}</h4>
+                <h3><span>{% trans "Available for withdraw:" %}</span> {{ user_investment_account.deposit }} BTC</h3>
+                <h3><span>{% trans "Your total incomes:" %}</span> 0.02388800 BTC</h3>
+
+                <h4 class="title">{% trans "My Comissions" %}</h4>
                 <h3><span>Graduação atual: </span>Investiment promoter</h3>
                 <h3><span>Total em Comissões: </span>0.04500000 BTC</h3>
                 <h3><span>Comissões do mês: </span>0.00367000 BTC</h3>

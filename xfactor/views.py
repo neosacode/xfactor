@@ -59,3 +59,8 @@ class InvestmentAccountView(TemplateView):
 @method_decorator([login_required], name='dispatch')
 class MyCardView(TemplateView):
 	template_name = 'card.html'
+
+
+@method_decorator([login_required], name='dispatch')
+class RequestCardView(TemplateView):
+	template_name = 'request-card.html'

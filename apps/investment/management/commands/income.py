@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from exchange_core.models import Accounts, Statement
-from apps.investment.models import Charges, IgnoreIncomeDays
+from apps.investment.models import Charges, IgnoreIncomeDays, PlanGracePeriods
 
 
 class Command(BaseCommand):
@@ -21,7 +21,10 @@ class Command(BaseCommand):
 
                 for charge in charges:
                     # Gera o valor do rendimento
-                    income_amount = round(charge.amount * (charge.plan_grace_period.daily_income / Decimal('100')), 8)
+                    if charge.plan_grace_period.payment_type == PlanGracePeriods.TYPES.daily:
+                        income_amount = round(charge.amount * (charge.plan_grace_period.income_percent / Decimal('100')), 8)
+                    elif charge.plan_grace_period.payment_type == PlanGracePeriods.TYPES.monthly:
+                        
 
                     # O investimento so sera pago depois de 24 horas
                     if (charge.paid_date - timezone.now()).days <= 0:

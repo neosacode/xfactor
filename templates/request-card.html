@@ -1,0 +1,118 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}
+    {% trans "Request <span>Card</span>" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+{% block head %}
+    <style>
+		.cards {
+			margin-top: 30px;
+		}
+
+    	.cards img {
+    		display: block;
+    		border-radius: 5px;
+    	}
+
+    	.cards .card-title {
+    		margin-top: 20px;
+    		font-size: 30px;
+    		color: #000;
+    		font-weight: bold;
+    		color: #f05389;
+    		margin-bottom: 30px;
+    	}
+
+    	.cards .card-title-2 {
+    		font-size: 30px;
+    		font-weight: bold;
+    		color: #f05389;
+    		margin-top: 20px;
+    		margin-bottom: 30px;
+    	}
+
+    	.cards .card-sub-title {
+    		font-size: 18px !important;
+    		line-height: 25px;
+    		margin-top: 30px;
+    		color: #f05389;5
+    		border-bottom: 1px solid #EEE;
+    		padding-bottom: 30px;
+    		margin-bottom: 80px;
+    	}
+
+    	.cards .card-limit {
+    		text-align: center;
+    		margin-top: 40px;
+    		font-size: 30px !important;
+    		font-weight: bold;
+    	}
+
+    	.cards .card-limit span {
+    		font-size: 14px;
+    	}
+
+    	.content {
+    		background-image: url("{% static "img/back-carteira.jpg" %}");
+    	}
+
+    	.plan-title {
+    		font-weight: bold;
+			text-align: center;
+			font-size: 18px;
+			margin-bottom: 15px;
+			text-transform: uppercase;
+			color: #0a2357;
+    	}
+
+    	.white-box {
+    		background-color: #fff;
+    		padding: 30px 20px;
+    		border-radius: 10px;
+    	}
+
+    	.request-card-button {
+    		padding-top: 30px;
+    		border-top: 1px solid #EEE;
+    		margin-top: 80px;
+    	}
+    </style>
+{% endblock %}
+
+{% block content %} 
+	<div class="cards">
+		<div class="white-box">
+			<h1 class="text-center card-title"><i class="fas fa-credit-card"></i> {% trans "REQUEST YOUR CARD" %}</h1>
+			<p class="card-sub-title text-center">{% trans "Here on Xfactor, you have a card for each type of investment" %}</p>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 class="plan-title">-- Savings --</h4>
+					<img src="{% static "img/cards/04.jpeg" %}" class="img-fluid">
+				</div>
+				<div class="col-md-3">
+					<h4 class="plan-title">-- Stocks --</h4>
+					<img src="{% static "img/cards/03.jpeg" %}" class="img-fluid">
+				</div>
+				<div class="col-md-3">
+					<h4 class="plan-title">-- Mutual Founds --</h4>
+					<img src="{% static "img/cards/02.jpeg" %}" class="img-fluid">
+				</div>
+				<div class="col-md-3">
+					<h4 class="plan-title">-- Bound Market --</h4>
+					<img src="{% static "img/cards/01.jpeg" %}" class="img-fluid">
+				</div>
+			</div>
+
+			<div class="request-card-button">
+				<a href="#" class="btn btn-pink text-white btn-lg mt-20">{% trans "Request now" %}</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

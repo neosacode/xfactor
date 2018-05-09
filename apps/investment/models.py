@@ -47,11 +47,13 @@ class GracePeriods(TimeStampedModel, models.Model):
 
 class PlanGracePeriods(TimeStampedModel, StatusModel, models.Model):
     STATUS = Choices('inactive', 'active')
+    TYPES = Choices('daily', 'monthly')
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     plan = models.ForeignKey(Plans, related_name='grace_periods', on_delete=models.CASCADE)
     grace_period = models.ForeignKey(GracePeriods, related_name='plans', on_delete=models.CASCADE)
-    daily_income = models.DecimalField(default=Decimal('0.00'), max_digits=20, decimal_places=8, verbose_name=_("Daily income percent"))
+    income_percent = models.DecimalField(default=Decimal('0.00'), max_digits=20, decimal_places=8, verbose_name=_("Income percent"))
+    payment_type = models.CharField(max_length=20, choices=TYPES, default=TYPES.monthly)
     currency = models.ForeignKey('exchange_core.Currencies', null=True, related_name='place_grace_periods', verbose_name=_("Currency"), on_delete=models.CASCADE)
 
     class Meta:
@@ -150,7 +152,7 @@ class GracePeriodsAdmin(admin.ModelAdmin):
 
 @admin.register(PlanGracePeriods)
 class PlanGracePeriodsAdmin(admin.ModelAdmin):
-    list_display = ['plan', 'grace_period', 'daily_income', 'status']
+    list_display = ['plan', 'grace_period', 'income_percent', 'status']
     ordering = ('-created',)
 
 
