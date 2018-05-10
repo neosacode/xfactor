@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -9,10 +9,11 @@ from django.contrib import messages
 from django.urls import reverse
 from django.utils import timezone
 from django.db import transaction
+from jsonview.decorators import json_view
 
 from .models import Plans, Charges, PlanGracePeriods
 
-from exchange_core.models import Accounts, Statement, Users
+from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
 from apps.investment.forms import SignupForm
 from apps.investment.models import Graduations, Referrals
@@ -23,9 +24,24 @@ class PlansView(TemplateView):
     template_name = 'investment/plans.html'
 
     def get(self, request):
+        if Charges.objects.filter(account__user=self.request.user).exists():
+            return redirect(reverse('xfactor>investment'))
+
         plans = Plans.objects.filter(status=Plans.STATUS.active).order_by('order')
         charges = Charges.objects.filter(account__user=request.user)
         return render(request, self.template_name, {'plans': plans, 'charges': charges})
+
+
+@method_decorator([json_view, login_required], name='dispatch')
+class GetPlanLacksView(View):
+    def post(self, request):
+        periods = PlanGracePeriods.objects.filter(plan__id=request.POST['id'], 
+                                               plan__status=Plans.STATUS.active, 
+                                               status=PlanGracePeriods.STATUS.active)
+        response = []
+        for period in periods:
+            response.append({'period': period.grace_period.months, 'percent': round(period.income_percent, 0), 'id': period.pk})
+        return response
 
 
 @method_decorator(login_required, name='dispatch')
@@ -60,20 +76,16 @@ class CancelNoFidelityPlanView(TemplateView):
         return redirect(reverse('financial-my-plans'))
 
 
-@method_decorator(login_required, name='dispatch')
-class PlanSelectedView(TemplateView):
-    template_name = 'financial/plan-selected.html'
-
-    def get(self, request):
-        grace_period_pk = request.GET.get('grace_period')
-        grace_period = PlanGracePeriods.objects.get(pk=grace_period_pk)
-        account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
-        return render(request, self.template_name, {'grace_period': grace_period, 'page_title': _("Plan Details"), 'account': account})
-
+@method_decorator([login_required, json_view], name='dispatch')
+class CreateInvestmentView(View):
     def post(self, request):
-        grace_period_pk = request.GET.get('grace_period')
+        if Charges.objects.filter(account__user=self.request.user).exists():
+            return redirect(reverse('xfactor>investment'))
+
+        grace_period_pk = request.POST['grace_period']
         grace_period = PlanGracePeriods.objects.get(pk=grace_period_pk)
-        account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
+        checking_account = Accounts.objects.get(user=request.user, currency__symbol=grace_period.currency.symbol, currency__type=Currencies.TYPES.checking)
+        investment_account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
 
         amount = request.POST.get('amount', '0.00').replace(',', '.')
         amount = ''.join(c for c in amount if c.isdigit() or c == '.')
@@ -84,36 +96,45 @@ class PlanSelectedView(TemplateView):
         amount = Decimal(amount)
 
         if grace_period.plan.min_down > amount or grace_period.plan.max_down < amount:
-            messages.error(request, _("ERROR! The investment amount it is out of the plan limit"))
-        elif amount > account.deposit:
-            messages.error(request, _(
-                "ERROR! Your {} account does not have enought deposit amount".format(account.currency.name)))
+            return {'message': _("ERROR! The investment amount it is out of the plan limit")}
+        elif amount > checking_account.deposit:
+            return {'message': _(
+                "ERROR! Your {} account does not have enought deposit amount".format(checking_account.currency.name))}
         else:
             with transaction.atomic():
                 charge = Charges()
                 charge.plan_grace_period = grace_period
-                charge.account = account
+                charge.account = checking_account
                 charge.amount = amount
                 charge.status = Charges.STATUS.paid
                 charge.paid_date = timezone.now()
                 charge.save()
 
-                account.deposit -= amount
-                account.reserved += amount
-                account.save()
+                checking_account.deposit -= amount
+                checking_account.save()
+
+                investment_account.reserved += amount
+                investment_account.save()
 
                 statement = Statement()
-                statement.account = account
+                statement.account = checking_account
                 statement.amount = Decimal('0.00') - amount
                 statement.type = Statement.TYPES.investment
                 statement.description = 'New investment'
                 statement.fk = charge.pk
                 statement.save()
 
-            messages.success(request, _("Congratulations! Your investing plan was created."))
-            return redirect(reverse('financial-my-plans'))
+                statement = Statement()
+                statement.account = investment_account
+                statement.amount = amount
+                statement.type = Statement.TYPES.investment
+                statement.description = 'New investment'
+                statement.fk = charge.pk
+                statement.save()
 
-        return render(request, self.template_name, {'grace_period': grace_period, 'page_title': _("Plan Details"), 'account': account})
+
+            return {'message': _("Congratulations! Your investing plan was created."), 'redirect': True}
+        return {'message': _("Someting in your new investment plan didn't work as expected.")}
 
 
 class ReferrerSignupView(SignupView):

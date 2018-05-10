@@ -12,6 +12,7 @@ from account.decorators import login_required
 
 from exchange_core.models import Accounts, Currencies
 from exchange_core.rates import CurrencyPrice
+from apps.investment.models import Charges
 
 
 @method_decorator([login_required], name='dispatch')
@@ -50,9 +51,17 @@ class CheckingAccountView	(TemplateView):
 class InvestmentAccountView(TemplateView):
 	template_name = 'accounts/investment.html'
 
+	def get(self, *args, **kwargs):
+		try:
+			charge = Charges.objects.get(account__user=self.request.user)
+		except Charges.DoesNotExist:
+			return redirect(reverse('investment>plans'))
+		return super().get(*args, **kwargs)
+
+
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['account'] = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
+		context['charge'] = Charges.objects.get(account__user=self.request.user)
 		return context
 
 

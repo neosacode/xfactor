@@ -20,10 +20,10 @@
 <div class="conteudo-1">
 	<h2 class="section-title">1 - {% trans "Select your plan" %}</h2>
 
-	<div class="row">
+	<div class="row" id="select-plan-app">
 		{% for plan in plans %}
 			<div class="col-md-6 col-lg-3">
-					<div class="plano plano-{{ forloop.counter }} unselected" data-toggle="tooltip" data-placement="bottom" title="{% trans "Select this one" %}">
+					<div @click.prevent="set_plan('{{ plan.pk }}')" :class="{'plano': true, 'plano-{{ forloop.counter }}': true, 'unselected': selected_plan && selected_plan != '{{ plan.pk }}'}">
 					<div class="titulo">
 						<h2 class="text-center"><i class="fas fa-trophy"></i> {{ plan.name }}</h2>
 					</div>
@@ -37,29 +37,32 @@
 		{% endfor %}
 	</div>
 
-	<h2 class="section-title">2 - {% trans "Start your investment" %}</h2>
+	<div id="start-investment-app">
+		<div v-show="show_lack" style="display: none;">
+			<h2 class="section-title">2 - {% trans "Start your investment" %}</h2>
 
-	<div class="row">
-		<div class="col-md-6">
-			<div class="white-box">
-				<h3 class="section-sub-title"><i class="fas fa-calendar-alt"></i> {% trans "Grace Period" %}</h3>
-				<p class="paragraph">{% trans "Choose your plan grace period for this plan" %}</p>
-				<ul class="list-group">
-				  <li class="list-group-item"><label><input type="radio"> 6 meses com minimo de 3% ao mes</label></li>
-				  <li class="list-group-item"><label><input type="radio"> 12 meses com minimo de 4% ao mes</label></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="col-md-6">
-			<div class="white-box">
-				<h3 class="section-sub-title"><i class="fas fa-check"></i> {% trans "Select the desired grace period" %}</h3>
-
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="{% trans "Desired BTC amount to be invested" %}">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="white-box">
+						<h3 class="section-sub-title"><i class="fas fa-calendar-alt"></i> {% trans "Grace Period" %}</h3>
+						<p class="paragraph">{% trans "Choose your plan grace period for this plan" %}</p>
+						<ul class="list-group">
+						  <li class="list-group-item" v-for="period in grace_periods"><label><input type="radio" :value="period.id" name="grace_period" v-model="grace_period"> <span v-text="period.period + ' {% trans "months with minimum of" %} ' + period.percent + '% {% trans "per month" %}'"></span></label></li>
+						</ul>
+					</div>
 				</div>
 
-				<a class="btn btn-pink btn-block" href=""><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></a>
+				<div class="col-md-6" v-show="show_invest">
+					<div class="white-box">
+						<h3 class="section-sub-title"><i class="fas fa-check"></i> {% trans "Select the desired grace period" %}</h3>
+
+						<div class="form-group">
+							<input type="number" class="form-control" step="0.00010000" placeholder="{% trans "Desired BTC amount to be invested" %}" v-model="amount">
+						</div>
+
+						<a class="btn btn-pink btn-block" @click.prevent="create_investment()" href="#"><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -67,3 +70,68 @@
 
 
 {% endblock %}
+
+{% block scripts %}
+
+	<script>
+		jQuery(function($) {
+			var select_plan_app = new Vue({
+				el: '#select-plan-app',
+				data: {
+					selected_plan: null
+				},
+				methods: {
+					set_plan: function(plan_id) {
+						this.selected_plan = plan_id;
+						start_investment_app.show_lack = true;
+						start_investment_app.show_invest = false;
+					},
+				},
+				watch: {
+					selected_plan: function() {
+						var vm = this;
+
+						$.post('{% url "investment>get-plan-lacks" %}', {'id': this.selected_plan}, function(response) {
+							start_investment_app.grace_periods = response;
+						});
+					}
+				}
+			});
+
+			var start_investment_app = new Vue({
+				el: '#start-investment-app',
+				data: {
+					show_lack: false,
+					show_invest: false,
+					grace_periods: [],
+					grace_period: null,
+					amount: (0).toFixed(8),
+					password: ''
+				},
+				methods: {
+					create_investment: function() {
+						var vm = this;
+						console.log(vm.amount);
+
+						$.post('{% url "investment>create-investment" %}', {'grace_period': vm.grace_period, 'amount': vm.amount, 'password': vm.password}, function(response) {
+							swal('{% trans "Message" %}', response.message, 'info');
+
+							setTimeout(function() {
+								if (response.redirect) {
+									window.location.href = '{% url "xfactor>investment" %}';
+								}
+							}, 2000);
+						});
+					}
+				},
+				watch: {
+					grace_period: function() {
+						vm = this;
+						vm.show_invest = true;
+					}
+				}
+			});
+		});
+	</script>
+
+{% endblock %} 

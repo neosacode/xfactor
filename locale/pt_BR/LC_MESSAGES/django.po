@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-09 21:51+0000\n"
+"POT-Creation-Date: 2018-05-10 20:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,7 +114,9 @@ msgid "Min reinvest"
 msgstr "Reinvest. min."
 
 #: apps/investment/models.py:27
-msgid "Allow monthly withdraw"
+#, fuzzy
+#| msgid "Allow monthly withdraw"
+msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
 #: apps/investment/models.py:31
@@ -207,37 +209,37 @@ msgstr "Já possui uma conta?"
 msgid "Log In"
 msgstr "Acessar"
 
-#: apps/investment/views.py:48
+#: apps/investment/views.py:61
 msgid "This plan can't be cancelled"
 msgstr "Este plano não pode ser cancelado"
 
-#: apps/investment/views.py:59
+#: apps/investment/views.py:72
 msgid "Your non-fidelity investment has been cancelled"
 msgstr ""
 
-#: apps/investment/views.py:71 apps/investment/views.py:116
+#: apps/investment/views.py:84 apps/investment/views.py:129
 msgid "Plan Details"
 msgstr ""
 
-#: apps/investment/views.py:87
+#: apps/investment/views.py:100
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr ""
 
-#: apps/investment/views.py:90
+#: apps/investment/views.py:103
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr ""
 
-#: apps/investment/views.py:113
+#: apps/investment/views.py:126
 msgid "Congratulations! Your investing plan was created."
 msgstr ""
 
-#: templates/accounts/checking.html:5 templates/core/index.html:142
+#: templates/accounts/checking.html:5 templates/core/index.html:147
 #: templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
 #: templates/accounts/checking.html:9 templates/accounts/investment.html:9
-#: templates/request-card.html:10
+#: templates/investment/plans.html:9 templates/request-card.html:10
 msgid "Xfactor"
 msgstr ""
 
@@ -249,35 +251,35 @@ msgstr "Você está na sua conta corrente"
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:37
+#: templates/accounts/checking.html:38
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:41 templates/payments/withdraw.html:7
+#: templates/accounts/checking.html:44 templates/payments/withdraw.html:7
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:45
+#: templates/accounts/checking.html:50
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: templates/accounts/checking.html:49
+#: templates/accounts/checking.html:56 templates/investment/plans.html:5
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:56
+#: templates/accounts/checking.html:62
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:60
+#: templates/accounts/checking.html:68
 msgid "Statement"
 msgstr "Extrato"
 
-#: templates/accounts/checking.html:64
+#: templates/accounts/checking.html:74
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:68
+#: templates/accounts/checking.html:80
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
@@ -407,15 +409,15 @@ msgstr ""
 msgid "Xfactor - My Card"
 msgstr ""
 
-#: templates/core/index.html:94
+#: templates/core/index.html:95
 msgid "Welcome: "
 msgstr "Bem-vindo: "
 
-#: templates/core/index.html:100
+#: templates/core/index.html:101
 msgid "Logout from my account"
 msgstr "Sair da minha conta"
 
-#: templates/core/index.html:134
+#: templates/core/index.html:137
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
@@ -427,26 +429,17 @@ msgstr "<span>Extrato</span>"
 msgid "Xfactor - Account Statement"
 msgstr "Xfactor - Extrato da Conta"
 
-#: templates/investment/plans.html:5
-msgid "Investment Plans"
-msgstr "Planos de Investimento"
-
-#: templates/investment/plans.html:9
-msgid "Xfactor - Plans"
-msgstr ""
-
 #: templates/investment/plans.html:21
-#| msgid "Selected lack:"
 msgid "Select your plan"
 msgstr "Selecione o seu plano"
-
-#: templates/investment/plans.html:26
-msgid "Select this one"
-msgstr ""
 
 #: templates/investment/plans.html:32
 msgid "Subscription"
 msgstr "Taxa de adesão"
+
+#: templates/investment/plans.html:34
+msgid "Allow monthly withdraw"
+msgstr "Permite saque mensal"
 
 #: templates/investment/plans.html:34
 msgid "Yes"
@@ -456,29 +449,35 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: templates/investment/plans.html:40
-#| msgid "Follow your investment"
+#: templates/investment/plans.html:42
 msgid "Start your investment"
 msgstr "Inicie um novo investimento"
 
-#: templates/investment/plans.html:45
-#| msgid "Grace period"
+#: templates/investment/plans.html:47
 msgid "Grace Period"
 msgstr "Carência"
 
-#: templates/investment/plans.html:46
+#: templates/investment/plans.html:48
 msgid "Choose your plan grace period for this plan"
 msgstr "Escolha o seu período de carência para este plano"
 
-#: templates/investment/plans.html:56
+#: templates/investment/plans.html:50
+msgid "months with minimum of"
+msgstr "meses com mínimo de"
+
+#: templates/investment/plans.html:50
+msgid "per month"
+msgstr "ao mês"
+
+#: templates/investment/plans.html:57
 msgid "Select the desired grace period"
 msgstr "Selecione o período de carência desejado"
 
-#: templates/investment/plans.html:59
+#: templates/investment/plans.html:60
 msgid "Desired BTC amount to be invested"
 msgstr "Quantidade de BTC a ser investida"
 
-#: templates/investment/plans.html:62
+#: templates/investment/plans.html:63
 msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
@@ -554,27 +553,27 @@ msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
 msgid "Request now"
 msgstr "Solicitar Agora"
 
-#: templates/select-account.html:56
+#: templates/select-account.html:57
 msgid "BITCOIN QUOTE"
 msgstr "COTAÇÃO DO BITCOIN"
 
-#: templates/select-account.html:63
+#: templates/select-account.html:64
 msgid "Bitcoin/REAL quote"
 msgstr "Cotação Bitcoin/REAL"
 
-#: templates/select-account.html:70
+#: templates/select-account.html:71
 msgid "Bitcoin/Dollar quote"
 msgstr "Cotação Bitcoin/Dólar"
 
-#: templates/select-account.html:82
+#: templates/select-account.html:83
 msgid "Checking <br>Account"
 msgstr "Conta <br>Corrente"
 
-#: templates/select-account.html:86 templates/select-account.html:93
+#: templates/select-account.html:87 templates/select-account.html:94
 msgid "Enter"
 msgstr "Entrar"
 
-#: templates/select-account.html:89
+#: templates/select-account.html:90
 msgid "Investments <br>Account"
 msgstr "Conta <br> Investimentos"
 
@@ -582,29 +581,32 @@ msgstr "Conta <br> Investimentos"
 msgid "Total accounts balance"
 msgstr ""
 
-#: templates/two_factor/core/login.html:40
+#: templates/two_factor/core/login.html:41
 msgid "Back to site"
 msgstr "Voltar ao site"
 
-#: templates/two_factor/core/login.html:57
+#: templates/two_factor/core/login.html:59
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
 
-#: templates/two_factor/core/login.html:77
+#: templates/two_factor/core/login.html:79
 msgid "Log in"
 msgstr "Acessar Conta"
 
-#: templates/two_factor/core/login.html:79
+#: templates/two_factor/core/login.html:81
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/two_factor/core/login.html:81
+#: templates/two_factor/core/login.html:83
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/login.html:81
+#: templates/two_factor/core/login.html:83
 msgid "Open Account"
 msgstr "Abrir Conta"
+
+#~ msgid "Investment Plans"
+#~ msgstr "Planos de Investimento"
 
 #~ msgid "Investing > Plans"
 #~ msgstr "Investimento > Planos"

@@ -25,10 +25,10 @@
             </div>
             <div class="col-md-8 texto-codigo">
                 <h4 class="title" style="margin-top: 0;">{% trans "My Investment" %}</h4>
-                <h3><span>{% trans "Current investment plan:" %}</span> Stocks</h3>
-                <h3><span>{% trans "Invest amount:" %}</span> {{ user_investment_account.reserved }} BTC</h3>
-                <h3><span>{% trans "Selected lack:" %}</span> 06 meses</h3>
-                <h3><span>{% trans "Income percent:" %}</span> 3% ao mês</h3>
+                <h3><span>{% trans "Current investment plan:" %}</span> {{ charge.plan_grace_period.plan.name }}</h3>
+                <h3><span>{% trans "Invest amount:" %}</span> {{ charge.amount }} BTC</h3>
+                <h3><span>{% trans "Selected lack:" %}</span> {{ charge.plan_grace_period.grace_period.months }} {% trans "months" %}</h3>
+                <h3><span>{% trans "Income percent:" %}</span> {{ charge.plan_grace_period.income_percent|floatformat:0 }}% {% trans "per month" %}</h3>
 
                 <h4 class="title">{% trans "My Incomes" %}</h4>
                 <h3><span>{% trans "Available for withdraw:" %}</span> {{ user_investment_account.deposit }} BTC</h3>

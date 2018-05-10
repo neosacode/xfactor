@@ -270,8 +270,10 @@ main .content .conteudo-1 .plano {
 }
 main .content .conteudo-1 .plano:hover { 
     transform: scale(1.1); 
+    opacity: 1 !important;
 }
 
-main .content .conteudo-1 .plano.unselect {
-    opacity: 0.4;
+main .content .conteudo-1 .plano.unselected {
+    opacity: 0.3;
 }
+
