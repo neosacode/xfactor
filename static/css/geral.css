@@ -146,6 +146,10 @@ main .box-nome .bread {
     main .box-nome .bread {
         display: inline-block
     }
+
+    main .box-nome .bread .box-1 {
+        display: none !important;
+    }
 }
 
 main .box-nome .bread .box-1 {
@@ -159,7 +163,6 @@ main .box-nome .bread .box-1 {
     -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center;
-    margin-top: -30px;
 }
 
 main .box-nome .bread .box-1 img {
@@ -191,14 +194,6 @@ main .box-nome .bread .box-1 h3 {
     main .box-nome .bread .box-1 h3 {
         font-size: 20px !important
     }
-}
-
-main .box-nome .bread .box-2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex
 }
 
 main .box-nome .bread .box-2 .imagem-1,
@@ -271,12 +266,6 @@ main .box-nome .bread .box-2 .imagem-2 {
     background-color: #ef2e88
 }
 
-@media (max-width: 991px) {
-    main .box-nome .bread .box-2 {
-        margin-top: 50px
-    }
-}
-
 @media (max-width: 768px) {
     main .box-nome .bread .box-2 .imagem-1,
     main .box-nome .bread .box-2 .imagem-2 {
@@ -326,7 +315,7 @@ main .box-nome .bread .box-2 .imagem-2 {
 }
 
 .change-language-dropdown {
-    margin-top: 40px;
+    margin-top: 37px;
 }
 
 .modal-content {
@@ -412,12 +401,12 @@ main .box-nome .bread .box-2 .imagem-2 {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     background-color: #a5a5a5;
     color: #FFF;
     padding: 10px;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .section-sub-title {

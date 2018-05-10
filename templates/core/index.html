@@ -9,7 +9,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=100%, initial-scale=1">
     <title>X-Factor</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -59,7 +59,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                             <li><a href="customers.php"><img src="{% static "img/logo-5.png" %}" alt=""><span>Customers</span></a></li>
                         </ul> -->
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-3 col-md-2">
                         <div class="dropdown show change-language-dropdown float-right">
                           <a class="btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% get_current_language as LANGUAGE_CODE %}
@@ -84,7 +84,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-9 col-md-4">
                         <div class="settings">
                             <ul>
                                 <li>
@@ -129,22 +129,28 @@ if(w.style.display=="block"){w.style.display='none';}else{
                         <h3>{% block page_subtitle %}{% endblock %}</h3>
                     </div>
                     <div class="box-2">
-                        <a class="imagem-1" href="{% url "xfactor>investment" %}">
-                            <img src="{% static "img/bit-grande-azul.png" %}" alt="">
-                            <div class="conteudo-botao">
-                                <h2>{% trans "Investment Account" %}</h2>
-                                <h3>R$ </h3>
-                                <h4>{{ user_investment_account.balance }} BTC</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="imagem-1" href="{% url "xfactor>investment" %}">
+                                    <img src="{% static "img/bit-grande-azul.png" %}" alt="">
+                                    <div class="conteudo-botao">
+                                        <h2>{% trans "Investment Account" %}</h2>
+                                        <h3>R$ </h3>
+                                        <h4>{{ user_investment_account.balance }} BTC</h4>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                        <a class="imagem-2" href="{% url "xfactor>checking" %}">
-                            <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
-                            <div class="conteudo-botao">
-                                <h2>{% trans "Checking Account" %}</h2>
-                                <h3>R$</h3>
-                                <h4>{{ user_checking_account.balance }} BTC</h4>
+                            <div class="col-md-6">
+                                <a class="imagem-2" href="{% url "xfactor>checking" %}">
+                                    <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
+                                    <div class="conteudo-botao">
+                                        <h2>{% trans "Checking Account" %}</h2>
+                                        <h3>R$</h3>
+                                        <h4>{{ user_checking_account.balance }} BTC</h4>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -152,7 +158,11 @@ if(w.style.display=="block"){w.style.display='none';}else{
     
         <div class="content content-container">
             <div class="container">
+                <div class="clearfix"></div>
                 {% block content %}{% endblock %}
+
+                <div class="mb-100"></div>
+                <div class="clearfix"></div>
             </div>
         </div>
 

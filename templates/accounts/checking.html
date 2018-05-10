@@ -31,41 +31,54 @@
             <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
             <h3><strong>{{ user_checking_account.deposit }} BTC</strong> {% trans "available balance" %}</h3>
         </div>
-        <div class="box-3">
-            <div class="item-rosa">
-                <img src="{% static "img/bit-rosa-grande-2.png" %}" alt="">
-                <a href="#" @click.prevent="createAddress('{{ account.currency.symbol }}', '{{ account.currency.name }}')"><h4>{% trans "Receive" %}</h4></a>
+        <div class="box-3 row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item-rosa">
+                    <img src="{% static "img/bit-rosa-grande-2.png" %}" alt="">
+                    <a href="#" @click.prevent="createAddress('{{ account.currency.symbol }}', '{{ account.currency.name }}')"><h4>{% trans "Receive" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                <a href="" @click.prevent="createWithdraw('{{ account.currency.pk }}', '{{ account.currency.symbol }}', '{{ account.currency.name }}', '{{ account.deposit }}')"><h4>{% trans "Transfer" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
+                    <a href="" @click.prevent="createWithdraw('{{ account.currency.pk }}', '{{ account.currency.symbol }}', '{{ account.currency.name }}', '{{ account.deposit }}')"><h4>{% trans "Transfer" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                <a href=""><h4>{% trans "Loan" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
+                    <a href=""><h4>{% trans "Loan" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                <a href="{% url "investment>plans" %}"><h4>{% trans "Invest" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
+                    <a href="{% url "investment>plans" %}"><h4>{% trans "Invest" %}</h4></a>
+                </div>
             </div>
-
-        </div>
-        <div class="box-3"> 
-            <div class="item">
-                <img src="{% static "img/cifra-grande.png" %}" alt="">
-                <a href="{% url "boleto>pay" %}"><h4>{% trans "Pay Bill" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/cifra-grande.png" %}" alt="">
+                    <a href="{% url "boleto>pay" %}"><h4>{% trans "Pay Bill" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                <a href="{% url "core>statement" %}"><h4>{% trans "Statement" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
+                    <a href="{% url "core>statement" %}"><h4>{% trans "Statement" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/cifra-grande.png" %}" alt="">
-                <a href="{% url "xfactor>my-card" %}"><h4>{% trans "My Card" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/cifra-grande.png" %}" alt="">
+                    <a href="{% url "xfactor>my-card" %}"><h4>{% trans "My Card" %}</h4></a>
+                </div>
             </div>
-            <div class="item">
-                <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                <a href=""><h4>{% trans "Sell BTC" %}</h4></a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="item">
+                    <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
+                    <a href=""><h4>{% trans "Sell BTC" %}</h4></a>
+                </div>
             </div>
         </div>
     </div>
