@@ -1,5 +1,9 @@
 from decimal import Decimal
 
+from datetime import date, datetime
+from dateutil.rrule import rrule, DAILY
+from dateutil.relativedelta import relativedelta
+
 from django.views.generic import TemplateView, View
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -16,7 +20,8 @@ from .models import Plans, Charges, PlanGracePeriods
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
 from apps.investment.forms import SignupForm
-from apps.investment.models import Graduations, Referrals
+from apps.investment.models import Graduations, Referrals, Incomes
+from apps.investment.utils import decimal_split
 
 
 @method_decorator(login_required, name='dispatch')
@@ -109,6 +114,25 @@ class CreateInvestmentView(View):
                 charge.status = Charges.STATUS.paid
                 charge.paid_date = timezone.now()
                 charge.save()
+
+
+                if grace_period.grace_period.months > 0:
+                    start_date = datetime.now()
+                    end_date = start_date + relativedelta(months=grace_period.grace_period.months)
+                    range_dates = list(rrule(DAILY, dtstart=start_date, until=end_date))
+                    income_amount = (amount * (grace_period.income_percent / 100)) * grace_period.grace_period.months
+                    income_table = decimal_split(income_amount, len(range_dates), 98, 100)
+
+                    date_index = 0
+
+                    for dt in range_dates:
+                        income = Incomes()
+                        income.date = dt
+                        income.amount = income_table[date_index]
+                        income.charge = charge
+                        income.save() 
+
+                        date_index += 1
 
                 checking_account.deposit -= amount
                 checking_account.save()

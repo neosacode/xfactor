@@ -11,102 +11,294 @@
 {% endblock %}
 
 {% block head %}
+    <link rel="stylesheet" href="{% static "css/carreira.css" %}">
     <style>
-		.cards {
-			margin-top: 30px;
-		}
-
-    	.cards img {
-    		display: block;
-    		border-radius: 5px;
-    	}
-
-    	.cards .card-title {
-    		margin-top: 20px;
-    		font-size: 30px;
-    		color: #000;
-    		font-weight: bold;
-    		color: #f05389;
-    		margin-bottom: 30px;
-    	}
-
-    	.cards .card-title-2 {
-    		font-size: 30px;
-    		font-weight: bold;
-    		color: #f05389;
-    		margin-top: 20px;
-    		margin-bottom: 30px;
-    	}
-
-    	.cards .card-sub-title {
+    	.card-sub-title {
     		font-size: 18px !important;
     		line-height: 25px;
-    		margin-top: 30px;
-    		color: #f05389;5
-    		border-bottom: 1px solid #EEE;
-    		padding-bottom: 30px;
-    		margin-bottom: 80px;
+    		margin-top: 10px;
+            margin-bottom: 30px;
+    		color: #fff;
+            -webkit-background-size: cover;
+            background-size: cover;
     	}
 
-    	.cards .card-limit {
-    		text-align: center;
-    		margin-top: 40px;
-    		font-size: 30px !important;
-    		font-weight: bold;
-    	}
+        .content {
+            background-image: url("{% static "img/fundo-login.jpg" %}");
+        }
 
-    	.cards .card-limit span {
-    		font-size: 14px;
-    	}
-
-    	.content {
-    		background-image: url("{% static "img/back-carteira.jpg" %}");
-    	}
-
-    	.plan-title {
-    		font-weight: bold;
-			text-align: center;
-			font-size: 18px;
-			margin-bottom: 15px;
-			text-transform: uppercase;
-			color: #0a2357;
-    	}
-
-    	.request-card-button {
-    		padding-top: 30px;
-    		border-top: 1px solid #EEE;
-    		margin-top: 80px;
-    	}
+        .plan-title {
+            text-align: center;
+            color: #FFF;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
     </style>
 {% endblock %}
 
 {% block content %} 
-	<div class="cards">
-		<div class="white-box">
-			<h1 class="text-center card-title"><i class="fas fa-credit-card"></i> {% trans "REQUEST YOUR CARD" %}</h1>
-			<p class="card-sub-title text-center">{% trans "Here on Xfactor, you have a card for each type of investment" %}</p>
-			<div class="row">
-				<div class="col-md-3">
-					<h4 class="plan-title">-- Savings --</h4>
-					<img src="{% static "img/cards/04.jpeg" %}" class="img-fluid">
-				</div>
-				<div class="col-md-3">
-					<h4 class="plan-title">-- Stocks --</h4>
-					<img src="{% static "img/cards/03.jpeg" %}" class="img-fluid">
-				</div>
-				<div class="col-md-3">
-					<h4 class="plan-title">-- Mutual Founds --</h4>
-					<img src="{% static "img/cards/02.jpeg" %}" class="img-fluid">
-				</div>
-				<div class="col-md-3">
-					<h4 class="plan-title">-- Bound Market --</h4>
-					<img src="{% static "img/cards/01.jpeg" %}" class="img-fluid">
-				</div>
-			</div>
+    <div class="container">
+        <div class="investment">
+            <h2><strong>{% trans "REQUEST YOUR CARD" %}</strong></h2>
+            <p class="text-center card-sub-title">{% trans "Here on Xfactor, you have a card for each type of investment" %}</p>
 
-			<div class="request-card-button">
-				<a href="#" class="btn btn-pink text-white btn-lg mt-20">{% trans "Request now" %}</a>
-			</div>
-		</div>
-	</div>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-3">
+                    <h4 class="plan-title">SAVINGS</h4>
+                    <img src="{% static "img/cards/04.png" %}" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <h4 class="plan-title">MUTUAL FUNDS</h4>
+                    <img src="{% static "img/cards/01.png" %}" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <h4 class="plan-title">STOCKS</h4>
+                    <img src="{% static "img/cards/02.png" %}" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <h4 class="plan-title">BOND MARKET</h4>
+                    <img src="{% static "img/cards/03.png" %}" class="img-fluid">
+                </div>
+            </div>
+
+            <!-- Plano-1 -->
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="investment-1">
+                        <h2><strong>INVESTMENT</strong> PROMOTER</h2>
+                        <div class="box">
+                            <h3>PLANS</h3>
+
+                            <div class="comission">
+                                <a class="saving">SAVINGS</a>
+                                <h4>&nbsp; 2% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="mutual">MUTUAL FUNDS</a>
+                                <h4>&nbsp; 3% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="stocks">STOCKS</a>
+                                <h4>&nbsp; 5% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="market">BOND MARKET</a>
+                                <h4>&nbsp; 6% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+
+                            <h3><span>BENEFITS</span></h3>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-2.png" %}" alt="">
+                                    <h5>Credit Card</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/nao.jpg" %}" alt="">
+                                    <p>Não</p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-3.png" %}" alt="">
+                                    <h5>Online Payment</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/nao.jpg" %}" alt="">
+                                    <p>Não</p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-4.png" %}" alt="">
+                                    <h5>Bitcoin Monetization</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/nao.jpg" %}" alt="">
+                                    <p>Não</p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-5.png" %}" alt="">
+                                    <h5>Web Wallet</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-6.png" %}" alt="">
+                                    <h5>Loan</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-7.png" %}" alt="">
+                                    <h5>Credit Limit</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Plano-2 -->
+
+               <div class="col-md-4">
+                    <div class="investment-1">
+                        <h2><strong>INVESTMENT</strong> ADVISOR</h2>
+                        <div class="box">
+                            <h3>PLANS</h3>
+
+                            <div class="comission">
+                                <a class="saving">SAVINGS</a>
+                                <h4>&nbsp; 5% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="mutual">MUTUAL FUNDS</a>
+                                <h4>&nbsp; 6% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="stocks">STOCKS</a>
+                                <h4>&nbsp; 8% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+                            <div class="comission">
+                                <a class="market">BOND MARKET</a>
+                                <h4>&nbsp; 9% &nbsp;</h4>
+                                <img src="{% static "img/invest-1.png" %}" alt="">
+                                <h5>Comission</h5>
+                            </div>
+
+                            <h3><span>BENEFITS</span></h3>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-2.png" %}" alt="">
+                                    <h5>Credit Card</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-3.png" %}" alt="">
+                                    <h5>Online Payment</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-4.png" %}" alt="">
+                                    <h5>Bitcoin Monetization</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-5.png" %}" alt="">
+                                    <h5>Web Wallet</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-6.png" %}" alt="">
+                                    <h5>Loan</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                            <div class="comission-2">
+                                <div class="part-1">
+                                    <img src="{% static "img/invest-7.png" %}" alt="">
+                                    <h5>Credit Limit</h5>
+                                </div>
+
+                                <div class="part-2">
+                                    <img src="{% static "img/sim.jpg" %}" alt="">
+                                    <p><span>Sim</span></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+               </div>
+
+                <!-- Plano-3 -->
+
+                <div class="col-md-4">
+                    <div class="investment-1">
+                        <h2>{% trans "<strong>ADVISOR</strong> COURSE" %}</h2>
+                        <div class="box-breve">
+                            <img src="{% static "img/clock.png" %}" alt="">
+                            <h2><strong>Coming</strong><br>Soon</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        
+    </div>
 {% endblock %}

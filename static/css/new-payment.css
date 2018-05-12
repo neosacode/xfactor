@@ -78,7 +78,7 @@ main .content .box-1 .margem {
 
 main .content .box-1 .margem h2 {
     color: #0950a0;
-    font-family: GothamB;
+    
     border-bottom: solid 2px #e2e2e2;
     padding-bottom: 15px
 }
@@ -99,7 +99,7 @@ main .content .box-1 .margem button {
     border-radius: 50px;
     padding: 8px 30px;
     color: #fff;
-    font-family: GothamB;
+    
     font-size: 10px !important;
     font-weight: bold;
     margin-top: 10px
@@ -131,12 +131,12 @@ main .content .box-1 .margem .avatar .selecione input {
     border-radius: 50px;
     padding: 7px 20px;
     color: #555555;
-    font-family: GothamB;
+    
     font-size: 13px !important
 }
 
 main .content .box-1 .margem .avatar .selecione p {
-    font-family: GothamB;
+    
     color: #a7a7a7
 }
 
@@ -164,7 +164,7 @@ main .content .box-2 .margem {
 
 main .content .box-2 .margem h2 {
     color: #0950a0;
-    font-family: GothamB;
+    
     border-bottom: solid 2px #e2e2e2;
     padding-bottom: 15px
 }
@@ -193,7 +193,7 @@ main .content .box-2 .margem input {
     outline: none;
     height: 40px;
     font-size: 12px !important;
-    font-family: GothamB;
+    
     font-weight: bold;
     padding-left: 20px;
     width: 30%;
@@ -210,7 +210,7 @@ main .content .box-2 .margem button {
     border-radius: 50px;
     padding: 8px 30px;
     color: #fff;
-    font-family: GothamB;
+    
     font-size: 10px !important;
     font-weight: bold;
     margin-top: 10px
@@ -246,7 +246,7 @@ main .content .box-3 .margem {
 
 main .content .box-3 .margem h2 {
     color: #0950a0;
-    font-family: GothamB;
+    
     border-bottom: solid 2px #e2e2e2;
     padding-bottom: 15px
 }
@@ -267,7 +267,7 @@ main .content .box-3 .margem input {
     outline: none;
     height: 40px;
     font-size: 12px !important;
-    font-family: GothamB;
+    
     font-weight: bold;
     padding-left: 20px;
     width: 100%;
@@ -284,7 +284,7 @@ main .content .box-3 .margem button {
     border-radius: 50px;
     padding: 8px 30px;
     color: #fff;
-    font-family: GothamB;
+    
     font-size: 10px !important;
     font-weight: bold;
     margin-top: 10px

@@ -22,7 +22,6 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
     name = models.CharField(max_length=100)
     min_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min down"))
     max_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Max down"))
-    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee")),
     min_reinvest = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min reinvest"), default=Decimal('0.00'))
     allow_monthly_draw = models.BooleanField(default=True, verbose_name=_("Allow monthly draw"))
     order = models.IntegerField(default=0)
@@ -55,6 +54,7 @@ class PlanGracePeriods(TimeStampedModel, StatusModel, models.Model):
     plan = models.ForeignKey(Plans, related_name='grace_periods', on_delete=models.CASCADE)
     grace_period = models.ForeignKey(GracePeriods, related_name='plans', on_delete=models.CASCADE)
     income_percent = models.DecimalField(default=Decimal('0.00'), max_digits=20, decimal_places=8, verbose_name=_("Income percent"))
+    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee")),
     payment_type = models.CharField(max_length=20, choices=TYPES, default=TYPES.monthly)
     currency = models.ForeignKey('exchange_core.Currencies', null=True, related_name='place_grace_periods', verbose_name=_("Currency"), on_delete=models.CASCADE)
 
@@ -104,6 +104,18 @@ class Charges(TimeStampedModel, StatusModel, models.Model):
         verbose_name_plural = _("Charges")
 
 
+class Incomes(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    date = models.DateField()
+    amount = models.DecimalField(max_digits=20, decimal_places=8)
+    charge = models.ForeignKey(Charges, related_name='incomes', on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _("Income")
+        verbose_name_plural = _("Incomes")
+
+
 class IgnoreIncomeDays(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField(verbose_name=_("Date to be ignored"), unique=True)
@@ -151,7 +163,7 @@ class PlanGracePeriodForm(forms.ModelForm):
 
 @admin.register(Plans)
 class PlansAdmin(BaseAdmin):
-    list_display = ['name', 'min_down', 'max_down', 'membership_fee', 'allow_monthly_draw', 'status',
+    list_display = ['name', 'min_down', 'max_down', 'allow_monthly_draw', 'status',
                     'created']
     ordering = ('-created',)
 

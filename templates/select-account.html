@@ -1,5 +1,5 @@
 {% load static %}
-{% load i18n %}
+{% load i18n l10n %}
 {% load thumbnail %}
 {% load lang %}
 {% load exchange %}
@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=100%, initial-scale=1">
     <title>X-Factor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static "css/geral.css" %}">
     <link rel="stylesheet" href="{% static "css/cotacao.css" %}">
     <link rel="stylesheet" href="{% static "css/plugins.css" %}">
@@ -59,7 +60,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                         <div class="real">
                             <div class="valor">
                                 <img src="{% static "img/bit-rosa.png" %}" alt="">
-                                <h2>R$ {{ btc_br_price|floatformat:2 }}</h2>
+                                <h2>R$ {{ btc_br_price|floatformat:2|localize }}</h2>
                             </div>
                             <p>{% trans "Bitcoin/REAL quote" %} | <span><a href="https://bitvalor.com/" target="_blank">Bitvalor</a></span></p>
                         </div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 20:04+0000\n"
+"POT-Creation-Date: 2018-05-12 15:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,45 +105,45 @@ msgstr "Invest. Min:"
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:25
-msgid "Membership fee"
-msgstr "Taxa de adesão"
-
-#: apps/investment/models.py:26 templates/investment/plans.html:33
+#: apps/investment/models.py:25 templates/investment/plans.html:33
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:27
+#: apps/investment/models.py:26
 #, fuzzy
 #| msgid "Allow monthly withdraw"
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:31
+#: apps/investment/models.py:30
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:32
+#: apps/investment/models.py:31
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:40
+#: apps/investment/models.py:39
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:43
+#: apps/investment/models.py:42
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:44
+#: apps/investment/models.py:43
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:57
+#: apps/investment/models.py:56
 #, fuzzy
 #| msgid "Income percent:"
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
+
+#: apps/investment/models.py:57
+msgid "Membership fee"
+msgstr "Taxa de adesão"
 
 #: apps/investment/models.py:59
 msgid "Currency"
@@ -165,31 +165,43 @@ msgstr "Cobrança"
 msgid "Charges"
 msgstr "Cobranças"
 
-#: apps/investment/models.py:109
+#: apps/investment/models.py:115
+#, fuzzy
+#| msgid "My Incomes"
+msgid "Income"
+msgstr "Meus Rendimentos"
+
+#: apps/investment/models.py:116
+#, fuzzy
+#| msgid "My Incomes"
+msgid "Incomes"
+msgstr "Meus Rendimentos"
+
+#: apps/investment/models.py:121
 msgid "Date to be ignored"
 msgstr ""
 
-#: apps/investment/models.py:112
+#: apps/investment/models.py:124
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:113
+#: apps/investment/models.py:125
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:123
+#: apps/investment/models.py:135
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:123
+#: apps/investment/models.py:135
 msgid "Investment Advisor"
 msgstr "Consultor de Investimentos"
 
-#: apps/investment/models.py:131
+#: apps/investment/models.py:143
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:132
+#: apps/investment/models.py:144
 msgid "Graduations"
 msgstr "Graduações"
 
@@ -209,32 +221,32 @@ msgstr "Já possui uma conta?"
 msgid "Log In"
 msgstr "Acessar"
 
-#: apps/investment/views.py:61
+#: apps/investment/views.py:69
 msgid "This plan can't be cancelled"
 msgstr "Este plano não pode ser cancelado"
 
-#: apps/investment/views.py:72
+#: apps/investment/views.py:80
 msgid "Your non-fidelity investment has been cancelled"
 msgstr ""
 
-#: apps/investment/views.py:84 apps/investment/views.py:129
-msgid "Plan Details"
-msgstr ""
-
-#: apps/investment/views.py:100
+#: apps/investment/views.py:104
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr ""
 
-#: apps/investment/views.py:103
+#: apps/investment/views.py:107
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr ""
 
-#: apps/investment/views.py:126
+#: apps/investment/views.py:160
 msgid "Congratulations! Your investing plan was created."
 msgstr ""
 
-#: templates/accounts/checking.html:5 templates/core/index.html:147
-#: templates/select-account2.html:106
+#: apps/investment/views.py:161
+msgid "Someting in your new investment plan didn't work as expected."
+msgstr ""
+
+#: templates/accounts/checking.html:5 templates/accounts/checking.html:28
+#: templates/core/index.html:147 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
@@ -242,10 +254,6 @@ msgstr "Conta Corrente"
 #: templates/investment/plans.html:9 templates/request-card.html:10
 msgid "Xfactor"
 msgstr ""
-
-#: templates/accounts/checking.html:28
-msgid "Your are in your checking account"
-msgstr "Você está na sua conta corrente"
 
 #: templates/accounts/checking.html:32
 msgid "available balance"
@@ -307,9 +315,19 @@ msgstr "Valor investido:"
 msgid "Selected lack:"
 msgstr "Carência selecionada:"
 
+#: templates/accounts/investment.html:30
+#, fuzzy
+#| msgid "Months"
+msgid "months"
+msgstr "Meses"
+
 #: templates/accounts/investment.html:31
 msgid "Income percent:"
 msgstr "Porcentagem de rendimento:"
+
+#: templates/accounts/investment.html:31 templates/investment/plans.html:50
+msgid "per month"
+msgstr "ao mês"
 
 #: templates/accounts/investment.html:33
 msgid "My Incomes"
@@ -339,9 +357,17 @@ msgstr "MUDAR CARÊNCIA"
 msgid "TO WITHDRAW INCOMES"
 msgstr "SACAR RENDIMENTOS"
 
-#: templates/accounts/investment.html:66
+#: templates/accounts/investment.html:58
+msgid "MY CUSTOMERS"
+msgstr "MEUS CLIENTES"
+
+#: templates/accounts/investment.html:69
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
+
+#: templates/accounts/investment.html:90
+msgid "Last 30 days"
+msgstr ""
 
 #: templates/accounts/scripts/checking.vue.html:14
 msgid "Success!"
@@ -370,8 +396,8 @@ msgid "Copy address"
 msgstr "Copiar endereço"
 
 #: templates/back-button.html:3
-msgid "Back to previous page"
-msgstr "Voltar a página anterior"
+msgid "Back"
+msgstr ""
 
 #: templates/boleto/pay.html:6
 msgid "Pay <span>Bill</span>"
@@ -408,6 +434,11 @@ msgstr ""
 #: templates/card.html:10
 msgid "Xfactor - My Card"
 msgstr ""
+
+#: templates/card.html:51
+#| msgid "Charge"
+msgid "Recharge"
+msgstr "Recarregar"
 
 #: templates/core/index.html:95
 msgid "Welcome: "
@@ -465,10 +496,6 @@ msgstr "Escolha o seu período de carência para este plano"
 msgid "months with minimum of"
 msgstr "meses com mínimo de"
 
-#: templates/investment/plans.html:50
-msgid "per month"
-msgstr "ao mês"
-
 #: templates/investment/plans.html:57
 msgid "Select the desired grace period"
 msgstr "Selecione o período de carência desejado"
@@ -480,6 +507,10 @@ msgstr "Quantidade de BTC a ser investida"
 #: templates/investment/plans.html:63
 msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
+
+#: templates/investment/plans.html:117
+msgid "Message"
+msgstr ""
 
 #: templates/payments/withdraw.html:7
 msgid "Withdraw "
@@ -553,27 +584,27 @@ msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
 msgid "Request now"
 msgstr "Solicitar Agora"
 
-#: templates/select-account.html:57
+#: templates/select-account.html:58
 msgid "BITCOIN QUOTE"
 msgstr "COTAÇÃO DO BITCOIN"
 
-#: templates/select-account.html:64
+#: templates/select-account.html:65
 msgid "Bitcoin/REAL quote"
 msgstr "Cotação Bitcoin/REAL"
 
-#: templates/select-account.html:71
+#: templates/select-account.html:72
 msgid "Bitcoin/Dollar quote"
 msgstr "Cotação Bitcoin/Dólar"
 
-#: templates/select-account.html:83
+#: templates/select-account.html:84
 msgid "Checking <br>Account"
 msgstr "Conta <br>Corrente"
 
-#: templates/select-account.html:87 templates/select-account.html:94
+#: templates/select-account.html:88 templates/select-account.html:95
 msgid "Enter"
 msgstr "Entrar"
 
-#: templates/select-account.html:90
+#: templates/select-account.html:91
 msgid "Investments <br>Account"
 msgstr "Conta <br> Investimentos"
 
@@ -604,6 +635,12 @@ msgstr "Não possui uma conta?"
 #: templates/two_factor/core/login.html:83
 msgid "Open Account"
 msgstr "Abrir Conta"
+
+#~ msgid "Your are in your checking account"
+#~ msgstr "Você está na sua conta corrente"
+
+#~ msgid "Back to previous page"
+#~ msgstr "Voltar a página anterior"
 
 #~ msgid "Investment Plans"
 #~ msgstr "Planos de Investimento"
