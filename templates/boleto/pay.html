@@ -21,35 +21,45 @@
 {% endblock %}
 
 {% block content %}
+	{% include "back-button.html" with margin_top='30px' %}
 
-	<div class="box-3">
-		{% include "back-button.html" with margin_top='0' %}
-
-		<div class="margem">
-			<h2>NEW PAYMENT</h2>
-			<p>Solicitar um novo pagamento</p>
-			<form action="">
-				<input type="text" placeholder="CÓDIGO DE BARRAS">
-				<input type="text" placeholder="YOU NAME OR COMPANY">
-				<input type="text" placeholder="NÚMERO CARTÃO DE CRÉDITO">
-				<button>PRÓXIMO</button>
-			</form>
-		</div>
+	<div class="alert alert-danger">
+		<h2><strong>{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a></h2>
 	</div>
 
-	<div class="box-2">
-		<div class="margem">
-			<h2>CHECK THE DATA AND PAY YOUR BANK SLIP</h2>
-			<p>Check if the bank slip data below is correct and click on the right pay button</p>
-			<img src="{% static "img/barras.png" %}" alt="">
-			<form action="">
-				<input type="text" placeholder="BANK NAME">
-				<input type="text" placeholder="DUE DATE">
-				<input type="text" placeholder="00.00">
-				<button>PAY BANK SLIP</button>
-			</form>
+	<div class="row">
+		<div class="col-md-5">
+			<div class="box-3">
+				<div class="margem">
+					<h2>NEW PAYMENT</h2>
+					<p>Solicitar um novo pagamento</p>
+					<form action="">
+						<input type="text" placeholder="CÓDIGO DE BARRAS">
+						<input type="text" placeholder="YOU NAME OR COMPANY">
+						<input type="text" placeholder="NÚMERO CARTÃO DE CRÉDITO">
+						<button>PRÓXIMO</button>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
+
+		<div class="col-md-7">
+			<div class="box-2">
+				<div class="margem">
+					<h2>CHECK THE DATA AND PAY YOUR BANK SLIP</h2>
+					<p>Check if the bank slip data below is correct and click on the right pay button</p>
+					<img src="{% static "img/barras.png" %}" alt="">
+					<form action="">
+						<input type="text" placeholder="BANK NAME">
+						<input type="text" placeholder="DUE DATE">
+						<input type="text" placeholder="00.00">
+						<button>PAY BANK SLIP</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+
 
 
 {% endblock %}

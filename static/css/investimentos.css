@@ -121,85 +121,9 @@ main .box-nome .bread .box-1 h3 {
     }
 }
 
-main .box-nome .bread .box-2 .imagem-1,
-main .box-nome .bread .box-2 .imagem-2 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    border-radius: 3px;
-    color: #fff;
-    width: 350px;
-    margin-right: 15px;
-    margin-bottom: 30px
-}
-
-main .box-nome .bread .box-2 .imagem-1 img,
-main .box-nome .bread .box-2 .imagem-2 img {
-    padding-right: 50px;
-    width: 130px;
-    height: auto
-}
-
-main .box-nome .bread .box-2 .imagem-1 .conteudo-botao,
-main .box-nome .bread .box-2 .imagem-2 .conteudo-botao {
-    text-align: center
-}
-
-main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h2,
-main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h2 {
-    font-size: 13px !important;
-    margin-bottom: 8px
-}
-
-main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h3,
-main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h3 {
-    font-weight: bold;
-    margin-bottom: 7px
-}
-
-main .box-nome .bread .box-2 .imagem-1 .conteudo-botao h4,
-main .box-nome .bread .box-2 .imagem-2 .conteudo-botao h4 {
-    font-weight: 300;
-    font-size: 25px !important
-}
-
-main .box-nome .bread .box-2 .imagem-1 {
-    background-color: #0b2254;
-    background-image: -webkit-gradient(linear, 90deg, from(#0a50a0), to(#0b2254));
-    background-image: -webkit-linear-gradient(90deg, #0a50a0, #0b2254);
-    background-image: -moz-linear-gradient(90deg, #0a50a0, #0b2254);
-    background-image: -ms-linear-gradient(90deg, #0a50a0, #0b2254);
-    background-image: -o-linear-gradient(90deg, #0a50a0, #0b2254);
-    background-image: linear-gradient(90deg, #0a50a0, #0b2254);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle, StartColorStr='#0a50a0', EndColorStr='#0b2254')
-}
-
-main .box-nome .bread .box-2 .imagem-2 {
-    background-color: #ef2e88
-}
-
 @media (max-width: 991px) {
     main .box-nome .bread .box-2 {
         margin-top: 50px
-    }
-}
-
-@media (max-width: 768px) {
-    main .box-nome .bread .box-2 .imagem-1,
-    main .box-nome .bread .box-2 .imagem-2 {
-        width: auto;
-        padding-right: 5px
-    }
-    main .box-nome .bread .box-2 .imagem-1 img,
-    main .box-nome .bread .box-2 .imagem-2 img {
-        padding-right: 20px
     }
 }
 
@@ -437,44 +361,10 @@ main .content-2 .conteudo-1 .box-3 .part-2 h3 {
     color: #0a2357
 }
 
-main .content .conteudo-1 .box-3 .part-2 h3 span,
-main .content-2 .conteudo-1 .box-3 .part-2 h3 span {
-    font-weight: bold
-}
-
-main .content .conteudo-1 .box-3 .part-2 a h5,
-main .content-2 .conteudo-1 .box-3 .part-2 a h5 {
-    background-color: #ef2e88;
-    color: #fff;
-    padding: 10px 50px;
-    border-radius: 5px;
-    text-align: center
-}
-
-main .content .conteudo-2,
-main .content-2 .conteudo-2 {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 50px
-}
-
-@media (min-width: 992px) {
-    main .content .conteudo-2,
-    main .content-2 .conteudo-2 {
-        float: left;
-        width: 33.33333%
-    }
-}
-
 main .content .conteudo-2 img,
 main .content-2 .conteudo-2 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    width: 350px;
-    margin: 0 auto
+    margin-top: 50px;
+    min-width: 100%;
 }
 
 .chart-investments-title {

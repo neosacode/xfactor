@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-12 15:35+0000\n"
+"POT-Creation-Date: 2018-05-19 21:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,15 +97,15 @@ msgstr ""
 msgid "The e-mails aren't equal"
 msgstr ""
 
-#: apps/investment/models.py:23 templates/investment/plans.html:30
+#: apps/investment/models.py:23 templates/investment/plans.html:32
 msgid "Min down"
 msgstr "Invest. Min:"
 
-#: apps/investment/models.py:24 templates/investment/plans.html:31
+#: apps/investment/models.py:24 templates/investment/plans.html:33
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:25 templates/investment/plans.html:33
+#: apps/investment/models.py:25 templates/investment/plans.html:35
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
@@ -145,7 +145,7 @@ msgstr "Porcentagem de rendimento:"
 msgid "Membership fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:59
+#: apps/investment/models.py:59 templates/core/statement.html:73
 msgid "Currency"
 msgstr "Moeda"
 
@@ -279,7 +279,7 @@ msgstr "Investir"
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:68
+#: templates/accounts/checking.html:68 templates/core/statement.html:64
 msgid "Statement"
 msgstr "Extrato"
 
@@ -325,7 +325,7 @@ msgstr "Meses"
 msgid "Income percent:"
 msgstr "Porcentagem de rendimento:"
 
-#: templates/accounts/investment.html:31 templates/investment/plans.html:50
+#: templates/accounts/investment.html:31 templates/investment/plans.html:52
 msgid "per month"
 msgstr "ao mês"
 
@@ -407,23 +407,27 @@ msgstr ""
 msgid "Xfactor - Pay Bill"
 msgstr ""
 
-#: templates/boleto/pay.html:119
+#: templates/boleto/pay.html:27
+msgid "Request your Xfactor card to access this feature"
+msgstr "Solicite seu cartão Xfactor para ter acesso a essa funcionalidade"
+
+#: templates/boleto/pay.html:129
 msgid "Bank Slip Not Found"
 msgstr ""
 
-#: templates/boleto/pay.html:119
+#: templates/boleto/pay.html:129
 msgid "Please manually type below your bank slip data"
 msgstr ""
 
-#: templates/boleto/pay.html:124 templates/boleto/pay.html:127
+#: templates/boleto/pay.html:134 templates/boleto/pay.html:137
 msgid "Missing Data!"
 msgstr ""
 
-#: templates/boleto/pay.html:124
+#: templates/boleto/pay.html:134
 msgid "Please type your name or your company name"
 msgstr ""
 
-#: templates/boleto/pay.html:127
+#: templates/boleto/pay.html:137
 msgid "Please type your CPF or CNPJ number"
 msgstr ""
 
@@ -434,11 +438,6 @@ msgstr ""
 #: templates/card.html:10
 msgid "Xfactor - My Card"
 msgstr ""
-
-#: templates/card.html:51
-#| msgid "Charge"
-msgid "Recharge"
-msgstr "Recarregar"
 
 #: templates/core/index.html:95
 msgid "Welcome: "
@@ -460,55 +459,77 @@ msgstr "<span>Extrato</span>"
 msgid "Xfactor - Account Statement"
 msgstr "Xfactor - Extrato da Conta"
 
-#: templates/investment/plans.html:21
+#: templates/core/statement.html:65
+msgid "Here you can follow your checking and investment accounts movements."
+msgstr "Aqui você pode acompanhar as movientações da sua conta corrente e de investimentos"
+
+#: templates/core/statement.html:74
+msgid "Account Type"
+msgstr ""
+
+#: templates/core/statement.html:75
+msgid "Date"
+msgstr ""
+
+#: templates/core/statement.html:76
+#, fuzzy
+#| msgid "Subscription"
+msgid "Description"
+msgstr "Taxa de adesão"
+
+#: templates/core/statement.html:77
+msgid "Amount"
+msgstr ""
+
+#: templates/investment/plans.html:23
 msgid "Select your plan"
 msgstr "Selecione o seu plano"
 
-#: templates/investment/plans.html:32
+#: templates/investment/plans.html:34
 msgid "Subscription"
 msgstr "Taxa de adesão"
 
-#: templates/investment/plans.html:34
+#: templates/investment/plans.html:36
 msgid "Allow monthly withdraw"
 msgstr "Permite saque mensal"
 
-#: templates/investment/plans.html:34
+#: templates/investment/plans.html:36
 msgid "Yes"
 msgstr ""
 
-#: templates/investment/plans.html:34
+#: templates/investment/plans.html:36
 msgid "No"
 msgstr ""
 
-#: templates/investment/plans.html:42
+#: templates/investment/plans.html:44
 msgid "Start your investment"
 msgstr "Inicie um novo investimento"
 
-#: templates/investment/plans.html:47
+#: templates/investment/plans.html:49
 msgid "Grace Period"
 msgstr "Carência"
 
-#: templates/investment/plans.html:48
+#: templates/investment/plans.html:50
 msgid "Choose your plan grace period for this plan"
 msgstr "Escolha o seu período de carência para este plano"
 
-#: templates/investment/plans.html:50
+#: templates/investment/plans.html:52
 msgid "months with minimum of"
 msgstr "meses com mínimo de"
 
-#: templates/investment/plans.html:57
+#: templates/investment/plans.html:59
 msgid "Select the desired grace period"
 msgstr "Selecione o período de carência desejado"
 
-#: templates/investment/plans.html:60
+#: templates/investment/plans.html:62
 msgid "Desired BTC amount to be invested"
 msgstr "Quantidade de BTC a ser investida"
 
-#: templates/investment/plans.html:63
+#: templates/investment/plans.html:65
 msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
-#: templates/investment/plans.html:117
+#: templates/investment/plans.html:119
 msgid "Message"
 msgstr ""
 
@@ -572,17 +593,17 @@ msgstr "Sacar"
 msgid "Request <span>Card</span>"
 msgstr "Solicitar <span>Cartão</span>"
 
-#: templates/request-card.html:86
+#: templates/request-card.html:43
 msgid "REQUEST YOUR CARD"
 msgstr "SOLICITE SEU CARTÃO"
 
-#: templates/request-card.html:87
+#: templates/request-card.html:44
 msgid "Here on Xfactor, you have a card for each type of investment"
 msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
 
-#: templates/request-card.html:108
-msgid "Request now"
-msgstr "Solicitar Agora"
+#: templates/request-card.html:292
+msgid "<strong>ADVISOR</strong> COURSE"
+msgstr ""
 
 #: templates/select-account.html:58
 msgid "BITCOIN QUOTE"
@@ -635,18 +656,3 @@ msgstr "Não possui uma conta?"
 #: templates/two_factor/core/login.html:83
 msgid "Open Account"
 msgstr "Abrir Conta"
-
-#~ msgid "Your are in your checking account"
-#~ msgstr "Você está na sua conta corrente"
-
-#~ msgid "Back to previous page"
-#~ msgstr "Voltar a página anterior"
-
-#~ msgid "Investment Plans"
-#~ msgstr "Planos de Investimento"
-
-#~ msgid "Investing > Plans"
-#~ msgstr "Investimento > Planos"
-
-#~ msgid "To withdraw"
-#~ msgstr "Sacar"

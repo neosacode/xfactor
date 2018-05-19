@@ -152,25 +152,13 @@ main .box-nome .bread {
     }
 }
 
-main .box-nome .bread .box-1 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-}
-
 main .box-nome .bread .box-1 img {
-    margin-right: 10px
+    position: relative;
+    top: 7px;
 }
 
 main .box-nome .bread .box-1 h1 {
-    margin-right: 10px;
+    margin-top: -35px;
     color: #0950a0
 }
 
@@ -427,4 +415,55 @@ main .box-nome .bread .box-2 .imagem-2 {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 15px;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 10px;
+    font-size: 13px;
+}
+
+.table thead tr th {
+    background-color: #0a428a;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: normal;
+    border-radius: 3px;
+    text-align: center;
+    border: 0 !important;
+    padding: 5px !important;
+    min-width: 200px;
+}
+
+.table tbody tr td {
+    border: solid 1px #0a428a !important;
+    border-radius: 3px;
+    text-align: center;
+    padding: 5px !important;
+}
+
+.table thead tr th.pink-th {
+    background-color: #ef2e88;
+}
+
+.table tbody tr td.grey-td {
+    background-color: #bebebe;
+    border: 0 !important;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.table-wrapper {
+    overflow-x: hidden;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-top: -30px;
+}
+
+.tablesaw-advance {
+    margin-right: 10px;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

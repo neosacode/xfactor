@@ -63,13 +63,6 @@ main .content .box-1 {
     margin-top: 50px
 }
 
-@media (min-width: 992px) {
-    main .content .box-1 {
-        float: left;
-        width: 41.66667%
-    }
-}
-
 main .content .box-1 .margem {
     border: solid 2px #e2e2e2;
     background-color: #fff;
@@ -143,17 +136,7 @@ main .content .box-1 .margem .avatar .selecione p {
 main .content .box-2 {
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 109px;
     margin-bottom: 100px
-}
-
-@media (min-width: 992px) {
-    main .content .box-2 {
-        float: left;
-        width: 58.33333%
-    }
 }
 
 main .content .box-2 .margem {
@@ -225,17 +208,7 @@ main .content .box-2 .margem button {
 main .content .box-3 {
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 50px;
     margin-bottom: 100px
-}
-
-@media (min-width: 992px) {
-    main .content .box-3 {
-        float: left;
-        width: 41.66667%
-    }
 }
 
 main .content .box-3 .margem {

@@ -4,6 +4,7 @@
 {% load lang %}
 {% load exchange %}
 {% load mathfilters %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,14 +61,14 @@ if(w.style.display=="block"){w.style.display='none';}else{
                         <div class="real">
                             <div class="valor">
                                 <img src="{% static "img/bit-rosa.png" %}" alt="">
-                                <h2>R$ {{ btc_br_price|floatformat:2|localize }}</h2>
+                                <h2>R$ {{ btc_br_price|floatformat:2|intcomma }}</h2>
                             </div>
                             <p>{% trans "Bitcoin/REAL quote" %} | <span><a href="https://bitvalor.com/" target="_blank">Bitvalor</a></span></p>
                         </div>
                         <div class="dolar">
                             <div class="valor">
                                 <img src="{% static "img/bit-rosa.png" %}" alt="">
-                                <h2>$ {{ btc_usd_price|floatformat:2 }}</h2>
+                                <h2>$ {{ btc_usd_price|floatformat:2|intcomma }}</h2>
                             </div>
                             <p>{% trans "Bitcoin/Dollar quote" %} | <span><a href="https://coinmarketcap.com/" target="_blank">CoinMarketCap</a></span></p>
                         </div>
@@ -82,15 +83,15 @@ if(w.style.display=="block"){w.style.display='none';}else{
             <div class="investimentos">
                 <div class="conta-1">
                     <h2>{% trans "Checking <br>Account" %}</h2>
-                    <h3>$ {{ checking_account_usd_price|floatformat:2 }}</h3>
-                    <h4>R$ {{ checking_account_br_price|floatformat:2 }}</h4>
+                    <h3>$ {{ checking_account_usd_price|floatformat:2|intcomma }}</h3>
+                    <h4>R$ {{ checking_account_br_price|floatformat:2|intcomma }}</h4>
                     <h5>{{ checking_account.balance }} BTC</h5>
                     <a href="{% url "xfactor>checking" %}">{% trans "Enter" %}</a>
                 </div>
                 <div class="conta-2">
                     <h2>{% trans "Investments <br>Account" %}</h2>
-                    <h3>$ {{ investments_account_usd_price|floatformat:2 }}</h3>
-                    <h4>R$ {{ investments_account_br_price|floatformat:2 }}</h4>
+                    <h3>$ {{ investments_account_usd_price|floatformat:2|intcomma }}</h3>
+                    <h4>R$ {{ investments_account_br_price|floatformat:2|intcomma }}</h4>
                     <h5>{{ investments_account.balance }} BTC</h5>
                     <a href="{% url "xfactor>investment" %}">{% trans "Enter" %}</a>
                 </div>
