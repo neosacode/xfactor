@@ -15,7 +15,7 @@ from django.utils import timezone
 from django.db import transaction
 from jsonview.decorators import json_view
 
-from .models import Plans, Charges, PlanGracePeriods
+from .models import Plans, Investments, PlanGracePeriods
 
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
@@ -29,12 +29,12 @@ class PlansView(TemplateView):
     template_name = 'investment/plans.html'
 
     def get(self, request):
-        if Charges.objects.filter(account__user=self.request.user).exists():
+        if Investments.objects.filter(account__user=self.request.user).exists():
             return redirect(reverse('xfactor>investment'))
 
         plans = Plans.objects.filter(status=Plans.STATUS.active).order_by('order')
-        charges = Charges.objects.filter(account__user=request.user)
-        return render(request, self.template_name, {'plans': plans, 'charges': charges})
+        investments = Investments.objects.filter(account__user=request.user)
+        return render(request, self.template_name, {'plans': plans, 'investments': investments})
 
 
 @method_decorator([json_view, login_required], name='dispatch')
@@ -55,27 +55,27 @@ class MyPlansView(TemplateView):
 
     def get(self, request):
         user = request.user
-        charges = Charges.objects.filter(account__user=user).exclude(status=Charges.STATUS.cancelled)
-        return render(request, self.template_name, { 'charges': charges})
+        investments = Investments.objects.filter(account__user=user).exclude(status=Investments.STATUS.cancelled)
+        return render(request, self.template_name, { 'investments': investments})
 
 
 @method_decorator([login_required], name='dispatch')
 class CancelNoFidelityPlanView(TemplateView):
     def get(self, request):
-        charge_id = request.GET['charge']
-        charge = Charges.objects.get(account__user=request.user, pk=charge_id)
+        investment_id = request.GET['charge']
+        investment = Investments.objects.get(account__user=request.user, pk=investment_id)
 
-        if charge.plan_grace_period.grace_period.months > 0:
+        if investment.plan_grace_period.grace_period.months > 0:
             messages.error(request, _("This plan can't be cancelled"))
 
         with transaction.atomic():
-            account = charge.account
-            account.reserved -= charge.amount
-            account.deposit += charge.amount
+            account = investment.account
+            account.reserved -= investment.amount
+            account.deposit += investment.amount
             account.save()
 
-            charge.status = Charges.STATUS.cancelled
-            charge.save()
+            investment.status = Investments.STATUS.cancelled
+            investment.save()
             
             messages.success(request, _("Your non-fidelity investment has been cancelled"))
         return redirect(reverse('financial-my-plans'))
@@ -84,7 +84,7 @@ class CancelNoFidelityPlanView(TemplateView):
 @method_decorator([login_required, json_view], name='dispatch')
 class CreateInvestmentView(View):
     def post(self, request):
-        if Charges.objects.filter(account__user=self.request.user).exists():
+        if Investments.objects.filter(account__user=self.request.user).exists():
             return redirect(reverse('xfactor>investment'))
 
         grace_period_pk = request.POST['grace_period']
@@ -107,13 +107,13 @@ class CreateInvestmentView(View):
                 "ERROR! Your {} account does not have enought deposit amount".format(checking_account.currency.name))}
         else:
             with transaction.atomic():
-                charge = Charges()
-                charge.plan_grace_period = grace_period
-                charge.account = checking_account
-                charge.amount = amount
-                charge.status = Charges.STATUS.paid
-                charge.paid_date = timezone.now()
-                charge.save()
+                investment = Investments()
+                investment.plan_grace_period = grace_period
+                investment.account = checking_account
+                investment.amount = amount
+                investment.status = Investments.STATUS.paid
+                investment.paid_date = timezone.now()
+                investment.save()
 
 
                 if grace_period.grace_period.months > 0:
@@ -129,7 +129,7 @@ class CreateInvestmentView(View):
                         income = Incomes()
                         income.date = dt
                         income.amount = income_table[date_index]
-                        income.charge = charge
+                        income.investment = investment
                         income.save() 
 
                         date_index += 1
@@ -145,7 +145,7 @@ class CreateInvestmentView(View):
                 statement.amount = Decimal('0.00') - amount
                 statement.type = Statement.TYPES.investment
                 statement.description = 'New investment'
-                statement.fk = charge.pk
+                statement.fk = investment.pk
                 statement.save()
 
                 statement = Statement()
@@ -153,7 +153,7 @@ class CreateInvestmentView(View):
                 statement.amount = amount
                 statement.type = Statement.TYPES.investment
                 statement.description = 'New investment'
-                statement.fk = charge.pk
+                statement.fk = investment.pk
                 statement.save()
 
 

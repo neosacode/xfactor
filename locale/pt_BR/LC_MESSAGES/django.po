@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-19 21:04+0000\n"
+"POT-Creation-Date: 2018-05-20 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Insufficient funds"
 msgstr ""
 
-#: apps/investment/apps.py:7
+#: apps/investment/apps.py:7 apps/investment/models.py:104
 msgid "Investments"
 msgstr "Investimentos"
 
-#: apps/investment/forms.py:18
+#: apps/investment/forms.py:18 apps/investment/models.py:59
 msgid "Payment Type"
 msgstr ""
 
@@ -97,89 +97,99 @@ msgstr ""
 msgid "The e-mails aren't equal"
 msgstr ""
 
-#: apps/investment/models.py:23 templates/investment/plans.html:32
+#: apps/investment/models.py:24 templates/investment/plans.html:32
 msgid "Min down"
 msgstr "Invest. Min:"
 
-#: apps/investment/models.py:24 templates/investment/plans.html:33
+#: apps/investment/models.py:25 templates/investment/plans.html:33
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:25 templates/investment/plans.html:35
+#: apps/investment/models.py:26 templates/investment/plans.html:35
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:26
-#, fuzzy
-#| msgid "Allow monthly withdraw"
+#: apps/investment/models.py:27
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:30
+#: apps/investment/models.py:31 apps/investment/models.py:55
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:31
+#: apps/investment/models.py:32
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:39
+#: apps/investment/models.py:40
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:42
+#: apps/investment/models.py:43
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:43
+#: apps/investment/models.py:44
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:56
-#, fuzzy
-#| msgid "Income percent:"
+#: apps/investment/models.py:56 templates/investment/plans.html:49
+msgid "Grace Period"
+msgstr "Carência"
+
+#: apps/investment/models.py:57
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
-#: apps/investment/models.py:57
+#: apps/investment/models.py:58
 msgid "Membership fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:59 templates/core/statement.html:73
+#: apps/investment/models.py:60 templates/core/statement.html:74
 msgid "Currency"
 msgstr "Moeda"
 
-#: apps/investment/models.py:62 apps/investment/models.py:79
+#: apps/investment/models.py:63 apps/investment/models.py:80
 msgid "Plan grace period"
 msgstr "Carência do plano"
 
-#: apps/investment/models.py:63
+#: apps/investment/models.py:64
 msgid "Plan grace periods"
 msgstr "Carências do plano"
 
-#: apps/investment/models.py:103
-msgid "Charge"
-msgstr "Cobrança"
+#: apps/investment/models.py:69
+#, python-brace-format
+msgid "{plan} with {grace_period} months"
+msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:104
-msgid "Charges"
-msgstr "Cobranças"
+#: apps/investment/models.py:81 templates/core/statement.html:78
+msgid "Amount"
+msgstr ""
+
+#: apps/investment/models.py:82
+#| msgid "Open Account"
+msgid "Account"
+msgstr "Conta"
+
+#: apps/investment/models.py:83
+msgid "Paid Date"
+msgstr "Data de Pagamento"
+
+#: apps/investment/models.py:103
+msgid "Investment"
+msgstr "Investimento"
 
 #: apps/investment/models.py:115
-#, fuzzy
-#| msgid "My Incomes"
 msgid "Income"
 msgstr "Meus Rendimentos"
 
 #: apps/investment/models.py:116
-#, fuzzy
-#| msgid "My Incomes"
 msgid "Incomes"
 msgstr "Meus Rendimentos"
 
 #: apps/investment/models.py:121
 msgid "Date to be ignored"
-msgstr ""
+msgstr "Data a ser ignorada"
 
 #: apps/investment/models.py:124
 msgid "Ignore income date"
@@ -245,49 +255,51 @@ msgstr ""
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 
-#: templates/accounts/checking.html:5 templates/accounts/checking.html:28
+#: templates/accounts/checking.html:5 templates/accounts/checking.html:29
 #: templates/core/index.html:147 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
 #: templates/accounts/checking.html:9 templates/accounts/investment.html:9
+#: templates/card.html:10 templates/core/statement.html:12
 #: templates/investment/plans.html:9 templates/request-card.html:10
 msgid "Xfactor"
 msgstr ""
 
-#: templates/accounts/checking.html:32
+#: templates/accounts/checking.html:33
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:38
+#: templates/accounts/checking.html:39
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:44 templates/payments/withdraw.html:7
+#: templates/accounts/checking.html:45 templates/payments/withdraw.html:7
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:50
+#: templates/accounts/checking.html:51
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: templates/accounts/checking.html:56 templates/investment/plans.html:5
+#: templates/accounts/checking.html:57 templates/investment/plans.html:5
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:62
+#: templates/accounts/checking.html:63
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:68 templates/core/statement.html:64
+#: templates/accounts/checking.html:69 templates/core/statement.html:8
+#: templates/core/statement.html:65
 msgid "Statement"
 msgstr "Extrato"
 
-#: templates/accounts/checking.html:74
+#: templates/accounts/checking.html:75 templates/card.html:6
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:80
+#: templates/accounts/checking.html:81
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
@@ -316,8 +328,6 @@ msgid "Selected lack:"
 msgstr "Carência selecionada:"
 
 #: templates/accounts/investment.html:30
-#, fuzzy
-#| msgid "Months"
 msgid "months"
 msgstr "Meses"
 
@@ -431,19 +441,11 @@ msgstr ""
 msgid "Please type your CPF or CNPJ number"
 msgstr ""
 
-#: templates/card.html:6
-msgid "My <span>Card</span>"
-msgstr ""
-
-#: templates/card.html:10
-msgid "Xfactor - My Card"
-msgstr ""
-
-#: templates/core/index.html:95
+#: templates/core/index.html:97
 msgid "Welcome: "
 msgstr "Bem-vindo: "
 
-#: templates/core/index.html:101
+#: templates/core/index.html:103
 msgid "Logout from my account"
 msgstr "Sair da minha conta"
 
@@ -451,35 +453,23 @@ msgstr "Sair da minha conta"
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
-#: templates/core/statement.html:8
-msgid "<span>Statement</span>"
-msgstr "<span>Extrato</span>"
-
-#: templates/core/statement.html:12
-msgid "Xfactor - Account Statement"
-msgstr "Xfactor - Extrato da Conta"
-
-#: templates/core/statement.html:65
+#: templates/core/statement.html:66
 msgid "Here you can follow your checking and investment accounts movements."
-msgstr "Aqui você pode acompanhar as movientações da sua conta corrente e de investimentos"
+msgstr ""
+"Aqui você pode acompanhar as movientações da sua conta corrente e de "
+"investimentos"
 
-#: templates/core/statement.html:74
+#: templates/core/statement.html:75
 msgid "Account Type"
 msgstr ""
 
-#: templates/core/statement.html:75
+#: templates/core/statement.html:76
 msgid "Date"
 msgstr ""
 
-#: templates/core/statement.html:76
-#, fuzzy
-#| msgid "Subscription"
+#: templates/core/statement.html:77
 msgid "Description"
 msgstr "Taxa de adesão"
-
-#: templates/core/statement.html:77
-msgid "Amount"
-msgstr ""
 
 #: templates/investment/plans.html:23
 msgid "Select your plan"
@@ -504,10 +494,6 @@ msgstr ""
 #: templates/investment/plans.html:44
 msgid "Start your investment"
 msgstr "Inicie um novo investimento"
-
-#: templates/investment/plans.html:49
-msgid "Grace Period"
-msgstr "Carência"
 
 #: templates/investment/plans.html:50
 msgid "Choose your plan grace period for this plan"
@@ -605,27 +591,27 @@ msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
 msgid "<strong>ADVISOR</strong> COURSE"
 msgstr ""
 
-#: templates/select-account.html:58
+#: templates/select-account.html:59
 msgid "BITCOIN QUOTE"
 msgstr "COTAÇÃO DO BITCOIN"
 
-#: templates/select-account.html:65
+#: templates/select-account.html:66
 msgid "Bitcoin/REAL quote"
 msgstr "Cotação Bitcoin/REAL"
 
-#: templates/select-account.html:72
+#: templates/select-account.html:73
 msgid "Bitcoin/Dollar quote"
 msgstr "Cotação Bitcoin/Dólar"
 
-#: templates/select-account.html:84
+#: templates/select-account.html:85
 msgid "Checking <br>Account"
 msgstr "Conta <br>Corrente"
 
-#: templates/select-account.html:88 templates/select-account.html:95
+#: templates/select-account.html:89 templates/select-account.html:96
 msgid "Enter"
 msgstr "Entrar"
 
-#: templates/select-account.html:91
+#: templates/select-account.html:92
 msgid "Investments <br>Account"
 msgstr "Conta <br> Investimentos"
 
@@ -656,3 +642,15 @@ msgstr "Não possui uma conta?"
 #: templates/two_factor/core/login.html:83
 msgid "Open Account"
 msgstr "Abrir Conta"
+
+#~ msgid "<span>Statement</span>"
+#~ msgstr "<span>Extrato</span>"
+
+#~ msgid "Xfactor - Account Statement"
+#~ msgstr "Xfactor - Extrato da Conta"
+
+#~ msgid "Charge"
+#~ msgstr "Cobrança"
+
+#~ msgid "Charges"
+#~ msgstr "Cobranças"

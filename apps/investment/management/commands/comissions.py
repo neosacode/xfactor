@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from apps.investment.models import Charges, Statement
+from apps.investment.models import Investments, Statement
 
 
 class Command(BaseCommand):
@@ -9,24 +9,24 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with transaction.atomic():
-            charges = Charges.objects.filter(status='paid')
+            investments = Investments.objects.filter(status='paid')
 
-            for charge in charges:
-                sponsor = charge.user.sponsor
+            for investment in investments:
+                sponsor = investment.user.sponsor
 
                 if not sponsor:
                     continue
 
-                description = 'Indication comission from {}'.format(charge.user.username)
+                description = 'Indication comission from {}'.format(investment.user.username)
                 # Verifica se o rendimento já foi para o cliente, se sim pula para o próximo pagamento
-                statements = Statement.objects.filter(description=description, charge_in_force=charge.user.sponsor.active_charge)
+                statements = Statement.objects.filter(description=description, charge_in_force=investment.user.sponsor.active_charge)
 
                 if statements.exists():
                     continue
 
                 # Paga por enquanto comissões somente para usuários
                 # TODO: Mudar depois para pagar as comissões dos corretores
-                comission_amount = round((charge.plan_grace_period.plan.comission_percent / 100) * charge.amount, 8)
+                comission_amount = round((investment.plan_grace_period.plan.comission_percent / 100) * investment.amount, 8)
 
                 # Cria o rendimento no extrato do cliente
                 if not sponsor.active_charge:

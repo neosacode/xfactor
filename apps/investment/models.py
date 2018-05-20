@@ -1,5 +1,6 @@
 import uuid
 from decimal import Decimal
+from dateutil import rrule
 
 from django.db import models
 from django.contrib import admin
@@ -51,11 +52,11 @@ class PlanGracePeriods(TimeStampedModel, StatusModel, models.Model):
     TYPES = Choices('daily', 'monthly')
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    plan = models.ForeignKey(Plans, related_name='grace_periods', on_delete=models.CASCADE)
-    grace_period = models.ForeignKey(GracePeriods, related_name='plans', on_delete=models.CASCADE)
+    plan = models.ForeignKey(Plans, related_name='grace_periods', verbose_name=_("Plan"), on_delete=models.CASCADE)
+    grace_period = models.ForeignKey(GracePeriods, related_name='plans', verbose_name=_("Grace Period"), on_delete=models.CASCADE)
     income_percent = models.DecimalField(default=Decimal('0.00'), max_digits=20, decimal_places=8, verbose_name=_("Income percent"))
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee")),
-    payment_type = models.CharField(max_length=20, choices=TYPES, default=TYPES.monthly)
+    payment_type = models.CharField(max_length=20, choices=TYPES, default=TYPES.monthly, verbose_name=_("Payment Type"),)
     currency = models.ForeignKey('exchange_core.Currencies', null=True, related_name='place_grace_periods', verbose_name=_("Currency"), on_delete=models.CASCADE)
 
     class Meta:
@@ -65,22 +66,21 @@ class PlanGracePeriods(TimeStampedModel, StatusModel, models.Model):
         ordering = ['grace_period__months']
 
     def __str__(self):
-        return str(self.plan) + ' with ' + str(self.grace_period) + ' months'
+        return _("{plan} with {grace_period} months").format(plan=str(self.plan), grace_period=str(self.grace_period))
 
 
 def gen_code():
     return str(uuid.uuid4().hex)[0:10]
 
 
-class Charges(TimeStampedModel, StatusModel, models.Model):
+class Investments(TimeStampedModel, StatusModel, models.Model):
     STATUS = Choices('pending', 'paid', 'consumed', 'cancelled')
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    plan_grace_period = models.ForeignKey(PlanGracePeriods, related_name='charges', verbose_name=_("Plan grace period"), on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=20, decimal_places=8)
-    account = models.ForeignKey('exchange_core.Accounts', related_name='statement_chages', on_delete=models.CASCADE)
-    code = models.CharField(max_length=10, default=gen_code)
-    paid_date = models.DateTimeField(null=True, blank=True)
+    plan_grace_period = models.ForeignKey(PlanGracePeriods, related_name='investments', verbose_name=_("Plan grace period"), on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Amount"))
+    account = models.ForeignKey('exchange_core.Accounts', related_name='statement_chages', verbose_name=_("Account"), on_delete=models.CASCADE)
+    paid_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Paid Date"))
 
     @property
     def end_date(self):
@@ -94,21 +94,21 @@ class Charges(TimeStampedModel, StatusModel, models.Model):
     # Retorna quantos meses faltam para vencer a carência
     @property
     def remaining_months(self):
-        return round(self.remaining_days / 30)
+        return len(list(rrule.rrule(rrule.MONTHLY, dtstart=timezone.now(), until=self.end_date)))
 
     def __str__(self):
         return str(self.amount)
 
     class Meta:
-        verbose_name = _("Charge")
-        verbose_name_plural = _("Charges")
+        verbose_name = _("Investment")
+        verbose_name_plural = _("Investments")
 
 
 class Incomes(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField()
     amount = models.DecimalField(max_digits=20, decimal_places=8)
-    charge = models.ForeignKey(Charges, related_name='incomes', on_delete=models.CASCADE)
+    investment = models.ForeignKey(Investments, related_name='incomes', on_delete=models.CASCADE, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -142,6 +142,7 @@ class Graduations(models.Model):
     class Meta:
         verbose_name = _("Graduation")
         verbose_name_plural = _("Graduations")
+        unique_together = (('user', 'type'),)
 
     @classmethod
     def get_present(cls, user):
@@ -182,10 +183,17 @@ class PlanGracePeriodsAdmin(BaseAdmin):
     save_as = True
 
 
-@admin.register(Charges)
-class ChargesAdmin(BaseAdmin):
+@admin.register(Investments)
+class InvestmentsAdmin(BaseAdmin):
     list_display = ['plan_grace_period', 'account', 'created', 'status']
     ordering = ('-created',)
+    readonly_fields = ['status_changed', 'status', 'plan_grace_period', 'amount', 'account', 'paid_date']
+
+    class Media:
+        css = {'all': ('css/admin/hide-submit-buttons.css',)}
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(IgnoreIncomeDays)

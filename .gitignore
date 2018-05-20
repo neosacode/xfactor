@@ -101,3 +101,4 @@ venv.bak/
 Pipfile
 Pipfile.lock
 staticfiles/
+staticfiles/staticfiles.json

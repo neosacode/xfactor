@@ -467,3 +467,17 @@ main .box-nome .bread .box-2 .imagem-2 {
 .uppercase {
     text-transform: uppercase;
 }
+
+.parsley-errors-list {
+    margin-top: 5px;
+    color: red;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group select {
+    margin-top: 5px;
+}

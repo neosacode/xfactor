@@ -1,0 +1,69 @@
+{% load static i18n widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100%, initial-scale=1">
+    <title>X-Factor</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/geral.css" %}">
+    <link rel="stylesheet" href="{% static "css/signup.css" %}">
+    <link rel="stylesheet" href="{% static "css/plugins.css" %}">
+        <script>
+function mostra(theId){
+var theArray= new Array('item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8');
+w=document.getElementById(theId)
+if(w.style.display=="block"){w.style.display='none';}else{ 
+
+ 
+ 
+       for(i=0; i<theArray.length; i++){
+            if(theArray[i] == theId){
+                w.style.display='block';
+            }else{
+                document.getElementById(theArray[i]).style.display='none';
+            }
+      }
+      }
+      
+}
+</script>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div class="logo">
+                <img src="{% static "img/logo-login.png" %}" alt="">
+            </div>
+            <div class="voltar">
+                <a href="">{% trans "Back to site" %}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="clearfix"></div>
+            {% if messages %}
+                <div class="messages m-t-20">
+                    {% for message in messages %}
+                        <div {% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="signup">
+
+                {% block body %}{% endblock %}
+            
+            </div>
+
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+       
+       {% block scripts %}{% endblock %}
+    </body>
+</html>

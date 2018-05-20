@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from exchange_core.models import Accounts, Statement
-from apps.investment.models import Charges, IgnoreIncomeDays, PlanGracePeriods
+from apps.investment.models import Investments, IgnoreIncomeDays, PlanGracePeriods
 
 
 class Command(BaseCommand):
@@ -17,17 +17,17 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         while True:
             with transaction.atomic():
-                charges = Charges.objects.filter(status='paid')
+                investments = Investments.objects.filter(status='paid')
 
-                for charge in charges:
+                for investment in investments:
                     # Gera o valor do rendimento
-                    if charge.plan_grace_period.payment_type == PlanGracePeriods.TYPES.daily:
-                        income_amount = round(charge.amount * (charge.plan_grace_period.income_percent / Decimal('100')), 8)
-                    elif charge.plan_grace_period.payment_type == PlanGracePeriods.TYPES.monthly:
+                    if investment.plan_grace_period.payment_type == PlanGracePeriods.TYPES.daily:
+                        income_amount = round(investment.amount * (investment.plan_grace_period.income_percent / Decimal('100')), 8)
+                    elif investment.plan_grace_period.payment_type == PlanGracePeriods.TYPES.monthly:
                         
 
                     # O investimento so sera pago depois de 24 horas
-                    if (charge.paid_date - timezone.now()).days <= 0:
+                    if (investment.paid_date - timezone.now()).days <= 0:
                         continue
 
                     # Ignora os dias marcados como ignorados no sistema
@@ -35,7 +35,7 @@ class Command(BaseCommand):
                         continue
 
                     # Checa se não haverá duplicidade de rendimento
-                    tx_bytes = '{}{}'.format(charge.pk, timezone.now().date()).encode()
+                    tx_bytes = '{}{}'.format(investment.pk, timezone.now().date()).encode()
                     tx_id = hashlib.sha1(tx_bytes).hexdigest()
                     statements = Statement.objects.filter(tx_id=tx_id, created__date=timezone.now().date())
 
@@ -43,7 +43,7 @@ class Command(BaseCommand):
                         continue
 
                     # Transfere o rendimento para a conta do investidor
-                    currency_account = charge.account
+                    currency_account = investment.account
                     currency_account.deposit += income_amount
                     currency_account.save()
 
@@ -54,7 +54,7 @@ class Command(BaseCommand):
                     statement.description = 'Income'
                     statement.type = Statement.TYPES.income
                     statement.tx_id = tx_id
-                    statement.fk = charge.pk
+                    statement.fk = investment.pk
                     statement.save()
 
                     print('Pagando {} para o cliente {}'.format(income_amount, currency_account.user.username))

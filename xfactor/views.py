@@ -12,7 +12,7 @@ from account.decorators import login_required
 
 from exchange_core.models import Accounts, Currencies
 from exchange_core.rates import CurrencyPrice
-from apps.investment.models import Charges, Incomes
+from apps.investment.models import Investments, Incomes
 
 
 @method_decorator([login_required], name='dispatch')
@@ -53,18 +53,18 @@ class InvestmentAccountView(TemplateView):
 
 	def get(self, *args, **kwargs):
 		try:
-			self.charge = Charges.objects.get(account__user=self.request.user)
-		except Charges.DoesNotExist:
+			self.investment = Investments.objects.get(account__user=self.request.user)
+		except Investments.DoesNotExist:
 			return redirect(reverse('investment>plans'))
 		return super().get(*args, **kwargs)
 
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
-		context['charge'] = self.charge
+		context['charge'] = self.investment
 
 		incomes = []
-		incomes_qs = Incomes.objects.filter(charge=self.charge).order_by('date')[0:30]
+		incomes_qs = Incomes.objects.filter(investment=self.investment).order_by('date')[0:30]
 		increment_amount = 0
 
 		for income in incomes_qs:
