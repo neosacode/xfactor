@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-21 13:34+0000\n"
+"POT-Creation-Date: 2018-05-21 21:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,7 +145,7 @@ msgstr "Porcentagem de rendimento:"
 msgid "Membership fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:60 templates/core/statement.html:74
+#: apps/investment/models.py:60 templates/core/statement.html:77
 msgid "Currency"
 msgstr "Moeda"
 
@@ -162,8 +162,8 @@ msgstr "Carências do plano"
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:81 templates/boleto/pay.html:55
-#: templates/core/statement.html:78
+#: apps/investment/models.py:81 templates/boleto/pay.html:61
+#: templates/core/statement.html:76
 msgid "Amount"
 msgstr ""
 
@@ -253,23 +253,74 @@ msgstr "Parabéns! Seu plano de investimento foi criado."
 
 #: apps/investment/views.py:161
 msgid "Someting in your new investment plan didn't work as expected."
-msgstr "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
+msgstr ""
+"Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
 #: templates/account/base.html:41 templates/two_factor/core/login.html:41
 msgid "Back to site"
 msgstr "Voltar ao site"
 
-#: templates/accounts/checking.html:5 templates/accounts/checking.html:29
-#: templates/core/index.html:147 templates/select-account2.html:106
-msgid "Checking Account"
-msgstr "Conta Corrente"
+#: templates/account/settings.html:8 templates/account/settings.html:20
+#: templates/core/index.html:105
+msgid "Settings"
+msgstr ""
 
-#: templates/accounts/checking.html:9 templates/accounts/investment.html:9
-#: templates/boleto/pay.html:10 templates/card.html:10
-#: templates/core/statement.html:12 templates/investment/plans.html:9
-#: templates/request-card.html:10
+#: templates/account/settings.html:12 templates/accounts/checking.html:9
+#: templates/accounts/investment.html:9 templates/boleto/pay.html:10
+#: templates/card.html:10 templates/core/statement.html:12
+#: templates/investment/plans.html:9 templates/request-card.html:10
+#: templates/two_factor/_base.html:9
 msgid "Xfactor"
 msgstr ""
+
+#: templates/account/settings.html:21
+msgid "Here you can change your Xfactor settings as you prefer."
+msgstr "Aqui você pode alterar as suas configurações da Xfactor como preferir."
+
+#: templates/account/settings.html:27 templates/core/settings.html:12
+msgid "My Avatar"
+msgstr ""
+
+#: templates/account/settings.html:31 templates/core/settings.html:16
+msgid "Select a new avatar image using the field below"
+msgstr ""
+
+#: templates/account/settings.html:38 templates/core/settings.html:23
+msgid "Update"
+msgstr ""
+
+#: templates/account/settings.html:53 templates/core/settings.html:38
+msgid "Change My Password"
+msgstr ""
+
+#: templates/account/settings.html:63 templates/account/settings.html:89
+#: templates/core/settings.html:48 templates/core/settings.html:74
+msgid "Save"
+msgstr ""
+
+#: templates/account/settings.html:69 templates/core/settings.html:54
+#, fuzzy
+#| msgid "Open Account"
+msgid "Bank Account"
+msgstr "Abrir Conta"
+
+#: templates/account/settings.html:73 templates/core/settings.html:58
+msgid "This bank account must belong to"
+msgstr ""
+
+#: templates/account/settings.html:73 templates/core/settings.html:58
+msgid "Click here to know why."
+msgstr ""
+
+#: templates/account/settings.html:74 templates/core/settings.html:59
+msgid ""
+"This bank account will be used for the withdrawals made with the BRL account"
+msgstr ""
+
+#: templates/accounts/checking.html:5 templates/accounts/checking.html:29
+#: templates/core/index.html:142 templates/select-account2.html:106
+msgid "Checking Account"
+msgstr "Conta Corrente"
 
 #: templates/accounts/checking.html:33
 msgid "available balance"
@@ -450,51 +501,76 @@ msgstr "VERIFIQUE OS DADOS E PAGUE SEU BOLETO"
 msgid ""
 "Check if the bank slip data below is correct and click on the right pay "
 "button"
-msgstr "Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
+msgstr ""
+"Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
 
-#: templates/boleto/pay.html:53
+#: templates/boleto/pay.html:55
 msgid "Bank name"
 msgstr "Nome do banco"
 
-#: templates/boleto/pay.html:54
+#: templates/boleto/pay.html:58
 msgid "Due date"
 msgstr "Vencimento"
 
-#: templates/boleto/pay.html:56
+#: templates/boleto/pay.html:64
 msgid "PAY BANK SLIP"
 msgstr "PAGAR BOLETO"
 
-#: templates/boleto/pay.html:129
+#: templates/boleto/pay.html:137
 msgid "Bank Slip Not Found"
 msgstr "Boleto Não Encontrado"
 
-#: templates/boleto/pay.html:129
+#: templates/boleto/pay.html:137
 msgid "Please manually type below your bank slip data"
 msgstr "Por favor digite manualmente os dados do seu boleto"
 
-#: templates/boleto/pay.html:134 templates/boleto/pay.html:137
+#: templates/boleto/pay.html:142 templates/boleto/pay.html:145
 msgid "Missing Data!"
 msgstr "Dados Faltando!"
 
-#: templates/boleto/pay.html:134
+#: templates/boleto/pay.html:142
 msgid "Please type your name or your company name"
 msgstr "Por favor digite o seu nome ou o nome da sua empresa"
 
-#: templates/boleto/pay.html:137
+#: templates/boleto/pay.html:145
 msgid "Please type your CPF or CNPJ number"
 msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
-#: templates/core/index.html:97
+#: templates/core/index.html:98
 msgid "Welcome: "
 msgstr "Bem-vindo: "
 
-#: templates/core/index.html:103
+#: templates/core/index.html:104 templates/two_factor/_base.html:5
+#: templates/two_factor/_base.html:16
+msgid "Two Factor Authentication"
+msgstr ""
+
+#: templates/core/index.html:110
 msgid "Logout from my account"
 msgstr "Sair da minha conta"
 
-#: templates/core/index.html:137
+#: templates/core/index.html:132
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
+
+#: templates/core/statement.html:36
+#| msgid "Withdraw "
+msgid "Total Withdraw"
+msgstr "Total Sacado"
+
+#: templates/core/statement.html:43
+msgid "Card Balance"
+msgstr "Saldo do Cartão"
+
+#: templates/core/statement.html:50
+#| msgid "Invest"
+msgid "Total Invested"
+msgstr "Total Investido"
+
+#: templates/core/statement.html:57
+#| msgid "Available for withdraw:"
+msgid "Available Limit"
+msgstr "Limite Disponível"
 
 #: templates/core/statement.html:66
 msgid "Here you can follow your checking and investment accounts movements."
@@ -502,17 +578,17 @@ msgstr ""
 "Aqui você pode acompanhar as movientações da sua conta corrente e de "
 "investimentos"
 
-#: templates/core/statement.html:75
-msgid "Account Type"
-msgstr ""
-
-#: templates/core/statement.html:76
+#: templates/core/statement.html:74
 msgid "Date"
 msgstr ""
 
-#: templates/core/statement.html:77
+#: templates/core/statement.html:75
 msgid "Description"
 msgstr "Taxa de adesão"
+
+#: templates/core/statement.html:78
+msgid "Account Type"
+msgstr ""
 
 #: templates/investment/plans.html:23
 msgid "Select your plan"

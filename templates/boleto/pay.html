@@ -24,14 +24,14 @@
 	{% include "back-button.html" with margin_top='30px' %}
 
 	<div class="alert alert-danger">
-		<h2><strong>{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a></h2>
+		<strong>{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a>
 	</div>
 
 	<div class="row">
 		<div class="col-md-5">
 			<div class="box-3">
 				<div class="margem">
-					<h2>{% trans "NEW PAYMENT" %}</h2>
+					<h2 class="b tx-20">{% trans "NEW PAYMENT" %}</h2>
 					<p>{% trans "Request new payment" %}</p>
 					<form action="">
 						<input type="text" placeholder="{% trans "Barcode" %}">
@@ -46,13 +46,21 @@
 		<div class="col-md-7">
 			<div class="box-2">
 				<div class="margem">
-					<h2>{% trans "CHECK THE DATA AND PAY YOUR BANK SLIP" %}</h2>
+					<h2 class="b tx-20">{% trans "CHECK THE DATA AND PAY YOUR BANK SLIP" %}</h2>
 					<p>{% trans "Check if the bank slip data below is correct and click on the right pay button" %}</p>
 					<img src="{% static "img/barras.png" %}" alt="">
 					<form action="">
-						<input type="text" placeholder="{% trans "Bank name" %}">
-						<input type="text" placeholder="{% trans "Due date" %}">
-						<input type="text" placeholder="{% trans "Amount" %}">
+						<div class="row">
+							<div class="col-md-4">
+								<input type="text" class="form-control" placeholder="{% trans "Bank name" %}">
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control" placeholder="{% trans "Due date" %}">
+							</div>
+							<div class="col-md-4">
+								<input type="text" class="form-control" placeholder="{% trans "Amount" %}">
+							</div>
+						</div>
 						<button>{% trans "PAY BANK SLIP" %}</button>
 					</form>
 				</div>

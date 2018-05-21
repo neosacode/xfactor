@@ -25,6 +25,8 @@
 
         .content {
             background-image: url("{% static "img/fundo-login.jpg" %}");
+            -webkit-background-size: cover;
+            background-size: cover;
         }
 
         .plan-title {
@@ -38,6 +40,8 @@
 {% endblock %}
 
 {% block content %} 
+    {% include "card-modal.html" %}
+
     <div class="container">
         <div class="investment">
             <h2><strong>{% trans "REQUEST YOUR CARD" %}</strong></h2>
@@ -171,6 +175,10 @@
                             </div>
 
                         </div>
+
+                        <div id="request-card-app">
+                            <a href="#" class="btn btn-block btn-pink" data-toggle="modal" data-target="#card-modal">{% trans "Upgrade Now" %}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -282,6 +290,9 @@
                             </div>
 
                         </div>
+                        <div id="request-card-app">
+                            <a href="#" class="btn btn-block btn-pink" data-toggle="modal" data-target="#card-modal">{% trans "Request Card" %}</a>
+                        </div>
                     </div>
                </div>
 
@@ -294,10 +305,13 @@
                             <img src="{% static "img/clock.png" %}" alt="">
                             <h2><strong>Coming</strong><br>Soon</h2>
                         </div>
+
+                        <div id="request-card-app">
+                            <a href="#" class="btn btn-block btn-pink" data-toggle="modal" data-target="#card-modal">{% trans "Sign me up" %}</a>
+                        </div>
                     </div>
                 </div>
             </div>
-                
         </div>
         
     </div>

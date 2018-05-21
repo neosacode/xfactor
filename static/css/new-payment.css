@@ -171,16 +171,16 @@ main .content .box-2 .margem img {
 }
 
 main .content .box-2 .margem input {
-    background-color: transparent;
-    border: solid 1px #e2e2e2;
-    outline: none;
-    height: 40px;
-    font-size: 12px !important;
-    
+    font-size: 12px;
     font-weight: bold;
-    padding-left: 20px;
-    width: 30%;
-    margin: 7px
+}
+
+main .content .box-2 .margem input:first-child {
+    margin-left: 0;
+}
+
+main .content .box-2 .margem input:last-child {
+    margin-right: 0;
 }
 
 main .content .box-2 .margem ::-webkit-input-placeholder {
@@ -227,7 +227,6 @@ main .content .box-3 .margem h2 {
 main .content .box-3 .margem p {
     color: #0a2357;
     padding-top: 15px;
-    padding-bottom: 15px
 }
 
 main .content .box-3 .margem p span {
@@ -244,7 +243,9 @@ main .content .box-3 .margem input {
     font-weight: bold;
     padding-left: 20px;
     width: 100%;
-    margin: 7px
+    margin: 7px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 main .content .box-3 .margem ::-webkit-input-placeholder {

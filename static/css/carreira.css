@@ -32,7 +32,18 @@
 .investment .investment-1 .box {
     background-color: #fff;
     border-radius: 5px;
-    border-bottom: solid 10px #ce3284
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.investment .investment-1 .btn-pink {
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .investment .investment-1 .box h3 {
@@ -151,7 +162,9 @@
 }
 
 .investment .investment-1 .box .comission-2 .part-1 img {
-    margin-right: 5px
+    margin-right: 5px;
+    position: relative;
+    top: -5px;
 }
 
 .investment .investment-1 .box .comission-2 .part-1 h5 {
@@ -177,6 +190,12 @@
     font-weight: bold;
     font-family: Montserrat;
     color: #c72022
+}
+
+.investment .investment-1 .box .comission-2 .part-2 img {
+    position: relative;
+    top: -8px;
+    margin-right: 5px;
 }
 
 .investment .investment-1 .box .comission-2 .part-2 p span {

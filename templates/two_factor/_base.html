@@ -1,0 +1,24 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans "Two Factor Authentication" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+{% block content_before %}
+	{% include "back-button.html" with margin_top='30px' %}
+
+	<div class="page-big-title">
+      <h2 class="uppercase">{% trans "Two Factor Authentication" %}</h2>
+    </div>
+
+    <div class="white-box">
+{% endblock %}
+
+{% block content_after %}
+	</div>
+{% endblock %}

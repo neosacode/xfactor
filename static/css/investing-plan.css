@@ -35,9 +35,12 @@ main .content .conteudo-1 .plano-3 p,
 main .content .conteudo-1 .plano-4 p {
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
     border-bottom: solid 1px #fbe2e2;
+    font-size: 14px;
+    text-align: center;
 }
 
 main .content .conteudo-1 .plano-1 p span,
@@ -108,7 +111,8 @@ main .content .conteudo-1 .plano-3 .titulo h2,
 main .content .conteudo-1 .plano-4 .titulo h2 {
     font-weight: bold;
     padding: 25px 25px;
-    color: #fff
+    color: #fff;
+    font-size: 18px;
 }
 
 @media (max-width: 991px) {

@@ -33,35 +33,35 @@
         <div class="item">
           <img src="{% static "img/credit-1.png" %}" alt="">
           <div>
-            <p>Amount invested</p>
-            <p><span>0.45000</span></p>
+            <p>{% trans "Total Withdraw" %}</p>
+            <p><span>0.00000000</span></p>
           </div>
         </div>
         <div class="item">
           <img src="{% static "img/statement-4.png" %}" alt="">
           <div>
-            <p>Limit(40%)</p>
-            <p><span>0.18000</span></p>
+            <p>{% trans "Card Balance" %}</p>
+            <p><span>0.00000000</span></p>
           </div>
         </div>
         <div class="item">
           <img src="{% static "img/statement-3.png" %}" alt="">
           <div>
-            <p>Loan Limit(30%)</p>
-            <p><span>0.13500</span></p>
+            <p>{% trans "Total Invested" %}</p>
+            <p><span>0.00000000</span></p>
           </div>
         </div>
         <div class="item">
           <img src="{% static "img/statement-2.png" %}" alt="">
           <div>
-            <p>Overdraft Limit</p>
-            <p><span>0.04500</span></p>
+            <p>{% trans "Available Limit" %}</p>
+            <p><span>0.00000000</span></p>
           </div>
         </div>
       </div>
 
       <div class="box-3">
-        <div class="title">
+        <div class="page-big-title">
           <h2 class="uppercase">{% trans "Statement" %}</h2>
           <p>{% trans "Here you can follow your checking and investment accounts movements." %}</p>
         </div>
@@ -71,21 +71,21 @@
             <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
               <thead>
                 <tr>
-                  <th>{% trans "Currency" %}</th>
-                  <th>{% trans "Account Type" %}</th>
                   <th>{% trans "Date" %}</th>
                   <th>{% trans "Description" %}</th>
                   <th class="pink-th">{% trans "Amount" %}</th>
+                  <th>{% trans "Currency" %}</th>
+                  <th>{% trans "Account Type" %}</th>
                 </tr>
               </thead>
               <tbody>
                 {% for item in statement %}
                 <tr>
-                  <td>{% trans item.account.currency.symbol %}</td>
-                  <td>{% trans item.account.currency.type_title %}</td>
                   <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
                   <td>{{ item.description }}</td>
                   <td class="grey-td">{{ item.amount }}</td>
+                  <td>{% trans item.account.currency.symbol %}</td>
+                  <td>{% trans item.account.currency.type_title %}</td>
                 </tr>
                 {% endfor %}
               </tbody>
