@@ -109,7 +109,7 @@ class CreateInvestmentView(View):
             with transaction.atomic():
                 investment = Investments()
                 investment.plan_grace_period = grace_period
-                investment.account = checking_account
+                investment.account = investment_account
                 investment.amount = amount
                 investment.status = Investments.STATUS.paid
                 investment.paid_date = timezone.now()

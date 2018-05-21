@@ -1,11 +1,12 @@
 import uuid
 
 from django.contrib import messages
+from django.utils import timezone
 from django.utils.decorators import method_decorator
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils.translation import ugettext_lazy as _
 from django.urls import reverse
 from account.decorators import login_required
 
@@ -64,7 +65,7 @@ class InvestmentAccountView(TemplateView):
 		context['charge'] = self.investment
 
 		incomes = []
-		incomes_qs = Incomes.objects.filter(investment=self.investment).order_by('date')[0:30]
+		incomes_qs = Incomes.objects.filter(investment=self.investment, date__lte=timezone.now()).order_by('date')
 		increment_amount = 0
 
 		for income in incomes_qs:

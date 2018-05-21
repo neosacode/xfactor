@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 15:57+0000\n"
+"POT-Creation-Date: 2018-05-21 13:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,12 +162,12 @@ msgstr "Carências do plano"
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:81 templates/core/statement.html:78
+#: apps/investment/models.py:81 templates/boleto/pay.html:55
+#: templates/core/statement.html:78
 msgid "Amount"
 msgstr ""
 
 #: apps/investment/models.py:82
-#| msgid "Open Account"
 msgid "Account"
 msgstr "Conta"
 
@@ -215,7 +215,7 @@ msgstr "Graduação"
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/templates/investment/signup.html:24
+#: apps/investment/templates/investment/signup.html:20
 msgid "Your investment promoter is"
 msgstr "Seu promotor de investimento é"
 
@@ -223,11 +223,11 @@ msgstr "Seu promotor de investimento é"
 msgid "Sign Up"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:61
+#: apps/investment/templates/investment/signup.html:68
 msgid "Already have an account?"
 msgstr "Já possui uma conta?"
 
-#: apps/investment/templates/investment/signup.html:61
+#: apps/investment/templates/investment/signup.html:68
 msgid "Log In"
 msgstr "Acessar"
 
@@ -237,23 +237,27 @@ msgstr "Este plano não pode ser cancelado"
 
 #: apps/investment/views.py:80
 msgid "Your non-fidelity investment has been cancelled"
-msgstr ""
+msgstr "Seu plano sem fidelidade foi cancelado"
 
 #: apps/investment/views.py:104
 msgid "ERROR! The investment amount it is out of the plan limit"
-msgstr ""
+msgstr "ERROR! Valor a ser investido está fora do limite do plano"
 
 #: apps/investment/views.py:107
 msgid "ERROR! Your {} account does not have enought deposit amount"
-msgstr ""
+msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
 #: apps/investment/views.py:160
 msgid "Congratulations! Your investing plan was created."
-msgstr ""
+msgstr "Parabéns! Seu plano de investimento foi criado."
 
 #: apps/investment/views.py:161
 msgid "Someting in your new investment plan didn't work as expected."
-msgstr ""
+msgstr "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
+
+#: templates/account/base.html:41 templates/two_factor/core/login.html:41
+msgid "Back to site"
+msgstr "Voltar ao site"
 
 #: templates/accounts/checking.html:5 templates/accounts/checking.html:29
 #: templates/core/index.html:147 templates/select-account2.html:106
@@ -261,8 +265,9 @@ msgid "Checking Account"
 msgstr "Conta Corrente"
 
 #: templates/accounts/checking.html:9 templates/accounts/investment.html:9
-#: templates/card.html:10 templates/core/statement.html:12
-#: templates/investment/plans.html:9 templates/request-card.html:10
+#: templates/boleto/pay.html:10 templates/card.html:10
+#: templates/core/statement.html:12 templates/investment/plans.html:9
+#: templates/request-card.html:10
 msgid "Xfactor"
 msgstr ""
 
@@ -286,7 +291,7 @@ msgstr "Empréstimo"
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:63
+#: templates/accounts/checking.html:63 templates/boleto/pay.html:6
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
@@ -409,37 +414,75 @@ msgstr "Copiar endereço"
 msgid "Back"
 msgstr ""
 
-#: templates/boleto/pay.html:6
-msgid "Pay <span>Bill</span>"
-msgstr ""
-
-#: templates/boleto/pay.html:10
-msgid "Xfactor - Pay Bill"
-msgstr ""
-
 #: templates/boleto/pay.html:27
 msgid "Request your Xfactor card to access this feature"
 msgstr "Solicite seu cartão Xfactor para ter acesso a essa funcionalidade"
 
+#: templates/boleto/pay.html:34
+msgid "NEW PAYMENT"
+msgstr "NOVO PAGAMENTO"
+
+#: templates/boleto/pay.html:35
+msgid "Request new payment"
+msgstr "Solicitar novo pagamento"
+
+#: templates/boleto/pay.html:37
+msgid "Barcode"
+msgstr "Código de barras"
+
+#: templates/boleto/pay.html:38
+msgid "Your name or campany name"
+msgstr "Seu nome ou da empresa"
+
+#: templates/boleto/pay.html:39
+msgid "CPF/CNPJ"
+msgstr ""
+
+#: templates/boleto/pay.html:40
+msgid "NEXT"
+msgstr "PRÓXIMO"
+
+#: templates/boleto/pay.html:49
+msgid "CHECK THE DATA AND PAY YOUR BANK SLIP"
+msgstr "VERIFIQUE OS DADOS E PAGUE SEU BOLETO"
+
+#: templates/boleto/pay.html:50
+msgid ""
+"Check if the bank slip data below is correct and click on the right pay "
+"button"
+msgstr "Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
+
+#: templates/boleto/pay.html:53
+msgid "Bank name"
+msgstr "Nome do banco"
+
+#: templates/boleto/pay.html:54
+msgid "Due date"
+msgstr "Vencimento"
+
+#: templates/boleto/pay.html:56
+msgid "PAY BANK SLIP"
+msgstr "PAGAR BOLETO"
+
 #: templates/boleto/pay.html:129
 msgid "Bank Slip Not Found"
-msgstr ""
+msgstr "Boleto Não Encontrado"
 
 #: templates/boleto/pay.html:129
 msgid "Please manually type below your bank slip data"
-msgstr ""
+msgstr "Por favor digite manualmente os dados do seu boleto"
 
 #: templates/boleto/pay.html:134 templates/boleto/pay.html:137
 msgid "Missing Data!"
-msgstr ""
+msgstr "Dados Faltando!"
 
 #: templates/boleto/pay.html:134
 msgid "Please type your name or your company name"
-msgstr ""
+msgstr "Por favor digite o seu nome ou o nome da sua empresa"
 
 #: templates/boleto/pay.html:137
 msgid "Please type your CPF or CNPJ number"
-msgstr ""
+msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
 #: templates/core/index.html:97
 msgid "Welcome: "
@@ -517,7 +560,7 @@ msgstr "INICIAR INVESTIMENTO"
 
 #: templates/investment/plans.html:119
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #: templates/payments/withdraw.html:7
 msgid "Withdraw "
@@ -618,10 +661,6 @@ msgstr "Conta <br> Investimentos"
 #: templates/select-account2.html:97
 msgid "Total accounts balance"
 msgstr ""
-
-#: templates/two_factor/core/login.html:41
-msgid "Back to site"
-msgstr "Voltar ao site"
 
 #: templates/two_factor/core/login.html:59
 msgid "Login in, to access your back office"
