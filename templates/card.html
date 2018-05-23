@@ -27,62 +27,49 @@
 			{% include "back-button.html" with margin_top='0' %}
 
 			<div class="alert alert-danger text-center" style="font-size: 18px;">
-				<strong>Você ainda não possui um cartão xfactor:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a>
+				<strong class="tx-14">{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}" class="tx-14">{% trans "Request card" %}</a>
 			</div>
 
 			<div class="box-1">
-				<h2>MEU CARTÃO</h2>
-				<p>Este é seu cartão pre-pago. Você pode adicionar saldo nele sempre que precisar, usando para isto o saldo disponivel em sua conta corrente.</p>
+				<h2>{% trans "MY CARD" %}</h2>
+				<p>{% trans "This is yours card. You can add money in it when you need. The amount will be discount from your checking account" %}</p>
 			</div>
 			<div class="box-2">
-				<img src="{% static "img/card.png" %}" alt="">
+				<img src="{% static "img/cards/01.png" %}" class="img-fluid" width="300" alt="">
 				<div class="saldo">
 					<h3>R$ 0,00</h3>
-					<p>Disponível para uso:</p>
+					<p>{% trans "Available for use" %}:</p>
 				</div>
 			</div>
 			<div class="box-3">
-				<h2>NOVA RECARGA</h2>
+				<h2>{% trans "NEW RECHARGE" %}</h2>
 				<form action="">
-					<input type="text" placeholder="Valor em Reais R$">
-					<input type="text" placeholder="Total em BTC"><br>
-					<input type="password" placeholder="Senha">
-					<input type="text" placeholder="Código Two-Factor">
+					<input type="text" placeholder="{% trans "Amount REAL" %}">
+					<input type="text" placeholder="{% trans "Amount BTC" %}"><br>
+					<input type="password" placeholder="{% trans "Password" %}">
+					<input type="text" placeholder="{% trans "Two Factor Code" %}">
 					<div class="enviar">
-						<div class="botao">
-							<img src="{% static "img/logo-3.png" %}" alt="">
-							<input type="submit" value="RECARREGAR">
-						</div>
-						<h3><span>Saldo conta corrente</span> R$ 0,00</h3>
+						<a href="#" class="btn btn-pink btn-round">{% trans "Recharge" %}</a>
+						<h3><span>{% trans "Card balance" %}</span> R$ 0,00</h3>
 					</div>
 				</form>
 			</div>
 			<div class="box-4">
-				<h2>RECARGAS REALIZADAS</h2>
-				<div class="titulos">
-					<div class="data">
-						<img src="{% static "img/investiment-1.png" %}" alt="">
-						<p>DATA</p>
-					</div>
-					<div class="valor">
-						<img src="{% static "img/insvestiment-2.png" %}" alt="">
-						<p>VALOR</p>
-					</div>
-					<div class="valor-btc">
-						<img src="{% static "img/bit-branco.png" %}" alt="">
-						<p>VALOR BTC</p>
-					</div>
-				</div>
-				
+				<h2>{% trans "RECHARGES" %}</h2>
 
+				<div class="table-wrapper">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>{% trans "Date" %}</th>
+								<th>{% trans "Amount REAIS" %}</th>
+								<th>{% trans "Amount BTC" %}</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 		</div>
-
-
-
-
-
-
 
 		<div class="conteudo-2 col-md-4">
 			<img src="{% static "img/banner-home.jpg" %}" alt="">

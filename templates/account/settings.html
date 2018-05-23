@@ -18,30 +18,30 @@
 
     <div class="page-big-title">
       <h2 class="uppercase">{% trans "Settings" %}</h2>
-      <p>{% trans "Here you can change your Xfactor settings as you prefer." %}</p>
+      <p class="tx-14">{% trans "Here you can change your Xfactor settings as you prefer." %}</p>
     </div>
     
     <div class="row">
       <div class="col-md-4">
-        <form method="POST" enctype="multipart/form-data" class="white-box m-t-20" id="formUpload">
-          <h6><strong><i class="zmdi zmdi-image"></i> {% trans "My Avatar" %}</strong></h6>
+        <form method="POST" enctype="multipart/form-data" class="white-box white-box-border" id="formUpload">
+          <h6><strong class="uppercase text-blue"><i class="zmdi zmdi-image"></i> {% trans "My Avatar" %}</strong></h6>
           <hr>
+          <p class="tx-14">{% trans "Select a new avatar image using the field below" %}</p>
           <div class="row">
             <div class="col-md-8">
-              <p>{% trans "Select a new avatar image using the field below" %}</p>
               {% csrf_token %}
 
               {{ form_avatar.form_name }}
               <input type="file" name="avatar">
 
-              <div class="m-t-20">
-                <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
+              <div class="mt-20">
+                <button class="btn btn-pink btn-round btn-sm b" type="submit">{% trans "Update" %}</button>
               </div>
             </div>
 
             <div class="col-md-4 text-right">
                 {% if not request.user.avatar %}
-                    <img src="https://api.adorable.io/avatars/100/abott@adorable.png" class="rounded-circle">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle img-fluid">
                 {% else %}
                     <img src="{% thumbnail request.user.avatar 100x100 crop %}" class="rounded-circle">
                 {% endif %}
@@ -49,27 +49,27 @@
           </div>
         </form>
 
-        <form method="POST" class="white-box" novalidate>
-          <h6><strong><i class="zmdi zmdi-lock"></i> {% trans "Change My Password" %}</strong></h6>
+        <form method="POST" class="white-box white-box-border" novalidate>
+          <h6><strong class="uppercase text-blue"><i class="zmdi zmdi-lock"></i> {% trans "Change My Password" %}</strong></h6>
           <hr>
 
           {% csrf_token %}
             
           {% for field in form_change_password %}
-              {% include "core/forms/field.html" with field=field %}
+              {% include "core/forms/field.html" with field=field css_classes='tx-14' %}
           {% endfor %}
             
 
-            <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+            <button class="btn btn-pink btn-round btn-sm b" type="submit">{% trans "Save" %}</button>
           </form>
       </div>
 
       <div class="col-md-8">
-        <form method="POST" class="white-box m-t-20" novalidate>
-          <h6><strong><i class="zmdi zmdi-balance"></i> {% trans "Bank Account" %}</strong></h6>
+        <form method="POST" class="white-box white-box-border m-t-20" novalidate>
+          <h6><strong class="uppercase text-blue"><i class="zmdi zmdi-balance"></i> {% trans "Bank Account" %}</strong></h6>
           <hr>
           {% csrf_token %}
-          <p>
+          <p class="tx-14">
             {% trans "This bank account must belong to" %} <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>. <a href="#">{% trans "Click here to know why." %}</a><br>
             {% trans "This bank account will be used for the withdrawals made with the BRL account" %}.
           </p>
@@ -78,7 +78,7 @@
               {% for field in form_bank_account %}
                   {% if not field.is_hidden %}
                       <div class="col-md-6">
-                        {% include "core/forms/field.html" with field=field %}
+                        {% include "core/forms/field.html" with field=field css_classes='tx-14' %}
                       </div>
                   {% else %}
                       {{ field }}
@@ -86,7 +86,18 @@
               {% endfor %}
           </div>
 
-          <button class="btn btn-primary" type="submit">{% trans "Save" %}</button>
+          <button class="btn btn-pink btn-round btn-sm b" type="submit">{% trans "Save" %}</button>
+        </form>
+
+        <form method="POST" class="white-box white-box-border m-t-20" novalidate>
+          <h6><strong class="uppercase text-blue"><i class="zmdi zmdi-balance"></i> {% trans "Address" %}</strong></h6>
+          <hr>
+          {% csrf_token %}
+          
+          {% with WIDGET_ERROR_CLASS='parsley-error' %}
+              {% include "core/forms/address.html" with form=form_address %}
+          {% endwith %}
+          <button class="btn btn-pink btn-round btn-sm b" type="submit">{% trans "Save" %}</button>
         </form>
       </div>
     </div>

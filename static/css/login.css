@@ -28,7 +28,8 @@
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 800px
+    min-height: 800px;
+    margin-top: -90px;
 }
 
 .content .login {
@@ -111,4 +112,9 @@
 
 .content .login form ::-webkit-input-placeholder {
     color: #0a2357
+}
+
+.content .container {
+    margin-top: 100px;
+    padding-top: 80px;
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-21 21:12+0000\n"
+"POT-Creation-Date: 2018-05-22 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Confirm e-mail"
 msgstr ""
 
-#: apps/investment/forms.py:61
+#: apps/investment/forms.py:61 templates/card.html:49
 msgid "Password"
 msgstr ""
 
@@ -281,7 +281,7 @@ msgstr "Aqui você pode alterar as suas configurações da Xfactor como preferir
 msgid "My Avatar"
 msgstr ""
 
-#: templates/account/settings.html:31 templates/core/settings.html:16
+#: templates/account/settings.html:29 templates/core/settings.html:16
 msgid "Select a new avatar image using the field below"
 msgstr ""
 
@@ -294,7 +294,8 @@ msgid "Change My Password"
 msgstr ""
 
 #: templates/account/settings.html:63 templates/account/settings.html:89
-#: templates/core/settings.html:48 templates/core/settings.html:74
+#: templates/account/settings.html:100 templates/core/settings.html:48
+#: templates/core/settings.html:74
 msgid "Save"
 msgstr ""
 
@@ -316,6 +317,12 @@ msgstr ""
 msgid ""
 "This bank account will be used for the withdrawals made with the BRL account"
 msgstr ""
+
+#: templates/account/settings.html:93
+#, fuzzy
+#| msgid "Copy address"
+msgid "Address"
+msgstr "Copiar endereço"
 
 #: templates/accounts/checking.html:5 templates/accounts/checking.html:29
 #: templates/core/index.html:142 templates/select-account2.html:106
@@ -465,7 +472,7 @@ msgstr "Copiar endereço"
 msgid "Back"
 msgstr ""
 
-#: templates/boleto/pay.html:27
+#: templates/boleto/pay.html:27 templates/card.html:30
 msgid "Request your Xfactor card to access this feature"
 msgstr "Solicite seu cartão Xfactor para ter acesso a essa funcionalidade"
 
@@ -536,6 +543,166 @@ msgstr "Por favor digite o seu nome ou o nome da sua empresa"
 msgid "Please type your CPF or CNPJ number"
 msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
+#: templates/card-modal.html:11
+msgid "MAKE YOUR SUBSCRIPTION"
+msgstr "FAÇA A SUA INSCRIÇÃO"
+
+#: templates/card-modal.html:14
+msgid ""
+"To own Xfactor card, you need to first become an investment advisor. To do "
+"so fill out the information below and register for the course that started "
+"in August. Get your card right away!"
+msgstr ""
+"Para possuir o cartão Xfactor, você precisa primeiro se tornar um investidor "
+"consultor. Para isto preencha as informações abaixo e registre-se para o "
+"curso que iniciaráem agosto. Tenha acesso imediato ao seu cartão!"
+
+#: templates/card-modal.html:17
+msgid "Topics that will be covered in the course"
+msgstr "Tópicos que serão abordados neste curso"
+
+#: templates/card-modal.html:22
+msgid "01 - Introduction to Bitcoin"
+msgstr "01 - Introdução ao Bitcoin"
+
+#: templates/card-modal.html:23
+msgid "02 - Blockchain history"
+msgstr "02 - História da Blockhain"
+
+#: templates/card-modal.html:24
+msgid "03 - Types of financial market"
+msgstr "03 - Tipos de mercado financeiro"
+
+#: templates/card-modal.html:25
+msgid "04 - Security and investment"
+msgstr "04 - Segurança e investimento"
+
+#: templates/card-modal.html:26
+msgid "05 - Strategies of investment"
+msgstr "05 - Estratégias de investimento"
+
+#: templates/card-modal.html:27
+msgid "06 - Where's the Bitcoin market going"
+msgstr "06 - Para onde o mercado Bitcoin está indo"
+
+#: templates/card-modal.html:28
+msgid "07 - Technical analysis"
+msgstr "07 - Análise técnica"
+
+#: templates/card-modal.html:33
+msgid "08 - Regulatory aspects of bitcoin"
+msgstr "08 - Aspectos jurídicos do bitcoin"
+
+#: templates/card-modal.html:34
+msgid "09 - How accept Bitcoin in my business"
+msgstr "09 - Como aceitar Bitcoin no seu negócio"
+
+#: templates/card-modal.html:35
+msgid "10 - Sale techniques"
+msgstr "10 - Técnicas de venda"
+
+#: templates/card-modal.html:36
+msgid "11 - Personal marketing"
+msgstr "11 - Marketing pessoal"
+
+#: templates/card-modal.html:37
+msgid "12 - Leadership and development of crews"
+msgstr "12 - Liderança e desenvolvimento de equipes"
+
+#: templates/card-modal.html:38
+msgid "13 - Mindset and NLP"
+msgstr "13 - Mindset e PNL"
+
+#: templates/card-modal.html:45
+msgid "Start now for just <span class='tx-30'>0.03</span> BTC"
+msgstr "Inicie agora por apenas <span class='tx-30'>0.03</span> BTC"
+
+#: templates/card-modal.html:46
+msgid "The course amount will be discount from your checking account"
+msgstr "O valor do curso será descontado da sua conta corrente"
+
+#: templates/card-modal.html:47
+msgid "Your checking account balance is: "
+msgstr "O saldo da sua conta corrente é:"
+
+#: templates/card-modal.html:52
+msgid "Your Password"
+msgstr "Sua Senha"
+
+#: templates/card-modal.html:57
+msgid "Your Two Factor Code"
+msgstr "Seu código 2 fatores"
+
+#: templates/card-modal.html:64
+msgid "I read and agree with the terms: "
+msgstr "Eu li e concordo com os termos:"
+
+#: templates/card-modal.html:64
+msgid "Open terms"
+msgstr "Abrir termos"
+
+#: templates/card-modal.html:69
+msgid "SIGN ME UP"
+msgstr "INSCREVER-ME"
+
+#: templates/card.html:30
+msgid "Request card"
+msgstr "Solicitar cartão"
+
+#: templates/card.html:34
+msgid "MY CARD"
+msgstr "MEU CARTÃO"
+
+#: templates/card.html:35
+msgid ""
+"This is yours card. You can add money in it when you need. The amount will "
+"be discount from your checking account"
+msgstr ""
+"Este é o seu cartão. Você pode adicionar dinheiro nele sempre que precisar. "
+"O valor será discontado automáticamente da sua conta corrente"
+
+#: templates/card.html:41
+msgid "Available for use"
+msgstr "Disponível para uso"
+
+#: templates/card.html:45
+msgid "NEW RECHARGE"
+msgstr "NOVA RECARGA"
+
+#: templates/card.html:47
+#, fuzzy
+#| msgid "Amount REAIS"
+msgid "Amount REAL"
+msgstr "Valor em Reais"
+
+#: templates/card.html:48 templates/card.html:66
+msgid "Amount BTC"
+msgstr "Valor em BTC"
+
+#: templates/card.html:50
+msgid "Two Factor Code"
+msgstr "Código Two Factor"
+
+#: templates/card.html:52
+msgid "Recharge"
+msgstr "Recarga"
+
+#: templates/card.html:53
+msgid "Card balance"
+msgstr "Saldo do Cartão"
+
+#: templates/card.html:58
+msgid "RECHARGES"
+msgstr "RECARGAS"
+
+#: templates/card.html:64 templates/core/statement.html:74
+msgid "Date"
+msgstr "Data"
+
+#: templates/card.html:65
+msgid "Amount REAIS"
+msgstr "Valor em Reais"
+
 #: templates/core/index.html:98
 msgid "Welcome: "
 msgstr "Bem-vindo: "
@@ -554,7 +721,6 @@ msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
 #: templates/core/statement.html:36
-#| msgid "Withdraw "
 msgid "Total Withdraw"
 msgstr "Total Sacado"
 
@@ -563,12 +729,10 @@ msgid "Card Balance"
 msgstr "Saldo do Cartão"
 
 #: templates/core/statement.html:50
-#| msgid "Invest"
 msgid "Total Invested"
 msgstr "Total Investido"
 
 #: templates/core/statement.html:57
-#| msgid "Available for withdraw:"
 msgid "Available Limit"
 msgstr "Limite Disponível"
 
@@ -578,17 +742,13 @@ msgstr ""
 "Aqui você pode acompanhar as movientações da sua conta corrente e de "
 "investimentos"
 
-#: templates/core/statement.html:74
-msgid "Date"
-msgstr ""
-
 #: templates/core/statement.html:75
 msgid "Description"
-msgstr "Taxa de adesão"
+msgstr "Descrição"
 
 #: templates/core/statement.html:78
 msgid "Account Type"
-msgstr ""
+msgstr "Tipo de Conta"
 
 #: templates/investment/plans.html:23
 msgid "Select your plan"
@@ -604,11 +764,11 @@ msgstr "Permite saque mensal"
 
 #: templates/investment/plans.html:36
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: templates/investment/plans.html:36
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: templates/investment/plans.html:44
 msgid "Start your investment"
@@ -684,11 +844,11 @@ msgstr ""
 
 #: templates/payments/withdraw.html:53
 msgid "Your account two factor code"
-msgstr ""
+msgstr "Código 2 Fatores da sua conta"
 
 #: templates/payments/withdraw.html:54
 msgid "two factor code"
-msgstr ""
+msgstr "código 2 fatores"
 
 #: templates/payments/withdraw.html:65
 msgid "Finish Withdraw"
@@ -698,17 +858,33 @@ msgstr "Sacar"
 msgid "Request <span>Card</span>"
 msgstr "Solicitar <span>Cartão</span>"
 
-#: templates/request-card.html:43
+#: templates/request-card.html:50
 msgid "REQUEST YOUR CARD"
 msgstr "SOLICITE SEU CARTÃO"
 
-#: templates/request-card.html:44
+#: templates/request-card.html:51
 msgid "Here on Xfactor, you have a card for each type of investment"
 msgstr "Aqui na Xfactor, você tem um cartão para cada tipo de investimento"
 
-#: templates/request-card.html:292
+#: templates/request-card.html:183
+msgid "Upgrade Now"
+msgstr ""
+
+#: templates/request-card.html:297
+#, fuzzy
+#| msgid "Request <span>Card</span>"
+msgid "Request Card"
+msgstr "Solicitar <span>Cartão</span>"
+
+#: templates/request-card.html:306
 msgid "<strong>ADVISOR</strong> COURSE"
 msgstr ""
+
+#: templates/request-card.html:313
+#, fuzzy
+#| msgid "Sign Up"
+msgid "Sign me up"
+msgstr "Abrir Conta"
 
 #: templates/select-account.html:59
 msgid "BITCOIN QUOTE"
@@ -738,23 +914,23 @@ msgstr "Conta <br> Investimentos"
 msgid "Total accounts balance"
 msgstr ""
 
-#: templates/two_factor/core/login.html:59
+#: templates/two_factor/core/login.html:61
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
 
-#: templates/two_factor/core/login.html:79
+#: templates/two_factor/core/login.html:81
 msgid "Log in"
 msgstr "Acessar Conta"
 
-#: templates/two_factor/core/login.html:81
+#: templates/two_factor/core/login.html:83
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/two_factor/core/login.html:83
+#: templates/two_factor/core/login.html:85
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/login.html:83
+#: templates/two_factor/core/login.html:85
 msgid "Open Account"
 msgstr "Abrir Conta"
 
@@ -763,9 +939,6 @@ msgstr "Abrir Conta"
 
 #~ msgid "Xfactor - Account Statement"
 #~ msgstr "Xfactor - Extrato da Conta"
-
-#~ msgid "Charge"
-#~ msgstr "Cobrança"
 
 #~ msgid "Charges"
 #~ msgstr "Cobranças"

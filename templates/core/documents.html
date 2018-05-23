@@ -1,0 +1,169 @@
+{% extends "core/index.html" %}
+
+{% load i18n %}
+{% load thumbnail %}
+
+
+{% block content %}
+    <div class="page-big-title">
+      <h2 class="uppercase">{% trans "Documents" %}</h2>
+    </div>
+
+    {% if request.user.status == 'created' %}
+		<div class="alert alert-danger mb-50">
+					<h3>{% trans "Attention" %}!</h3>
+					{% blocktrans %}
+					Dear user.<br>
+					Any system features will only be available after your documentation has been approved.
+					Only PNG, JPG and JPEG image files are accepted, uploaded to PDF files.
+					Make sure that your documents are legible and according to the data entered in the initial register.
+					Due to the high demand for registrations, the deadline for validating your documents is up to 72 hours.
+					Regards, {{PROJECT_NAME}} - Support team
+					{% endblocktrans %}
+  	</div>
+    {% endif %}
+		{% if request.user.status == 'disapproved_documentation' %}
+		<div class="alert alert-danger mb-50">
+					<h3>{% trans "Disapproved Documents" %}!</h3>
+					{% blocktrans %}
+					Dear user, your documents have been disapproved by our staff, <br>
+						please check if your pictures are legible and in good quality.<br>
+						We also do not accept other people's documents or forged data.<br>
+						Thanks.
+					{% endblocktrans %}
+		</div>
+		{% endif %}
+
+		<div class="card-box">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+					<h6 class="text-muted m-t-15 m-b-15 text-center text-uppercase b"><i class="zmdi zmdi-picture-in-picture"></i> {% trans "Drivers License or ID - Front" %}</h6>
+
+
+		            <div class="card mb-30">
+		            	<div class="card-body">
+		            		{% if id_front_instance.status %}
+								<div class="alert {{ id_front_instance.status_alert_class }} text-center"><strong>{% trans id_front_instance.status_title  %}</strong></div>
+		            		{% endif%}
+			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+			                	<input type="hidden" name="form_name" value="id_front">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-primary btn-round waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
+			                </form>
+		            	</div>
+
+		                <div class="card-footer">
+			                {% if id_front_instance.file %}
+			                	<img src="{% thumbnail id_front_instance.file 600x250 crop='smart' %}" class="img-fluid">
+			                {% else %}
+			                	<img src="http://via.placeholder.com/600x250?text=|" class="img-fluid">
+			                {% endif %}
+		                </div>
+		            </div>
+	            </div>
+
+	            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+	            	<h6 class="text-muted m-t-15 m-b-15 text-center text-uppercase b"><i class="zmdi zmdi-picture-in-picture"></i> {% trans "Drivers License or ID - Back" %}</h6>
+
+		            <div class="card mb-30">
+		            	<div class="card-body">
+		            		{% if id_back_instance.status %}
+								<div class="alert {{ id_back_instance.status_alert_class }} text-center"><strong>{% trans id_back_instance.status_title  %}</strong></div>
+		            		{% endif%}
+			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+			                	<input type="hidden" name="form_name" value="id_back">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-primary btn-round waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
+			                </form>
+		            	</div>
+
+		                <div class="card-footer">
+			                {% if id_back_instance.file %}
+			                	<img src="{% thumbnail id_back_instance.file 600x250 crop='smart' %}" class="img-fluid">
+			                {% else %}
+			                	<img src="http://via.placeholder.com/600x250?text=|" class="img-fluid">
+			                {% endif %}
+		                </div>
+		            </div>
+	            </div>
+
+	            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+
+		            <h6 class="text-muted m-t-15 m-b-15 text-center text-uppercase b"><i class="zmdi zmdi-picture-in-picture"></i> {% trans "Document Selfie" %}</h6>
+
+		            <div class="card mb-30">
+		            	<div class="card-body">
+		            		{% if selfie_instance.status %}
+								<div class="alert {{ selfie_instance.status_alert_class }} text-center"><strong>{% trans selfie_instance.status_title  %}</strong></div>
+		            		{% endif%}
+			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+			                	<input type="hidden" name="form_name" value="selfie">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-primary btn-round waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
+			                </form>
+		            	</div>
+
+		                <div class="card-footer">
+			                {% if selfie_instance.file %}
+			                	<img src="{% thumbnail selfie_instance.file 600x250 crop='smart' %}" class="img-fluid">
+			                {% else %}
+			                	<img src="http://via.placeholder.com/600x250?text=|" class="img-fluid">
+			                {% endif %}
+		                </div>
+		            </div>
+	            </div>
+
+	            <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
+
+		            <h6 class="text-muted m-t-15 m-b-15 text-center text-uppercase b"><i class="zmdi zmdi-picture-in-picture"></i> {% trans "Proof of Residence" %}</h6>
+
+		            <div class="card mb-30">
+		            	<div class="card-body">
+		            		{% if residence_instance.status %}
+								<div class="alert {{ residence_instance.status_alert_class }} text-center"><strong>{% trans residence_instance.status_title  %}</strong></div>
+		            		{% endif%}
+			                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+			                	<input type="hidden" name="form_name" value="residence">
+			                	<div class="row">
+			                		<div class="col-8">
+			                			<input type="file" name="file" class="form-control" style="border: 0; padding: 0;">
+			                		</div>
+			                		<div class="col-4 text-right">
+			                			<button href="#" class="btn btn-primary btn-round waves-effect waves-light"><i class="zmdi zmdi-upload"></i> {% trans "Upload" %}</button>
+			                		</div>
+			                	</div>
+			                </form>
+		            	</div>
+
+		                <div class="card-footer">
+			                {% if residence_instance.file %}
+			                	<img src="{% thumbnail residence_instance.file 600x250 crop='smart' %}" class="img-fluid">
+			                {% else %}
+			                	<img src="http://via.placeholder.com/600x250?text=|" class="img-fluid">
+			                {% endif %}
+		                </div>
+		            </div>
+	            </div>
+	        </div>
+		</div>
+
+
+{% endblock %}

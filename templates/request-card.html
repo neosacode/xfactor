@@ -41,9 +41,12 @@
 
 {% block content %} 
     {% include "card-modal.html" %}
+    
 
     <div class="container">
         <div class="investment">
+            {% include "back-button.html" with color='#FFF' %}
+
             <h2><strong>{% trans "REQUEST YOUR CARD" %}</strong></h2>
             <p class="text-center card-sub-title">{% trans "Here on Xfactor, you have a card for each type of investment" %}</p>
 
