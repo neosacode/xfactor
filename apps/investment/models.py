@@ -79,6 +79,7 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     plan_grace_period = models.ForeignKey(PlanGracePeriods, related_name='investments', verbose_name=_("Plan grace period"), on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Amount"))
+    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'), verbose_name=_("Membership Fee"))
     account = models.ForeignKey('exchange_core.Accounts', related_name='statement_chages', verbose_name=_("Account"), on_delete=models.CASCADE)
     paid_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Paid Date"))
 
@@ -154,6 +155,83 @@ class Referrals(TimeStampedModel, models.Model):
     user = models.OneToOneField('exchange_core.Users', related_name='referral', on_delete=models.CASCADE)
     promoter = models.ForeignKey('exchange_core.Users', related_name='promoter', on_delete=models.CASCADE)
     advisor = models.ForeignKey('exchange_core.Users', related_name='advisor', null=True, on_delete=models.CASCADE)
+
+
+
+# Empréstimos
+class Loans(TimeStampedModel, StatusModel, models.Model):
+    STATUS = Choices('pending', 'paid')
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    account = models.ForeignKey('exchange_core.Accounts', related_name='loans', verbose_name=_("Account"), on_delete=models.CASCADE)
+    # Valor original do empréstimo
+    borrowed_amount = models.DecimalField(max_digits=20, decimal_places=8)
+    total_amount = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'))
+    # Quantidade de parcelas
+    times = models.IntegerField(default=1)
+
+    class Meta:
+        verbose_name = _("Loan")
+        verbose_name_plural = _("Loans")
+
+    def __str__(self):
+        return str(self.amount)
+
+
+# Parcelas dos empréstimos
+class Installments(TimeStampedModel, StatusModel, models.Model):
+    STATUS = Choices('pending', 'paid')
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # Empréstimo ao qual a parcela pertence
+    loan = models.ForeignKey(Loans, related_name='installments', verbose_name=_("Statement"), on_delete=models.CASCADE)
+    # Numero da parcela
+    order = models.IntegerField(default=1)
+    # Data de vencimento da parcela
+    due_date = models.DateField()
+    # Porcentagem de juros da parcela
+    interest_percent = models.DecimalField(max_digits=20, decimal_places=8)
+    # Valor da parcela
+    amount = models.DecimalField(max_digits=20, decimal_places=8)
+    # Data de recebimento da parcela
+    receipt_date = models.DateField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("Installment")
+        verbose_name_plural = _("Installments")
+        ordering = ['order']
+
+    def __str__(self):
+        return str(self.amount)
+
+
+# Créditos
+class Credits(TimeStampedModel, StatusModel, models.Model):
+    STATUS = Choices('pending', 'paid')
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    account = models.ForeignKey('exchange_core.Accounts', related_name='credits', verbose_name=_("Account"), on_delete=models.CASCADE)
+    # Valor original do empréstimo
+    borrowed_amount = models.DecimalField(max_digits=20, decimal_places=8)
+    # Porcentagem de juros da parcela
+    interest_percent = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'))
+    total_amount = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'))
+    # Data de recebimento do pagamento do crédito
+    receipt_date = models.DateField(null=True, blank=True)
+    # Data de vencimento
+    due_date = models.DateField(null=True, blank=True)
+
+    @property
+    def remaining_days(self):
+        return (self.due_date - self.created.date()).days
+
+    class Meta:
+        verbose_name = _("Credit")
+        verbose_name_plural = _("Credits")
+        ordering = ['-created']
+
+    def __str__(self):
+        return str(self.amount)
 
 
 class PlanGracePeriodForm(forms.ModelForm):

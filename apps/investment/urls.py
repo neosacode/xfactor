@@ -10,5 +10,7 @@ urlpatterns = [
     path('investment/cancel-investment/', views.CancelNoFidelityPlanView.as_view(), name='investment>cancel-investment'),
     path('investment/signup/', views.ReferrerSignupView.as_view(), name='investment>signup'),
     path('investment/get-plan-lacks/', views.GetPlanLacksView.as_view(), name='investment>get-plan-lacks'),
+    path('investment/my-customers/', views.MyCustomersView.as_view(), name='investment>my-customers'),
+    path('investment/credit-line/', views.CreditLineView.as_view(), name='investment>credit-line'),
     
 ]

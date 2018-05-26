@@ -1,0 +1,50 @@
+{% extends "core/index.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans "My Customers" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+{% block content %}
+	<div class="page-big-title">
+      <h2 class="uppercase">{% trans "My Customers" %}</h2>
+    </div>
+
+		
+	{% if referrals %}
+
+	<div class="table-wrapper">
+		<table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+			<thead>
+				<tr>
+					<th><i class="fa fa-user-circle"></i> {% trans "Name" %}</th>
+					<th><i class="fa fa-user-circle"></i> {% trans "Username" %}</th>
+					<th><i class="fa fa-envelope"></i> {% trans "E-mail" %}</th>
+					<th><i class="fa fa-calendar"></i> {% trans "Register Date" %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for referral in referrals %}
+				<tr>
+					<td>
+					{{ referral.user.first_name }} {{ referral.user.last_name }}
+					</td>
+					<td>
+					<strong>{{ referral.user.username }}</strong>
+					</td>
+					<td>
+						{{ referral.user.email }}
+					</td>
+					<td class="table-date"><i class="font-icon font-icon-clock"></i> {{ referral.user.created|date:"SHORT_DATETIME_FORMAT" }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% endif %}
+	</div>
+{% endblock %}

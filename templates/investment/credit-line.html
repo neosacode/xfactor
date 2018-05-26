@@ -1,0 +1,261 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans "Credit Line" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-big-title">
+  <h2 class="uppercase">{% trans "Credit Line" %}</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-lg-6">
+        <div class="white-box white-box-border">
+            <h4 class="text-blue"><strong>{% trans "NEW LOAN" %} <a href="#" id="new-loan-application" class="pull-right btn green" data-toggle="tooltip" data-placement="bottom" title="{% trans "New Loan" %}" style="margin-top: -7px;"><i class="fa fa-plus-square"></i></a></strong> </h2>
+
+            <form action="" id="loan-application-form" method="POST" class="hidden">{% csrf_token %}
+                <input type="hidden" name="twofactor_code">
+                <input type="hidden" name="form_type" value="loan">
+                <input type="hidden" name="times">
+                <hr>
+                <div class="table-wrapper">
+                    <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Limit" %}</th>
+                                <th>{% trans "In Use" %}</th>
+                                <th>{% trans "Available" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ request.user.loan_limit }}</td>
+                                <td>{{ request.user.loan_in_use }}</td>
+                                <td>{{ request.user.loan_available }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <h6>1 - {% trans "Type the loan amount on the field below" %}</h6>
+
+                <div class="form-group">
+                    <input name="amount" placeholder="{% trans "The loan amount can't exceed the available amount" %}" class="form-control input-lg" type="text">
+                    <small class="text-danger">* {% trans "The min amount for loan is" %}: 0,00100000</small>
+                </div>
+
+                <hr>
+                <h6>2 - {% trans "Select the loan table" %}</h6>
+
+                <div class="table-wrapper">
+                    <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Times" %}</th>
+                                <th>{% trans "Month" %}</th>
+                                <th>{% trans "Percent" %}</th>
+                                <th>{% trans "Amount" %}</th>
+                                <th>{% trans "Total" %}</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+                <h6>3 - {% trans "Read the loan contract and accept the terms" %}</h6>
+                <p>
+                    <br>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="accept_terms"> {% trans "I accept the contract terms" %}. <a href="#">{% trans "Click here" %}</a> {% trans "to open the loan contract." %}
+                        </label>
+                        </div>
+                      </p>
+                <hr>
+                <h6>4 - {% trans "Finish your loan" %}</h6>
+                <button class="btn btn-primary btn-block top15" type="submit"><i class="fa fa-check"></i> <strong>{% trans "FINISH LOAN" %}</strong></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+
+        <div class="white-box white-box-border">
+            <h4 class="text-blue"><strong>{% trans "NEW OVERDRAFT" %} <a href="#" id="new-credit-application" class="pull-right btn green" data-toggle="tooltip" data-placement="bottom" title="{% trans "New Overdraft" %}" style="margin-top: -7px;"><i class="fa fa-plus-square"></i></a></strong> </h4>
+
+            <form action="" id="credit-application-form" method="POST" class="hidden">{% csrf_token %}
+                <input type="hidden" name="twofactor_code">
+                <input type="hidden" name="form_type" value="credit">
+                <hr>
+                <div class="table-wrapper">
+                    <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Limit" %}</th>
+                                <th>{% trans "In Use" %}</th>
+                                <th>{% trans "Available" %}</th>
+                                <th>{% trans "Days to Pay" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ request.user.credit_limit }}</td>
+                                <td>{{ request.user.credit_in_use }}</td>
+                                <td>{{ request.user.credit_available }}</td>
+                                <td>{{ request.user.active_charge.plan_grace_period.plan.interest_free_days }} days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <h6>1 - {% trans "Type the overdraft amount on the field below" %}</h6>
+
+                <div class="form-group">
+                    <input name="amount" placeholder="{% trans "The overdraft amount can't exceed the available amount" %}" class="form-control input-lg" type="text">
+                    <small class="text-danger">* {% trans "The min amount for overdraft is" %}: 0,00100000</small>
+                </div>
+
+                <hr>
+                <h6>2 - {% trans "Read the overdraft contract and accept the terms" %}</h6>
+                <p>
+                    <br>
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="accept_terms"> {% trans "I accept the contract terms" %}. <a href="#">{% trans "Click here" %}</a> {% trans "to open the overdraft contract." %}
+                        </label>
+                        </div>
+                      </p>
+                <hr>
+                <h6>4 - {% trans "Finish your overdraft" %}</h6>
+                <button class="btn btn-primary btn-block top15" type="submit"><i class="fa fa-check"></i> <strong>{% trans "FINISH OVERDRAFT" %}</strong></button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+        <div class="white-box white-box-border">
+                <h4 class="text-blue"><strong>{% trans "MY LOANS" %}</h4>
+                <hr>
+
+                {% if loans %}
+                <div class="tabs-container">
+                  <ul class="nav nav-tabs">
+                    {% for loan in loans %}
+                    <li class="{% if forloop.first %}active{% endif %}"><a href="#{{ loan.pk }}" data-toggle="tab" aria-expanded="true">Loan -
+                    {{ loan.created|date:"d/m/Y" }} {% if loan.status == 'pending' %}
+                            <span class="label label-warning"><i class="fa fa-clock-o"></i> {{ loan.status }}</span>
+                        {% else %}
+                            <span class="label label-success">{{ loan.status }}</span>
+                        {% endif %}</a></li>
+                    {% endfor %}
+                  </ul>
+                  <div class="tab-content">
+                    {% for loan in loans %}
+                    <div class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ loan.pk }}">
+                      <div class="panel-body">
+                        <h4>{% trans "Started at: " %} {{ loan.created }}</h4>
+                        <h4>{% trans "Borrowed amount: " %} {{ loan.borrowed_amount }}</h4>
+                        <div class="table-wrapper">
+                            <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa fa-bar-chart"></i></th>
+                                        <th>{% trans "Amount To Be Paid" %}</th>
+                                        <th>{% trans "Due Date" %}</th>
+                                        <th><i class="fa fa-address-card"></i> {% trans "Payment Address" %}</th>
+                                        <th><i class="fa fa-bell"></i> {% trans "Status" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for installment in loan.installments.all %}
+                                    <tr>
+                                        <td>{{ installment.order }}</td>
+                                        <td>{{ installment.amount }}</td>
+                                        <td>{{ installment.due_date }}</td>
+                                        <td>{% trans "Available 7 days before due date" %}</td>
+                                        <td>
+                                            {% if installment.status == 'pending' %}
+                                                <span class="label label-warning"><i class="fa fa-clock-o"></i> {{ installment.status }}</span>
+                                            {% else %}
+                                                <span class="label label-success">{{ installment.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% else %}
+                    <strong>{% trans "No loans to show" %}</strong>
+                {% endif %}
+            </div>
+
+        <div class="white-box white-box-border">
+            <h4 class="text-blue"><strong>{% trans "MY OVERDRAFTS" %}</h4>
+            <hr>
+
+            {% if credits %}
+            <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Started At" %}</th>
+                            <th>{% trans "Due Date" %}</th>
+                            <th>{% trans "Remaining Days" %}</th>
+                            <th>{% trans "Amount To Be Paid" %}</th>
+                            <th>{% trans "Payment Address" %}</th>
+                            <th>{% trans "Status" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for credit in credits %}
+                        <tr>
+                            <td>{{ credit.created }}</td>
+                            <td>{{ credit.due_date }}</td>
+                            <td>{{ credit.remaining_days }}</td>
+                            <td>{{ credit.total_amount }}</td>
+                            <td>{{ credit.payment_address }}</td>
+                            <td>
+                                {% if credit.status == 'pending' %}
+                                    <span class="label label-warning"><i class="fa fa-clock-o"></i> {{ credit.status }}</span>
+                                {% else %}
+                                    <span class="label label-success">{{ credit.status }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <strong>{% trans "No overdrafts to show" %}</strong>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends "core/index.html" %}
+{% load static %}
+{% load i18n %}
+{% load bootstrap_pagination %}
+
+{% block content %}
+	<h2>Investing Promoter Comissions</h2>
+	<p>{% trans "You must have one of the investment plans below to start earning under your customers" %}</p>
+	<div class="row">
+		{% for plan in plans %}
+		<div class="col-md-6 col-lg-3">
+			<section class="panel box-shadow panel-primary" {% if request.user.investor_type == 'investment_promoter' and request.user.active_charge and request.user.active_charge.plan_grace_period.plan.pk != plan.pk %}style="opacity: 0.3;"{% endif %}>
+				<header class="panel-heading text-center" style="background-color: #00B7D0;">
+					<h4 class="panel-title"><i class="fa fa-trophy"></i> {{ plan.name }}</h4>
+				</header>
+				<div class="panel-body color-view widget-stats text-center">
+                    <div class="stats-icon stats-icon-lg" style="top: 15px; right: 99px; color: #999;"></div>
+					<ul style="margin-bottom: 10px; list-style: none; padding: 0;">
+                        <li><h4> {{ plan.comission_percent|floatformat:2 }}% {% trans "Comission" %}</h4></li>
+                        <li>{% if request.user.investor_type == 'investment_promoter' and request.user.active_charge and request.user.active_charge.plan_grace_period.plan.pk == plan.pk %}<span class="badge badge-info">{% trans "Current Plan" %}</span>{% endif %}
+                        	</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		{% endfor %}
+	</div>
+
+	<h2>Investing Advisor Comissions</h2>
+	<p>{% trans "You must have one of the investment plans below to start earning under your customers" %}</p>
+	<div class="row">
+		{% for plan in plans %}
+		<div class="col-md-6 col-lg-3">
+			<section class="panel box-shadow panel-primary" {% if request.user.investor_type == 'investment_advisor' and request.user.active_charge and request.user.active_charge.plan_grace_period.plan.pk != plan.pk %}style="opacity: 0.3;"{% endif %}>
+				<header class="panel-heading text-center" style="background-color: #00B7D0;">
+					<h4 class="panel-title"><i class="fa fa-trophy"></i> {{ plan.name }}</h4>
+				</header>
+				<div class="panel-body color-view widget-stats text-center">
+                    <div class="stats-icon stats-icon-lg" style="top: 15px; right: 99px; color: #999;"></div>
+					<ul style="margin-bottom: 10px; list-style: none; padding: 0;">
+                        <li><h4> {{ plan.comission_advisor_percent|floatformat:2 }}% {% trans "Comission" %}</h4></li>
+                        <li>{% if request.user.investor_type == 'investment_advisor' and request.user.active_charge and request.user.active_charge.plan_grace_period.plan.pk == plan.pk %}<span class="badge badge-info">{% trans "Current Plan" %}</span>{% endif %}
+                        	</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		{% endfor %}
+	</div>
+
+	<h2>Your Customers</h2>
+	<p>{% trans "Below you can follow all your customers" %}</p>
+
+	{% if has_users %}
+	<div class="row">
+		<div class="col-md-3">
+			<div class="widget green-bg box-shadow">
+	            <div class="row">
+	                <div class="col-xs-4 text-center">
+	                    <i class="fa fa-btc fa-5x"></i>
+	                </div>
+	                <div class="col-xs-8 text-right">
+	                    <span>{% trans "Comissions" %}</span>
+
+	                    <h2 class="font-bold">{{ request.user.comission_balance }}</h2>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+		<div class="col-md-3">
+			<div class="widget purple-bg box-shadow">
+	            <div class="row">
+	                <div class="col-xs-4 text-center">
+	                    <i class="fa fa-plus-circle fa-5x"></i>
+	                </div>
+	                <div class="col-xs-8 text-right">
+	                    <span>{% trans "Active Customers" %}</span>
+
+	                    <h2 class="font-bold">{{ active_users_qty }}</h2>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+		<div class="col-md-3">
+			<div class="widget red-bg box-shadow">
+	            <div class="row">
+	                <div class="col-xs-4 text-center">
+	                    <i class="fa fa-minus-circle fa-5x"></i>
+	                </div>
+	                <div class="col-xs-8 text-right">
+	                    <span>{% trans "Inactive Customers" %}</span>
+
+	                    <h2 class="font-bold">{{ inactive_users_qty }}</h2>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+		<div class="col-md-3">
+			<div class="widget blue-bg box-shadow">
+	            <div class="row">
+	                <div class="col-xs-4 text-center">
+	                    <i class="fa fa-user fa-5x"></i>
+	                </div>
+	                <div class="col-xs-8 text-right">
+	                    <span>{% trans "Pending Customers" %}</span>
+
+	                    <h2 class="font-bold">{{ pending_users_qty }}</h2>
+	                </div>
+	            </div>
+	        </div>
+		</div>
+	</div>
+
+	<hr>
+
+
+	<div class="widget white-bg box-shadow">
+    <section class="ibox-content">
+		<header>
+			<div>
+				
+				<div class="ibox-content">
+					<form action="{% url "users-my-customers" %}" method="GET">
+						<div class="{% if search_form.s.errors %}error{% endif %}">
+							<div class="form-control-wrapper">
+								<div class="input-group">
+							      {{ search_form.s }}
+							      <span class="input-group-btn">
+							        <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
+							      </span>
+							    </div>
+
+							    {% if search_form.s.errors %}
+								<div class="form-tooltip-error">
+									<ul>
+										{% for error in search_form.s.errors %}
+										<li>{{ error }}</li>
+										{% endfor %}
+									</ul>
+								</div>
+							    {% endif %}
+							</div>
+						</div>
+					</form>
+				</div>
+                    <hr>
+			</div>
+		</header>
+		<div class="box-typical-body">
+			{% if users %}
+			<div class="table-responsive">
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr>
+							<th><i class="fa fa-user-circle"></i> {% trans "Name" %}</th>
+							<th><i class="fa fa-user-circle"></i> {% trans "Username" %}</th>
+							<th><i class="fa fa-envelope"></i> {% trans "E-mail" %}</th>
+							<th><i class="fa fa-btc"></i> {% trans "Investing Plan" %}</th>
+							<th><i class="fa fa-calendar"></i> {% trans "Activation Date" %}</th>
+							<th><i class="fa fa-calendar"></i> {% trans "Register Date" %}</th>
+							<th><i class="fa fa-calendar"></i> {% trans "Status" %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+						<tr>
+							<td>
+							{{ user.first_name }} {{ user.last_name }}
+							</td>
+							<td>
+							<strong>{{ user.username }}</strong>
+							</td>
+							<td>
+							{{ user.email }}
+							</td>
+							<td>
+								<strong></strong>
+							</td>
+							<td class="table-date">
+								<i class="font-icon font-icon-clock"></i>
+								{{ user.charges.all.0.created }}
+							</td>
+							<td class="table-date"><i class="font-icon font-icon-clock"></i> {{ user.created }}</td>
+							<td>
+								<strong>
+									{% if user.status == 'created' %}
+										{% trans "pending" %}
+									{% else %}
+										{{ user.status }}
+									{% endif %}
+								</strong>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{% endif %}
+			</div>
+		</div><!--.box-typical-body-->
+	</section><!--.box-typical-->
+    </div>
+	{% if users %}
+		{% bootstrap_paginate users range=10 %}
+	{% endif %}
+
+	{% block js %}
+		{% if not search_found and has_users %}
+		<script>
+			jQuery(function($) {
+				swal("{% trans "Search not found" %}", "{% trans "No results we're found for your search. You'll be redirect to previous page in 5 seconds." %}", "error")
+
+				setInterval(function() {
+					window.history.back()
+					window.location.reload();
+				}, 5000);
+			});
+		</script>
+		{% endif %}
+	{% endblock %}
+	{% else %}
+	<div>
+		<div class="alert alert-warning">
+			<p>{% trans "You don't have customers yet!" %}</p>
+		</div>
+	</div>
+	{% endif %}
+{% endblock %}

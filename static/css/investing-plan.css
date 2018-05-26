@@ -158,19 +158,19 @@ main .content .conteudo-1 .plano-1 h3 {
     background-color: #c2c2c2
 }
 
-main .content .conteudo-1 .plano-2 .titulo {
-    background-color: #ef2e88
-}
-
-main .content .conteudo-1 .plano-2 h3 {
-    background-color: #ef2e88
-}
-
 main .content .conteudo-1 .plano-3 .titulo {
-    background-color: #0b3877
+    background-color: #ef2e88
 }
 
 main .content .conteudo-1 .plano-3 h3 {
+    background-color: #ef2e88
+}
+
+main .content .conteudo-1 .plano-2 .titulo {
+    background-color: #0b3877
+}
+
+main .content .conteudo-1 .plano-2 h3 {
     background-color: #0b3877
 }
 

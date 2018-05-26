@@ -9,31 +9,6 @@
       <h2 class="uppercase">{% trans "Documents" %}</h2>
     </div>
 
-    {% if request.user.status == 'created' %}
-		<div class="alert alert-danger mb-50">
-					<h3>{% trans "Attention" %}!</h3>
-					{% blocktrans %}
-					Dear user.<br>
-					Any system features will only be available after your documentation has been approved.
-					Only PNG, JPG and JPEG image files are accepted, uploaded to PDF files.
-					Make sure that your documents are legible and according to the data entered in the initial register.
-					Due to the high demand for registrations, the deadline for validating your documents is up to 72 hours.
-					Regards, {{PROJECT_NAME}} - Support team
-					{% endblocktrans %}
-  	</div>
-    {% endif %}
-		{% if request.user.status == 'disapproved_documentation' %}
-		<div class="alert alert-danger mb-50">
-					<h3>{% trans "Disapproved Documents" %}!</h3>
-					{% blocktrans %}
-					Dear user, your documents have been disapproved by our staff, <br>
-						please check if your pictures are legible and in good quality.<br>
-						We also do not accept other people's documents or forged data.<br>
-						Thanks.
-					{% endblocktrans %}
-		</div>
-		{% endif %}
-
 		<div class="card-box">
 			<div class="row">
 				<div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
