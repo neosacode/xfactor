@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 17:09+0000\n"
+"POT-Creation-Date: 2018-05-27 23:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,7 +168,6 @@ msgid "Amount"
 msgstr ""
 
 #: apps/investment/models.py:82
-#| msgid "Membership fee"
 msgid "Membership Fee"
 msgstr "Taxa de adesão"
 
@@ -226,7 +225,6 @@ msgid "Loan"
 msgstr "Empréstimo"
 
 #: apps/investment/models.py:175
-#| msgid "Loan"
 msgid "Loans"
 msgstr "Empréstimo"
 
@@ -236,12 +234,10 @@ msgid "Statement"
 msgstr "Extrato"
 
 #: apps/investment/models.py:200
-#| msgid "Investment"
 msgid "Installment"
 msgstr "Investimento"
 
 #: apps/investment/models.py:201
-#| msgid "Investments"
 msgid "Installments"
 msgstr "Investimentos"
 
@@ -312,70 +308,68 @@ msgstr ""
 msgid "Back to site"
 msgstr "Voltar ao site"
 
-#: templates/account/settings.html:8 templates/account/settings.html:25
-#: templates/core/index.html:105
+#: templates/account/settings.html:6 templates/account/settings.html:23
+#: templates/core/index.html:102
 msgid "Settings"
 msgstr ""
 
-#: templates/account/settings.html:12 templates/accounts/checking.html:9
+#: templates/account/settings.html:10 templates/accounts/checking.html:9
 #: templates/accounts/investment.html:9 templates/boleto/pay.html:10
-#: templates/card.html:10 templates/core/statement.html:12
-#: templates/investment/credit-line.html:9
+#: templates/card.html:10 templates/core/documents.html:11
+#: templates/core/statement.html:12 templates/investment/credit-line.html:9
 #: templates/investment/my-customers.html:10 templates/investment/plans.html:9
 #: templates/request-card.html:10 templates/two_factor/_base.html:9
 msgid "Xfactor"
 msgstr ""
 
-#: templates/account/settings.html:20
+#: templates/account/settings.html:18
 msgid "Fill your data to continue"
 msgstr "Preencha os seus dados para continuar"
 
-#: templates/account/settings.html:21
+#: templates/account/settings.html:19
 msgid ""
 "Please fill your personal and address data for continue to next step and get "
 "access to your Xfactor account"
 msgstr ""
-"Por favor preencha os seus dados pessoais e residenciais para continuar ao próximo passo e ter"
-"acesso a sua conta Xfactor"
+"Por favor preencha os seus dados pessoais e residenciais para continuar ao "
+"próximo passo e teracesso a sua conta Xfactor"
 
-#: templates/account/settings.html:26
+#: templates/account/settings.html:24
 msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
-#: templates/account/settings.html:32 templates/core/settings.html:12
+#: templates/account/settings.html:30 templates/core/settings.html:12
 msgid "My Avatar"
 msgstr ""
 
-#: templates/account/settings.html:34 templates/core/settings.html:16
+#: templates/account/settings.html:32 templates/core/settings.html:16
 msgid "Select a new avatar image using the field below"
 msgstr ""
 
-#: templates/account/settings.html:43 templates/core/settings.html:23
+#: templates/account/settings.html:41 templates/core/settings.html:23
 msgid "Update"
 msgstr ""
 
-#: templates/account/settings.html:58 templates/core/settings.html:38
+#: templates/account/settings.html:56 templates/core/settings.html:38
 msgid "Change My Password"
 msgstr ""
 
-#: templates/account/settings.html:68 templates/account/settings.html:92
-#: templates/account/settings.html:103 templates/core/settings.html:48
+#: templates/account/settings.html:66 templates/account/settings.html:90
+#: templates/account/settings.html:101 templates/core/settings.html:48
 #: templates/core/settings.html:74
 msgid "Save"
 msgstr ""
 
-#: templates/account/settings.html:74
-#| msgid "11 - Personal marketing"
+#: templates/account/settings.html:72
 msgid "Personal Data"
 msgstr "Dados Pessoais"
 
-#: templates/account/settings.html:96
-#| msgid "Copy address"
+#: templates/account/settings.html:94
 msgid "Address"
 msgstr "Endereço"
 
 #: templates/accounts/checking.html:5 templates/accounts/checking.html:29
-#: templates/core/index.html:142 templates/select-account2.html:106
+#: templates/core/index.html:131 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
@@ -711,7 +705,6 @@ msgid "NEW RECHARGE"
 msgstr "NOVA RECARGA"
 
 #: templates/card.html:47
-#| msgid "Amount REAIS"
 msgid "Amount REAL"
 msgstr "Valor em Reais"
 
@@ -743,45 +736,46 @@ msgstr "Data"
 msgid "Amount REAIS"
 msgstr "Valor em Reais"
 
-#: templates/core/documents.html:9
+#: templates/core/documents.html:7 templates/core/documents.html:16
+#: templates/core/index.html:104
 msgid "Documents"
 msgstr ""
 
-#: templates/core/documents.html:15
+#: templates/core/documents.html:22
 msgid "Drivers License or ID - Front"
 msgstr ""
 
-#: templates/core/documents.html:30 templates/core/documents.html:61
-#: templates/core/documents.html:93 templates/core/documents.html:125
+#: templates/core/documents.html:37 templates/core/documents.html:68
+#: templates/core/documents.html:100 templates/core/documents.html:132
 msgid "Upload"
 msgstr ""
 
-#: templates/core/documents.html:47
+#: templates/core/documents.html:54
 msgid "Drivers License or ID - Back"
 msgstr ""
 
-#: templates/core/documents.html:79
+#: templates/core/documents.html:86
 msgid "Document Selfie"
 msgstr ""
 
-#: templates/core/documents.html:111
+#: templates/core/documents.html:118
 msgid "Proof of Residence"
 msgstr ""
 
-#: templates/core/index.html:98
+#: templates/core/index.html:96
 msgid "Welcome: "
 msgstr "Bem-vindo: "
 
-#: templates/core/index.html:104 templates/two_factor/_base.html:5
+#: templates/core/index.html:103 templates/two_factor/_base.html:5
 #: templates/two_factor/_base.html:16
 msgid "Two Factor Authentication"
 msgstr ""
 
-#: templates/core/index.html:110
+#: templates/core/index.html:109
 msgid "Logout from my account"
 msgstr "Sair da minha conta"
 
-#: templates/core/index.html:132
+#: templates/core/index.html:141
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
@@ -792,12 +786,10 @@ msgid ""
 msgstr ""
 
 #: templates/core/my-customers.html:19 templates/core/my-customers.html:41
-#| msgid "My Comissions"
 msgid "Comission"
 msgstr "Minhas Comissões"
 
 #: templates/core/my-customers.html:20 templates/core/my-customers.html:42
-#| msgid "Current investment plan:"
 msgid "Current Plan"
 msgstr "Plano de investimento atual:"
 
@@ -806,7 +798,6 @@ msgid "Below you can follow all your customers"
 msgstr ""
 
 #: templates/core/my-customers.html:63
-#| msgid "My Comissions"
 msgid "Comissions"
 msgstr "Minhas Comissões"
 
@@ -842,7 +833,6 @@ msgid "E-mail"
 msgstr ""
 
 #: templates/core/my-customers.html:158
-#| msgid "Invest amount:"
 msgid "Investing Plan"
 msgstr "Valor investido:"
 
@@ -880,7 +870,6 @@ msgid "You don't have customers yet!"
 msgstr ""
 
 #: templates/core/settings.html:54
-#| msgid "Open Account"
 msgid "Bank Account"
 msgstr "Abrir Conta"
 
@@ -928,12 +917,10 @@ msgid "Account Type"
 msgstr "Tipo de Conta"
 
 #: templates/investment/credit-line.html:22
-#| msgid "NEW PAYMENT"
 msgid "NEW LOAN"
 msgstr "NOVO PAGAMENTO"
 
 #: templates/investment/credit-line.html:22
-#| msgid "Loan"
 msgid "New Loan"
 msgstr "Empréstimo"
 
@@ -949,7 +936,6 @@ msgstr ""
 
 #: templates/investment/credit-line.html:35
 #: templates/investment/credit-line.html:107
-#| msgid "Available Limit"
 msgid "Available"
 msgstr "Limite Disponível"
 
@@ -974,7 +960,6 @@ msgid "Times"
 msgstr ""
 
 #: templates/investment/credit-line.html:63
-#| msgid "Months"
 msgid "Month"
 msgstr "Meses"
 
@@ -1071,18 +1056,15 @@ msgstr ""
 
 #: templates/investment/credit-line.html:179
 #: templates/investment/credit-line.html:223
-#| msgid "Due date"
 msgid "Due Date"
 msgstr "Vencimento"
 
 #: templates/investment/credit-line.html:180
 #: templates/investment/credit-line.html:226
-#| msgid "wallet address"
 msgid "Payment Address"
 msgstr "endereço de carteira"
 
 #: templates/investment/credit-line.html:190
-#| msgid "Available for use"
 msgid "Available 7 days before due date"
 msgstr "Disponível para uso"
 
@@ -1240,7 +1222,6 @@ msgid "Upgrade Now"
 msgstr ""
 
 #: templates/request-card.html:297
-#| msgid "Request <span>Card</span>"
 msgid "Request Card"
 msgstr "Solicitar <span>Cartão</span>"
 
@@ -1276,6 +1257,14 @@ msgstr "Conta <br> Investimentos"
 msgid "Total accounts balance"
 msgstr ""
 
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr ""
+
+#: templates/two_factor/_wizard_actions.html:8
+msgid "Next"
+msgstr ""
+
 #: templates/two_factor/core/login.html:61
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
@@ -1295,6 +1284,34 @@ msgstr "Não possui uma conta?"
 #: templates/two_factor/core/login.html:85
 msgid "Open Account"
 msgstr "Abrir Conta"
+
+#: templates/two_factor/core/setup_complete.html:5
+#| msgid "Graduations"
+msgid "Congratulations!"
+msgstr "Parabéns!"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid ""
+"Congratulations, you've successfully enabled two-factor\n"
+"      authentication."
+msgstr ""
+
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+#| msgid "Logout from my account"
+msgid "I want to see my account"
+msgstr "Quero ver a minha conta"
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to\n"
+"      your primary token device. To enable account recovery, add a phone \n"
+"      number."
+msgstr ""
+
+#: templates/two_factor/core/setup_complete.html:21
+msgid "Add Phone Number"
+msgstr ""
 
 #~| msgid "Sign Up"
 #~ msgid "Sign me up"

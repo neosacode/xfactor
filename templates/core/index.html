@@ -125,22 +125,22 @@ if(w.style.display=="block"){w.style.display='none';}else{
                     <div class="box-2 col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <a class="imagem-1" href="{% url "xfactor>investment" %}">
+                                <a class="imagem-1" href="{% url "xfactor>checking" %}">
                                     <img src="{% static "img/bit-grande-azul.png" %}" alt="">
-                                    <div class="conteudo-botao">
-                                        <h2>{% trans "Investment Account" %}</h2>
-                                        <h3>$ {{ user_investment_account.usd_balance|floatformat:2|intcomma }}</h3>
-                                        <h4>{{ user_investment_account.balance }} BTC</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a class="imagem-2" href="{% url "xfactor>checking" %}">
-                                    <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
                                     <div class="conteudo-botao">
                                         <h2>{% trans "Checking Account" %}</h2>
                                         <h3>$ {{ user_checking_account.usd_balance|floatformat:2|intcomma }}</h3>
                                         <h4>{{ user_checking_account.balance }} BTC</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="imagem-2" href="{% url "xfactor>investment" %}">
+                                    <img src="{% static "img/bit-grande-rosa.png" %}" alt="">
+                                    <div class="conteudo-botao">
+                                        <h2>{% trans "Investment Account" %}</h2>
+                                        <h3>$ {{ user_investment_account.usd_balance|floatformat:2|intcomma }}</h3>
+                                        <h4>{{ user_investment_account.balance }} BTC</h4>
                                     </div>
                                 </a>
                             </div>
