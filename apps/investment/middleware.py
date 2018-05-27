@@ -18,9 +18,9 @@ class StepsMiddleware(UserDocumentsMiddleware):
 	]
 
 	def process_request(self, request):
-		if user_has_device(request.user):
-			return
 		if self.must_ignore(request):
+			return
+		if user_has_device(request.user):
 			return
 		if not request.user.is_authenticated:
 			return
