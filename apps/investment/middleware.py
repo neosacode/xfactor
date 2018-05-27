@@ -2,6 +2,7 @@ from django.utils.deprecation import MiddlewareMixin
 from django.urls import reverse
 from django.http import HttpResponsePermanentRedirect
 from django.conf import settings
+from django.core.cache import cache
 from django_otp import user_has_device, match_token
 
 from session_security.middleware import SessionSecurityMiddleware
@@ -18,14 +19,15 @@ class StepsMiddleware(UserDocumentsMiddleware):
 	]
 
 	def process_request(self, request):
-		if self.must_ignore(request):
-			return
 		if user_has_device(request.user):
+			return
+		if self.must_ignore(request):
 			return
 		if not request.user.is_authenticated:
 			return
 
-		profile_data = request.user.profile
+		cache.clear()
+		profile_data = Users.objects.get(pk=request.user.pk).profile
 		documents_qty = request.user.documents.count()
 
 		if documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
@@ -35,6 +37,6 @@ class StepsMiddleware(UserDocumentsMiddleware):
 				and not request.path.startswith(reverse('core>settings')):
 			return HttpResponsePermanentRedirect(reverse('core>settings'))
 		if 'has_personal' in profile_data and 'has_address' in profile_data \
-				and not request.path.startswith(reverse('two_factor:profile')):
+				and not request.path.startswith(reverse('two_factor:profile')) \
+				and not user_has_device(request.user):
 			return HttpResponsePermanentRedirect(reverse('two_factor:profile'))
-
