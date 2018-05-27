@@ -12,16 +12,23 @@ from exchange_core.models import Users, Documents
 
 # Redirects the user if it yet not send the documents
 class StepsMiddleware(UserDocumentsMiddleware):
+	allowed_paths = [
+		reverse('core>documents'),
+		reverse('core>settings'),
+	]
+
 	def process_request(self, request):
+		if user_has_device(request.user):
+			return
 		if self.must_ignore(request):
 			return
-		if not request.user.is_authenticated or user_has_device(request.user):
+		if not request.user.is_authenticated:
 			return
 
 		profile_data = request.user.profile
 		documents_qty = request.user.documents.count()
 
-		if documents_qty < 4 not in profile_data and not request.path.startswith(reverse('core>documents')):
+		if documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
 			return HttpResponsePermanentRedirect(reverse('core>documents'))
 		if documents_qty >= 4 and (not 'has_personal' in profile_data
 				or not 'has_address' in profile_data) \
