@@ -207,23 +207,6 @@
     padding-bottom: 30px
 }
 
-.investment .investment-1 .box-breve {
-    background-image: url("../img/breve.png");
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 687px;
-    border-radius: 5px
-}
-
-.investment .investment-1 .box-breve img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    padding-top: 70%
-}
-
 .investment .investment-1 .box-breve h2 {
     font-size: 40px
 }

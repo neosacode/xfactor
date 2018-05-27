@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n exchange %}
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
 	jQuery(function($) {
@@ -66,10 +66,12 @@
 		var app = new Vue({
 			el: '#checking-account-app',
 			methods: {
-				createAddress: function(coin, name) {
+				createAddress: function() {
 					swal.showLoading();
 					
 					var address = '';
+					var coin = '{{ account.currency.symbol }}';
+					var name = '{{ account.currency.name }}';
 
 					$.post('{% url "payments>get-address" %}', {coin: coin}, function(response) {
 						var qrcode_src = 'https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl=' + name.toLowerCase() + ':' + response.address
@@ -86,13 +88,13 @@
 						});
 					});
 				},
-				createWithdraw: function(currency, coin, name, deposit) {
+				createWithdraw: function() {
 					var withdraw_amount_modal = $('#withdraw-app');
 					withdraw_amount_modal.modal('show');
-					withdraw_app.available_amount = deposit;
-					withdraw_app.coin = coin;
+					withdraw_app.available_amount = {{ account.deposit }};
+					withdraw_app.coin = '{{ account.currency.symbol }}';
 					withdraw_app.is_br_withdraw = false;
-					withdraw_app.currency = currency;
+					withdraw_app.currency = {{ account.currency.dict|serialize|safe }};
 				}
 			}
 		});

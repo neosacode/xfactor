@@ -20,7 +20,8 @@
 
 .menu .voltar a {
     color: #0a2357;
-    
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .content {

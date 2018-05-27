@@ -101,8 +101,9 @@ if(w.style.display=="block"){w.style.display='none';}else{
                                         </a>
 
                                         <div class="dropdown-menu">
-                                            <a href="{% url "two_factor:profile" %}" class="dropdown-item">{% trans "Two Factor Authentication" %}</a>
                                             <a href="{% url "core>settings" %}" class="dropdown-item">{% trans "Settings" %}</a>
+                                            <a href="{% url "two_factor:profile" %}" class="dropdown-item">{% trans "Two Factor Authentication" %}</a>
+                                            <a href="{% url "core>documents" %}" class="dropdown-item">{% trans "Documents" %}</a>
                                         </div>
                                     </div>
                                 </li>
@@ -154,6 +155,14 @@ if(w.style.display=="block"){w.style.display='none';}else{
         <div class="content content-container">
             <div class="container">
                 <div class="clearfix"></div>
+
+                {% if messages %}
+                <div class="messages mt-50">
+                    {% for message in messages %}
+                        <div{% if message.tags %} class="alert {{ message.tags }}"{% endif %}><strong>{{ message }}</strong></div>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 
                 {% block content_before %}{% endblock %}
 

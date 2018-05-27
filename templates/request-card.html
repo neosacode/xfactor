@@ -305,17 +305,17 @@
                     <div class="investment-1">
                         <h2>{% trans "<strong>ADVISOR</strong> COURSE" %}</h2>
                         <div class="box-breve">
-                            <img src="{% static "img/clock.png" %}" alt="">
-                            <h2><strong>Coming</strong><br>Soon</h2>
-                        </div>
+                            <a href="#" data-toggle="modal" data-target="#card-modal">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                <img src="{% static "img/banners/curso_" %}{{ LANGUAGE_CODE }}.png" alt="">
+                            </a>
 
-                        <div id="request-card-app">
-                            <a href="#" class="btn btn-block btn-pink" data-toggle="modal" data-target="#card-modal">{% trans "Sign me up" %}</a>
+                            <div class="mb-100"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+    
     </div>
 {% endblock %}

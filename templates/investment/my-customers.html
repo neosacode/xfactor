@@ -25,14 +25,16 @@
 					<th><i class="fa fa-user-circle"></i> {% trans "Name" %}</th>
 					<th><i class="fa fa-user-circle"></i> {% trans "Username" %}</th>
 					<th><i class="fa fa-envelope"></i> {% trans "E-mail" %}</th>
+					<th><i class="fa fa-envelope"></i> {% trans "Mobile Phone" %}</th>
 					<th><i class="fa fa-calendar"></i> {% trans "Register Date" %}</th>
+					<th><i class="fa fa-calendar"></i> {% trans "Has Investing Plan" %}</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for referral in referrals %}
 				<tr>
 					<td>
-					{{ referral.user.first_name }} {{ referral.user.last_name }}
+						{{ referral.user.first_name }} {{ referral.user.last_name }}
 					</td>
 					<td>
 					<strong>{{ referral.user.username }}</strong>
@@ -40,7 +42,13 @@
 					<td>
 						{{ referral.user.email }}
 					</td>
-					<td class="table-date"><i class="font-icon font-icon-clock"></i> {{ referral.user.created|date:"SHORT_DATETIME_FORMAT" }}</td>
+					<td>
+						{{ referral.user.mobile_phone|default_if_none:"N/A" }}
+					</td>
+					<td><i class="font-icon font-icon-clock"></i> {{ referral.user.created|date:"SHORT_DATETIME_FORMAT" }}</td>
+					<td>
+						{% trans "Yes" %}
+					</td>
 				</tr>
 				{% endfor %}
 			</tbody>

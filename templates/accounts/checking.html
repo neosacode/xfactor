@@ -1,5 +1,5 @@
 {% extends "core/index.html" %}
-{% load static i18n %}
+{% load static i18n exchange %}
 
 {% block page_title %}
     {% trans "Checking Account" %}
@@ -36,13 +36,13 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="item-rosa">
                         <img src="{% static "img/bit-rosa-grande-2.png" %}" alt="">
-                        <a href="#" @click.prevent="createAddress('{{ account.currency.symbol }}', '{{ account.currency.name }}')"><h4>{% trans "Receive" %}</h4></a>
+                        <a href="#" @click.prevent="createAddress()"><h4>{% trans "Receive" %}</h4></a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="item">
                         <img src="{% static "img/bit-grande-azul-2.png" %}" alt="">
-                        <a href="" @click.prevent="createWithdraw('{{ account.currency.pk }}', '{{ account.currency.symbol }}', '{{ account.currency.name }}', '{{ account.deposit }}')"><h4>{% trans "Transfer" %}</h4></a>
+                        <a href="" @click.prevent="createWithdraw()"><h4>{% trans "Transfer" %}</h4></a>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-3">
@@ -94,6 +94,6 @@
 
 {% block scripts %}
     
-    {% include "accounts/scripts/checking.vue.html" with wallets=wallets %}
+    {% include "accounts/scripts/checking.vue.html" with account=account %}
 
 {% endblock %}
