@@ -1,5 +1,7 @@
 import uuid
 
+from decimal import Decimal
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.utils import timezone
@@ -9,12 +11,15 @@ from django.views.generic import TemplateView, View
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.db import transaction
+from jsonview.decorators import json_view
 from account.decorators import login_required
 
 
-from exchange_core.models import Accounts, Currencies
+from exchange_core.models import Accounts, Currencies, Statement
 from exchange_core.rates import CurrencyPrice
 from apps.investment.models import Investments, Incomes
+from apps.investment.forms import CourseSubscriptionForm
 
 
 @method_decorator([login_required], name='dispatch')
@@ -91,3 +96,33 @@ class LogoutView(View):
 	def get(self, request):
 		logout(request)
 		return redirect(reverse('xfactor>select-account'))
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class CreateCourseSubscriptionView(View):
+    def post(self, request):
+        course_subscription_form = CourseSubscriptionForm(request.POST, user=request.user)        
+
+        if Statement.objects.filter(account__user=request.user, type=Statement.TYPES.course_subscription).exists():
+        	return {'title': _("Warning!"), 'message': _("Your already have requested your Advisor course."), 'type': 'warning'}
+
+        if not course_subscription_form.is_valid():
+            return {'errors': course_subscription_form.errors}
+
+        amount = Decimal('0.3')
+        checking_account = request.user.accounts.filter(currency__type=Currencies.TYPES.checking).first()
+
+        if amount > checking_account.deposit:
+        	return {'title': _("Error!"), 'message': _("You not have enought balance for make your subscription ."), 'type': 'error'}
+        
+        with transaction.atomic():
+        	statement = Statement()
+        	statement.description = 'Advisor course subscription'
+        	statement.account = checking_account
+        	statement.type = Statement.TYPES.course_subscription
+        	statement.amount = Decimal('0') - amount
+        	statement.save()
+
+        	checking_account.takeout(amount)
+
+        	return {'title': _("Congratulations!"), 'message': _("Your subscription in the Advisor has been successfully made."), 'type': 'success'}

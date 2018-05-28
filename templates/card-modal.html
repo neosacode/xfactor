@@ -1,3 +1,4 @@
+        </div>
 {% load i18n %}
 {% load static %}
 
@@ -11,62 +12,78 @@
         <h4 class="modal-title" style="font-size: 35px;">{% trans "MAKE YOUR SUBSCRIPTION" %}</h4>
       </div>
       <div class="modal-body">
-        <p>{% trans "To own Xfactor card, you need to first become an investment advisor. To do so fill out the information below and register for the course that started in August. Get your card right away!" %}</p>
+        <div id="course-subscription-app">
+          <p>{% trans "To own Xfactor card, you need to first become an investment advisor. To do so fill out the information below and register for the course that started in August. Get your card right away!" %}</p>
 
-        <div class="mt-20">
-          <h4 class="b uppercase text-center mt-50 mb-30">{% trans "Topics that will be covered in the course" %}</h4>
+          <div class="mt-20">
+            <h4 class="b uppercase text-center mt-50 mb-30">{% trans "Topics that will be covered in the course" %}</h4>
 
-          <div class="row tx-14">
-            <div class="col-md-6">
-              <ul class="mb-0">
-                <li>{% trans "01 - Introduction to Bitcoin" %}</li>
-                <li>{% trans "02 - Blockchain history" %}</li>
-                <li>{% trans "03 - Types of financial market" %}</li>
-                <li>{% trans "04 - Security and investment" %}</li>
-                <li>{% trans "05 - Strategies of investment" %}</li>
-                <li>{% trans "06 - Where's the Bitcoin market going" %}</li>
-                <li>{% trans "07 - Technical analysis" %}</li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul>
-                <li>{% trans "08 - Regulatory aspects of bitcoin" %}</li>
-                <li>{% trans "09 - How accept Bitcoin in my business" %}</li>
-                <li>{% trans "10 - Sale techniques" %}</li>
-                <li>{% trans "11 - Personal marketing" %}</li>
-                <li>{% trans "12 - Leadership and development of crews" %}</li>
-                <li>{% trans "13 - Mindset and NLP" %}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-20">
-          <h4 class="b uppercase text-center mt-50 mb-20 text-pink">{% trans "Start now for just <span class='tx-30'>0.03</span> BTC" %}</h4>
-          <p class="text-center tx-14">{% trans "The course amount will be discount from your checking account" %}<br>
-          {% trans "Your checking account balance is: " %} <span class="b">0.00293880 BTC</span></p>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="password" class="form-control form-control-lg b" placeholder="{% trans "Your Password" %}">
+            <div class="row tx-14">
+              <div class="col-md-6">
+                <ul class="mb-0">
+                  <li>{% trans "01 - Introduction to Bitcoin" %}</li>
+                  <li>{% trans "02 - Blockchain history" %}</li>
+                  <li>{% trans "03 - Types of financial market" %}</li>
+                  <li>{% trans "04 - Security and investment" %}</li>
+                  <li>{% trans "05 - Strategies of investment" %}</li>
+                  <li>{% trans "06 - Where's the Bitcoin market going" %}</li>
+                  <li>{% trans "07 - Technical analysis" %}</li>
+                </ul>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="number" class="form-control form-control-lg b" placeholder="{% trans "Your Two Factor Code" %}">
+              <div class="col-md-6">
+                <ul>
+                  <li>{% trans "08 - Regulatory aspects of bitcoin" %}</li>
+                  <li>{% trans "09 - How accept Bitcoin in my business" %}</li>
+                  <li>{% trans "10 - Sale techniques" %}</li>
+                  <li>{% trans "11 - Personal marketing" %}</li>
+                  <li>{% trans "12 - Leadership and development of crews" %}</li>
+                  <li>{% trans "13 - Mindset and NLP" %}</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <div class="custom-control custom-checkbox tx-14 text-center">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label pt-2" for="customCheck1">{% trans "I read and agree with the terms: " %} <a href="#" class="text-pink">{% trans "Open terms" %}</a></label>
+          <div class="mt-20">
+            <h4 class="b uppercase text-center mt-50 mb-20 text-pink">{% trans "Start now for just <span class='tx-30'>0.03</span> BTC" %}</h4>
+            <p class="text-center tx-14">{% trans "The course amount will be discount from your checking account" %}<br>
+            {% trans "Your checking account balance is: " %} <span class="b" v-text="balance + ' BTC'"></span></p>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg b" placeholder="{% trans "Your Password" %}" v-model="password">
+                  <div class="help-block form-text text-muted form-control-feedback" v-show="errors.password">
+                    <ul class="parsley-errors-list filled">
+                      <li v-for="error_message in errors.password" v-text="error_message"></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="number" class="form-control form-control-lg b" placeholder="{% trans "Your Two Factor Code" %}" v-model="code">
+                  <div class="help-block form-text text-muted form-control-feedback" v-show="errors.code">
+                    <ul class="parsley-errors-list filled">
+                      <li v-for="error_message in errors.code" v-text="error_message"></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-control custom-checkbox tx-14 text-center">
+              <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="terms">
+              <label class="custom-control-label pt-2" for="customCheck1">{% trans "I read and agree with the terms: " %} <a href="#" class="text-pink">{% trans "Open terms" %}</a></label>
+              <div class="help-block form-text text-muted form-control-feedback" v-show="errors.terms">
+                <ul class="parsley-errors-list filled">
+                  <li v-for="error_message in errors.terms" v-text="error_message"></li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <button type="button" :disabled="loading" class="btn btn-pink b btn-block mb-20 mt-20" @click.prevent="createSubscription()">{% trans "SIGN ME UP" %}</button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-pink b btn-block mb-20">{% trans "SIGN ME UP" %}</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

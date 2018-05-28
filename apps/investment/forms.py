@@ -72,3 +72,32 @@ class SignupForm(account.forms.SignupForm):
             raise forms.ValidationError(_("The e-mails aren't equal"))
 
         return confirm_email
+
+
+class CourseSubscriptionForm(forms.Form):
+    code = forms.CharField(
+        label=_('2FA Code'),
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('2FA Code')})
+    )
+    password = forms.CharField(
+        label=_("Password"), 
+        widget=forms.PasswordInput
+    )
+    terms = forms.BooleanField()
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if not self.user.check_password(password):
+            raise forms.ValidationError(_("Wrong password informed"))
+        return password
+
+    def clean_code(self):
+        code = self.cleaned_data['code']
+        if not bool(match_token(self.user, code)):
+            raise forms.ValidationError(_("The 2FA code is invalid"))
+        return code

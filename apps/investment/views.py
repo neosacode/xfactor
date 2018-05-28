@@ -20,7 +20,7 @@ from .models import Plans, Investments, PlanGracePeriods
 
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
-from apps.investment.forms import SignupForm
+from apps.investment.forms import SignupForm, CourseSubscriptionForm
 from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits
 from apps.investment.utils import decimal_split
 

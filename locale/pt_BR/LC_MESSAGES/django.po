@@ -590,7 +590,7 @@ msgid ""
 msgstr ""
 "Para possuir o cartão Xfactor, você precisa primeiro se tornar um investidor "
 "consultor. Para isto preencha as informações abaixo e registre-se para o "
-"curso que iniciaráem agosto. Tenha acesso imediato ao seu cartão!"
+"curso que iniciará em agosto. Tenha acesso imediato ao seu cartão!"
 
 #: templates/card-modal.html:17
 msgid "Topics that will be covered in the course"

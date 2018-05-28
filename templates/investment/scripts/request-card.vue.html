@@ -1,0 +1,42 @@
+{% load i18n %}
+
+<script>
+	jQuery(function($) {
+		var course_subscription_app = new Vue({
+			el: '#course-subscription-app',
+			data: {
+				balance: parseFloat('{{ user_checking_account.deposit }}'.replace(',', '.')).toFixed(8),
+				code: null,
+				password: null,
+				terms: false,
+				errors: {},
+				loading: false
+			},
+			methods: {
+				createSubscription: function() {
+					var vm = this;
+					var data = {code: vm.code, password: vm.password, terms: vm.terms}
+
+					vm.loading = true;
+
+					$.post('{% url "xfactor>create-course-subscription" %}', data, function(response) {
+						if (response.errors) {
+							vm.errors = response.errors;
+						}
+						else {
+							swal(response.title, response.message, response.type);
+
+							if (response.type == 'success') {
+								setTimeout(function() {
+									window.location.href = '{% url "core>statement" %}';
+								}, 5000);
+							}
+						}
+
+						vm.loading = false;
+					});
+				}
+			}
+		});
+	});
+</script>
