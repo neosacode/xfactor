@@ -71,10 +71,10 @@ class InvestmentAccountView(TemplateView):
 		context['charge'] = self.investment
 
 		incomes = []
-		incomes_qs = Incomes.objects.filter(investment=self.investment, date__lte=timezone.now()).order_by('date')
+		incomes_qs = Incomes.objects.filter(investment=self.investment, date__lte=timezone.now()).order_by('-date')[:30]
 		increment_amount = 0
 
-		for income in incomes_qs:
+		for income in reversed(incomes_qs):
 			incomes.append({'amount': str(income.amount).replace(',', '.'), 'date': income.date})
 
 		context['incomes'] = incomes
