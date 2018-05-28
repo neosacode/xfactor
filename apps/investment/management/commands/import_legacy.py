@@ -147,6 +147,9 @@ class Command(BaseCommand):
                 if not row['username'] in investments:
                     investments[row['username']] = Investments.objects.get(account__user__username=row['username'])
 
+                if Incomes.objects.filter(date=dateutil.parser.parse(row['created']), investment=investments[row['username']]).exists():
+                    continue
+
                 statement = Statement()
                 statement.account = accounts[row['username']]
                 statement.amount = Decimal(row['value'])
