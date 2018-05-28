@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 09:39+0000\n"
+"POT-Creation-Date: 2018-05-28 10:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,7 @@ msgstr "Seu empréstimo foi criado com sucesso!"
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
-#: templates/account/base.html:42 templates/two_factor/core/login.html:41
+#: templates/account/base.html:42 templates/two_factor/core/login.html:43
 msgid "Back to site"
 msgstr "Voltar ao site"
 
@@ -334,7 +334,7 @@ msgid "Go back"
 msgstr ""
 
 #: templates/account/settings.html:6 templates/account/settings.html:23
-#: templates/core/index.html:102
+#: templates/core/index.html:110
 msgid "Settings"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgid ""
 "access to your Xfactor account"
 msgstr ""
 "Por favor preencha os seus dados pessoais e residenciais para continuar ao "
-"próximo passo e teracesso a sua conta Xfactor"
+"próximo passo e ter acesso a sua conta Xfactor"
 
 #: templates/account/settings.html:24
 msgid "Here you can change your Xfactor settings as you prefer."
@@ -394,7 +394,7 @@ msgid "Address"
 msgstr "Endereço"
 
 #: templates/accounts/checking.html:5 templates/accounts/checking.html:29
-#: templates/core/index.html:131 templates/select-account2.html:106
+#: templates/core/index.html:139 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
 
@@ -765,46 +765,60 @@ msgstr "Data"
 msgid "Amount REAIS"
 msgstr "Valor em Reais"
 
-#: templates/core/documents.html:7 templates/core/documents.html:16
-#: templates/core/index.html:104
+#: templates/core/documents.html:7 templates/core/documents.html:21
+#: templates/core/index.html:112
 msgid "Documents"
 msgstr ""
 
-#: templates/core/documents.html:22
+#: templates/core/documents.html:16
+#, fuzzy
+#| msgid "Fill your data to continue"
+msgid "Send your documents to continue"
+msgstr "Preencha os seus dados para continuar"
+
+#: templates/core/documents.html:17
+msgid ""
+"The new Xfactor is now more secure and easy to use, send to us your "
+"documents to keep you safe against hackers and digital criminals."
+msgstr ""
+"A nova Xfactor é agora mais segura e fácil de usar, envie-nos seus "
+"documentos para mantê-lo seguro contra hackers e criminosos digitais."
+
+#: templates/core/documents.html:27
 msgid "Drivers License or ID - Front"
 msgstr ""
 
-#: templates/core/documents.html:37 templates/core/documents.html:68
-#: templates/core/documents.html:100 templates/core/documents.html:132
+#: templates/core/documents.html:42 templates/core/documents.html:73
+#: templates/core/documents.html:105 templates/core/documents.html:137
 msgid "Upload"
 msgstr ""
 
-#: templates/core/documents.html:54
+#: templates/core/documents.html:59
 msgid "Drivers License or ID - Back"
 msgstr ""
 
-#: templates/core/documents.html:86
+#: templates/core/documents.html:91
 msgid "Document Selfie"
 msgstr ""
 
-#: templates/core/documents.html:118
+#: templates/core/documents.html:123
 msgid "Proof of Residence"
 msgstr ""
 
-#: templates/core/index.html:96
+#: templates/core/index.html:104
 msgid "Welcome: "
 msgstr "Bem-vindo: "
 
-#: templates/core/index.html:103 templates/two_factor/_base.html:5
+#: templates/core/index.html:111 templates/two_factor/_base.html:5
 #: templates/two_factor/_base.html:16
 msgid "Two Factor Authentication"
 msgstr ""
 
-#: templates/core/index.html:109
+#: templates/core/index.html:117
 msgid "Logout from my account"
 msgstr "Sair da minha conta"
 
-#: templates/core/index.html:141
+#: templates/core/index.html:149
 msgid "Investment Account"
 msgstr "Conta de Investimentos"
 
@@ -1163,7 +1177,6 @@ msgid "months with minimum of"
 msgstr "meses com mínimo de"
 
 #: templates/investment/plans.html:59
-#| msgid " withdraw amount"
 msgid "Type the desired amount"
 msgstr "Digite o valor desejado"
 
@@ -1259,27 +1272,27 @@ msgstr "Solicitar <span>Cartão</span>"
 msgid "<strong>ADVISOR</strong> COURSE"
 msgstr ""
 
-#: templates/select-account.html:59
+#: templates/select-account.html:60
 msgid "BITCOIN QUOTE"
 msgstr "COTAÇÃO DO BITCOIN"
 
-#: templates/select-account.html:66
+#: templates/select-account.html:67
 msgid "Bitcoin/REAL quote"
 msgstr "Cotação Bitcoin/REAL"
 
-#: templates/select-account.html:73
+#: templates/select-account.html:74
 msgid "Bitcoin/Dollar quote"
 msgstr "Cotação Bitcoin/Dólar"
 
-#: templates/select-account.html:85
+#: templates/select-account.html:86
 msgid "Checking <br>Account"
 msgstr "Conta <br>Corrente"
 
-#: templates/select-account.html:89 templates/select-account.html:96
+#: templates/select-account.html:90 templates/select-account.html:97
 msgid "Enter"
 msgstr "Entrar"
 
-#: templates/select-account.html:92
+#: templates/select-account.html:93
 msgid "Investments <br>Account"
 msgstr "Conta <br> Investimentos"
 
@@ -1295,23 +1308,23 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/two_factor/core/login.html:61
+#: templates/two_factor/core/login.html:63
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
 
-#: templates/two_factor/core/login.html:81
+#: templates/two_factor/core/login.html:83
 msgid "Log in"
 msgstr "Acessar Conta"
 
-#: templates/two_factor/core/login.html:83
+#: templates/two_factor/core/login.html:85
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/two_factor/core/login.html:85
+#: templates/two_factor/core/login.html:87
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/login.html:85
+#: templates/two_factor/core/login.html:87
 msgid "Open Account"
 msgstr "Abrir Conta"
 
