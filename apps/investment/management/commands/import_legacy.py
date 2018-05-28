@@ -23,58 +23,58 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # # Migracao de usuarios
-        Users.objects.all().delete()
-        Accounts.objects.all().delete()
+        # Users.objects.all().delete()
+        # Accounts.objects.all().delete()
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            bulk_users = []
-            bulk_accounts = []
-            n = 1
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     bulk_users = []
+        #     bulk_accounts = []
+        #     n = 1
 
-            currencies = Currencies.objects.all()
+        #     currencies = Currencies.objects.all()
 
-            for row in reader:
-                user = Users()
-                user.username = row['username']
-                user.first_name = row['first_name']
-                user.last_name = row['last_name']
-                user.email = row['email']
-                user.password = row['password']
-                user.created = row['created']
-                user.modified = row['modified']
-                user.is_active = True
+        #     for row in reader:
+        #         user = Users()
+        #         user.username = row['username']
+        #         user.first_name = row['first_name']
+        #         user.last_name = row['last_name']
+        #         user.email = row['email']
+        #         user.password = row['password']
+        #         user.created = row['created']
+        #         user.modified = row['modified']
+        #         user.is_active = True
 
-                bulk_users.append(user)
+        #         bulk_users.append(user)
 
-                for currency in currencies:
-                    account = Accounts()
-                    account.user = user
-                    account.currency = currency
+        #         for currency in currencies:
+        #             account = Accounts()
+        #             account.user = user
+        #             account.currency = currency
 
-                    bulk_accounts.append(account)
+        #             bulk_accounts.append(account)
 
-                print(n, ' - Processando usuário ', user.username)
-                n += 1
+        #         print(n, ' - Processando usuário ', user.username)
+        #         n += 1
 
-            Users.objects.bulk_create(bulk_users)
-            Accounts.objects.bulk_create(bulk_accounts)
-            print('Gravando usuários no banco')
+        #     Users.objects.bulk_create(bulk_users)
+        #     Accounts.objects.bulk_create(bulk_accounts)
+        #     print('Gravando usuários no banco')
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            bulk_users = []
-            bulk_accounts = []
-            n = 1
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     bulk_users = []
+        #     bulk_accounts = []
+        #     n = 1
 
-            currencies = Currencies.objects.all()
+        #     currencies = Currencies.objects.all()
 
-            for row in reader:
-                account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
-                account.deposit = Decimal(row['balance'])
-                account.save()
+        #     for row in reader:
+        #         account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+        #         account.deposit = Decimal(row['balance'])
+        #         account.save()
 
-                print('Atualizando saldo o usuáro {}'.format(row['username']))
+        #         print('Atualizando saldo o usuáro {}'.format(row['username']))
 
         # Migracao de cobrancas
         Investments.objects.all().delete()
@@ -98,12 +98,18 @@ class Command(BaseCommand):
                 investment.modified = row['modified']
                 investment.plan_grace_period = PlanGracePeriods.objects.get(plan__name__iexact=row['name'], grace_period__months=row['months'])
 
+                account = investment.account
+                account.reserved = investment.amount
+                account.save()
+
                 bulk_investments.append(investment)
                 print('Processando investimento de {} para o usuáro {}'.format(investment.amount, row['username']))
 
             Investments.objects.bulk_create(bulk_investments)
             print('Gravando investimentos no banco')
 
+
+        Referrals.objects.all().delete()
 
         # Migracao de indicacoes
         with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:

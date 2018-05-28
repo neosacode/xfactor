@@ -98,7 +98,7 @@ msgstr ""
 
 #: apps/investment/forms.py:62
 msgid "I have read and agree to the terms of use"
-msgstr ""
+msgstr "Eu li e concordo com os termos de uso"
 
 #: apps/investment/forms.py:72
 msgid "The e-mails aren't equal"

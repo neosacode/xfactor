@@ -118,22 +118,25 @@ class CreateInvestmentView(View):
 
 
                 if grace_period.grace_period.months > 0:
-                    start_date = datetime.now()
+                    start_date = datetime.now() + timedelta(days=1)
                     end_date = start_date + relativedelta(months=grace_period.grace_period.months)
                     range_dates = list(rrule(DAILY, dtstart=start_date, until=end_date))
                     income_amount = (amount * (grace_period.income_percent / 100)) * grace_period.grace_period.months
                     income_table = decimal_split(income_amount, len(range_dates), 98, 100)
 
                     date_index = 0
+                    bulk_incomes = []
 
                     for dt in range_dates:
                         income = Incomes()
                         income.date = dt
                         income.amount = income_table[date_index]
                         income.investment = investment
-                        income.save() 
+                        bulk_incomes.append(income)
 
                         date_index += 1
+
+                    Incomes.objects.bulk_create(bulk_incomes)
 
                 checking_account.deposit -= amount
                 checking_account.save()
