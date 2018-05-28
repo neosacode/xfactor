@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-27 23:37+0000\n"
+"POT-Creation-Date: 2018-05-28 03:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,10 +66,11 @@ msgid "Payment Code"
 msgstr ""
 
 #: apps/investment/forms.py:38 apps/investment/forms.py:40
+#: apps/investment/forms.py:79 apps/investment/forms.py:81
 msgid "2FA Code"
 msgstr ""
 
-#: apps/investment/forms.py:51
+#: apps/investment/forms.py:51 apps/investment/forms.py:102
 msgid "The 2FA code is invalid"
 msgstr ""
 
@@ -85,7 +86,8 @@ msgstr ""
 msgid "Confirm e-mail"
 msgstr ""
 
-#: apps/investment/forms.py:61 templates/card.html:49
+#: apps/investment/forms.py:61 apps/investment/forms.py:84
+#: templates/card.html:49
 msgid "Password"
 msgstr ""
 
@@ -95,6 +97,10 @@ msgstr ""
 
 #: apps/investment/forms.py:72
 msgid "The e-mails aren't equal"
+msgstr ""
+
+#: apps/investment/forms.py:96
+msgid "Wrong password informed"
 msgstr ""
 
 #: apps/investment/models.py:24 templates/investment/plans.html:32
@@ -307,6 +313,21 @@ msgstr ""
 #: templates/account/base.html:42 templates/two_factor/core/login.html:41
 msgid "Back to site"
 msgstr "Voltar ao site"
+
+#: templates/account/logout.html:5 templates/account/logout.html:11
+#: templates/account/logout.html:15
+#, fuzzy
+#| msgid "Log In"
+msgid "Log out"
+msgstr "Acessar"
+
+#: templates/account/logout.html:14
+msgid "Are you sure you want to log out?"
+msgstr ""
+
+#: templates/account/logout.html:16
+msgid "Go back"
+msgstr ""
 
 #: templates/account/settings.html:6 templates/account/settings.html:23
 #: templates/core/index.html:102
@@ -578,11 +599,11 @@ msgstr "Por favor digite o seu nome ou o nome da sua empresa"
 msgid "Please type your CPF or CNPJ number"
 msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
-#: templates/card-modal.html:11
+#: templates/card-modal.html:12
 msgid "MAKE YOUR SUBSCRIPTION"
 msgstr "FAÇA A SUA INSCRIÇÃO"
 
-#: templates/card-modal.html:14
+#: templates/card-modal.html:16
 msgid ""
 "To own Xfactor card, you need to first become an investment advisor. To do "
 "so fill out the information below and register for the course that started "
@@ -592,91 +613,91 @@ msgstr ""
 "consultor. Para isto preencha as informações abaixo e registre-se para o "
 "curso que iniciará em agosto. Tenha acesso imediato ao seu cartão!"
 
-#: templates/card-modal.html:17
+#: templates/card-modal.html:19
 msgid "Topics that will be covered in the course"
 msgstr "Tópicos que serão abordados neste curso"
 
-#: templates/card-modal.html:22
+#: templates/card-modal.html:24
 msgid "01 - Introduction to Bitcoin"
 msgstr "01 - Introdução ao Bitcoin"
 
-#: templates/card-modal.html:23
+#: templates/card-modal.html:25
 msgid "02 - Blockchain history"
 msgstr "02 - História da Blockhain"
 
-#: templates/card-modal.html:24
+#: templates/card-modal.html:26
 msgid "03 - Types of financial market"
 msgstr "03 - Tipos de mercado financeiro"
 
-#: templates/card-modal.html:25
+#: templates/card-modal.html:27
 msgid "04 - Security and investment"
 msgstr "04 - Segurança e investimento"
 
-#: templates/card-modal.html:26
+#: templates/card-modal.html:28
 msgid "05 - Strategies of investment"
 msgstr "05 - Estratégias de investimento"
 
-#: templates/card-modal.html:27
+#: templates/card-modal.html:29
 msgid "06 - Where's the Bitcoin market going"
 msgstr "06 - Para onde o mercado Bitcoin está indo"
 
-#: templates/card-modal.html:28
+#: templates/card-modal.html:30
 msgid "07 - Technical analysis"
 msgstr "07 - Análise técnica"
 
-#: templates/card-modal.html:33
+#: templates/card-modal.html:35
 msgid "08 - Regulatory aspects of bitcoin"
 msgstr "08 - Aspectos jurídicos do bitcoin"
 
-#: templates/card-modal.html:34
+#: templates/card-modal.html:36
 msgid "09 - How accept Bitcoin in my business"
 msgstr "09 - Como aceitar Bitcoin no seu negócio"
 
-#: templates/card-modal.html:35
+#: templates/card-modal.html:37
 msgid "10 - Sale techniques"
 msgstr "10 - Técnicas de venda"
 
-#: templates/card-modal.html:36
+#: templates/card-modal.html:38
 msgid "11 - Personal marketing"
 msgstr "11 - Marketing pessoal"
 
-#: templates/card-modal.html:37
+#: templates/card-modal.html:39
 msgid "12 - Leadership and development of crews"
 msgstr "12 - Liderança e desenvolvimento de equipes"
 
-#: templates/card-modal.html:38
+#: templates/card-modal.html:40
 msgid "13 - Mindset and NLP"
 msgstr "13 - Mindset e PNL"
 
-#: templates/card-modal.html:45
+#: templates/card-modal.html:47
 msgid "Start now for just <span class='tx-30'>0.03</span> BTC"
 msgstr "Inicie agora por apenas <span class='tx-30'>0.03</span> BTC"
 
-#: templates/card-modal.html:46
+#: templates/card-modal.html:48
 msgid "The course amount will be discount from your checking account"
 msgstr "O valor do curso será descontado da sua conta corrente"
 
-#: templates/card-modal.html:47
+#: templates/card-modal.html:49
 msgid "Your checking account balance is: "
 msgstr "O saldo da sua conta corrente é:"
 
-#: templates/card-modal.html:52
+#: templates/card-modal.html:54
 msgid "Your Password"
 msgstr "Sua Senha"
 
-#: templates/card-modal.html:57
+#: templates/card-modal.html:64
 msgid "Your Two Factor Code"
 msgstr "Seu código 2 fatores"
 
-#: templates/card-modal.html:64
+#: templates/card-modal.html:76
 msgid "I read and agree with the terms: "
 msgstr "Eu li e concordo com os termos:"
 
-#: templates/card-modal.html:64
+#: templates/card-modal.html:76
 msgid "Open terms"
 msgstr "Abrir termos"
 
-#: templates/card-modal.html:69
+#: templates/card-modal.html:85
 msgid "SIGN ME UP"
 msgstr "INSCREVER-ME"
 
@@ -1285,8 +1306,7 @@ msgstr "Não possui uma conta?"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: templates/two_factor/core/setup_complete.html:5
-#| msgid "Graduations"
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:128
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1298,7 +1318,6 @@ msgstr ""
 
 #: templates/two_factor/core/setup_complete.html:12
 #: templates/two_factor/core/setup_complete.html:19
-#| msgid "Logout from my account"
 msgid "I want to see my account"
 msgstr "Quero ver a minha conta"
 
@@ -1309,9 +1328,29 @@ msgid ""
 "      number."
 msgstr ""
 
-#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/core/setup_complete.html:20
 msgid "Add Phone Number"
 msgstr ""
+
+#: xfactor/views.py:107
+msgid "Warning!"
+msgstr "Aviso!"
+
+#: xfactor/views.py:107
+msgid "Your already have requested your Advisor course."
+msgstr "Você já solicitou o seu curso Advisor"
+
+#: xfactor/views.py:116
+msgid "Error!"
+msgstr "Erro!"
+
+#: xfactor/views.py:116
+msgid "You not have enought balance for make your subscription ."
+msgstr "Você não possui saldo suficiente para fazer a inscrição."
+
+#: xfactor/views.py:128
+msgid "Your subscription in the Advisor has been successfully made."
+msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
 #~| msgid "Sign Up"
 #~ msgid "Sign me up"
