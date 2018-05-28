@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 03:51+0000\n"
+"POT-Creation-Date: 2018-05-28 08:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,11 @@ msgstr ""
 #: apps/investment/forms.py:51 apps/investment/forms.py:102
 msgid "The 2FA code is invalid"
 msgstr ""
+
+#: apps/investment/forms.py:57
+#| msgid "Start your investment"
+msgid "-- Select your investment advisor --"
+msgstr "-- Selecione o seu investment advisor --"
 
 #: apps/investment/forms.py:58
 msgid "First name"
@@ -216,7 +221,7 @@ msgstr "Promotor de Investimentos"
 
 #: apps/investment/models.py:136
 msgid "Investment Advisor"
-msgstr "Consultor de Investimentos"
+msgstr "Investment Advisor"
 
 #: apps/investment/models.py:144
 msgid "Graduation"
@@ -607,97 +612,101 @@ msgstr "FAÇA A SUA INSCRIÇÃO"
 msgid ""
 "To own Xfactor card, you need to first become an investment advisor. To do "
 "so fill out the information below and register for the course that started "
-"in August. Get your card right away!"
+"in August. Have immediate access to the card, taking advantage of the "
+"promotion you get the costs of sending and making the card. (You will be "
+"saving 0.07 BTC of course + US $ 10.00 for making + US $ 45.00 for freight)"
 msgstr ""
-"Para possuir o cartão Xfactor, você precisa primeiro se tornar um investidor "
-"consultor. Para isto preencha as informações abaixo e registre-se para o "
-"curso que iniciará em agosto. Tenha acesso imediato ao seu cartão!"
+"Para possuir o cartão Xfactor, você precisa primeiro se tornar um consultor "
+"de investimentos. Para isso, preencha as informações abaixo e inscreva-se no "
+"curso iniciado em agosto. Tenha acesso imediato ao cartão, aproveitando a "
+"promoção você recebe os custos de envio e confecção do cartão. (Você estará "
+"economizando 0,07 BTC, claro + US $ 10,00 para fazer + US $ 45,00 para frete)"
 
-#: templates/card-modal.html:19
+#: templates/card-modal.html:18
 msgid "Topics that will be covered in the course"
 msgstr "Tópicos que serão abordados neste curso"
 
-#: templates/card-modal.html:24
+#: templates/card-modal.html:23
 msgid "01 - Introduction to Bitcoin"
 msgstr "01 - Introdução ao Bitcoin"
 
-#: templates/card-modal.html:25
+#: templates/card-modal.html:24
 msgid "02 - Blockchain history"
 msgstr "02 - História da Blockhain"
 
-#: templates/card-modal.html:26
+#: templates/card-modal.html:25
 msgid "03 - Types of financial market"
 msgstr "03 - Tipos de mercado financeiro"
 
-#: templates/card-modal.html:27
+#: templates/card-modal.html:26
 msgid "04 - Security and investment"
 msgstr "04 - Segurança e investimento"
 
-#: templates/card-modal.html:28
+#: templates/card-modal.html:27
 msgid "05 - Strategies of investment"
 msgstr "05 - Estratégias de investimento"
 
-#: templates/card-modal.html:29
+#: templates/card-modal.html:28
 msgid "06 - Where's the Bitcoin market going"
 msgstr "06 - Para onde o mercado Bitcoin está indo"
 
-#: templates/card-modal.html:30
+#: templates/card-modal.html:29
 msgid "07 - Technical analysis"
 msgstr "07 - Análise técnica"
 
-#: templates/card-modal.html:35
+#: templates/card-modal.html:34
 msgid "08 - Regulatory aspects of bitcoin"
 msgstr "08 - Aspectos jurídicos do bitcoin"
 
-#: templates/card-modal.html:36
+#: templates/card-modal.html:35
 msgid "09 - How accept Bitcoin in my business"
 msgstr "09 - Como aceitar Bitcoin no seu negócio"
 
-#: templates/card-modal.html:37
+#: templates/card-modal.html:36
 msgid "10 - Sale techniques"
 msgstr "10 - Técnicas de venda"
 
-#: templates/card-modal.html:38
+#: templates/card-modal.html:37
 msgid "11 - Personal marketing"
 msgstr "11 - Marketing pessoal"
 
-#: templates/card-modal.html:39
+#: templates/card-modal.html:38
 msgid "12 - Leadership and development of crews"
 msgstr "12 - Liderança e desenvolvimento de equipes"
 
-#: templates/card-modal.html:40
+#: templates/card-modal.html:39
 msgid "13 - Mindset and NLP"
 msgstr "13 - Mindset e PNL"
 
-#: templates/card-modal.html:47
+#: templates/card-modal.html:46
 msgid "Start now for just <span class='tx-30'>0.03</span> BTC"
 msgstr "Inicie agora por apenas <span class='tx-30'>0.03</span> BTC"
 
-#: templates/card-modal.html:48
+#: templates/card-modal.html:47
 msgid "The course amount will be discount from your checking account"
 msgstr "O valor do curso será descontado da sua conta corrente"
 
-#: templates/card-modal.html:49
+#: templates/card-modal.html:48
 msgid "Your checking account balance is: "
 msgstr "O saldo da sua conta corrente é:"
 
-#: templates/card-modal.html:54
+#: templates/card-modal.html:53
 msgid "Your Password"
 msgstr "Sua Senha"
 
-#: templates/card-modal.html:64
+#: templates/card-modal.html:63
 msgid "Your Two Factor Code"
 msgstr "Seu código 2 fatores"
 
-#: templates/card-modal.html:76
+#: templates/card-modal.html:75
 msgid "I read and agree with the terms: "
 msgstr "Eu li e concordo com os termos:"
 
-#: templates/card-modal.html:76
+#: templates/card-modal.html:75
 msgid "Open terms"
 msgstr "Abrir termos"
 
-#: templates/card-modal.html:85
+#: templates/card-modal.html:84
 msgid "SIGN ME UP"
 msgstr "INSCREVER-ME"
 

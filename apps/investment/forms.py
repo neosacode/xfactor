@@ -54,7 +54,7 @@ class Code2FAForm(forms.Form):
 
 
 class SignupForm(account.forms.SignupForm):
-    advisor = forms.ModelChoiceField(queryset=Users.objects.filter(is_active=True, graduations__type=Graduations._advisor), required=False)
+    advisor = forms.ModelChoiceField(empty_label=_("-- Select your investment advisor --"), queryset=Users.objects.filter(is_active=True, graduations__type=Graduations._advisor), required=False)
     first_name = forms.CharField(label=_("First name"))
     last_name = forms.CharField(label=_("Last name"))
     confirm_email = forms.EmailField(label=_("Confirm e-mail"))

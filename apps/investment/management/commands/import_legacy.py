@@ -61,6 +61,20 @@ class Command(BaseCommand):
             Accounts.objects.bulk_create(bulk_accounts)
             print('Gravando usuários no banco')
 
+        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            bulk_users = []
+            bulk_accounts = []
+            n = 1
+
+            currencies = Currencies.objects.all()
+
+            for row in reader:
+                account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+                account.deposit = Decimal(row['balance'])
+                account.save()
+
+                print('Atualizando saldo o usuáro {}'.format(row['username']))
 
         # Migracao de cobrancas
         Investments.objects.all().delete()
@@ -117,7 +131,6 @@ class Command(BaseCommand):
             reader = csv.DictReader(f)
             bulk_statements = []
             bulk_incomes = []
-            accounts_deposit = {}
             accounts = {}
             investments = {}
 
@@ -134,17 +147,13 @@ class Command(BaseCommand):
                 statement.description = row['description']
                 statement.created = row['created']
                 statement.modified = row['created']
-                statement.type = Statement.TYPES.income
+                statement.type = row['type']
 
                 income = Incomes()
                 income.date = dateutil.parser.parse(row['created'])
                 income.amount = statement.amount
                 income.investment = investments[row['username']]
 
-                if row['username'] not in accounts_deposit:
-                    accounts_deposit[row['username']] = 0                    
-
-                accounts_deposit[row['username']] = accounts_deposit[row['username']] + statement.amount
                 bulk_statements.append(statement)
                 bulk_incomes.append(income)
                 print('Processando extrato {} com valor de {} para a conta de investimentos do usuáro {}'.format(statement.description, statement.amount, row['username']))
@@ -152,10 +161,3 @@ class Command(BaseCommand):
             Statement.objects.bulk_create(bulk_statements)
             Incomes.objects.bulk_create(bulk_incomes)
             print('Gravando rendimentos no banco')
-
-            for username, amount in accounts_deposit.items():
-                account = accounts[username]
-                account.deposit = amount
-                account.save()
-
-                print('Adicionando {} a conta de investimentos do usuáro {}'.format(amount, username))
