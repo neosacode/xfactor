@@ -8,17 +8,16 @@
       authentication.{% endblocktrans %}
 
   {% if not phone_methods %}
-    <p><a class="btn btn-primary" href="{% url 'core>logout' %}"
+    <p><a class="btn btn-primary" href="{% url 'xfactor>logout' %}"
         class="btn btn-block btn-default">{% trans "I want to see my account" %}</a></p>
   {% else %}
     <p>{% blocktrans %}However, it might happen that you don't have access to
       your primary token device. To enable account recovery, add a phone 
       number.{% endblocktrans %}</p>
 
-    <a class="btn btn-primary" href="{% url 'core>logout' %}"
+    <a class="btn btn-primary" href="{% url 'xfactor>logout' %}"
         class="pull-right btn btn-link">{% trans "I want to see my account" %}</a>
-    <p><a href="{% url 'two_factor:phone_create' %}"
-        class="btn btn-success">{% trans "Add Phone Number" %}</a></p>
+    <p><a href="{% url 'two_factor:phone_create' %}" class="btn btn-success">{% trans "Add Phone Number" %}</a></p>
   {% endif %}
 
 {% endblock %}

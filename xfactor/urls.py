@@ -13,6 +13,7 @@ urlpatterns = [
 	path('account/investment/', InvestmentAccountView.as_view(), name='xfactor>investment'),
 	path('account/my-card/', MyCardView.as_view(), name='xfactor>my-card'),
 	path('account/request-card/', RequestCardView.as_view(), name='xfactor>request-card'),
+	path('account/raw-logout/', LogoutView.as_view(), name='xfactor>logout'),
 ]
 
 

@@ -1,6 +1,7 @@
 import uuid
 
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
@@ -83,3 +84,10 @@ class MyCardView(TemplateView):
 @method_decorator([login_required], name='dispatch')
 class RequestCardView(TemplateView):
 	template_name = 'request-card.html'
+
+
+@method_decorator([login_required], name='dispatch')
+class LogoutView(View):
+	def get(self, request):
+		logout(request)
+		return redirect(reverse('xfactor>select-account'))
