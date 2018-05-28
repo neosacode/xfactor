@@ -956,12 +956,12 @@ msgstr "Empréstimo"
 #: templates/investment/credit-line.html:33
 #: templates/investment/credit-line.html:105
 msgid "Limit"
-msgstr ""
+msgstr "Limite"
 
 #: templates/investment/credit-line.html:34
 #: templates/investment/credit-line.html:106
 msgid "In Use"
-msgstr ""
+msgstr "Em Uso"
 
 #: templates/investment/credit-line.html:35
 #: templates/investment/credit-line.html:107
@@ -970,23 +970,23 @@ msgstr "Limite Disponível"
 
 #: templates/investment/credit-line.html:48
 msgid "Type the loan amount on the field below"
-msgstr ""
+msgstr "Digite a quantidade para empréstimo no campo abaixo"
 
 #: templates/investment/credit-line.html:51
 msgid "The loan amount can't exceed the available amount"
-msgstr ""
+msgstr "A quantidade emprestada não pode exceder o seu crédito"
 
 #: templates/investment/credit-line.html:52
 msgid "The min amount for loan is"
-msgstr ""
+msgstr "Quantidade mínimo para empréstimo é:"
 
 #: templates/investment/credit-line.html:56
 msgid "Select the loan table"
-msgstr ""
+msgstr "Selecione a parcela"
 
 #: templates/investment/credit-line.html:62
 msgid "Times"
-msgstr ""
+msgstr "Vezes"
 
 #: templates/investment/credit-line.html:63
 msgid "Month"
@@ -994,7 +994,7 @@ msgstr "Meses"
 
 #: templates/investment/credit-line.html:64
 msgid "Percent"
-msgstr ""
+msgstr "Porcentagem"
 
 #: templates/investment/credit-line.html:66
 msgid "Total"
@@ -1002,86 +1002,86 @@ msgstr ""
 
 #: templates/investment/credit-line.html:76
 msgid "Read the loan contract and accept the terms"
-msgstr ""
+msgstr "Leia o contrato de empréstimo e aceite os termos"
 
 #: templates/investment/credit-line.html:81
 #: templates/investment/credit-line.html:135
 msgid "I accept the contract terms"
-msgstr ""
+msgstr "Eu aceito os termos de contrato"
 
 #: templates/investment/credit-line.html:81
 #: templates/investment/credit-line.html:135
 msgid "Click here"
-msgstr ""
+msgstr "Clique aqui"
 
 #: templates/investment/credit-line.html:81
 msgid "to open the loan contract."
-msgstr ""
+msgstr "para abrir o contrato de empréstimo"
 
 #: templates/investment/credit-line.html:86
 msgid "Finish your loan"
-msgstr ""
+msgstr "Finialize seu empréstimo"
 
 #: templates/investment/credit-line.html:87
 msgid "FINISH LOAN"
-msgstr ""
+msgstr "FINALIZAR EMPRÉSTIMO"
 
 #: templates/investment/credit-line.html:95
 msgid "NEW OVERDRAFT"
-msgstr ""
+msgstr "NOVO CHEQUE ESPECIAL"
 
 #: templates/investment/credit-line.html:95
 msgid "New Overdraft"
-msgstr ""
+msgstr "Novo Cheque Especial"
 
 #: templates/investment/credit-line.html:108
 msgid "Days to Pay"
-msgstr ""
+msgstr "Dias para Pagar"
 
 #: templates/investment/credit-line.html:122
 msgid "Type the overdraft amount on the field below"
-msgstr ""
+msgstr "Digite o valor do cheque especial no campo abaixo"
 
 #: templates/investment/credit-line.html:125
 msgid "The overdraft amount can't exceed the available amount"
-msgstr ""
+msgstr "O valor solicitado não pode exceder o saldo da sua conta"
 
 #: templates/investment/credit-line.html:126
 msgid "The min amount for overdraft is"
-msgstr ""
+msgstr "O valor mínimo para este tipo de crédito é"
 
 #: templates/investment/credit-line.html:130
 msgid "Read the overdraft contract and accept the terms"
-msgstr ""
+msgstr "Leia o contrato do cheque especial e aceite os termos"
 
 #: templates/investment/credit-line.html:135
 msgid "to open the overdraft contract."
-msgstr ""
+msgstr "para abrir o contrato do cheque especial"
 
 #: templates/investment/credit-line.html:140
 msgid "Finish your overdraft"
-msgstr ""
+msgstr "Finalizar cheque especial"
 
 #: templates/investment/credit-line.html:141
 msgid "FINISH OVERDRAFT"
-msgstr ""
+msgstr "FINIALIZAR CHEQUE ESPECIAL"
 
 #: templates/investment/credit-line.html:152
 msgid "MY LOANS"
-msgstr ""
+msgstr "MEUS EMPRÉSTIMOS"
 
 #: templates/investment/credit-line.html:171
 msgid "Started at: "
-msgstr ""
+msgstr "Incio em:"
 
 #: templates/investment/credit-line.html:172
 msgid "Borrowed amount: "
-msgstr ""
+msgstr "Quantidade emprestada"
 
 #: templates/investment/credit-line.html:178
 #: templates/investment/credit-line.html:225
 msgid "Amount To Be Paid"
-msgstr ""
+msgstr "Quantidade a ser paga"
 
 #: templates/investment/credit-line.html:179
 #: templates/investment/credit-line.html:223
@@ -1099,36 +1099,36 @@ msgstr "Disponível para uso"
 
 #: templates/investment/credit-line.html:209
 msgid "No loans to show"
-msgstr ""
+msgstr "Sem empréstimos para exibir"
 
 #: templates/investment/credit-line.html:214
 msgid "MY OVERDRAFTS"
-msgstr ""
+msgstr "MEUS CHQUES ESPECIAIS"
 
 #: templates/investment/credit-line.html:222
 msgid "Started At"
-msgstr ""
+msgstr "Começou Em"
 
 #: templates/investment/credit-line.html:224
 msgid "Remaining Days"
-msgstr ""
+msgstr "Dias Restantes"
 
 #: templates/investment/credit-line.html:251
 msgid "No overdrafts to show"
-msgstr ""
+msgstr "Sem cheques especiais para exibir"
 
 #: templates/investment/my-customers.html:6
 #: templates/investment/my-customers.html:15
 msgid "My Customers"
-msgstr ""
+msgstr "Meus clientes"
 
 #: templates/investment/my-customers.html:28
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Telefone Celular"
 
 #: templates/investment/my-customers.html:30
 msgid "Has Investing Plan"
-msgstr ""
+msgstr "Possui Plano de Investimento"
 
 #: templates/investment/my-customers.html:50 templates/investment/plans.html:36
 msgid "Yes"
