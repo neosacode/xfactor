@@ -16,36 +16,37 @@ from exchange_payments.gateways.bitgo import Gateway
 bitgo = Gateway()
 
 
-def check_transactions(account):
-    print('Processando conta do usuario {}'.format(account.user.username))
-    
+def check_transaction(output):
     with transaction.atomic():
-        transactions = bitgo.get_transactions(account.deposit_address)
-        key_name = 'transactions'
+        accounts = Accounts.objects.filter(deposit_address=output['address'])
 
-        if not key_name in transactions:
+        if not accounts.exists():
             return
 
-        for tx in transactions[key_name]:
-            if not tx['outputs']:
-                return
+        account = accounts.first()
+        print('Processando conta do usuario {}'.format(account.user.username))
 
-            if Statement.objects.filter(account=account, tx_id=tx['id']).exists():
-                return
+        if Statement.objects.filter(account=account, tx_id=output['id']).exists():
+            return
 
-            amount = Decimal(tx['outputs'][-1]['value']) / Decimal('100000000')
-            account.deposit += amount
-            account.save()
+        satoshis = Decimal(output['value'])
 
-            statement = Statement()
-            statement.account = account
-            statement.tx_id = tx['id']
-            statement.amount = amount
-            statement.description = 'Deposit'
-            statement.type = Statement.TYPES.deposit
-            statement.save()
+        if satoshis < 0:
+            return
 
-            print("Transfering {} to {} account".format(amount, account.pk))
+        amount = satoshis / Decimal('100000000')
+        account.deposit += amount
+        account.save()
+
+        statement = Statement()
+        statement.account = account
+        statement.tx_id = output['id']
+        statement.amount = amount
+        statement.description = 'Deposit'
+        statement.type = Statement.TYPES.deposit
+        statement.save()
+
+        print("Transfering {} to {} account".format(amount, account.pk))
 
 
 MAXIMUM_STACK_SIZE = 30
@@ -54,13 +55,13 @@ class Command(BaseCommand):
     help = 'Confirm bitgo transfers'
 
     def handle(self, *args, **options):
-        offset = 0
-
         while True:
-            accounts = Accounts.objects.filter(currency__symbol='BTC', deposit_address__isnull=False)[offset:offset + MAXIMUM_STACK_SIZE]
+            wallets = bitgo.get_wallets()
 
-            gevent.wait([gevent.spawn(check_transactions, account) for account in accounts])
-            offset += MAXIMUM_STACK_SIZE
-
-            if len(accounts) < MAXIMUM_STACK_SIZE:
+            for wallet in wallets['wallets']:
                 offset = 0
+                payments = []
+                transactions = bitgo.get_transactions(wallet['id'])
+
+                for transfer in transactions['transfers']:
+                    gevent.wait([gevent.spawn(check_transaction, output) for output in transfer['outputs']])
