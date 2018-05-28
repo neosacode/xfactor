@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 08:12+0000\n"
+"POT-Creation-Date: 2018-05-28 09:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,6 @@ msgid "The 2FA code is invalid"
 msgstr ""
 
 #: apps/investment/forms.py:57
-#| msgid "Start your investment"
 msgid "-- Select your investment advisor --"
 msgstr "-- Selecione o seu investment advisor --"
 
@@ -254,11 +253,11 @@ msgstr "Investimentos"
 
 #: apps/investment/models.py:229
 msgid "Credit"
-msgstr ""
+msgstr "Crédito"
 
 #: apps/investment/models.py:230
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #: apps/investment/templates/investment/signup.html:20
 msgid "Your investment promoter is"
@@ -292,28 +291,28 @@ msgstr "ERROR! Valor a ser investido está fora do limite do plano"
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:161
+#: apps/investment/views.py:164
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:162
+#: apps/investment/views.py:165
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:224 templates/accounts/checking.html:51
+#: apps/investment/views.py:227 templates/accounts/checking.html:51
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
-msgstr ""
+msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:278
+#: apps/investment/views.py:281
 msgid "Your loan application was created with success!"
-msgstr ""
+msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:312
+#: apps/investment/views.py:315
 msgid "Your credit application was created with success!"
-msgstr ""
+msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
 #: templates/account/base.html:42 templates/two_factor/core/login.html:41
 msgid "Back to site"
@@ -495,11 +494,11 @@ msgstr "SACAR RENDIMENTOS"
 msgid "MY CUSTOMERS"
 msgstr "MEUS CLIENTES"
 
-#: templates/accounts/investment.html:69
+#: templates/accounts/investment.html:70
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:90
+#: templates/accounts/investment.html:91
 msgid "Last 30 days"
 msgstr ""
 
@@ -1164,8 +1163,9 @@ msgid "months with minimum of"
 msgstr "meses com mínimo de"
 
 #: templates/investment/plans.html:59
-msgid "Select the desired grace period"
-msgstr "Selecione o período de carência desejado"
+#| msgid " withdraw amount"
+msgid "Type the desired amount"
+msgstr "Digite o valor desejado"
 
 #: templates/investment/plans.html:62
 msgid "Desired BTC amount to be invested"
@@ -1315,7 +1315,7 @@ msgstr "Não possui uma conta?"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:128
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:129
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1341,25 +1341,28 @@ msgstr ""
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:107
+#: xfactor/views.py:108
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:107
+#: xfactor/views.py:108
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:116
+#: xfactor/views.py:117
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:116
+#: xfactor/views.py:117
 msgid "You not have enought balance for make your subscription ."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:128
+#: xfactor/views.py:129
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Select the desired grace period"
+#~ msgstr "Selecione o período de carência desejado"
 
 #~| msgid "Sign Up"
 #~ msgid "Sign me up"
