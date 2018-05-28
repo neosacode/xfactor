@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 10:01+0000\n"
+"POT-Creation-Date: 2018-05-28 10:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -474,9 +474,35 @@ msgstr "Disponível para saque:"
 msgid "Your total incomes:"
 msgstr "Seu total de rendimentos:"
 
+#: templates/accounts/investment.html:35 templates/accounts/investment.html:39
+#: templates/accounts/investment.html:40 templates/accounts/investment.html:41
+msgid "In processing"
+msgstr ""
+
 #: templates/accounts/investment.html:37
 msgid "My Comissions"
 msgstr "Minhas Comissões"
+
+#: templates/accounts/investment.html:38
+#, fuzzy
+#| msgid "Graduation"
+msgid "Current Graduation"
+msgstr "Graduação"
+
+#: templates/accounts/investment.html:39
+#| msgid "Comissions"
+msgid "Total Comissions"
+msgstr "Total Comissões"
+
+#: templates/accounts/investment.html:40
+#| msgid "My Comissions"
+msgid "Month Comissions"
+msgstr "Comissões do Mês"
+
+#: templates/accounts/investment.html:41
+#| msgid "My Comissions"
+msgid "Today Comissions"
+msgstr "Comissões de Hoje"
 
 #: templates/accounts/investment.html:49
 msgid "REINVEST"
@@ -771,7 +797,6 @@ msgid "Documents"
 msgstr ""
 
 #: templates/core/documents.html:16
-#| msgid "Fill your data to continue"
 msgid "Send your documents to continue"
 msgstr "Preencha os seus dados para continuar"
 
