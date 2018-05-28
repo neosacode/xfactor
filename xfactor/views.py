@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse

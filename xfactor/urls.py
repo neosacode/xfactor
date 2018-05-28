@@ -4,7 +4,7 @@ from django.conf import settings
 
 from two_factor.urls import urlpatterns as tf_urls
 
-from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView, MyCardView, RequestCardView
+from .views import SelectAccountView, CheckingAccountView, InvestmentAccountView, MyCardView, RequestCardView, LogoutView
 
 
 urlpatterns = [
