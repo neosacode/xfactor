@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+from gevent import monkey
+import psycogreen.gevent
+monkey.patch_all(thread=True)
+psycogreen.gevent.patch_psycopg()
+
 import os
 import sys
 
