@@ -75,6 +75,7 @@ class InvestmentAccountView(TemplateView):
 		increment_amount = 0
 
 		for income in reversed(incomes_qs):
+			print(income.date)
 			incomes.append({'amount': str(income.amount).replace(',', '.'), 'date': income.date})
 
 		context['incomes'] = incomes
