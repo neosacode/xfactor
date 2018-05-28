@@ -31,23 +31,22 @@
           <hr>
           <p class="tx-14">{% trans "Select a new avatar image using the field below" %}</p>
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-5 text-right">
+                {% if not request.user.avatar %}
+                    <a href="#" id="choose-avatar"><img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle img-fluid"></a>
+                {% else %}
+                    <a href="#" id="choose-avatar"><img src="{% thumbnail request.user.avatar 100x100 crop %}" class="rounded-circle"></a>
+                {% endif %}
+            </div>
+            <div class="col-md-7">
               {% csrf_token %}
 
               {{ form_avatar.form_name }}
-              <input type="file" name="avatar">
+              <input type="file" name="avatar" id="choose-avatar-input" style="opacity: 0;">
 
               <div class="mt-20">
                 <button class="btn btn-pink btn-round btn-sm b" type="submit">{% trans "Update" %}</button>
               </div>
-            </div>
-
-            <div class="col-md-4 text-right">
-                {% if not request.user.avatar %}
-                    <img src="https://www.w3schools.com/howto/img_avatar.png" class="rounded-circle img-fluid">
-                {% else %}
-                    <img src="{% thumbnail request.user.avatar 100x100 crop %}" class="rounded-circle">
-                {% endif %}
             </div>
           </div>
         </form>
@@ -108,4 +107,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.4/sweetalert2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
   {% include "core/scripts/address.vue.html" %}
+  <script>
+    jQuery(function($) {
+      $('#choose-avatar').click(function(e) {
+        e.preventDefault();
+        $('#choose-avatar-input').click();
+      });
+    });
+  </script>
 {% endblock %}
