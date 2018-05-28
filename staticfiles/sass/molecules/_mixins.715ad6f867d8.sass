@@ -1,0 +1,46 @@
+$celular: max-width 440px
+$video: max-width 530px 
+$tablet: max-width 991px
+$celubot: max-width 768px
+$pc: max-width 1200px
+
+$branco: #fff
+$preto: black
+$rosa: #ef2e88
+$azul-claro: #0950a0
+$azul-escuro: #0a2357
+$azul-toggle: #094080
+$back: #f3f3f4
+$verde: #2fb574
+$verde-on: #6fc000
+$vermelho-off: #f24337
+$cinza: #a7a7a7
+$cinza-claro: #e2e2e2
+
+/* ======== Font */
+$light: 300
+$regular: 500
+$bold: 700
+
+=transition($transition...) 
+  -moz-transition:    all $transition linear
+  -o-transition:      all $transition linear
+  -webkit-transition: all $transition linear
+  transition:         all $transition linear
+
+=gradient($angle,$gradient1, $gradient2)
+  background-color: $gradient2 
+  background-image: -webkit-gradient(linear, $angle, from($gradient1), to($gradient2))
+  background-image: -webkit-linear-gradient($angle, $gradient1, $gradient2)
+  background-image:    -moz-linear-gradient($angle, $gradient1, $gradient2)
+  background-image:     -ms-linear-gradient($angle, $gradient1, $gradient2)
+  background-image:      -o-linear-gradient($angle, $gradient1, $gradient2)
+  background-image:         linear-gradient($angle, $gradient1, $gradient2)
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle,StartColorStr='#{$gradient1}', EndColorStr='#{$gradient2}')
+
+=flexbox
+  display: -webkit-box
+  display: -webkit-flex
+  display: -moz-flex
+  display: -ms-flexbox
+  display: flex

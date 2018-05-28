@@ -1,0 +1,108 @@
+body
+
+main
+	.back-menu-2
+		border-bottom: solid 1px $cinza
+		ul 
+			li 
+				display: inline-block
+				margin-right: 50px
+				margin-top: 30px
+				margin-bottom: 30px
+				a 
+					color: $azul-escuro
+					font-weight: bold
+					+flexbox
+					+align-items(center)
+					span 
+						margin-left: 7px
+		+breakpoint($tablet)
+			text-align: center
+			ul 
+				li 
+					margin: 0 auto
+					margin-top: 25px 
+					margin-bottom: 25px
+					display: table
+					a 
+						img 
+							width: 25px
+						span 
+							font-size: 30px !important	
+
+	.content
+		background-color: $back
+		min-height: 800px
+		.box-1
+			+make-md-column(12)
+			margin-top: 50px
+			.margem
+				border: solid 2px $cinza-claro
+				background-color: $branco 
+				padding: 20px 25px
+				margin-bottom: 100px
+				h2
+					color: $azul-claro
+					
+					border-bottom: solid 2px $cinza-claro
+					padding-bottom: 15px
+				.flex 
+					+flexbox
+					+justify-content(space-between)	
+					+breakpoint($tablet)
+						display: block
+				.bloco
+					width: 23%
+					p 
+						margin-top: 20px
+						text-align: center	
+						color: $cinza
+					h3 
+						font-size: 10px !important
+						color: $azul-claro
+						margin-top: 20px 
+						margin-bottom: 10px
+						
+						text-align: center	
+					.foto
+						border: solid 1px $cinza-claro
+						padding: 5px 10px
+						img 
+							+img-responsive
+							width: 200px
+							height: 99px
+							margin: 0 auto
+							margin-bottom: 20px
+						.botoes
+							+flexbox
+							+align-items(center)
+							+justify-content(space-around)
+							margin-bottom: 10px
+							margin-top: 10px
+							input 
+								+gradient(180deg, #d4d4d4, #a1a1a1)	
+								border: solid 1px #a1a1a1
+								border-radius: 50px
+								padding: 8px 20px
+								color: #555555
+								
+								font-size: 10px !important
+								font-weight: bold
+							button
+								background-color: $rosa
+								border: solid 1px $rosa
+								border: none
+								border-radius: 50px
+								padding: 9px 20px
+								color: $branco
+								
+								font-size: 10px !important
+								font-weight: bold
+					+breakpoint($tablet)
+						width: 100%
+						margin-bottom: 100px
+						.foto
+							.botoes
+								+justify-content(center)				
+					
+

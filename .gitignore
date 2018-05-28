@@ -100,5 +100,3 @@ venv.bak/
 .idea/
 Pipfile
 Pipfile.lock
-staticfiles/
-staticfiles/staticfiles.json

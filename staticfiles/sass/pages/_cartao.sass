@@ -1,0 +1,255 @@
+body
+
+main
+	.back-menu-2
+		border-bottom: solid 1px $cinza
+		ul 
+			li 
+				display: inline-block
+				margin-right: 50px
+				margin-top: 30px
+				margin-bottom: 30px
+				a 
+					color: $azul-escuro
+					font-weight: bold
+					+flexbox
+					+align-items(center)
+					span 
+						margin-left: 7px
+		+breakpoint($tablet)
+			text-align: center
+			ul 
+				li 
+					margin: 0 auto
+					margin-top: 25px 
+					margin-bottom: 25px
+					display: table
+					a 
+						img 
+							width: 25px
+						span 
+							font-size: 30px !important	
+
+	.box-nome
+		border-bottom: solid 1px $cinza-claro
+		min-height: 80px
+		.bread
+			+flexbox
+			+align-items(center)
+			+justify-content(space-between)
+			background-color: $branco 	
+			margin-top: 30px
+			+breakpoint($tablet)
+				display: inline-block		
+			.box-1
+				+flexbox
+				+align-items(center)
+				img
+					margin-right: 10px				
+				h1
+					margin-right: 10px	
+					color: $azul-claro
+					span 
+						font-weight: bold
+
+				h3	
+					margin-right: 10px
+					color: $cinza
+					font-size: 15px !important
+				+breakpoint($tablet)
+					img 
+						width: 30px
+					h1
+						font-size: 25px
+					h3
+						font-size: 20px !important
+			.box-2
+				+flexbox
+				.imagem-1,
+				.imagem-2
+					+flexbox
+					+align-items(center)
+					border-radius: 3px
+					color: $branco
+					width: 350px
+					margin-right: 15px
+					margin-bottom: 30px
+					img 
+						padding-right: 50px
+						width: 130px
+						height: auto
+					.conteudo-botao
+						text-align: center
+						h2
+							font-size: 13px !important	
+							margin-bottom: 8px
+						h3 
+							font-weight: bold	
+							margin-bottom: 7px
+						h4 
+							font-weight: 300
+							font-size: 25px !important	
+				.imagem-1
+					+gradient(90deg, #0a50a0, #0b2254)
+				.imagem-2
+					background-color: $rosa		
+				+breakpoint($tablet)
+					margin-top: 50px
+				+breakpoint($celubot)
+					.imagem-1,
+					.imagem-2
+						width: auto
+						padding-right: 5px
+						img 
+							padding-right: 20px
+	.content 
+		background-color: $back
+		.conteudo-1
+			+make-md-column(8)
+			margin-top: 50px
+			.box-1
+				margin-bottom: 20px
+				h2
+					font-size: 25px !important
+					color: $azul-claro
+					font-weight: bold
+					margin-bottom: 10px
+				p
+					color: $azul-escuro
+					line-height: 1.8
+			.box-2
+				+flexbox
+				+align-items(center)
+				.saldo
+					margin-left: 50px
+					h3
+						font-size: 60px !important
+						font-weight: 300
+						color: $azul-claro
+					p
+						color: $azul-claro
+					+breakpoint($celubot)
+						h3
+							font-size: 50px !important	
+					+breakpoint($video)
+						h3 
+							font-size: 7vw !important	
+			.box-3
+				+gradient(90deg, #0a50a0, #0b2254)
+				margin-top: 30px
+				border-radius: 3px
+				padding: 15px 30px
+				h2 
+					color: $branco
+					font-weight: bold
+					margin-bottom: 10px
+				form 
+					input 	
+						border-radius: 3px 
+						border: none
+						padding-left: 20px
+						width: 48%	
+						margin-bottom: 10px
+						margin-left: 2px 
+						margin-right: 2px
+						height: 40px
+						font-size: 15px !important
+					.enviar
+						+flexbox
+						+align-items(center)
+						h3
+							margin-left: 30px
+							color: $branco 
+							font-size: 15px !important
+							span
+								font-weight: bold
+						.botao 
+							background-color: $rosa
+							width: 28%
+							padding-top: 8px 
+							padding-bottom: 8px
+							border-radius: 50px
+							+flexbox
+							+align-items(center)
+							+justify-content(center)
+							img 
+								margin-right: 10px
+							input
+								height: auto
+								margin: 0
+								padding: 0
+								background-color: transparent
+								color: $branco
+								font-weight: bold
+								font-size: 13px !important	
+							+breakpoint($tablet)	
+								width: 50%
+								input
+									font-size: 2vw !important
+			.box-4
+				margin-bottom: 200px
+				h2 
+					color: $azul-claro
+					font-weight: bold
+					font-size: 20px !important
+					margin-top: 30px
+					margin-bottom: 30px
+				.titulos
+					+flexbox
+					+justify-content(space-between)
+					.data,
+					.valor,
+					.valor-btc
+						+flexbox
+						+align-items(center)
+						+justify-content(center)
+						background-color: #0a428a
+						border-radius: 3px
+						width: 32%
+						padding: 10px 0
+						img 
+							margin-right: 10px
+						p 
+							color: $branco
+					.valor-btc	
+						background-color: $rosa
+					
+				.recargas
+					+flexbox
+					+justify-content(space-between)
+					.item-1,
+					.item-2,
+					.item-3
+						margin-top: 15px
+						background-color: $branco 
+						border: solid 1px $cinza-claro
+						text-align: center
+						border-radius: 3px
+						width: 32%
+						padding: 10px 0
+						img 
+							margin-right: 10px
+						p 
+							color: $azul-claro
+					.item-3	
+						background-color: #a7a7a7
+						p 
+							color: $branco
+					+breakpoint($celubot)
+						p 
+							font-size: 2.7vw !important		
+
+
+
+
+
+
+
+
+		.conteudo-2
+			+make-md-column(4)	
+			margin-top: 50px		
+			img
+				+img-responsive
+				width: 350px
+				margin: 0 auto	

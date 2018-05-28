@@ -1,0 +1,509 @@
+body
+
+main
+	.back-menu-2
+		border-bottom: solid 1px $cinza
+		ul 
+			li 
+				display: inline-block
+				margin-right: 50px
+				margin-top: 30px
+				margin-bottom: 30px
+				a 
+					color: $azul-escuro
+					font-weight: bold
+					+flexbox
+					+align-items(center)
+					span 
+						margin-left: 7px
+		+breakpoint($tablet)
+			text-align: center
+			ul 
+				li 
+					margin: 0 auto
+					margin-top: 25px 
+					margin-bottom: 25px
+					display: table
+					a 
+						img 
+							width: 25px
+						span 
+							font-size: 30px !important	
+
+	.box-nome
+		border-bottom: solid 1px $cinza-claro
+		min-height: 80px
+		.bread
+			+flexbox
+			+align-items(center)
+			background-color: $branco 	
+			margin-top: 30px	
+			img
+				margin-right: 10px				
+			h1
+				margin-right: 10px	
+				color: $azul-claro
+				span 
+					font-weight: bold
+
+			h3	
+				margin-right: 10px
+				color: $cinza
+				font-size: 15px !important
+			+breakpoint($tablet)
+				img 
+					width: 30px
+				h1
+					font-size: 25px
+				h3
+					font-size: 20px !important
+	.promoter
+		.title
+			+flexbox
+			+align-items(center)
+			margin-top: 20px
+			padding-bottom: 15px
+			margin-bottom: 15px
+			h2 
+				margin-right: 20px	
+				color: #0a428a
+				font-weight: bold
+				font-size: 17px !important
+
+			p	
+				margin-right: 10px
+				color: $azul-escuro
+				font-size: 15px !important
+			+breakpoint($tablet)
+				margin-top: 70px 
+				margin-bottom: 70px
+				h2
+					font-size: 30px !important
+				p 
+					font-size: 20px !important				
+	.content,
+	.content-2
+		background-color: $back
+		.conteudo-1
+			+make-md-column(8)
+		.box-1
+			+flexbox
+			+justify-content(space-between)
+			.item-1
+				width: 25%
+				padding-left: 5px 
+				padding-right: 5px
+
+				.cartao-1
+					+gradient(90deg, #ececec, #d9d9d9)
+					border-top: solid 3px $rosa
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $cinza
+						h2 
+							color: $azul-claro
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $azul-claro
+						span 
+							font-weight: bold 		
+
+				.cartao-2
+					background-color: $rosa
+					border-top: solid 3px $azul-escuro
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold
+				.cartao-3
+					+gradient(90deg, #094f9e, #0a2f6b)
+					border-top: solid 3px $rosa
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold
+				.cartao-4
+					+gradient(90deg, #858585, #6d6e6e)
+					border-top: solid 3px $azul-escuro
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold	
+			+breakpoint($tablet)
+				display: block
+				.item-1
+					margin: 0 auto
+					margin-bottom: 80px
+					width: 300px
+					opacity: 1
+					.cartao-1,
+					.cartao-2,
+					.cartao-3,
+					.cartao-4	
+						transform: scale(1.3)
+						.title
+							h2
+								font-size: 20px !important	
+						p 
+							font-size: 18px !important	
+							margin-bottom: 20px
+						a 
+							display: inline-block
+							font-size: 18px !important
+
+		.box-2
+			+flexbox
+			+justify-content(space-between)
+			min-height: 150px
+			.item-1
+				width: 25%
+				padding-left: 5px 
+				padding-right: 5px
+				opacity: 0.7
+				+transition(.2s)
+				&:hover
+					opacity: 1
+					z-index: 99999
+					+transition(.2s)
+					.cartao-1,
+					.cartao-2,
+					.cartao-3,
+					.cartao-4
+						+transition(.2s)
+						transform: scale(1.3)
+						opacity: 1	
+						a 
+							display: inline-block							
+				.cartao-1
+					+gradient(90deg, #ececec, #d9d9d9)
+					border-top: solid 3px $rosa
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $cinza
+						h2 
+							color: $azul-claro
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $azul-claro
+						span 
+							font-weight: bold 		
+				.cartao-2
+					background-color: $rosa
+					border-top: solid 3px $azul-escuro
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold
+				.cartao-3
+					+gradient(90deg, #094f9e, #0a2f6b)
+					border-top: solid 3px $rosa
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold
+				.cartao-4
+					+gradient(90deg, #858585, #6d6e6e)
+					border-top: solid 3px $azul-escuro
+					border-radius: 4px
+					padding: 10px 20px
+					.title
+						+flexbox
+						+align-items(center)
+						padding-bottom: 15px
+						border-bottom: solid 1px $branco
+						h2 
+							color: $branco
+							font-weight: bold
+							font-size: 13px !important
+							white-space: nowrap
+						img
+							margin-right: 10px
+					p 
+						padding-top: 10px
+						padding-bottom: 5px
+						color: $branco
+						span 
+							font-weight: bold		
+
+				.cartao-1,
+				.cartao-2,
+				.cartao-3,
+				.cartao-4
+					text-align: center
+					a 
+						display: none
+						background-color: #37b84a
+						color: $branco 
+						font-size: 8px
+						font-weight: bold
+						padding: 3px 10px
+						text-align: center
+						border-radius: 50px
+
+
+			+breakpoint($tablet)
+				display: block
+				.item-1
+					margin: 0 auto
+					margin-bottom: 80px
+					width: 300px
+					opacity: 1
+					.cartao-1,
+					.cartao-2,
+					.cartao-3,
+					.cartao-4	
+						transform: scale(1.3)
+						.title
+							h2
+								font-size: 20px !important	
+						p 
+							font-size: 18px !important	
+							margin-bottom: 20px
+						a 
+							display: inline-block
+							font-size: 18px !important
+
+
+		.box-3
+			+flexbox
+			+justify-content(space-between)
+			.item 
+				border: solid 1px $cinza-claro
+				border-radius: 5px
+				width: 25%
+				margin-left: 5px 
+				margin-right: 5px
+				h2
+					text-align: center
+					font-size: 12px !important
+					color: $branco
+					background-color: #0f3676
+					padding-top: 8px 
+					padding-bottom: 8px
+				.item-2
+					+flexbox
+					+justify-content(space-between)
+					+align-items(center)
+					padding-left: 20px
+					padding-right: 20px
+					h3
+						color: $azul-escuro
+						font-weight: bold
+						margin-top: 15px 
+						margin-bottom: 15px
+			+breakpoint($tablet)
+				display: block
+				.item 
+					margin: 0 auto
+					margin-bottom: 50px	
+					width: 100%
+					h2 
+						font-size: 30px !important	
+					.item-2 
+						+justify-content(space-around)
+						padding-top: 30px 
+						padding-bottom: 30px
+						h3
+							font-size: 30px !important		
+
+
+		.conteudo-2
+			+make-md-column(4)	
+			margin-top: 0px		
+			img
+				+img-responsive
+				width: 350px
+				margin: 0 auto	
+
+
+	.box-4
+		+make-md-column(12)
+		margin-top: 50px
+		.procura
+			+flexbox
+			+align-items(center)
+			+justify-content(space-between)
+			img 
+				border-top: solid 1px $rosa
+				border-bottom: solid 2px $rosa
+				margin-top: 2px
+			input 
+				border: solid 1px $azul-escuro
+				padding-left: 30px
+				padding-top: 10px
+				padding-bottom: 10px
+				width: 100%
+				outline: none	
+
+	.box-5 	
+		margin-top: 30px
+		padding-left: 15px 
+		padding-right: 15px			
+		.tabela
+			+flexbox
+			+justify-content(space-between)
+			white-space: nowrap
+			.item-1,
+			.item-2,
+			.item-3,
+			.item-4,
+			.item-5,
+			.item-6,
+			.item-7
+				text-align: center
+				h3 
+					background-color: #0a428a
+					border-radius: 3px
+					padding-top: 7px
+					padding-bottom: 10px 
+					img 
+						vertical-align: middle
+						margin-right: 5px
+					a 
+						color: $branco
+						font-size: 13px
+				h4
+					border: solid 1px #0a428a
+					background-color: $branco
+					border-radius: 3px
+					padding-top: 7px
+					padding-bottom: 10px 
+					margin-top: 10px
+					color: #0a428a
+					font-size: 13px !important
+				.rosa
+					background-color: $rosa
+				.cinza 
+					background-color: #bebebe
+					color: $branco 
+					border: solid 1px #bebebe	
+			.item-1
+				width: 200px						
+			.item-2
+				width: 100px			
+			.item-3
+				width: 200px 				
+			.item-4
+				width: 130px				
+			.item-5
+				width: 130px 				
+			.item-6
+				width: 200px 				
+			.item-7	
+				width: 90px 
+			+breakpoint($tablet)
+				.item-1,
+				.item-2,
+				.item-3,
+				.item-4,
+				.item-5,
+				.item-6,
+				.item-7
+					margin-left: 5px 
+					margin-right: 5px
+					width: 200px
+					width: 200px
+					h3,
+					h4
+						padding-left: 10px 
+						padding-right:	10px

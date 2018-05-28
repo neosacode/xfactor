@@ -1,0 +1,411 @@
+.investment {
+    padding-top: 80px
+}
+
+.investment h2 {
+    color: #fff;
+    font-size: 60px;
+    text-align: center
+}
+
+.investment h2 strong {
+    font-family: Montserrat
+}
+
+.investment .investment-1 {
+    position: relative;
+    min-height: 1px;
+    margin-top: 50px
+}
+
+.investment .investment-1 h2 {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px
+}
+
+.investment .investment-1 h2 strong {
+    font-family: Montserrat
+}
+
+.investment .investment-1 .box {
+    background-color: #fff;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.investment .investment-1 .btn-pink {
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.investment .investment-1 .box h3 {
+    color: #ce3284;
+    font-family: Montserrat;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 10px
+}
+
+.investment .investment-1 .box h3 span {
+    color: #132760
+}
+
+.investment .investment-1 .box .comission {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    border-bottom: solid 1px #a0a0a0;
+    padding-bottom: 10px;
+    padding-top: 10px
+}
+
+.investment .investment-1 .box .comission a {
+    background-color: #ce3284;
+    padding: 10px 34px 8px 34px;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: bold;
+    font-family: Montserrat;
+    font-size: 13px
+}
+
+.investment .investment-1 .box .comission h4 {
+    color: #a0a0a0;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 25px;
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.investment .investment-1 .box .comission h5 {
+    color: #132760;
+    font-family: Montserrat;
+    font-size: 13px;
+    margin-left: 5px
+}
+
+.investment .investment-1 .box .comission .saving {
+    background-color: #c2c2c2
+}
+
+.investment .investment-1 .box .comission .mutual {
+    background-color: #ce3284;
+    padding: 10px 10px 8px 10px
+}
+
+.investment .investment-1 .box .comission .stocks {
+    background-color: #1e3575;
+    padding: 10px 38px 8px 38px
+}
+
+.investment .investment-1 .box .comission .market {
+    background-color: #3f3e3f;
+    padding: 10px 14px 8px 14px
+}
+
+.investment .investment-1 .box .border {
+    border-bottom: none
+}
+
+.investment .investment-1 .box .comission-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    border-bottom: solid 1px #a0a0a0;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    padding-left: 25px;
+    padding-right: 25px
+}
+
+.investment .investment-1 .box .comission-2 .part-1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+.investment .investment-1 .box .comission-2 .part-1 img {
+    margin-right: 5px;
+    position: relative;
+    top: -5px;
+}
+
+.investment .investment-1 .box .comission-2 .part-1 h5 {
+    color: #132760;
+    font-family: Montserrat;
+    font-size: 13px
+}
+
+.investment .investment-1 .box .comission-2 .part-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center
+}
+
+.investment .investment-1 .box .comission-2 .part-2 p {
+    font-weight: bold;
+    font-family: Montserrat;
+    color: #c72022
+}
+
+.investment .investment-1 .box .comission-2 .part-2 img {
+    position: relative;
+    top: -8px;
+    margin-right: 5px;
+}
+
+.investment .investment-1 .box .comission-2 .part-2 p span {
+    color: #78cd7d
+}
+
+.investment .investment-1 .box .border-2 {
+    border-bottom: none;
+    padding-bottom: 30px
+}
+
+.investment .investment-1 .box-breve h2 {
+    font-size: 40px
+}
+
+@media (max-width: 991px) {
+    .investment .investment-1 .box-breve img {
+        padding-top: 30%
+    }
+}
+
+@media (max-width: 991px) {
+    .investment .investment-1 .box-breve img {
+        padding-top: 40%
+    }
+}
+
+.botao-rosa {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    white-space: nowrap
+}
+
+.botao-rosa a {
+    color: #fff;
+    font-size: 16px;
+    font-family: Montserrat;
+    padding: 15px 70px;
+    border-radius: 50px;
+    background-color: #ce3284
+}
+
+.botao-rosa a:hover {
+    background-color: #fff;
+    color: #ce3284
+}
+
+@media (max-width: 768px) {
+    .botao-rosa a {
+        padding: 15px 30px
+    }
+}
+
+.box-3 .position {
+    text-align: center;
+    margin-top: 150px
+}
+
+.box-3 .position a {
+    border: solid 2px #fff;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 50px 8px 50px;
+    font-size: 18px
+}
+
+.box-3 .position a:hover {
+    background-color: #fff;
+    color: #ce3284
+}
+
+.box-3 .position p {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold
+}
+
+.rodape {
+    background-color: #f1f1f1;
+    padding-top: 50px;
+    border-top: solid 1px #dfe0e3
+}
+
+.rodape .logo-rodape {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+@media (min-width: 992px) {
+    .rodape .logo-rodape {
+        float: left;
+        width: 66.66667%
+    }
+}
+
+.rodape .logo-rodape img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    padding-top: 60px
+}
+
+@media (max-width: 991px) {
+    .rodape .logo-rodape img {
+        margin: 0 auto;
+        margin-bottom: 100px
+    }
+}
+
+.rodape .menu-rodape {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+@media (min-width: 992px) {
+    .rodape .menu-rodape {
+        float: left;
+        width: 33.33333%
+    }
+}
+
+.rodape .menu-rodape .part-1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between
+}
+
+.rodape .menu-rodape .part-1 p {
+    margin-bottom: 10px
+}
+
+.rodape .menu-rodape .part-1 p a {
+    color: #828282
+}
+
+.rodape .menu-rodape .part-1 h2 {
+    margin-bottom: 15px
+}
+
+.rodape .menu-rodape .part-1 h2 a {
+    color: #828282;
+    font-family: Montserrat
+}
+
+.rodape .menu-rodape .part-2 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-top: solid 1px #dfe0e3;
+    padding-top: 10px
+}
+
+.rodape .menu-rodape .part-2 p a {
+    color: #828282
+}
+
+.rodape .menu-rodape .part-2 .espanhol,
+.rodape .menu-rodape .part-2 .portugues {
+    margin-left: 20px
+}
+
+@media (max-width: 991px) {
+    .rodape .menu-rodape .part-1 {
+        -ms-flex-pack: distribute;
+        -webkit-justify-content: space-around;
+        -moz-justify-content: space-around;
+        justify-content: space-around;
+        text-align: center;
+        padding-bottom: 20px
+    }
+    .rodape .menu-rodape .part-1 p a {
+        font-size: 18px
+    }
+    .rodape .menu-rodape .part-1 h2 a {
+        font-size: 22px
+    }
+    .rodape .menu-rodape .part-2 {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        padding-top: 20px
+    }
+    .rodape .menu-rodape .part-2 p a {
+        font-size: 18px
+    }
+}
+
+.rodape .bddb {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 30px
+}
+
+.rodape .bddb h3 {
+    color: #828282
+}

@@ -1,0 +1,194 @@
+body
+
+main
+	.back-menu-2
+		border-bottom: solid 1px $cinza
+		ul 
+			li 
+				display: inline-block
+				margin-right: 50px
+				margin-top: 30px
+				margin-bottom: 30px
+				a 
+					color: $azul-escuro
+					font-weight: bold
+					+flexbox
+					+align-items(center)
+					span 
+						margin-left: 7px
+		+breakpoint($tablet)
+			text-align: center
+			ul 
+				li 
+					margin: 0 auto
+					margin-top: 25px 
+					margin-bottom: 25px
+					display: table
+					a 
+						img 
+							width: 25px
+						span 
+							font-size: 30px !important	
+
+	.box-nome
+		border-bottom: solid 1px $cinza-claro
+		min-height: 80px
+		.bread
+			+flexbox
+			+align-items(center)
+			background-color: $branco 	
+			margin-top: 30px	
+			img
+				margin-right: 10px				
+			h1
+				margin-right: 10px	
+				color: $azul-claro
+				span 
+					font-weight: bold
+
+			h3	
+				margin-right: 10px
+				color: $cinza
+				font-size: 15px !important
+			+breakpoint($tablet)
+				img 
+					width: 30px
+				h1
+					font-size: 25px
+				h3
+					font-size: 20px !important
+	.content
+		background-color: $back
+		.conteudo-1
+			+make-md-column(8)
+			.box-1
+				margin-top: 80px
+				.titulo-1
+					padding-bottom: 50px 
+					h2
+						font-size: 20px !important
+						font-weight: bold
+						color: $azul-escuro
+						margin-bottom: 10px
+						
+					p
+						font-size: 18px !important
+						color: $azul-escuro
+					.codes
+						background-color: $rosa
+						width: 150px
+						text-align: center
+						border-radius: 50px
+						padding: 10px 10px
+						margin-top: 10px
+						a 
+							color: $branco 
+							font-weight: bold
+							font-size: 15px !important	
+				.titulo-2			
+					padding-bottom: 50px 
+					h2
+						font-size: 20px !important
+						font-weight: bold
+						color: $cinza
+						margin-bottom: 10px
+					p
+						font-size: 18px !important
+						color: $cinza
+					.disable
+						background-color: $cinza
+						width: 450px
+						text-align: center
+						border-radius: 50px
+						padding: 10px 10px
+						margin-top: 10px
+						a 
+							color: $branco 
+							font-weight: bold
+							font-size: 15px !important
+						+breakpoint($celubot)
+							width: 100%	
+
+				input 
+					border-radius: 50px
+					border: solid 1px $cinza
+					padding-left: 20px
+					padding-top: 10px 
+					padding-bottom: 10px
+					font-weight: bold
+					margin-top: 30px	
+					width: 300px	
+
+				+breakpoint($tablet)
+					.token
+						img 
+							+img-responsive
+							margin: 0 auto
+					input
+						width: 100%	
+						font-size: 20px !important			
+			.box-2
+				margin-top: 30px
+				+flexbox
+
+				.voltar
+					background-color: $rosa
+					padding: 13px 40px
+					border-radius: 50px
+					font-weight: bold
+					font-size: 15px !important
+					margin-left: 3px 
+					margin-right: 3px
+					a 
+						color: $branco
+				.avancar
+					background-color: $azul-escuro
+					padding: 13px 40px
+					border-radius: 50px
+					font-weight: bold
+					font-size: 15px !important
+					margin-left: 3px 
+					margin-right: 3px
+					a 
+						color: $branco
+				+breakpoint($tablet)
+					display: block
+					text-align: center
+					.voltar
+						margin-bottom: 30px
+						margin-left: 0
+						margin-right: 0
+						a 
+							font-size: 20px !important
+					.avancar
+						margin-left: 0
+						margin-right: 0	
+						a 
+							font-size: 20px !important
+			.box-3
+				form 
+					g 
+						
+						color: #797979
+						font-size: 20px !important
+					.botao
+						margin-top: 30px
+						input
+							background-color: $rosa
+							border: none 
+							padding: 10px 20px 
+							border-radius: 50px
+							color: $branco
+							
+							font-size: 13px !important	
+						+breakpoint($tablet)
+							input
+								font-size: 20px !important	
+
+		.conteudo-2
+			+make-md-column(4)	
+			margin-top: 80px		
+			img
+				+img-responsive
+				width: 350px
+				margin: 0 auto				
