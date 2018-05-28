@@ -308,7 +308,8 @@
                             <a href="#" data-toggle="modal" data-target="#card-modal">
                                 {% get_current_language as LANGUAGE_CODE %}
                                 {% with "img/banners/curso_"|add:LANGUAGE_CODE|add:'.png' as banner_url %}
-                                <img src="{% static banner_url %}{{ LANGUAGE_CODE }}.png" alt="">
+                                    <img src="{% static banner_url %}{{ LANGUAGE_CODE }}.png" alt="">
+                                {% endwith %}
                             </a>
 
                             <div class="mb-100"></div>
