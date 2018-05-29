@@ -98,17 +98,3 @@
 .content .signup form .pass {
     margin-bottom: 30px
 }
-
-.content .signup form button {
-    background-color: #ef2e88;
-    border-radius: 50px;
-    border: none;
-    padding: 10px 30px;
-    color: #fff;
-    
-    font-size: 13px !important
-}
-
-.content .signup form ::-webkit-input-placeholder {
-    color: #0a2357
-}

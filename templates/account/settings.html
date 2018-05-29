@@ -14,14 +14,22 @@
 {% block content %}
     {% include "back-button.html" with margin_top='30px' %}
 
-    <div class="alert alert-info">
-      <h5 class="uppercase b">{% trans "Fill your data to continue" %}</h5>
-      <p>{% trans "Please fill your personal and address data for continue to next step and get access to your Xfactor account" %}</p>
-    </div>
+    {% if user.status != 'created' %}
+      <div class="alert alert-info">
+        <h5 class="uppercase b">{% trans "Fill your data to continue" %}</h5>
+        <p>{% trans "Please fill your personal and address data for continue to next step and get access to your Xfactor account" %}</p>
+      </div>
+    {% endif %}
 
     <div class="page-big-title">
-      <h2 class="uppercase">{% trans "Settings" %}</h2>
-      <p class="tx-14">{% trans "Here you can change your Xfactor settings as you prefer." %}</p>
+      <div class="row">
+        <div class="col-md-4">
+          <h2 class="uppercase">{% trans "Settings" %}</h2>
+        </div>
+        <div class="col-md-8">
+          <p class="tx-14">{% trans "Here you can change your Xfactor settings as you prefer." %}</p>
+        </div>
+      </div>
     </div>
     
     <div class="row">

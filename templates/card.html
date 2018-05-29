@@ -72,7 +72,10 @@
 		</div>
 
 		<div class="conteudo-2 col-md-4">
-			<img src="{% static "img/banner-home.jpg" %}" alt="">
+			{% get_current_language as LANGUAGE_CODE %}
+            {% with "img/1_"|add:LANGUAGE_CODE|add:'.png' as banner_url %}
+                <img src="{% static banner_url %}" alt="">
+            {% endwith %}
 		</div>
 	</div>
 
