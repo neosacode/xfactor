@@ -77,59 +77,59 @@ class Command(BaseCommand):
         #         print('Atualizando saldo o usuáro {}'.format(row['username']))
 
         # Migracao de cobrancas
-        Investments.objects.all().delete()
+        # Investments.objects.all().delete()
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            accounts = Accounts.objects.filter(user__username__in=[row['username'] for row in reader], currency__type=Currencies.TYPES.investment)
-            accounts_pk = {account.user.username: account.pk for account in accounts}
-            bulk_investments = []
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     accounts = Accounts.objects.filter(user__username__in=[row['username'] for row in reader], currency__type=Currencies.TYPES.investment)
+        #     accounts_pk = {account.user.username: account.pk for account in accounts}
+        #     bulk_investments = []
 
-            f.seek(0)
-            reader = csv.DictReader(f)
+        #     f.seek(0)
+        #     reader = csv.DictReader(f)
             
-            for row in reader:
-                investment = Investments()
-                investment.account_id = accounts_pk[row['username']]
-                investment.membership_fee = Decimal(row['membership_fee'])
-                investment.amount = Decimal(row['amount'])
-                investment.paid_date = row['paid_date']
-                investment.created = row['created']
-                investment.modified = row['modified']
-                investment.plan_grace_period = PlanGracePeriods.objects.get(plan__name__iexact=row['name'], grace_period__months=row['months'])
+        #     for row in reader:
+        #         investment = Investments()
+        #         investment.account_id = accounts_pk[row['username']]
+        #         investment.membership_fee = Decimal(row['membership_fee'])
+        #         investment.amount = Decimal(row['amount'])
+        #         investment.paid_date = row['paid_date']
+        #         investment.created = row['created']
+        #         investment.modified = row['modified']
+        #         investment.plan_grace_period = PlanGracePeriods.objects.get(plan__name__iexact=row['name'], grace_period__months=row['months'])
 
-                account = investment.account
-                account.reserved = investment.amount
-                account.save()
+        #         account = investment.account
+        #         account.reserved = investment.amount
+        #         account.save()
 
-                bulk_investments.append(investment)
-                print('Processando investimento de {} para o usuáro {}'.format(investment.amount, row['username']))
+        #         bulk_investments.append(investment)
+        #         print('Processando investimento de {} para o usuáro {}'.format(investment.amount, row['username']))
 
-            Investments.objects.bulk_create(bulk_investments)
-            print('Gravando investimentos no banco')
+        #     Investments.objects.bulk_create(bulk_investments)
+        #     print('Gravando investimentos no banco')
 
 
-        Referrals.objects.all().delete()
+        # Referrals.objects.all().delete()
 
-        # Migracao de indicacoes
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            bulk_referrals = []
+        # # Migracao de indicacoes
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     bulk_referrals = []
 
-            for row in reader:
-                referral = Referrals()
-                referral.promoter = Users.objects.get(username=row['promoter'])
-                referral.user = Users.objects.get(username=row['username'])
+        #     for row in reader:
+        #         referral = Referrals()
+        #         referral.promoter = Users.objects.get(username=row['promoter'])
+        #         referral.user = Users.objects.get(username=row['username'])
 
-                bulk_referrals.append(referral)
+        #         bulk_referrals.append(referral)
 
-                print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
+        #         print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
 
-            Referrals.objects.bulk_create(bulk_referrals)
-            print('Gravando referencias no banco')
+        #     Referrals.objects.bulk_create(bulk_referrals)
+        #     print('Gravando referencias no banco')
                 
 
-        Statement.objects.all().delete()
+        Statement.objects.filter(created__date__lt=datetime(2018, 5, 28)).delete()
         Incomes.objects.all().delete()
 
         # Migracao de relatorio de rendimentos
