@@ -20,8 +20,8 @@
 
         <div class="row box-1">
             <div class="col-md-4 codigo">
-                <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={% url "investment>signup" %}" alt="">
-                <a href="#" class="text-center btn-block mt-20 btn btn-link"><i class="fas fa-link"></i> {% trans "Copy my referrer link" %}</a>
+                <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={{ DOMAIN }}/investment/signup?promoter={{ request.user.username }}" alt="">
+                <a href="#" id="copy-referral" class="text-center btn-block mt-20 btn btn-link"><i class="fas fa-link"></i> {% trans "Copy my referrer link" %}</a>
             </div>
             <div class="col-md-8 texto-codigo">
                 <h4 class="title" style="margin-top: 0;">{% trans "My Investment" %}</h4>
@@ -32,7 +32,7 @@
 
                 <h4 class="title">{% trans "My Incomes" %}</h4>
                 <h3><span>{% trans "Available for withdraw:" %}</span> {{ user_investment_account.deposit }} BTC</h3>
-                <h3><span>{% trans "Your total incomes:" %}</span> {% trans "In processing" %}</h3>
+                <h3><span>{% trans "Your total incomes:" %}</span> <a href="{% url "core>statement" %}">{{ total_income }} BTC</a></h3>
 
                 <h4 class="title">{% trans "My Comissions" %}</h4>
                 <h3><span>{% trans "Current Graduation" %}: </span>Investiment promoter</h3>
@@ -76,6 +76,7 @@
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <script>
         jQuery(function($) {
@@ -99,6 +100,13 @@
                   }
                 ]
               }
+            });
+
+            var referral_button = new ClipboardJS('#copy-referral', {
+                text: function(trigger) {
+                    swal('{% trans "Copied!" %}', "{% trans "Your referral link has been copied!" %}", 'success');
+                    return '{{ DOMAIN }}/investment/signup?promoter={{ request.user.username }}';
+                }
             });
         });
     </script>

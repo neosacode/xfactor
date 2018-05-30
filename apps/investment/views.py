@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.utils import timezone
 from django.db import transaction
-from django.db.models import Q
+from django.db.models import Q, Sum
 from jsonview.decorators import json_view
 
 from .models import Plans, Investments, PlanGracePeriods

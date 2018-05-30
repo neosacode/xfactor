@@ -12,6 +12,7 @@ from django.conf import settings
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.db import transaction
+from django.db.models import Q, Sum
 from jsonview.decorators import json_view
 from account.decorators import login_required
 
@@ -79,6 +80,7 @@ class InvestmentAccountView(TemplateView):
             incomes.append({'amount': str(income.amount).replace(',', '.'), 'date': income.date})
 
         context['incomes'] = incomes
+        context['total_income'] = Statement.objects.filter(account__user=self.request.user, type__in=['income']).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00')
         return context
 
 
