@@ -1,8 +1,6 @@
 {% extends "core/index.html" %}
 
-{% load i18n %}
-{% load thumbnail %}
-{% load static %}
+{% load i18n thumbnail static bootstrap_pagination %}
 
 {% block page_title %}
     {% trans "Statement" %}
@@ -48,7 +46,7 @@
           <img src="{% static "img/statement-3.png" %}" alt="">
           <div>
             <p>{% trans "Total Invested" %}</p>
-            <p><span>0.00000000</span></p>
+            <p><span>{{ user_investment_account.reserved }}</span></p>
           </div>
         </div>
         <div class="item">
@@ -67,29 +65,138 @@
         </div>
       </div>
       <div class="box-4">
-          <div class="table-wrapper">
-            <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
-              <thead>
-                <tr>
-                  <th>{% trans "Date" %}</th>
-                  <th>{% trans "Description" %}</th>
-                  <th class="pink-th">{% trans "Amount" %}</th>
-                  <th>{% trans "Currency" %}</th>
-                  <th>{% trans "Account Type" %}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for item in statement %}
-                <tr>
-                  <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
-                  <td>{{ item.description }}</td>
-                  <td class="grey-td">{{ item.amount }}</td>
-                  <td>{% trans item.account.currency.symbol %}</td>
-                  <td>{% trans item.account.currency.type_title %}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+          <div class="white-box white-box-border">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active uppercase" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{% trans "Transactions" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{% trans "Incomes" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link uppercase" id="contact-tab" data-toggle="tab" href="#comissions" role="tab" aria-controls="contact" aria-selected="false">{% trans "Comissions" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link uppercase" id="contact-tab" data-toggle="tab" href="#withdrawals" role="tab" aria-controls="withdrawals" aria-selected="false">{% trans "Withdrawals" %}</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                  <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Description" %}</th>
+                      <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Currency" %}</th>
+                      <th>{% trans "Account Type" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in statement %}
+                    <tr>
+                      <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>{{ item.amount }}</td>
+                      <td>{% trans item.account.currency.symbol %}</td>
+                      <td>{% trans item.account.currency.type_title %}</td>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="clearfix"></div> 
+              {% bootstrap_paginate statement url_param_name='statement_page' %}
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                  <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Currency" %}</th>
+                      <th>{% trans "Plan" %}</th>
+                      <th>{% trans "Lack" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in incomes %}
+                    <tr>
+                      <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
+                      <td>{{ item.amount }}</td>
+                      <td>{% trans item.account.currency.symbol %}</td>
+                      <td>{{ item.account.investments.first.plan_grace_period.plan.name }}</td>
+                      <td>{{ item.account.investments.first.plan_grace_period.grace_period.months }} {% trans "months" %}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="clearfix"></div>
+              {% bootstrap_paginate incomes url_param_name='incomes_page' %}
+            </div>
+            <div class="tab-pane fade" id="comissions" role="tabpanel" aria-labelledby="comissions-tab">
+              <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                  <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Referral" %}</th>
+                      <th>{% trans "Name" %}</th>
+                      <th>{% trans "Plan" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in comissions %}
+                    <tr>
+                      <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
+                      <td>{{ item.amount }}</td>
+                      <td>{{ item.referral.user.username }}</td>
+                      <td>{{ item.referral.user.first_name }} {{ item.referral.user.last_name }}</td>
+                      <td>{{ item.plan.name }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="clearfix"></div> 
+              {% bootstrap_paginate comissions url_param_name='comissions_page' %}
+            </div>
+            <div class="tab-pane fade" id="withdrawals" role="tabpanel" aria-labelledby="withdrawals-tab">
+              <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                  <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Description" %}</th>
+                      <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Currency" %}</th>
+                      <th>{% trans "Account Type" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in crypto_withdraw %}
+                    <tr>
+                      <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>{{ item.amount }}</td>
+                      <td>{% trans item.account.currency.symbol %}</td>
+                      <td>{% trans item.account.currency.type_title %}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+                <div class="clearfix"></div>
+              {% bootstrap_paginate crypto_withdraw url_param_name='crypto_withdraw_page' %}
+            </div>
+          </div>
           </div>
       </div>
     </div>

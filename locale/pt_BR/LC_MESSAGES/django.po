@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-28 10:46+0000\n"
+"POT-Creation-Date: 2018-05-30 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,9 @@ msgstr "Porcentagem de rendimento:"
 msgid "Membership fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:60 templates/core/statement.html:77
+#: apps/investment/models.py:60 templates/core/statement.html:91
+#: templates/core/statement.html:119 templates/core/statement.html:148
+#: templates/core/statement.html:177
 msgid "Currency"
 msgstr "Moeda"
 
@@ -173,7 +175,9 @@ msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
 #: apps/investment/models.py:81 templates/boleto/pay.html:61
-#: templates/core/statement.html:76 templates/investment/credit-line.html:65
+#: templates/core/statement.html:90 templates/core/statement.html:118
+#: templates/core/statement.html:147 templates/core/statement.html:176
+#: templates/investment/credit-line.html:65
 msgid "Amount"
 msgstr ""
 
@@ -198,7 +202,7 @@ msgstr "Investimento"
 msgid "Income"
 msgstr "Meus Rendimentos"
 
-#: apps/investment/models.py:117
+#: apps/investment/models.py:117 templates/core/statement.html:73
 msgid "Incomes"
 msgstr "Meus Rendimentos"
 
@@ -239,7 +243,7 @@ msgid "Loans"
 msgstr "Empréstimo"
 
 #: apps/investment/models.py:187 templates/accounts/checking.html:69
-#: templates/core/statement.html:8 templates/core/statement.html:65
+#: templates/core/statement.html:6 templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
@@ -333,7 +337,7 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
-#: templates/account/settings.html:6 templates/account/settings.html:23
+#: templates/account/settings.html:6 templates/account/settings.html:27
 #: templates/core/index.html:110
 msgid "Settings"
 msgstr ""
@@ -341,17 +345,17 @@ msgstr ""
 #: templates/account/settings.html:10 templates/accounts/checking.html:9
 #: templates/accounts/investment.html:9 templates/boleto/pay.html:10
 #: templates/card.html:10 templates/core/documents.html:11
-#: templates/core/statement.html:12 templates/investment/credit-line.html:9
+#: templates/core/statement.html:10 templates/investment/credit-line.html:9
 #: templates/investment/my-customers.html:10 templates/investment/plans.html:9
 #: templates/request-card.html:10 templates/two_factor/_base.html:9
 msgid "Xfactor"
 msgstr ""
 
-#: templates/account/settings.html:18
+#: templates/account/settings.html:19
 msgid "Fill your data to continue"
 msgstr "Preencha os seus dados para continuar"
 
-#: templates/account/settings.html:19
+#: templates/account/settings.html:20
 msgid ""
 "Please fill your personal and address data for continue to next step and get "
 "access to your Xfactor account"
@@ -359,37 +363,37 @@ msgstr ""
 "Por favor preencha os seus dados pessoais e residenciais para continuar ao "
 "próximo passo e ter acesso a sua conta Xfactor"
 
-#: templates/account/settings.html:24
+#: templates/account/settings.html:30
 msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
-#: templates/account/settings.html:30 templates/core/settings.html:12
+#: templates/account/settings.html:38 templates/core/settings.html:12
 msgid "My Avatar"
 msgstr ""
 
-#: templates/account/settings.html:32 templates/core/settings.html:16
+#: templates/account/settings.html:40 templates/core/settings.html:16
 msgid "Select a new avatar image using the field below"
 msgstr ""
 
-#: templates/account/settings.html:41 templates/core/settings.html:23
+#: templates/account/settings.html:56 templates/core/settings.html:23
 msgid "Update"
 msgstr ""
 
-#: templates/account/settings.html:56 templates/core/settings.html:38
+#: templates/account/settings.html:63 templates/core/settings.html:38
 msgid "Change My Password"
 msgstr ""
 
-#: templates/account/settings.html:66 templates/account/settings.html:90
-#: templates/account/settings.html:101 templates/core/settings.html:48
+#: templates/account/settings.html:73 templates/account/settings.html:97
+#: templates/account/settings.html:108 templates/core/settings.html:48
 #: templates/core/settings.html:74
 msgid "Save"
 msgstr ""
 
-#: templates/account/settings.html:72
+#: templates/account/settings.html:79
 msgid "Personal Data"
 msgstr "Dados Pessoais"
 
-#: templates/account/settings.html:94
+#: templates/account/settings.html:101
 msgid "Address"
 msgstr "Endereço"
 
@@ -490,17 +494,14 @@ msgid "Current Graduation"
 msgstr "Graduação"
 
 #: templates/accounts/investment.html:39
-#| msgid "Comissions"
 msgid "Total Comissions"
 msgstr "Total Comissões"
 
 #: templates/accounts/investment.html:40
-#| msgid "My Comissions"
 msgid "Month Comissions"
 msgstr "Comissões do Mês"
 
 #: templates/accounts/investment.html:41
-#| msgid "My Comissions"
 msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
@@ -520,11 +521,11 @@ msgstr "SACAR RENDIMENTOS"
 msgid "MY CUSTOMERS"
 msgstr "MEUS CLIENTES"
 
-#: templates/accounts/investment.html:70
+#: templates/accounts/investment.html:72
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:91
+#: templates/accounts/investment.html:93
 msgid "Last 30 days"
 msgstr ""
 
@@ -608,26 +609,6 @@ msgstr "Vencimento"
 #: templates/boleto/pay.html:64
 msgid "PAY BANK SLIP"
 msgstr "PAGAR BOLETO"
-
-#: templates/boleto/pay.html:137
-msgid "Bank Slip Not Found"
-msgstr "Boleto Não Encontrado"
-
-#: templates/boleto/pay.html:137
-msgid "Please manually type below your bank slip data"
-msgstr "Por favor digite manualmente os dados do seu boleto"
-
-#: templates/boleto/pay.html:142 templates/boleto/pay.html:145
-msgid "Missing Data!"
-msgstr "Dados Faltando!"
-
-#: templates/boleto/pay.html:142
-msgid "Please type your name or your company name"
-msgstr "Por favor digite o seu nome ou o nome da sua empresa"
-
-#: templates/boleto/pay.html:145
-msgid "Please type your CPF or CNPJ number"
-msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
 #: templates/card-modal.html:12
 msgid "MAKE YOUR SUBSCRIPTION"
@@ -783,7 +764,9 @@ msgstr "Saldo do Cartão"
 msgid "RECHARGES"
 msgstr "RECARGAS"
 
-#: templates/card.html:64 templates/core/statement.html:74
+#: templates/card.html:64 templates/core/statement.html:88
+#: templates/core/statement.html:116 templates/core/statement.html:145
+#: templates/core/statement.html:174
 msgid "Date"
 msgstr "Data"
 
@@ -864,7 +847,7 @@ msgstr "Plano de investimento atual:"
 msgid "Below you can follow all your customers"
 msgstr ""
 
-#: templates/core/my-customers.html:63
+#: templates/core/my-customers.html:63 templates/core/statement.html:76
 msgid "Comissions"
 msgstr "Minhas Comissões"
 
@@ -953,33 +936,45 @@ msgid ""
 "This bank account will be used for the withdrawals made with the BRL account"
 msgstr ""
 
-#: templates/core/statement.html:36
+#: templates/core/statement.html:34
 msgid "Total Withdraw"
 msgstr "Total Sacado"
 
-#: templates/core/statement.html:43
+#: templates/core/statement.html:41
 msgid "Card Balance"
 msgstr "Saldo do Cartão"
 
-#: templates/core/statement.html:50
+#: templates/core/statement.html:48
 msgid "Total Invested"
 msgstr "Total Investido"
 
-#: templates/core/statement.html:57
+#: templates/core/statement.html:55
 msgid "Available Limit"
 msgstr "Limite Disponível"
 
-#: templates/core/statement.html:66
+#: templates/core/statement.html:64
 msgid "Here you can follow your checking and investment accounts movements."
 msgstr ""
-"Aqui você pode acompanhar as movientações da sua conta corrente e de "
+"Aqui você pode acompanhar as movimentações da sua conta corrente e de "
 "investimentos"
 
-#: templates/core/statement.html:75
+#: templates/core/statement.html:70
+#| msgid "Graduations"
+msgid "Transactions"
+msgstr "Movimentações"
+
+#: templates/core/statement.html:79
+#| msgid "Withdraw "
+msgid "Withdrawals"
+msgstr "Saques"
+
+#: templates/core/statement.html:89 templates/core/statement.html:117
+#: templates/core/statement.html:146 templates/core/statement.html:175
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/core/statement.html:78
+#: templates/core/statement.html:92 templates/core/statement.html:120
+#: templates/core/statement.html:149 templates/core/statement.html:178
 msgid "Account Type"
 msgstr "Tipo de Conta"
 
@@ -1352,7 +1347,7 @@ msgstr "Não possui uma conta?"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:129
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:132
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1378,25 +1373,50 @@ msgstr ""
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:108
-msgid "Warning!"
-msgstr "Aviso!"
-
-#: xfactor/views.py:108
-msgid "Your already have requested your Advisor course."
-msgstr "Você já solicitou o seu curso Advisor"
-
-#: xfactor/views.py:117
+#: xfactor/views.py:106 xfactor/views.py:120
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:117
-msgid "You not have enought balance for make your subscription ."
+#: xfactor/views.py:106
+msgid ""
+"You are not a investor yet, please make a Xfactor investment plan first and "
+"go back here to get your card."
+msgstr ""
+"Você ainda não é um investidor, por favor faça primeiro um investimento na "
+"Xfactor e depois volte aqui para obter o seu cartão."
+
+#: xfactor/views.py:111
+msgid "Warning!"
+msgstr "Aviso!"
+
+#: xfactor/views.py:111
+msgid "Your already have requested your Advisor course."
+msgstr "Você já solicitou o seu curso Advisor"
+
+#: xfactor/views.py:120
+#, fuzzy
+#| msgid "You not have enought balance for make your subscription ."
+msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:129
+#: xfactor/views.py:132
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Bank Slip Not Found"
+#~ msgstr "Boleto Não Encontrado"
+
+#~ msgid "Please manually type below your bank slip data"
+#~ msgstr "Por favor digite manualmente os dados do seu boleto"
+
+#~ msgid "Missing Data!"
+#~ msgstr "Dados Faltando!"
+
+#~ msgid "Please type your name or your company name"
+#~ msgstr "Por favor digite o seu nome ou o nome da sua empresa"
+
+#~ msgid "Please type your CPF or CNPJ number"
+#~ msgstr "Por favor digite o seu CPF ou o seu CNPJ"
 
 #~ msgid "Select the desired grace period"
 #~ msgstr "Selecione o período de carência desejado"

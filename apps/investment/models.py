@@ -80,7 +80,7 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     plan_grace_period = models.ForeignKey(PlanGracePeriods, related_name='investments', verbose_name=_("Plan grace period"), on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Amount"))
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'), verbose_name=_("Membership Fee"))
-    account = models.ForeignKey('exchange_core.Accounts', related_name='statement_chages', verbose_name=_("Account"), on_delete=models.CASCADE)
+    account = models.ForeignKey('exchange_core.Accounts', related_name='investments', verbose_name=_("Account"), on_delete=models.CASCADE)
     paid_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Paid Date"))
 
     @property
@@ -232,6 +232,13 @@ class Credits(TimeStampedModel, StatusModel, models.Model):
 
     def __str__(self):
         return str(self.amount)
+
+
+class Comissions(TimeStampedModel, models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    referral = models.ForeignKey(Referrals, related_name='comissions', on_delete=models.CASCADE)
+    plan = models.ForeignKey(Plans, related_name='comissions', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=20, decimal_places=8)
 
 
 class PlanGracePeriodForm(forms.ModelForm):

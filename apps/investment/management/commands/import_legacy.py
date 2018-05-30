@@ -16,7 +16,7 @@ from django.db import transaction
 from exchange_core.models import Users, Accounts, Statement, Currencies
 from exchange_payments.gateways.bitgo import Gateway
 from apps.investment.utils import decimal_split
-from apps.investment.models import Investments, PlanGracePeriods, Referrals, Incomes
+from apps.investment.models import Investments, PlanGracePeriods, Referrals, Incomes, Comissions, Plans
 
 class Command(BaseCommand):
     help = 'Import Legacy Data'
@@ -129,44 +129,67 @@ class Command(BaseCommand):
         #     print('Gravando referencias no banco')
                 
 
-        Statement.objects.filter(created__date__lt=datetime(2018, 5, 28)).delete()
-        Incomes.objects.all().delete()
+        # Statement.objects.filter(created__date__lt=datetime(2018, 5, 28)).delete()
+        # Incomes.objects.all().delete()
 
-        # Migracao de relatorio de rendimentos
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+        # # Migracao de relatorio de rendimentos
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     bulk_statements = []
+        #     bulk_incomes = []
+        #     accounts = {}
+        #     investments = {}
+
+        #     for row in reader:
+        #         if not row['username'] in accounts:
+        #             accounts[row['username']] = Accounts.objects.get(currency__type=Currencies.TYPES.investment, user__username=row['username'])
+
+        #         if not row['username'] in investments:
+        #             investments[row['username']] = Investments.objects.get(account__user__username=row['username'])
+
+        #         statement = Statement()
+        #         statement.account = accounts[row['username']]
+        #         statement.amount = Decimal(row['value'])
+        #         statement.description = row['description']
+        #         statement.created = row['created']
+        #         statement.modified = row['created']
+        #         statement.type = row['type']
+
+        #         if row['type'] == 'income':
+        #             income = Incomes()
+        #             income.date = dateutil.parser.parse(row['created'])
+        #             income.amount = statement.amount
+        #             income.investment = investments[row['username']]
+        #             bulk_incomes.append(income)
+        #         bulk_statements.append(statement)
+
+        #         print('Processando extrato {} com valor de {} para a conta de investimentos do usuáro {}'.format(statement.description, statement.amount, row['username']))
+
+        #     Statement.objects.bulk_create(bulk_statements)
+        #     Incomes.objects.bulk_create(bulk_incomes)
+        #     print('Gravando rendimentos no banco')
+
+
+        Statement.objects.filter(type='comission').delete()
+
+        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/comissions.csv', 'r') as f:
             reader = csv.DictReader(f)
-            bulk_statements = []
-            bulk_incomes = []
-            accounts = {}
-            investments = {}
+            comissions_bulk = []
 
             for row in reader:
-                if not row['username'] in accounts:
-                    accounts[row['username']] = Accounts.objects.get(currency__type=Currencies.TYPES.investment, user__username=row['username'])
+                referral = Referrals.objects.get(promoter=Users.objects.get(username=row['sponsor']), user=Users.objects.get(username=row['username']))
 
-                if not row['username'] in investments:
-                    investments[row['username']] = Investments.objects.get(account__user__username=row['username'])
+                comission = Comissions()
+                comission.referral = referral
+                comission.amount = Decimal(row['value'])
+                comission.created = dateutil.parser.parse(row['created'])
+                comission.modified = dateutil.parser.parse(row['created'])
+                comission.plan = Plans.objects.get(name__iexact=row['plan'])
 
-                if Incomes.objects.filter(date=dateutil.parser.parse(row['created']), investment=investments[row['username']]).exists():
-                    continue
+                comissions_bulk.append(comission)
 
-                statement = Statement()
-                statement.account = accounts[row['username']]
-                statement.amount = Decimal(row['value'])
-                statement.description = row['description']
-                statement.created = row['created']
-                statement.modified = row['created']
-                statement.type = row['type']
+                print(row)
 
-                income = Incomes()
-                income.date = dateutil.parser.parse(row['created'])
-                income.amount = statement.amount
-                income.investment = investments[row['username']]
+            Comissions.objects.bulk_create(comissions_bulk)
 
-                bulk_statements.append(statement)
-                bulk_incomes.append(income)
-                print('Processando extrato {} com valor de {} para a conta de investimentos do usuáro {}'.format(statement.description, statement.amount, row['username']))
-
-            Statement.objects.bulk_create(bulk_statements)
-            Incomes.objects.bulk_create(bulk_incomes)
-            print('Gravando rendimentos no banco')
+            print('Gravando comissoes')
