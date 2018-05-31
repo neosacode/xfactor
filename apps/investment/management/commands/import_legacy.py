@@ -109,24 +109,24 @@ class Command(BaseCommand):
         #     print('Gravando investimentos no banco')
 
 
-        # Referrals.objects.all().delete()
+        Referrals.objects.all().delete()
 
-        # # Migracao de indicacoes
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
-        #     reader = csv.DictReader(f)
-        #     bulk_referrals = []
+        # Migracao de indicacoes
+        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            bulk_referrals = []
 
-        #     for row in reader:
-        #         referral = Referrals()
-        #         referral.promoter = Users.objects.get(username=row['promoter'])
-        #         referral.user = Users.objects.get(username=row['username'])
+            for row in reader:
+                referral = Referrals()
+                referral.promoter = Users.objects.get(username=row['promoter'])
+                referral.user = Users.objects.get(username=row['username'])
 
-        #         bulk_referrals.append(referral)
+                bulk_referrals.append(referral)
 
-        #         print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
+                print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
 
-        #     Referrals.objects.bulk_create(bulk_referrals)
-        #     print('Gravando referencias no banco')
+            Referrals.objects.bulk_create(bulk_referrals)
+            print('Gravando referencias no banco')
                 
 
         # Statement.objects.filter(created__date__lt=datetime(2018, 5, 28)).delete()
