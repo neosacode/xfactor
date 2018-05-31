@@ -4,24 +4,29 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" v-text="'{% trans "Transfer" %}/{% trans "Withdraw " %} ' + coin"></h5>
+        <h5 class="modal-title" v-text="'{% trans "Transfer" %} ' + coin"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+
+        <p><i class="fas fa-warning"></i> {% trans "TBSA - Transfer between system accounts" %}</p>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input type="number" :class="{'form-control': true, 'parsley-error': errors.amount}" :placeholder="'{% trans " withdraw amount" %}'" step="0.0001" v-model="amount">
+          <input type="number" :class="{'form-control': true, 'parsley-error': errors.amount}" :placeholder="'{% trans "transfer amount" %}'" step="0.0001" v-model="amount">
           <div class="help-block form-text text-muted form-control-feedback" v-show="errors.amount">
           	<ul class="parsley-errors-list filled">
           		<li v-for="error_message in errors.amount" v-text="error_message"></li>
           	</ul>
           </div>
-          <p style="font-size: 14px; margin-top: 10px;">
+          <p style="font-size: 14px; margin-top: 10px;" class="text-center">
             <span v-text="available_amount_text"></span> <strong v-text="available_amount"></strong><br>
-            {% trans "Min withdraw amount is:" %} <strong v-text="currency.withdraw_min"></strong><br>
-            {% trans "Max withdraw amount is:" %} <strong v-text="currency.withdraw_max"></strong><br>
-            {% trans "Withdraw fee is:" %} <strong v-text="currency.withdraw_fee + '%'"></strong><br>
+            {% trans "Min transfer amount is:" %} <strong v-text="currency.withdraw_min + ' BTC'"></strong><br>
+            {% trans "Max tranfer amount is:" %} <strong v-text="currency.withdraw_max + ' BTC'"></strong><br>
+            {% trans "Tranfer percent fee is:" %} <strong v-text="currency.withdraw_fee + '%'"></strong><br>
+            {% trans "Transfer fixed fee is:" %} <strong v-text="currency.withdraw_fixed_fee + ' BTC'"></strong><br>
+            {% trans "TBSA percent fee is:" %} <strong v-text="currency.tbsa_fee + '%'"></strong><br>
+            {% trans "TBSA fixed fee is:" %} <strong v-text="currency.tbsa_fixed_fee + ' BTC'"></strong><br>
             {% trans "Max receive hours is:" %} <strong v-text="currency.withdraw_receive_hours + ' {% trans "hours" %}'"></strong>
           </p>
         </div>
