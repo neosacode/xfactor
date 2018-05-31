@@ -1222,7 +1222,7 @@ msgstr "Mensagem"
 
 #: templates/payments/withdraw.html:12
 msgid "TBSA - Transfer between system accounts"
-msgstr "Transferência entre contas do sistema"
+msgstr "Transferência entre contas xfactor"
 
 #: templates/payments/withdraw.html:16
 msgid "transfer amount"
@@ -1248,11 +1248,11 @@ msgstr "Taxa fixa de transferência:"
 
 #: templates/payments/withdraw.html:28
 msgid "TBSA percent fee is:"
-msgstr "Taxa de TECS:"
+msgstr "Taxa Xfactor:"
 
 #: templates/payments/withdraw.html:29
 msgid "TBSA fixed fee is:"
-msgstr "Taxa fixa de TECS:"
+msgstr "Taxa fixa Xfactor:"
 
 #: templates/payments/withdraw.html:30
 msgid "Max receive hours is:"
