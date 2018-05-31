@@ -75,7 +75,7 @@ if(w.style.display=="block"){w.style.display='none';}else{
                                 <form action="{% url 'set_language' %}" method="post" id="change-language-form">{% csrf_token %}
                                     <input type="hidden" name="language" v-model="language">
                                     {% for language in languages %}
-                                    <a href="#" @click.prevent="set_language('{{ language.code }}')" class="dropdown-item">
+                                    <a href="#" @click.prevent="set_language('{{ language.code }}')" class="dropdown-item tx-14">
                                         <span class="flag-icon {{ language.code|language_css_class }}"></span>
                                         {{ language.name_local }}
                                     </a>
