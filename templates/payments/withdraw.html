@@ -8,10 +8,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-
-        <p><i class="fas fa-warning"></i> {% trans "TBSA - Transfer between system accounts" %}</p>
       </div>
       <div class="modal-body">
+
         <div class="form-group">
           <input type="number" :class="{'form-control': true, 'parsley-error': errors.amount}" :placeholder="'{% trans "transfer amount" %}'" step="0.0001" v-model="amount">
           <div class="help-block form-text text-muted form-control-feedback" v-show="errors.amount">
@@ -19,6 +18,7 @@
           		<li v-for="error_message in errors.amount" v-text="error_message"></li>
           	</ul>
           </div>
+          <p class="text-center b"><i class="fas fa-warning"></i> {% trans "TBSA - Transfer between system accounts" %}</p>
           <p style="font-size: 14px; margin-top: 10px;" class="text-center">
             <span v-text="available_amount_text"></span> <strong v-text="available_amount"></strong><br>
             {% trans "Min transfer amount is:" %} <strong v-text="currency.withdraw_min + ' BTC'"></strong><br>

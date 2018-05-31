@@ -1222,7 +1222,7 @@ msgstr "Mensagem"
 
 #: templates/payments/withdraw.html:12
 msgid "TBSA - Transfer between system accounts"
-msgstr "Transferência entre contas xfactor"
+msgstr "TECX - Transferência entre contas xfactor"
 
 #: templates/payments/withdraw.html:16
 msgid "transfer amount"
