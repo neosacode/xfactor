@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-31 22:59+0000\n"
+"POT-Creation-Date: 2018-05-31 23:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,8 +96,12 @@ msgid "Password"
 msgstr ""
 
 #: apps/investment/forms.py:62
-msgid "I have read and agree to the terms of use"
-msgstr "Eu li e concordo com os termos de uso"
+msgid ""
+"I have read and agree to the terms of use: <a href=\"https://www.xfactor.cash/"
+"terms.html\" target=\"blank\">open terms</a>"
+msgstr ""
+"Eu li e concordo com os termos de uso: <a href=\"https://www.xfactor.cash/"
+"terms.html\" target=\"blank\">abrir termos</a>"
 
 #: apps/investment/forms.py:72
 msgid "The e-mails aren't equal"
@@ -1421,6 +1425,9 @@ msgstr "Você não possui saldo suficiente para fazer a inscrição."
 #: xfactor/views.py:137
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "I have read and agree to the terms of use"
+#~ msgstr "Eu li e concordo com os termos de uso"
 
 #~ msgid "Withdraw "
 #~ msgstr "Sacar"

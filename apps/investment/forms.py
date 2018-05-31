@@ -59,7 +59,7 @@ class SignupForm(account.forms.SignupForm):
     last_name = forms.CharField(label=_("Last name"))
     confirm_email = forms.EmailField(label=_("Confirm e-mail"))
     password = PasswordField(label=_("Password"), strip=settings.ACCOUNT_PASSWORD_STRIP)
-    terms = forms.BooleanField(label=_("I have read and agree to the terms of use"))
+    terms = forms.BooleanField(label=_("I have read and agree to the terms of use: <a href=\"https://www.xfactor.cash/terms.html\" target=\"blank\">open terms</a>"))
     
     field_order = ['advisor', 'first_name', 'last_name', 'username', 'email', 'confirm_email', 'password', 'password_confirm', 'term']
 
