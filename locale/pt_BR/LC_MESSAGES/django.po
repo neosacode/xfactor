@@ -1233,7 +1233,6 @@ msgid "Min transfer amount is:"
 msgstr "Transferência mínima:"
 
 #: templates/payments/withdraw.html:25
-#, fuzzy
 #| msgid "Max withdraw amount is:"
 msgid "Max tranfer amount is:"
 msgstr "Transferência máxima:"
