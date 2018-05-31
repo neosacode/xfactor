@@ -35,10 +35,10 @@
                 <h3><span>{% trans "Your total incomes:" %}</span> <a href="{% url "core>statement" %}">{{ total_income }} BTC</a></h3>
 
                 <h4 class="title">{% trans "My Comissions" %}</h4>
-                <h3><span>{% trans "Current Graduation" %}: </span>Investiment promoter</h3>
-                <h3><span>{% trans "Total Comissions" %}: </span>{% trans "In processing" %}</h3>
-                <h3><span>{% trans "Month Comissions" %}: </span>{% trans "In processing" %}</h3>
-                <h3><span>{% trans "Today Comissions" %}: </span>{% trans "In processing" %}</h3>
+                <h3><span>{% trans "Current Graduation" %}: </span>{{ graduation.type_title }}</h3>
+                <h3><span>{% trans "Total Comissions" %}: </span>{{ comissions_amount }}</h3>
+                <h3><span>{% trans "Month Comissions" %}: </span>{{ comissions_month_amount }}</h3>
+                <h3><span>{% trans "Today Comissions" %}: </span>{{ comissions_today_amount }}</h3>
             </div>
 
         </div>

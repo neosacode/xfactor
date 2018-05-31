@@ -19,7 +19,7 @@ from account.decorators import login_required
 
 from exchange_core.models import Accounts, Currencies, Statement
 from exchange_core.rates import CurrencyPrice
-from apps.investment.models import Investments, Incomes
+from apps.investment.models import Investments, Incomes, Comissions, Graduations
 from apps.investment.forms import CourseSubscriptionForm
 
 
@@ -76,10 +76,13 @@ class InvestmentAccountView(TemplateView):
         increment_amount = 0
 
         for income in reversed(incomes_qs):
-            print(income.date)
             incomes.append({'amount': str(income.amount).replace(',', '.'), 'date': income.date})
 
         context['incomes'] = incomes
+        context['graduation'] = Graduations.get_present(self.request.user)
+        context['comissions_amount'] = Comissions.get_amount(self.request.user)
+        context['comissions_month_amount'] = Comissions.get_month_amount(self.request.user)
+        context['comissions_today_amount'] = Comissions.get_today_amount(self.request.user)
         context['total_income'] = Statement.objects.filter(account__user=self.request.user, type__in=['income']).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00')
         return context
 

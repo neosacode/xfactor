@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.db.models import Q, Sum
 from django import forms
 from model_utils.models import TimeStampedModel, StatusModel
 from model_utils import Choices
@@ -145,6 +146,10 @@ class Graduations(models.Model):
         verbose_name_plural = _("Graduations")
         unique_together = (('user', 'type'),)
 
+    @property
+    def type_title(self):
+        return 'Investment ' + self.type.title()
+
     @classmethod
     def get_present(cls, user):
         return Graduations.objects.filter(user=user).order_by('-created').first()
@@ -239,6 +244,18 @@ class Comissions(TimeStampedModel, models.Model):
     referral = models.ForeignKey(Referrals, related_name='comissions', on_delete=models.CASCADE)
     plan = models.ForeignKey(Plans, related_name='comissions', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
+
+    @classmethod
+    def get_amount(self, user):
+        return Comissions.objects.filter(Q(referral__promoter=user) | Q(referral__advisor=user)).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00000000')
+
+    @classmethod
+    def get_month_amount(self, user):
+        return Comissions.objects.filter(Q(referral__promoter=user) | Q(referral__advisor=user)).filter(created__year=timezone.now().year, created__month=timezone.now().month).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00000000')
+
+    @classmethod
+    def get_today_amount(self, user):
+        return Comissions.objects.filter(Q(referral__promoter=user) | Q(referral__advisor=user)).filter(created__date=timezone.now()).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00000000')
 
 
 class PlanGracePeriodForm(forms.ModelForm):

@@ -483,10 +483,9 @@ msgid "My Comissions"
 msgstr "Minhas Comissões"
 
 #: templates/accounts/investment.html:38
-#, fuzzy
 #| msgid "Graduation"
 msgid "Current Graduation"
-msgstr "Graduação"
+msgstr "Graduação Atual"
 
 #: templates/accounts/investment.html:39
 msgid "Total Comissions"

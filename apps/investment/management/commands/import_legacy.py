@@ -16,7 +16,7 @@ from django.db import transaction
 from exchange_core.models import Users, Accounts, Statement, Currencies
 from exchange_payments.gateways.bitgo import Gateway
 from apps.investment.utils import decimal_split
-from apps.investment.models import Investments, PlanGracePeriods, Referrals, Incomes, Comissions, Plans
+from apps.investment.models import Investments, PlanGracePeriods, Referrals, Incomes, Comissions, Plans, Graduations
 
 class Command(BaseCommand):
     help = 'Import Legacy Data'
@@ -109,24 +109,24 @@ class Command(BaseCommand):
         #     print('Gravando investimentos no banco')
 
 
-        Referrals.objects.all().delete()
+        # Referrals.objects.all().delete()
 
-        # Migracao de indicacoes
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            bulk_referrals = []
+        # # Migracao de indicacoes
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     bulk_referrals = []
 
-            for row in reader:
-                referral = Referrals()
-                referral.promoter = Users.objects.get(username=row['promoter'])
-                referral.user = Users.objects.get(username=row['username'])
+        #     for row in reader:
+        #         referral = Referrals()
+        #         referral.promoter = Users.objects.get(username=row['promoter'])
+        #         referral.user = Users.objects.get(username=row['username'])
 
-                bulk_referrals.append(referral)
+        #         bulk_referrals.append(referral)
 
-                print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
+        #         print('Processando usuáro {} com promoter {}'.format(row['username'], row['promoter']))
 
-            Referrals.objects.bulk_create(bulk_referrals)
-            print('Gravando referencias no banco')
+        #     Referrals.objects.bulk_create(bulk_referrals)
+        #     print('Gravando referencias no banco')
                 
 
         # Statement.objects.filter(created__date__lt=datetime(2018, 5, 28)).delete()
@@ -170,26 +170,31 @@ class Command(BaseCommand):
         #     print('Gravando rendimentos no banco')
 
 
-        Statement.objects.filter(type='comission').delete()
+        # Statement.objects.filter(type='comission').delete()
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/comissions.csv', 'r') as f:
-            reader = csv.DictReader(f)
-            comissions_bulk = []
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/comissions.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
+        #     comissions_bulk = []
 
-            for row in reader:
-                referral = Referrals.objects.get(promoter=Users.objects.get(username=row['sponsor']), user=Users.objects.get(username=row['username']))
+        #     for row in reader:
+        #         referral = Referrals.objects.get(promoter=Users.objects.get(username=row['sponsor']), user=Users.objects.get(username=row['username']))
 
-                comission = Comissions()
-                comission.referral = referral
-                comission.amount = Decimal(row['value'])
-                comission.created = dateutil.parser.parse(row['created'])
-                comission.modified = dateutil.parser.parse(row['created'])
-                comission.plan = Plans.objects.get(name__iexact=row['plan'])
+        #         comission = Comissions()
+        #         comission.referral = referral
+        #         comission.amount = Decimal(row['value'])
+        #         comission.created = dateutil.parser.parse(row['created'])
+        #         comission.modified = dateutil.parser.parse(row['created'])
+        #         comission.plan = Plans.objects.get(name__iexact=row['plan'])
 
-                comissions_bulk.append(comission)
+        #         comissions_bulk.append(comission)
 
-                print(row)
+        #         print(row)
 
-            Comissions.objects.bulk_create(comissions_bulk)
+        #     Comissions.objects.bulk_create(comissions_bulk)
 
-            print('Gravando comissoes')
+        #     print('Gravando comissoes')
+
+
+        for user in Users.objects.all():
+            graduations_bulk = []
+            Comissions.objects.filter(referral__promoter=user).update(graduation=Graduations.get_present(user))
