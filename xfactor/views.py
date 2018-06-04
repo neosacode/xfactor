@@ -19,6 +19,8 @@ from account.decorators import login_required
 
 from exchange_core.models import Accounts, Currencies, Statement
 from exchange_core.rates import CurrencyPrice
+from exchange_core.pagination import paginate
+from exchange_core.views import StatementView as CoreStatementView
 from apps.investment.models import Investments, Incomes, Comissions, Graduations
 from apps.investment.forms import CourseSubscriptionForm
 
@@ -135,3 +137,13 @@ class CreateCourseSubscriptionView(View):
             checking_account.takeout(amount)
 
             return {'title': _("Congratulations!"), 'message': _("Your subscription in the Advisor has been successfully made."), 'type': 'success'}
+
+
+@method_decorator([login_required], name='dispatch')
+class StatementView(CoreStatementView):
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['incomes'] = paginate(self.request, Statement.objects.filter(account__user=self.request.user, type__in=['income']).order_by('-created'), url_param_name='incomes_page')
+        context['comissions'] = paginate(self.request, Comissions.objects.filter(Q(referral__promoter=self.request.user) | Q(referral__advisor=self.request.user)).order_by('-created'), url_param_name='comissions_page')
+        context['total_comission'] = Comissions.get_amount(self.request.user)
+        return context

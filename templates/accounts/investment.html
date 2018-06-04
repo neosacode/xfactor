@@ -19,7 +19,7 @@
         {% include "back-button.html" with margin_top='50px' %}
 
         <div class="row box-1">
-            <div class="col-md-4 codigo">
+            <div class="col-md-4 codigo text-center">
                 <img src="https://chart.googleapis.com/chart?cht=qr&chs=230x230&chl={{ DOMAIN }}/investment/signup?promoter={{ request.user.username }}" alt="">
                 <a href="#" id="copy-referral" class="text-center btn-block mt-20 btn btn-link"><i class="fas fa-link"></i> {% trans "Copy my referrer link" %}</a>
             </div>
@@ -27,7 +27,8 @@
                 <h4 class="title" style="margin-top: 0;">{% trans "My Investment" %}</h4>
                 <h3><span>{% trans "Current investment plan:" %}</span> {{ charge.plan_grace_period.plan.name }}</h3>
                 <h3><span>{% trans "Invest amount:" %}</span> {{ charge.amount }} BTC</h3>
-                <h3><span>{% trans "Selected lack:" %}</span> {{ charge.plan_grace_period.grace_period.months }} {% trans "months" %}</h3>
+                <h3><span>{% trans "Contracted lack:" %}</span> {{ charge.plan_grace_period.grace_period.months }} {% trans "months" %}</h3>
+                <h3><span>{% trans "Remaining/Contracted days:" %}</span> {{ charge.remaining_days }}/{{ charge.contract_days }} {% trans "days" %}</h3>
                 <h3><span>{% trans "Income percent:" %}</span> {{ charge.plan_grace_period.income_percent|floatformat:0 }}% {% trans "per month" %}</h3>
 
                 <h4 class="title">{% trans "My Incomes" %}</h4>
@@ -49,7 +50,7 @@
                     <a disabled="disabled" style="cursor: not-allowed;" class="btn btn-pink btn-lg btn-block mb-10"><i class="fas fa-upload"></i> {% trans "REINVEST" %}</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="" class="btn btn-primary btn-lg btn-block mb-10"><i class="fas fa-calendar-alt"></i> {% trans "CHANGE LACK" %}</a>
+                    <a href="{% url "core>statement" %}" class="btn btn-primary btn-lg btn-block mb-10 uppercase"><i class="fas fa-calendar-alt"></i> {% trans "Statement" %}</a>
                 </div>
                 <div class="col-md-6">
                     <a href="" class="btn btn-primary btn-lg btn-block mb-10"><i class="fab fa-btc"></i> {% trans "TO WITHDRAW INCOMES" %}</a>

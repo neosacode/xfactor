@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-31 23:08+0000\n"
+"POT-Creation-Date: 2018-06-04 14:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Insufficient funds"
 msgstr ""
 
-#: apps/investment/apps.py:7 apps/investment/models.py:106
+#: apps/investment/apps.py:7 apps/investment/models.py:111
 msgid "Investments"
 msgstr "Investimentos"
 
-#: apps/investment/forms.py:18 apps/investment/models.py:60
+#: apps/investment/forms.py:18 apps/investment/models.py:61
 msgid "Payment Type"
 msgstr ""
 
@@ -97,8 +97,8 @@ msgstr ""
 
 #: apps/investment/forms.py:62
 msgid ""
-"I have read and agree to the terms of use: <a href=\"https://www.xfactor.cash/"
-"terms.html\" target=\"blank\">open terms</a>"
+"I have read and agree to the terms of use: <a href=\"https://www.xfactor."
+"cash/terms.html\" target=\"blank\">open terms</a>"
 msgstr ""
 "Eu li e concordo com os termos de uso: <a href=\"https://www.xfactor.cash/"
 "terms.html\" target=\"blank\">abrir termos</a>"
@@ -111,159 +111,160 @@ msgstr ""
 msgid "Wrong password informed"
 msgstr ""
 
-#: apps/investment/models.py:25 templates/investment/plans.html:32
+#: apps/investment/models.py:26 templates/investment/plans.html:32
 msgid "Min down"
 msgstr "Invest. Min:"
 
-#: apps/investment/models.py:26 templates/investment/plans.html:33
+#: apps/investment/models.py:27 templates/investment/plans.html:33
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:27 templates/investment/plans.html:35
+#: apps/investment/models.py:28 templates/investment/plans.html:35
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:28
+#: apps/investment/models.py:29
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:32 apps/investment/models.py:56
+#: apps/investment/models.py:33 apps/investment/models.py:57
 #: templates/core/statement.html:120 templates/core/statement.html:150
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:33
+#: apps/investment/models.py:34
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:41
+#: apps/investment/models.py:42
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:44
+#: apps/investment/models.py:45
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:45
+#: apps/investment/models.py:46
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:57 templates/investment/plans.html:49
+#: apps/investment/models.py:58 templates/investment/plans.html:49
 msgid "Grace Period"
 msgstr "Carência"
 
-#: apps/investment/models.py:58
+#: apps/investment/models.py:59
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
-#: apps/investment/models.py:59
+#: apps/investment/models.py:60
 msgid "Membership fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:61 templates/core/statement.html:92
+#: apps/investment/models.py:62 templates/core/statement.html:92
 #: templates/core/statement.html:119 templates/core/statement.html:178
 msgid "Currency"
 msgstr "Moeda"
 
-#: apps/investment/models.py:64 apps/investment/models.py:81
+#: apps/investment/models.py:65 apps/investment/models.py:82
 msgid "Plan grace period"
 msgstr "Carência do plano"
 
-#: apps/investment/models.py:65
+#: apps/investment/models.py:66
 msgid "Plan grace periods"
 msgstr "Carências do plano"
 
-#: apps/investment/models.py:70
+#: apps/investment/models.py:71
 #, python-brace-format
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:82 templates/boleto/pay.html:61
+#: apps/investment/models.py:83 templates/boleto/pay.html:61
 #: templates/core/statement.html:91 templates/core/statement.html:118
 #: templates/core/statement.html:147 templates/core/statement.html:177
 #: templates/investment/credit-line.html:65
 msgid "Amount"
 msgstr ""
 
-#: apps/investment/models.py:83
+#: apps/investment/models.py:84
 msgid "Membership Fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:84 apps/investment/models.py:171
-#: apps/investment/models.py:218
+#: apps/investment/models.py:85 apps/investment/models.py:186
+#: apps/investment/models.py:233
 msgid "Account"
 msgstr "Conta"
 
-#: apps/investment/models.py:85
+#: apps/investment/models.py:86
 msgid "Paid Date"
 msgstr "Data de Pagamento"
 
-#: apps/investment/models.py:105
+#: apps/investment/models.py:110
 msgid "Investment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:117
+#: apps/investment/models.py:122
 msgid "Income"
 msgstr "Meus Rendimentos"
 
-#: apps/investment/models.py:118 templates/core/statement.html:74
+#: apps/investment/models.py:123 templates/core/statement.html:74
 msgid "Incomes"
 msgstr "Meus Rendimentos"
 
-#: apps/investment/models.py:123
+#: apps/investment/models.py:128
 msgid "Date to be ignored"
 msgstr "Data a ser ignorada"
 
-#: apps/investment/models.py:126
+#: apps/investment/models.py:131
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:127
+#: apps/investment/models.py:132
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:137
+#: apps/investment/models.py:142
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:137
+#: apps/investment/models.py:142
 msgid "Investment Advisor"
 msgstr "Investment Advisor"
 
-#: apps/investment/models.py:145
+#: apps/investment/models.py:150
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:146
+#: apps/investment/models.py:151
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/models.py:179
+#: apps/investment/models.py:194
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:180
+#: apps/investment/models.py:195
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:192 templates/accounts/checking.html:69
-#: templates/core/statement.html:6 templates/core/statement.html:63
+#: apps/investment/models.py:207 templates/accounts/checking.html:69
+#: templates/accounts/investment.html:53 templates/core/statement.html:6
+#: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
-#: apps/investment/models.py:205
+#: apps/investment/models.py:220
 msgid "Installment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:206
+#: apps/investment/models.py:221
 msgid "Installments"
 msgstr "Investimentos"
 
-#: apps/investment/models.py:234
+#: apps/investment/models.py:249
 msgid "Credit"
 msgstr "Crédito"
 
-#: apps/investment/models.py:235
+#: apps/investment/models.py:250
 msgid "Credits"
 msgstr "Créditos"
 
@@ -455,82 +456,86 @@ msgid "Invest amount:"
 msgstr "Valor investido:"
 
 #: templates/accounts/investment.html:30
-msgid "Selected lack:"
-msgstr "Carência selecionada:"
+msgid "Contracted lack:"
+msgstr "Carência contratada:"
 
 #: templates/accounts/investment.html:30 templates/core/statement.html:131
 msgid "months"
 msgstr "Meses"
 
 #: templates/accounts/investment.html:31
+msgid "Remaining/Contracted days:"
+msgstr "Dias restantes/contratados:"
+
+#: templates/accounts/investment.html:31
+msgid "days"
+msgstr "dias"
+
+#: templates/accounts/investment.html:32
 msgid "Income percent:"
 msgstr "Porcentagem de rendimento:"
 
-#: templates/accounts/investment.html:31 templates/investment/plans.html:52
+#: templates/accounts/investment.html:32 templates/investment/plans.html:52
 msgid "per month"
 msgstr "ao mês"
 
-#: templates/accounts/investment.html:33
+#: templates/accounts/investment.html:34
 msgid "My Incomes"
 msgstr "Meus Rendimentos"
 
-#: templates/accounts/investment.html:34
+#: templates/accounts/investment.html:35
 msgid "Available for withdraw:"
 msgstr "Disponível para saque:"
 
-#: templates/accounts/investment.html:35
+#: templates/accounts/investment.html:36
 msgid "Your total incomes:"
 msgstr "Seu total de rendimentos:"
 
-#: templates/accounts/investment.html:37
+#: templates/accounts/investment.html:38
 msgid "My Comissions"
 msgstr "Minhas Comissões"
 
-#: templates/accounts/investment.html:38
+#: templates/accounts/investment.html:39
 msgid "Current Graduation"
 msgstr "Graduação Atual"
 
-#: templates/accounts/investment.html:39
+#: templates/accounts/investment.html:40 templates/core/statement.html:55
 msgid "Total Comissions"
 msgstr "Total Comissões"
 
-#: templates/accounts/investment.html:40
+#: templates/accounts/investment.html:41
 msgid "Month Comissions"
 msgstr "Comissões do Mês"
 
-#: templates/accounts/investment.html:41
+#: templates/accounts/investment.html:42
 msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
-#: templates/accounts/investment.html:49
+#: templates/accounts/investment.html:50
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
-#: templates/accounts/investment.html:52
-msgid "CHANGE LACK"
-msgstr "MUDAR CARÊNCIA"
-
-#: templates/accounts/investment.html:55
+#: templates/accounts/investment.html:56
 msgid "TO WITHDRAW INCOMES"
 msgstr "SACAR RENDIMENTOS"
 
-#: templates/accounts/investment.html:58
+#: templates/accounts/investment.html:59
 msgid "MY CUSTOMERS"
 msgstr "MEUS CLIENTES"
 
-#: templates/accounts/investment.html:72
+#: templates/accounts/investment.html:73
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:94
+#: templates/accounts/investment.html:95
 msgid "Last 30 days"
 msgstr ""
 
-#: templates/accounts/investment.html:107
+#: templates/accounts/investment.html:108
 msgid "Copied!"
 msgstr "Copiado!"
 
-#: templates/accounts/investment.html:107
+#: templates/accounts/investment.html:108
 msgid "Your referral link has been copied!"
 msgstr "Seu link de referência foi copiado!"
 
@@ -946,16 +951,13 @@ msgid "Total Withdraw"
 msgstr "Total Sacado"
 
 #: templates/core/statement.html:41
-msgid "Card Balance"
-msgstr "Saldo do Cartão"
+#| msgid "Total Invested"
+msgid "Total Incomes"
+msgstr "Total Rendimentos"
 
 #: templates/core/statement.html:48
 msgid "Total Invested"
 msgstr "Total Investido"
-
-#: templates/core/statement.html:55
-msgid "Available Limit"
-msgstr "Limite Disponível"
 
 #: templates/core/statement.html:64
 msgid "Here you can follow your checking and investment accounts movements."
@@ -1169,12 +1171,16 @@ msgid "Mobile Phone"
 msgstr "Telefone Celular"
 
 #: templates/investment/my-customers.html:30
-msgid "Has Investing Plan"
-msgstr "Possui Plano de Investimento"
+msgid "Is Investor?"
+msgstr "É Investidor?"
 
-#: templates/investment/my-customers.html:50 templates/investment/plans.html:36
+#: templates/investment/my-customers.html:51 templates/investment/plans.html:36
 msgid "Yes"
 msgstr "Sim"
+
+#: templates/investment/my-customers.html:53 templates/investment/plans.html:36
+msgid "No"
+msgstr "Não"
 
 #: templates/investment/plans.html:23
 msgid "Select your plan"
@@ -1187,10 +1193,6 @@ msgstr "Taxa de adesão"
 #: templates/investment/plans.html:36
 msgid "Allow monthly withdraw"
 msgstr "Permite saque mensal"
-
-#: templates/investment/plans.html:36
-msgid "No"
-msgstr "Não"
 
 #: templates/investment/plans.html:44
 msgid "Start your investment"
@@ -1220,20 +1222,19 @@ msgstr "INICIAR INVESTIMENTO"
 msgid "Message"
 msgstr "Mensagem"
 
-#: templates/payments/withdraw.html:12
-msgid "TBSA - Transfer between system accounts"
-msgstr "TECX - Transferência entre contas xfactor"
-
-#: templates/payments/withdraw.html:16
+#: templates/payments/withdraw.html:15
 msgid "transfer amount"
 msgstr "quantidade a ser transferêrida"
+
+#: templates/payments/withdraw.html:21
+msgid "TBSA - Transfer between system accounts"
+msgstr "TECX - Transferência entre contas xfactor"
 
 #: templates/payments/withdraw.html:24
 msgid "Min transfer amount is:"
 msgstr "Transferência mínima:"
 
 #: templates/payments/withdraw.html:25
-#| msgid "Max withdraw amount is:"
 msgid "Max tranfer amount is:"
 msgstr "Transferência máxima:"
 
@@ -1424,6 +1425,18 @@ msgstr "Você não possui saldo suficiente para fazer a inscrição."
 #: xfactor/views.py:137
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Card Balance"
+#~ msgstr "Saldo do Cartão"
+
+#~ msgid "Available Limit"
+#~ msgstr "Limite Disponível"
+
+#~ msgid "Has Investing Plan"
+#~ msgstr "Possui Plano de Investimento"
+
+#~ msgid "CHANGE LACK"
+#~ msgstr "MUDAR CARÊNCIA"
 
 #~ msgid "I have read and agree to the terms of use"
 #~ msgstr "Eu li e concordo com os termos de uso"

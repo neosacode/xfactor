@@ -190,12 +190,6 @@ main .content-2 .conteudo-1 {
     }
 }
 
-
-main .content .conteudo-1 .box-1 .codigo img,
-main .content-2 .conteudo-1 .box-1 .codigo img {
-    margin-right: 30px
-}
-
 main .content .conteudo-1 .box-1 .texto-codigo,
 main .content-2 .conteudo-1 .box-1 .texto-codigo {
     color: #0a2357

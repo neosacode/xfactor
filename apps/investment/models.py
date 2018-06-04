@@ -1,6 +1,7 @@
 import uuid
 from decimal import Decimal
 from dateutil import rrule
+from dateutil.relativedelta import relativedelta
 
 from django.db import models
 from django.contrib import admin
@@ -93,6 +94,10 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     def remaining_days(self):
         return (self.end_date - timezone.now()).days
 
+    @property
+    def contract_days(self):
+        return (self.end_date - self.paid_date).days
+
     # Retorna quantos meses faltam para vencer a carência
     @property
     def remaining_months(self):
@@ -160,6 +165,16 @@ class Referrals(TimeStampedModel, models.Model):
     user = models.OneToOneField('exchange_core.Users', related_name='referral', on_delete=models.CASCADE)
     promoter = models.ForeignKey('exchange_core.Users', related_name='promoter', on_delete=models.CASCADE)
     advisor = models.ForeignKey('exchange_core.Users', related_name='advisor', null=True, on_delete=models.CASCADE)
+
+    @property
+    def user_has_investments(self):
+        accounts = self.user.accounts.filter(currency__type=Currencies.TYPES.investment)
+
+        if accounts.exists():
+            investment_account = accounts.first()
+            return investment_account.investments.exists()
+
+        return False
 
 
 

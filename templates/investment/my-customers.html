@@ -27,7 +27,7 @@
 					<th><i class="fa fa-envelope"></i> {% trans "E-mail" %}</th>
 					<th><i class="fa fa-envelope"></i> {% trans "Mobile Phone" %}</th>
 					<th><i class="fa fa-calendar"></i> {% trans "Register Date" %}</th>
-					<th><i class="fa fa-calendar"></i> {% trans "Has Investing Plan" %}</th>
+					<th><i class="fa fa-calendar"></i> {% trans "Is Investor?" %}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,9 +45,13 @@
 					<td>
 						{{ referral.user.mobile_phone|default_if_none:"N/A" }}
 					</td>
-					<td><i class="font-icon font-icon-clock"></i> {{ referral.user.created|date:"SHORT_DATETIME_FORMAT" }}</td>
+					<td><i class="font-icon font-icon-clock"></i> {{ referral.user.created|date:"SHORT_DATE_FORMAT" }}</td>
 					<td>
-						{% trans "Yes" %}
+						{% if referral.user_has_investments %}
+							{% trans "Yes" %}
+						{% else %}
+							{% trans "No" %}
+						{% endif %}
 					</td>
 				</tr>
 				{% endfor %}

@@ -7,6 +7,8 @@ from two_factor.urls import urlpatterns as tf_urls
 from . import views
 
 urlpatterns = [
+	path('account/statement/', views.StatementView.as_view(), name='core>statement'),
+
 	path('account/select/', views.SelectAccountView.as_view(), name='xfactor>select-account'),
 	path('account/checking/', views.CheckingAccountView.as_view(), name='xfactor>checking'),
 	path('account/investment/', views.InvestmentAccountView.as_view(), name='xfactor>investment'),

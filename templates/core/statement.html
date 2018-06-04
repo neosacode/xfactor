@@ -32,14 +32,14 @@
           <img src="{% static "img/credit-1.png" %}" alt="">
           <div>
             <p>{% trans "Total Withdraw" %}</p>
-            <p><span>0.00000000</span></p>
+            <p><span>{{ user_checking_account.total_withdraw|floatformat:8 }}</span></p>
           </div>
         </div>
         <div class="item">
           <img src="{% static "img/statement-4.png" %}" alt="">
           <div>
-            <p>{% trans "Card Balance" %}</p>
-            <p><span>0.00000000</span></p>
+            <p>{% trans "Total Incomes" %}</p>
+            <p><span>{{ user_checking_account.total_income|floatformat:8 }}</span></p>
           </div>
         </div>
         <div class="item">
@@ -52,8 +52,8 @@
         <div class="item">
           <img src="{% static "img/statement-2.png" %}" alt="">
           <div>
-            <p>{% trans "Available Limit" %}</p>
-            <p><span>0.00000000</span></p>
+            <p>{% trans "Total Comissions" %}</p>
+            <p><span>{{ total_comission|floatformat:8 }}</span></p>
           </div>
         </div>
       </div>
