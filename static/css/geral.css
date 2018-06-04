@@ -590,3 +590,13 @@ p {
     list-style: none;
     padding: 0;
 }
+
+.bootstrap-filestyle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.bootstrap-filestyle label {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

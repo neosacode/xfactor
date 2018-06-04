@@ -154,3 +154,13 @@
 
 
 {% endblock %}
+
+
+{% block scripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.min.js"></script>
+	<script>
+		jQuery(function($) {
+			$(":file").filestyle({text: "{% trans "Choose" %}", btnClass: "btn-pink"});
+		});
+	</script>
+{% endblock %}

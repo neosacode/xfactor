@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-04 14:21+0000\n"
+"POT-Creation-Date: 2018-06-04 17:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,19 +268,19 @@ msgstr "Crédito"
 msgid "Credits"
 msgstr "Créditos"
 
-#: apps/investment/templates/investment/signup.html:20
+#: apps/investment/templates/investment/signup.html:26
 msgid "Your investment promoter is"
 msgstr "Seu promotor de investimento é"
 
-#: apps/investment/templates/investment/signup.html:48
+#: apps/investment/templates/investment/signup.html:54
 msgid "Sign Up"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:68
+#: apps/investment/templates/investment/signup.html:74
 msgid "Already have an account?"
 msgstr "Já possui uma conta?"
 
-#: apps/investment/templates/investment/signup.html:68
+#: apps/investment/templates/investment/signup.html:74
 msgid "Log In"
 msgstr "Acessar"
 
@@ -803,24 +803,28 @@ msgstr ""
 
 #: templates/core/documents.html:27
 msgid "Drivers License or ID - Front"
-msgstr ""
+msgstr "Carteira de Motorista ou RG - Frente"
 
 #: templates/core/documents.html:42 templates/core/documents.html:73
 #: templates/core/documents.html:105 templates/core/documents.html:137
 msgid "Upload"
-msgstr ""
+msgstr "Enviar"
 
 #: templates/core/documents.html:59
 msgid "Drivers License or ID - Back"
-msgstr ""
+msgstr "Carteira de Motorista ou RG - Trás"
 
 #: templates/core/documents.html:91
 msgid "Document Selfie"
-msgstr ""
+msgstr "Selfie com o Documento"
 
 #: templates/core/documents.html:123
 msgid "Proof of Residence"
-msgstr ""
+msgstr "Comprovante de Residência"
+
+#: templates/core/documents.html:163
+msgid "Choose"
+msgstr "Procurar"
 
 #: templates/core/index.html:104
 msgid "Welcome: "
@@ -951,7 +955,6 @@ msgid "Total Withdraw"
 msgstr "Total Sacado"
 
 #: templates/core/statement.html:41
-#| msgid "Total Invested"
 msgid "Total Incomes"
 msgstr "Total Rendimentos"
 
@@ -1370,7 +1373,7 @@ msgstr "Não possui uma conta?"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:137
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:139
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1396,11 +1399,11 @@ msgstr ""
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:111 xfactor/views.py:125
+#: xfactor/views.py:113 xfactor/views.py:127
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:111
+#: xfactor/views.py:113
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1408,72 +1411,27 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:116
+#: xfactor/views.py:118
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:116
+#: xfactor/views.py:118
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:125
+#: xfactor/views.py:127
 #, fuzzy
 #| msgid "You not have enought balance for make your subscription ."
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:137
+#: xfactor/views.py:139
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#~ msgid "Card Balance"
-#~ msgstr "Saldo do Cartão"
+#: xfactor/views.py:139
+msgid "Approved"
+msgstr "Aprovado"
 
-#~ msgid "Available Limit"
-#~ msgstr "Limite Disponível"
-
-#~ msgid "Has Investing Plan"
-#~ msgstr "Possui Plano de Investimento"
-
-#~ msgid "CHANGE LACK"
-#~ msgstr "MUDAR CARÊNCIA"
-
-#~ msgid "I have read and agree to the terms of use"
-#~ msgstr "Eu li e concordo com os termos de uso"
-
-#~ msgid "Withdraw "
-#~ msgstr "Sacar"
-
-#~ msgid " withdraw amount"
-#~ msgstr "Sacar"
-
-#~ msgid "Bank Slip Not Found"
-#~ msgstr "Boleto Não Encontrado"
-
-#~ msgid "Please manually type below your bank slip data"
-#~ msgstr "Por favor digite manualmente os dados do seu boleto"
-
-#~ msgid "Missing Data!"
-#~ msgstr "Dados Faltando!"
-
-#~ msgid "Please type your name or your company name"
-#~ msgstr "Por favor digite o seu nome ou o nome da sua empresa"
-
-#~ msgid "Please type your CPF or CNPJ number"
-#~ msgstr "Por favor digite o seu CPF ou o seu CNPJ"
-
-#~ msgid "Select the desired grace period"
-#~ msgstr "Selecione o período de carência desejado"
-
-#~| msgid "Sign Up"
-#~ msgid "Sign me up"
-#~ msgstr "Abrir Conta"
-
-#~ msgid "<span>Statement</span>"
-#~ msgstr "<span>Extrato</span>"
-
-#~ msgid "Xfactor - Account Statement"
-#~ msgstr "Xfactor - Extrato da Conta"
-
-#~ msgid "Charges"
-#~ msgstr "Cobranças"
+msgid "Disapproved"
+msgstr "Desaprovado"
