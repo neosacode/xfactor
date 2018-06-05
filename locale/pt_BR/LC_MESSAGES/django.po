@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 03:33+0000\n"
+"POT-Creation-Date: 2018-06-05 16:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,42 +123,42 @@ msgstr "Invest. Max:"
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:29
+#: apps/investment/models.py:29 apps/investment/models.py:84
+msgid "Membership Fee"
+msgstr "Taxa de adesão"
+
+#: apps/investment/models.py:30
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:33 apps/investment/models.py:57
+#: apps/investment/models.py:34 apps/investment/models.py:58
 #: templates/core/statement.html:120 templates/core/statement.html:150
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:34
+#: apps/investment/models.py:35
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:42
+#: apps/investment/models.py:43
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:45
+#: apps/investment/models.py:46
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:46
+#: apps/investment/models.py:47
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:58 templates/investment/plans.html:49
+#: apps/investment/models.py:59 templates/investment/plans.html:49
 msgid "Grace Period"
 msgstr "Carência"
 
-#: apps/investment/models.py:59
+#: apps/investment/models.py:60
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
-
-#: apps/investment/models.py:60
-msgid "Membership fee"
-msgstr "Taxa de adesão"
 
 #: apps/investment/models.py:62 templates/core/statement.html:92
 #: templates/core/statement.html:119 templates/core/statement.html:178
@@ -184,10 +184,6 @@ msgstr "{plan} com {grace_period} meses"
 #: templates/investment/credit-line.html:65
 msgid "Amount"
 msgstr ""
-
-#: apps/investment/models.py:84
-msgid "Membership Fee"
-msgstr "Taxa de adesão"
 
 #: apps/investment/models.py:85 apps/investment/models.py:186
 #: apps/investment/models.py:233
@@ -292,34 +288,34 @@ msgstr "Este plano não pode ser cancelado"
 msgid "Your non-fidelity investment has been cancelled"
 msgstr "Seu plano sem fidelidade foi cancelado"
 
-#: apps/investment/views.py:105
+#: apps/investment/views.py:107
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr "ERROR! Valor a ser investido está fora do limite do plano"
 
-#: apps/investment/views.py:108
+#: apps/investment/views.py:110
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:164
+#: apps/investment/views.py:169
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:165
+#: apps/investment/views.py:170
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:227 templates/accounts/checking.html:51
+#: apps/investment/views.py:232 templates/accounts/checking.html:51
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
 msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:281
+#: apps/investment/views.py:286
 msgid "Your loan application was created with success!"
 msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:315
+#: apps/investment/views.py:320
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
@@ -330,7 +326,7 @@ msgstr "Voltar ao site"
 #: templates/account/logout.html:5 templates/account/logout.html:11
 #: templates/account/logout.html:15
 msgid "Log out"
-msgstr "Acessar"
+msgstr "Sair"
 
 #: templates/account/logout.html:14
 msgid "Are you sure you want to log out?"
@@ -546,13 +542,13 @@ msgid "Wallet address has been copied!"
 msgstr "Endereço da carteira foi copiado!"
 
 #: templates/accounts/scripts/checking.vue.html:33
-#: templates/accounts/scripts/investment.vue.html:20
+#: templates/accounts/scripts/investment.vue.html:19
 #, python-brace-format
 msgid "Available {coin} amount for withdraw is:"
 msgstr ""
 
 #: templates/accounts/scripts/checking.vue.html:57
-#: templates/accounts/scripts/investment.vue.html:44
+#: templates/accounts/scripts/investment.vue.html:42
 msgid "Withdraw error!"
 msgstr ""
 
@@ -1168,51 +1164,49 @@ msgstr "Sem cheques especiais para exibir"
 msgid "To Withdraw Incomes"
 msgstr "Sacar Rendimentos"
 
-#: templates/investment/incomes-withdraw.html:15
+#: templates/investment/incomes-withdraw.html:12
 #: templates/payments/withdraw.html:15
 msgid "transfer amount"
 msgstr "quantidade a ser transferêrida"
 
-#: templates/investment/incomes-withdraw.html:21
+#: templates/investment/incomes-withdraw.html:18
 msgid "The amount will be available in your checking account"
 msgstr "O valor estará dispońível na sua conta corrente"
 
-#: templates/investment/incomes-withdraw.html:24
-#| msgid "Min withdraw amount is:"
+#: templates/investment/incomes-withdraw.html:21
 msgid "Min income withdraw is:"
 msgstr "Valor mínimo de saque:"
 
-#: templates/investment/incomes-withdraw.html:25
-#| msgid "Max withdraw amount is:"
+#: templates/investment/incomes-withdraw.html:22
 msgid "Max income withdraw is:"
 msgstr "Valor máximo de saque:"
 
-#: templates/investment/incomes-withdraw.html:26
+#: templates/investment/incomes-withdraw.html:23
 msgid "Operation fee:"
 msgstr "Taxa de operação"
 
-#: templates/investment/incomes-withdraw.html:32
+#: templates/investment/incomes-withdraw.html:29
 #: templates/payments/withdraw.html:46
 msgid "account password"
 msgstr "sua senha"
 
-#: templates/investment/incomes-withdraw.html:38
-#: templates/investment/incomes-withdraw.html:51
+#: templates/investment/incomes-withdraw.html:35
+#: templates/investment/incomes-withdraw.html:48
 #: templates/payments/withdraw.html:52 templates/payments/withdraw.html:65
 msgid "We use this for security reasons"
 msgstr "Nós usamos isso por rasões de segurança"
 
-#: templates/investment/incomes-withdraw.html:44
+#: templates/investment/incomes-withdraw.html:41
 #: templates/payments/withdraw.html:58
 msgid "Your account two factor code"
 msgstr "Código 2 Fatores da sua conta"
 
-#: templates/investment/incomes-withdraw.html:45
+#: templates/investment/incomes-withdraw.html:42
 #: templates/payments/withdraw.html:59
 msgid "two factor code"
 msgstr "código 2 fatores"
 
-#: templates/investment/incomes-withdraw.html:56
+#: templates/investment/incomes-withdraw.html:53
 msgid "To Withdraw"
 msgstr "Sacar"
 
@@ -1269,11 +1263,15 @@ msgstr "Digite o valor desejado"
 msgid "Desired BTC amount to be invested"
 msgstr "Quantidade de BTC a ser investida"
 
-#: templates/investment/plans.html:65
+#: templates/investment/plans.html:63
+msgid "The membership fee will be added automatically."
+msgstr "O valor da taxa de inscrição será somado automaticamente."
+
+#: templates/investment/plans.html:66
 msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
-#: templates/investment/plans.html:119
+#: templates/investment/plans.html:120
 msgid "Message"
 msgstr "Mensagem"
 
@@ -1405,7 +1403,7 @@ msgstr "Não possui uma conta?"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:139
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:141
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1431,11 +1429,11 @@ msgstr ""
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:113 xfactor/views.py:127
+#: xfactor/views.py:115 xfactor/views.py:129
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:113
+#: xfactor/views.py:115
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1443,21 +1441,24 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:118
+#: xfactor/views.py:120
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:118
+#: xfactor/views.py:120
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:127
+#: xfactor/views.py:129
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:139
+#: xfactor/views.py:141
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Membership fee"
+#~ msgstr "Taxa de adesão"
 
 #~| msgid "Xfactor fixed fee is:"
 #~ msgid "Operation fixed fee:"

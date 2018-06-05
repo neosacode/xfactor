@@ -26,6 +26,7 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
     min_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min down"))
     max_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Max down"))
     min_reinvest = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min reinvest"), default=Decimal('0.00'))
+    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership Fee"), default=Decimal('0.00'))
     allow_monthly_draw = models.BooleanField(default=True, verbose_name=_("Allow monthly draw"))
     order = models.IntegerField(default=0)
 
@@ -57,7 +58,6 @@ class PlanGracePeriods(TimeStampedModel, StatusModel, models.Model):
     plan = models.ForeignKey(Plans, related_name='grace_periods', verbose_name=_("Plan"), on_delete=models.CASCADE)
     grace_period = models.ForeignKey(GracePeriods, related_name='plans', verbose_name=_("Grace Period"), on_delete=models.CASCADE)
     income_percent = models.DecimalField(default=Decimal('0.00'), max_digits=20, decimal_places=8, verbose_name=_("Income percent"))
-    membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership fee")),
     payment_type = models.CharField(max_length=20, choices=TYPES, default=TYPES.monthly, verbose_name=_("Payment Type"),)
     currency = models.ForeignKey('exchange_core.Currencies', null=True, related_name='place_grace_periods', verbose_name=_("Currency"), on_delete=models.CASCADE)
 

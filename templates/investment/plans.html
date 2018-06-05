@@ -60,6 +60,7 @@
 
 						<div class="form-group">
 							<input type="number" class="form-control" step="0.00010000" placeholder="{% trans "Desired BTC amount to be invested" %}" v-model="amount">
+							<p>{% trans "The membership fee will be added automatically." %}</p>
 						</div>
 
 						<a class="btn btn-pink btn-block" @click.prevent="create_investment()" href="#"><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></a>
@@ -122,7 +123,7 @@
 								if (response.redirect) {
 									window.location.href = '{% url "xfactor>investment" %}';
 								}
-							}, 2000);
+							}, 5000);
 						});
 					}
 				},

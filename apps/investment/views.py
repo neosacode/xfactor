@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from dateutil.rrule import rrule, DAILY
 from dateutil.relativedelta import relativedelta
 
@@ -100,10 +100,13 @@ class CreateInvestmentView(View):
             amount = '0.00'
 
         amount = Decimal(amount)
+        amount_with_fee = amount + grace_period.plan.membership_fee
+        min_invest = grace_period.plan.min_down
+        max_invest = grace_period.plan.max_down
 
-        if grace_period.plan.min_down > amount or grace_period.plan.max_down < amount:
+        if min_invest > amount or max_invest < amount:
             return {'message': _("ERROR! The investment amount it is out of the plan limit")}
-        elif amount > checking_account.deposit:
+        elif amount_with_fee > checking_account.deposit:
             return {'message': _(
                 "ERROR! Your {} account does not have enought deposit amount".format(checking_account.currency.name))}
         else:
@@ -113,6 +116,7 @@ class CreateInvestmentView(View):
                 investment.account = investment_account
                 investment.amount = amount
                 investment.status = Investments.STATUS.paid
+                investment.membership_fee = grace_period.plan.membership_fee
                 investment.paid_date = timezone.now()
                 investment.save()
 
@@ -138,7 +142,7 @@ class CreateInvestmentView(View):
 
                     Incomes.objects.bulk_create(bulk_incomes)
 
-                checking_account.deposit -= amount
+                checking_account.deposit -= amount_with_fee
                 checking_account.save()
 
                 investment_account.reserved += amount
@@ -146,7 +150,7 @@ class CreateInvestmentView(View):
 
                 statement = Statement()
                 statement.account = checking_account
-                statement.amount = Decimal('0.00') - amount
+                statement.amount = Decimal('0.00') - amount_with_fee
                 statement.type = Statement.TYPES.investment
                 statement.description = 'New investment'
                 statement.fk = investment.pk
