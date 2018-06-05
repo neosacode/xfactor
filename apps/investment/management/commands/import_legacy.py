@@ -61,20 +61,20 @@ class Command(BaseCommand):
         #     Accounts.objects.bulk_create(bulk_accounts)
         #     print('Gravando usuários no banco')
 
-        # with open('/app/apps/investment/management/commands/data/users.csv', 'r') as f:
-        #     reader = csv.DictReader(f)
-        #     bulk_users = []
-        #     bulk_accounts = []
-        #     n = 1
+        with open('/app/apps/investment/management/commands/data/users.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            bulk_users = []
+            bulk_accounts = []
+            n = 1
 
-        #     currencies = Currencies.objects.all()
+            currencies = Currencies.objects.all()
 
-        #     for row in reader:
-        #         account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
-        #         account.deposit = Decimal(row['balance'])
-        #         account.save()
+            for row in reader:
+                account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+                account.deposit = Decimal(row['balance'])
+                account.save()
 
-        #         print('Atualizando saldo o usuáro {}'.format(row['username']))
+                print('Atualizando saldo o usuáro {}'.format(row['username']))
 
         # Migracao de cobrancas
         # Investments.objects.all().delete()
@@ -185,20 +185,20 @@ class Command(BaseCommand):
 
 
         # # Migracao de relatorio de rendimentos
-        Statement.objects.filter(type='income').delete()
+        # Statement.objects.filter(type='income').delete()
 
-        with open('/app/apps/investment/management/commands/data/incomes.csv', 'r') as f:
-            reader = csv.DictReader(f)
+        # with open('/app/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
             
-            for row in reader:
-                statement = Statement()
-                statement.account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
-                statement.amount = Decimal(row['value'])
-                statement.description = 'Income of the day'
-                statement.created = dateutil.parser.parse(row['created'])
-                statement.modified = dateutil.parser.parse(row['created'])
-                statement.type = 'income'
-                statement.save()
+        #     for row in reader:
+        #         statement = Statement()
+        #         statement.account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+        #         statement.amount = Decimal(row['value'])
+        #         statement.description = 'Income of the day'
+        #         statement.created = dateutil.parser.parse(row['created'])
+        #         statement.modified = dateutil.parser.parse(row['created'])
+        #         statement.type = 'income'
+        #         statement.save()
 
-                print('Income for user {} in date {}'.format(statement.account.user.username, statement.created))
+        #         print('Income for user {} in date {}'.format(statement.account.user.username, statement.created))
         

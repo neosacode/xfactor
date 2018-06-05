@@ -22,7 +22,7 @@ class Command(BaseCommand):
                     # Checa se não haverá duplicidade de rendimento
                     tx_bytes = '{}{}'.format(investment.pk, income.date).encode()
                     tx_id = hashlib.sha1(tx_bytes).hexdigest()
-                    statements = Statement.objects.filter(tx_id=tx_id, created__date=timezone.now().date())
+                    statements = Statement.objects.filter(tx_id=tx_id)
 
                     if statements.exists():
                         continue
