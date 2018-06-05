@@ -200,11 +200,11 @@ msgstr "Investimento"
 
 #: apps/investment/models.py:122
 msgid "Income"
-msgstr "Meus Rendimentos"
+msgstr "Rendimento"
 
 #: apps/investment/models.py:123 templates/core/statement.html:74
 msgid "Incomes"
-msgstr "Meus Rendimentos"
+msgstr "Rendimentos"
 
 #: apps/investment/models.py:128
 msgid "Date to be ignored"

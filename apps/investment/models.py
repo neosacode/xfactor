@@ -104,7 +104,7 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
         return len(list(rrule.rrule(rrule.MONTHLY, dtstart=timezone.now(), until=self.end_date)))
 
     def __str__(self):
-        return str(self.amount)
+        return '{} - {} BTC - {}'.format(self.account.user.username, self.amount, self.plan_grace_period.plan.name)
 
     class Meta:
         verbose_name = _("Investment")
@@ -121,6 +121,7 @@ class Incomes(models.Model):
     class Meta:
         verbose_name = _("Income")
         verbose_name_plural = _("Incomes")
+        unique_together = (('investment', 'date'),)
 
 
 class IgnoreIncomeDays(models.Model):
@@ -318,10 +319,18 @@ class IgnoreIncomeDaysAdmin(BaseAdmin):
     list_display = ['date']
     ordering = ('-date',)
 
+
 @admin.register(Graduations)
 class GraduationsAdmin(BaseAdmin):
     list_display = ['user', 'type']
     ordering = ('-created',)
+
+
+@admin.register(Incomes)
+class IncomesAdmin(BaseAdmin):
+    list_display = ['investment', 'amount', 'date']
+    ordering = ('-created',)
+    readonly_fields = ['investment']
 
 
 # Cria as contas do usuário
