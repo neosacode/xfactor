@@ -63,7 +63,7 @@
 							<p>{% trans "The membership fee will be added automatically." %}</p>
 						</div>
 
-						<a class="btn btn-pink btn-block" @click.prevent="create_investment()" href="#"><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></a>
+						<button class="btn btn-pink btn-block" @click.prevent="create_investment()" :disabled="is_loading"><strong><i class="fas fa-play"></i> {% trans "START INVESTMENT" %}</strong></button>
 					</div>
 				</div>
 			</div>
@@ -109,12 +109,13 @@
 					grace_periods: [],
 					grace_period: null,
 					amount: (0).toFixed(8),
-					password: ''
+					password: '',
+					is_loading: false
 				},
 				methods: {
 					create_investment: function() {
 						var vm = this;
-						console.log(vm.amount);
+						vm.is_loading = true;
 
 						$.post('{% url "investment>create-investment" %}', {'grace_period': vm.grace_period, 'amount': vm.amount, 'password': vm.password}, function(response) {
 							swal('{% trans "Message" %}', response.message, 'info');
@@ -124,6 +125,8 @@
 									window.location.href = '{% url "xfactor>investment" %}';
 								}
 							}, 5000);
+
+							vm.is_loading = false;
 						});
 					}
 				},
