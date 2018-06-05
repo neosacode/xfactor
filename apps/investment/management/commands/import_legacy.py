@@ -79,11 +79,11 @@ class Command(BaseCommand):
         # Migracao de cobrancas
         # Investments.objects.all().delete()
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
-            reader = csv.DictReader(f)
+        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
+        #     reader = csv.DictReader(f)
             
-            for row in reader:
-                print(row['username'], row['paid_date'])
+        #     for row in reader:
+        #         print(row['username'], row['paid_date'])
                 # investment = Investments.objects.get(account__user__username=row['username'])
                 # investment.paid_date = 
                 
@@ -182,3 +182,23 @@ class Command(BaseCommand):
         # for user in Users.objects.all():
         #     graduations_bulk = []
         #     Comissions.objects.filter(referral__promoter=user).update(graduation=Graduations.get_present(user))
+
+
+        # # Migracao de relatorio de rendimentos
+        Statement.objects.filter(type='income').delete()
+
+        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            
+            for row in reader:
+                statement = Statement()
+                statement.account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+                statement.amount = Decimal(row['value'])
+                statement.description = 'Income of the day'
+                statement.created = dateutil.parser.parse(row['created'])
+                statement.modified = dateutil.parser.parse(row['created'])
+                statement.type = 'income'
+                statement.save()
+
+                print('Income for user {} in date {}'.format(statement.account.user.username, statement.created))
+        
