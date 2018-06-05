@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 16:27+0000\n"
+"POT-Creation-Date: 2018-06-05 19:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -740,7 +740,7 @@ msgid ""
 "be discount from your checking account"
 msgstr ""
 "Este é o seu cartão. Você pode adicionar dinheiro nele sempre que precisar. "
-"O valor será discontado automáticamente da sua conta corrente"
+"O valor será descontado automáticamente da sua conta corrente"
 
 #: templates/card.html:41
 msgid "Available for use"
@@ -751,8 +751,8 @@ msgid "NEW RECHARGE"
 msgstr "NOVA RECARGA"
 
 #: templates/card.html:47
-msgid "Amount REAL"
-msgstr "Valor em Reais"
+msgid "Amount local currency"
+msgstr "Valor em moeda local"
 
 #: templates/card.html:48 templates/card.html:66
 msgid "Amount BTC"
@@ -1460,6 +1460,9 @@ msgstr "Você não possui saldo suficiente para fazer a inscrição."
 #: xfactor/views.py:141
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Amount REAL"
+#~ msgstr "Valor em Reais"
 
 #~ msgid "Membership fee"
 #~ msgstr "Taxa de adesão"
