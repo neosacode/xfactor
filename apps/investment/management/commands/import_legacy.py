@@ -26,7 +26,7 @@ class Command(BaseCommand):
         # Users.objects.all().delete()
         # Accounts.objects.all().delete()
 
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/users.csv', 'r') as f:
         #     reader = csv.DictReader(f)
         #     bulk_users = []
         #     bulk_accounts = []
@@ -61,7 +61,7 @@ class Command(BaseCommand):
         #     Accounts.objects.bulk_create(bulk_accounts)
         #     print('Gravando usuários no banco')
 
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/users.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/users.csv', 'r') as f:
         #     reader = csv.DictReader(f)
         #     bulk_users = []
         #     bulk_accounts = []
@@ -79,7 +79,7 @@ class Command(BaseCommand):
         # Migracao de cobrancas
         # Investments.objects.all().delete()
 
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/investments.csv', 'r') as f:
         #     reader = csv.DictReader(f)
             
         #     for row in reader:
@@ -96,7 +96,7 @@ class Command(BaseCommand):
         # Referrals.objects.all().delete()
 
         # # Migracao de indicacoes
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/referrals.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/referrals.csv', 'r') as f:
         #     reader = csv.DictReader(f)
         #     bulk_referrals = []
 
@@ -117,7 +117,7 @@ class Command(BaseCommand):
         # Incomes.objects.all().delete()
 
         # # Migracao de relatorio de rendimentos
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/incomes.csv', 'r') as f:
         #     reader = csv.DictReader(f)
         #     bulk_statements = []
         #     bulk_incomes = []
@@ -156,7 +156,7 @@ class Command(BaseCommand):
 
         # Statement.objects.filter(type='comission').delete()
 
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/comissions.csv', 'r') as f:
+        # with open('/app/apps/investment/management/commands/data/comissions.csv', 'r') as f:
         #     reader = csv.DictReader(f)
         #     comissions_bulk = []
 
@@ -187,7 +187,7 @@ class Command(BaseCommand):
         # # Migracao de relatorio de rendimentos
         Statement.objects.filter(type='income').delete()
 
-        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/incomes.csv', 'r') as f:
+        with open('/app/apps/investment/management/commands/data/incomes.csv', 'r') as f:
             reader = csv.DictReader(f)
             
             for row in reader:
