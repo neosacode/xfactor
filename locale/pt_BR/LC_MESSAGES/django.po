@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 16:09+0000\n"
+"POT-Creation-Date: 2018-06-05 16:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -288,34 +288,38 @@ msgstr "Este plano não pode ser cancelado"
 msgid "Your non-fidelity investment has been cancelled"
 msgstr "Seu plano sem fidelidade foi cancelado"
 
-#: apps/investment/views.py:107
+#: apps/investment/views.py:89
+msgid "ERROR! You already have a investment"
+msgstr "ERRO! Você já possui um investimento"
+
+#: apps/investment/views.py:108
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr "ERROR! Valor a ser investido está fora do limite do plano"
 
-#: apps/investment/views.py:110
+#: apps/investment/views.py:111
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:169
+#: apps/investment/views.py:168
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:170
+#: apps/investment/views.py:169
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:232 templates/accounts/checking.html:51
+#: apps/investment/views.py:231 templates/accounts/checking.html:51
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
 msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:286
+#: apps/investment/views.py:285
 msgid "Your loan application was created with success!"
 msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:320
+#: apps/investment/views.py:319
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
@@ -1271,7 +1275,7 @@ msgstr "O valor da taxa de inscrição será somado automaticamente."
 msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
-#: templates/investment/plans.html:120
+#: templates/investment/plans.html:121
 msgid "Message"
 msgstr "Mensagem"
 

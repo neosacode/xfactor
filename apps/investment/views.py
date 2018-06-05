@@ -86,7 +86,7 @@ class CancelNoFidelityPlanView(TemplateView):
 class CreateInvestmentView(View):
     def post(self, request):
         if Investments.objects.filter(account__user=self.request.user).exists():
-            return redirect(reverse('xfactor>investment'))
+            return {'message': _("ERROR! You already have a investment")}
 
         grace_period_pk = request.POST['grace_period']
         grace_period = PlanGracePeriods.objects.get(pk=grace_period_pk)
