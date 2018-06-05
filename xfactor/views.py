@@ -13,6 +13,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.db import transaction
 from django.db.models import Q, Sum
+from django_otp import user_has_device
 from jsonview.decorators import json_view
 from account.decorators import login_required
 
@@ -21,6 +22,7 @@ from exchange_core.models import Accounts, Currencies, Statement
 from exchange_core.rates import CurrencyPrice
 from exchange_core.pagination import paginate
 from exchange_core.views import StatementView as CoreStatementView
+from exchange_payments.forms import NewWithdrawForm
 from apps.investment.models import Investments, Incomes, Comissions, Graduations
 from apps.investment.forms import CourseSubscriptionForm
 
@@ -144,6 +146,54 @@ class StatementView(CoreStatementView):
     def get_context_data(self):
         context = super().get_context_data()
         context['incomes'] = paginate(self.request, Statement.objects.filter(account__user=self.request.user, type__in=['income']).order_by('-created'), url_param_name='incomes_page')
+        context['statement'] = paginate(self.request, Statement.objects.filter(account__user=self.request.user).exclude(type__in=['income', 'comission']).order_by('-created'), url_param_name='statement_page')
         context['comissions'] = paginate(self.request, Comissions.objects.filter(Q(referral__promoter=self.request.user) | Q(referral__advisor=self.request.user)).order_by('-created'), url_param_name='comissions_page')
         context['total_comission'] = Comissions.get_amount(self.request.user)
         return context
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class IncomesWithdrawView(View):
+    def post(self, request):
+        coin = request.POST['coin']
+        # O POST e imutavel por default, sendo assim, 
+        # precisamos alterar essa caracteristica do object para alterar seus valores
+        request.POST._mutable = True
+        # Fazemos isto, pois esse campo precisa passar pela validacao do formulario
+        request.POST['address'] = 'whatever'
+        # Define um valor padrao para code do two factor, caso o usuario nao tenha configurado ele ainda
+        # Fazemos isto, pois esse campo precisa passar pela validacao do formulario
+        if not user_has_device(request.user):
+            request.POST['code'] = '123'
+
+        account = Accounts.objects.get(user=request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
+        withdraw_form = NewWithdrawForm(request.POST, user=request.user, account=account)
+
+        if not withdraw_form.is_valid():
+            return {'status': 'error', 'errors': withdraw_form.errors}
+
+        fee = (withdraw_form.cleaned_data['amount'] * (account.currency.withdraw_fee / 100)) + account.currency.withdraw_fixed_fee
+        checking_account = Accounts.objects.get(user=request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
+
+        with transaction.atomic():
+            amount = abs(withdraw_form.cleaned_data['amount'])
+
+            statement = Statement()
+            statement.account = account
+            statement.amount = Decimal('0.00') - (amount - abs(fee))
+            statement.description = 'Income Withdrawal'
+            statement.type = 'income_withdraw'
+            statement.save()
+
+            account.takeout(amount)
+
+            statement = Statement()
+            statement.account = checking_account
+            statement.amount = (amount - abs(fee))
+            statement.description = 'Income Deposit'
+            statement.type = 'income_deposit'
+            statement.save()
+
+            checking_account.to_deposit(amount)
+
+            return {'status': 'success', 'amount': amount}

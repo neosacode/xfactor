@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-04 17:16+0000\n"
+"POT-Creation-Date: 2018-06-05 03:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,7 +247,7 @@ msgid "Loans"
 msgstr "Empréstimo"
 
 #: apps/investment/models.py:207 templates/accounts/checking.html:69
-#: templates/accounts/investment.html:53 templates/core/statement.html:6
+#: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
@@ -329,8 +329,6 @@ msgstr "Voltar ao site"
 
 #: templates/account/logout.html:5 templates/account/logout.html:11
 #: templates/account/logout.html:15
-#, fuzzy
-#| msgid "Log In"
 msgid "Log out"
 msgstr "Acessar"
 
@@ -439,103 +437,103 @@ msgstr "Vender BTC"
 msgid "Investments Account"
 msgstr "Conta de Investimentos"
 
-#: templates/accounts/investment.html:24
+#: templates/accounts/investment.html:26
 msgid "Copy my referrer link"
 msgstr "Copiar meu link"
 
-#: templates/accounts/investment.html:27
+#: templates/accounts/investment.html:29
 msgid "My Investment"
 msgstr "Meu Investimento"
 
-#: templates/accounts/investment.html:28
+#: templates/accounts/investment.html:30
 msgid "Current investment plan:"
 msgstr "Plano de investimento atual:"
 
-#: templates/accounts/investment.html:29
+#: templates/accounts/investment.html:31
 msgid "Invest amount:"
 msgstr "Valor investido:"
 
-#: templates/accounts/investment.html:30
+#: templates/accounts/investment.html:32
 msgid "Contracted lack:"
 msgstr "Carência contratada:"
 
-#: templates/accounts/investment.html:30 templates/core/statement.html:131
+#: templates/accounts/investment.html:32 templates/core/statement.html:131
 msgid "months"
 msgstr "Meses"
 
-#: templates/accounts/investment.html:31
+#: templates/accounts/investment.html:33
 msgid "Remaining/Contracted days:"
 msgstr "Dias restantes/contratados:"
 
-#: templates/accounts/investment.html:31
+#: templates/accounts/investment.html:33
 msgid "days"
 msgstr "dias"
 
-#: templates/accounts/investment.html:32
+#: templates/accounts/investment.html:34
 msgid "Income percent:"
 msgstr "Porcentagem de rendimento:"
 
-#: templates/accounts/investment.html:32 templates/investment/plans.html:52
+#: templates/accounts/investment.html:34 templates/investment/plans.html:52
 msgid "per month"
 msgstr "ao mês"
 
-#: templates/accounts/investment.html:34
+#: templates/accounts/investment.html:36
 msgid "My Incomes"
 msgstr "Meus Rendimentos"
 
-#: templates/accounts/investment.html:35
+#: templates/accounts/investment.html:37
 msgid "Available for withdraw:"
 msgstr "Disponível para saque:"
 
-#: templates/accounts/investment.html:36
+#: templates/accounts/investment.html:38
 msgid "Your total incomes:"
 msgstr "Seu total de rendimentos:"
 
-#: templates/accounts/investment.html:38
+#: templates/accounts/investment.html:40
 msgid "My Comissions"
 msgstr "Minhas Comissões"
 
-#: templates/accounts/investment.html:39
+#: templates/accounts/investment.html:41
 msgid "Current Graduation"
 msgstr "Graduação Atual"
 
-#: templates/accounts/investment.html:40 templates/core/statement.html:55
+#: templates/accounts/investment.html:42 templates/core/statement.html:55
 msgid "Total Comissions"
 msgstr "Total Comissões"
 
-#: templates/accounts/investment.html:41
+#: templates/accounts/investment.html:43
 msgid "Month Comissions"
 msgstr "Comissões do Mês"
 
-#: templates/accounts/investment.html:42
+#: templates/accounts/investment.html:44
 msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
-#: templates/accounts/investment.html:50
+#: templates/accounts/investment.html:52
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
-#: templates/accounts/investment.html:56
+#: templates/accounts/investment.html:59
 msgid "TO WITHDRAW INCOMES"
 msgstr "SACAR RENDIMENTOS"
 
-#: templates/accounts/investment.html:59
+#: templates/accounts/investment.html:63
 msgid "MY CUSTOMERS"
 msgstr "MEUS CLIENTES"
 
-#: templates/accounts/investment.html:73
+#: templates/accounts/investment.html:77
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:95
+#: templates/accounts/investment.html:99
 msgid "Last 30 days"
 msgstr ""
 
-#: templates/accounts/investment.html:108
+#: templates/accounts/investment.html:112
 msgid "Copied!"
 msgstr "Copiado!"
 
-#: templates/accounts/investment.html:108
+#: templates/accounts/investment.html:112
 msgid "Your referral link has been copied!"
 msgstr "Seu link de referência foi copiado!"
 
@@ -548,11 +546,13 @@ msgid "Wallet address has been copied!"
 msgstr "Endereço da carteira foi copiado!"
 
 #: templates/accounts/scripts/checking.vue.html:33
+#: templates/accounts/scripts/investment.vue.html:20
 #, python-brace-format
 msgid "Available {coin} amount for withdraw is:"
 msgstr ""
 
 #: templates/accounts/scripts/checking.vue.html:57
+#: templates/accounts/scripts/investment.vue.html:44
 msgid "Withdraw error!"
 msgstr ""
 
@@ -1164,6 +1164,58 @@ msgstr "Dias Restantes"
 msgid "No overdrafts to show"
 msgstr "Sem cheques especiais para exibir"
 
+#: templates/investment/incomes-withdraw.html:7
+msgid "To Withdraw Incomes"
+msgstr "Sacar Rendimentos"
+
+#: templates/investment/incomes-withdraw.html:15
+#: templates/payments/withdraw.html:15
+msgid "transfer amount"
+msgstr "quantidade a ser transferêrida"
+
+#: templates/investment/incomes-withdraw.html:21
+msgid "The amount will be available in your checking account"
+msgstr "O valor estará dispońível na sua conta corrente"
+
+#: templates/investment/incomes-withdraw.html:24
+#| msgid "Min withdraw amount is:"
+msgid "Min income withdraw is:"
+msgstr "Valor mínimo de saque:"
+
+#: templates/investment/incomes-withdraw.html:25
+#| msgid "Max withdraw amount is:"
+msgid "Max income withdraw is:"
+msgstr "Valor máximo de saque:"
+
+#: templates/investment/incomes-withdraw.html:26
+msgid "Operation fee:"
+msgstr "Taxa de operação"
+
+#: templates/investment/incomes-withdraw.html:32
+#: templates/payments/withdraw.html:46
+msgid "account password"
+msgstr "sua senha"
+
+#: templates/investment/incomes-withdraw.html:38
+#: templates/investment/incomes-withdraw.html:51
+#: templates/payments/withdraw.html:52 templates/payments/withdraw.html:65
+msgid "We use this for security reasons"
+msgstr "Nós usamos isso por rasões de segurança"
+
+#: templates/investment/incomes-withdraw.html:44
+#: templates/payments/withdraw.html:58
+msgid "Your account two factor code"
+msgstr "Código 2 Fatores da sua conta"
+
+#: templates/investment/incomes-withdraw.html:45
+#: templates/payments/withdraw.html:59
+msgid "two factor code"
+msgstr "código 2 fatores"
+
+#: templates/investment/incomes-withdraw.html:56
+msgid "To Withdraw"
+msgstr "Sacar"
+
 #: templates/investment/my-customers.html:6
 #: templates/investment/my-customers.html:15
 msgid "My Customers"
@@ -1225,12 +1277,8 @@ msgstr "INICIAR INVESTIMENTO"
 msgid "Message"
 msgstr "Mensagem"
 
-#: templates/payments/withdraw.html:15
-msgid "transfer amount"
-msgstr "quantidade a ser transferêrida"
-
 #: templates/payments/withdraw.html:21
-msgid "TBSA - Transfer between system accounts"
+msgid "TBXA - Transfer between xfactor accounts"
 msgstr "TECX - Transferência entre contas xfactor"
 
 #: templates/payments/withdraw.html:24
@@ -1250,12 +1298,12 @@ msgid "Transfer fixed fee is:"
 msgstr "Taxa fixa de transferência:"
 
 #: templates/payments/withdraw.html:28
-msgid "TBSA percent fee is:"
-msgstr "Taxa Xfactor:"
+msgid "Xfactor percent fee is:"
+msgstr "Taxa entre contas Xfactor:"
 
 #: templates/payments/withdraw.html:29
-msgid "TBSA fixed fee is:"
-msgstr "Taxa fixa Xfactor:"
+msgid "Xfactor fixed fee is:"
+msgstr "Taxa fixa entre contas Xfactor:"
 
 #: templates/payments/withdraw.html:30
 msgid "Max receive hours is:"
@@ -1272,22 +1320,6 @@ msgstr "endereço de carteira"
 #: templates/payments/withdraw.html:42
 msgid "The wallet address to the amount be transfered to"
 msgstr "O endereço de carteira para ser transfêrido o valor"
-
-#: templates/payments/withdraw.html:46
-msgid "account password"
-msgstr "sua senha"
-
-#: templates/payments/withdraw.html:52 templates/payments/withdraw.html:65
-msgid "We use this for security reasons"
-msgstr "Nós usamos isso por rasões de segurança"
-
-#: templates/payments/withdraw.html:58
-msgid "Your account two factor code"
-msgstr "Código 2 Fatores da sua conta"
-
-#: templates/payments/withdraw.html:59
-msgid "two factor code"
-msgstr "código 2 fatores"
 
 #: templates/payments/withdraw.html:70
 msgid "Finish Withdraw"
@@ -1420,8 +1452,6 @@ msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
 #: xfactor/views.py:127
-#, fuzzy
-#| msgid "You not have enought balance for make your subscription ."
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
@@ -1429,9 +1459,12 @@ msgstr "Você não possui saldo suficiente para fazer a inscrição."
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#: xfactor/views.py:139
-msgid "Approved"
-msgstr "Aprovado"
+#~| msgid "Xfactor fixed fee is:"
+#~ msgid "Operation fixed fee:"
+#~ msgstr "Taxa fixa de operação"
 
-msgid "Disapproved"
-msgstr "Desaprovado"
+#~ msgid "Approved"
+#~ msgstr "Aprovado"
+
+#~ msgid "Disapproved"
+#~ msgstr "Desaprovado"

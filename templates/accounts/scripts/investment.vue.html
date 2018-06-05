@@ -1,0 +1,65 @@
+{% load i18n exchange %}
+<script>
+	jQuery(function($) {
+		var withdraw_app = new Vue({
+			el: '#withdraw-app',
+			data: {
+				coin: null,
+				available_amount: 0.00,
+				amount: null,
+				password: null,
+				code: null,
+				is_loading: false,
+				errors: {},
+				is_br_withdraw: false,
+				currency: {}
+			},
+			computed: {
+				available_amount_text: function() {
+					return '{% trans "Available {coin} amount for withdraw is:" %}'.replace('{coin}', this.coin);
+				}
+			},
+			methods: {
+				new_withdraw: function(item) {
+					var data = {
+						coin: this.coin,
+						amount: this.amount,
+						password: this.password,
+						code: this.code
+					}
+
+					var vm = this;
+					vm.is_loading = true;
+
+					$.post('{% url "core>withdraw-income" %}', data, function(response) {
+						if (response.status == 'error') {
+							vm.errors = response.errors;
+						}
+						else if (response.status == 'success') {
+							window.location.href = '{% url "core>statement" %}';
+						}
+						else {
+							alert('{% trans "Withdraw error!" %}');
+						}
+						
+						vm.is_loading = false;
+					});
+				}
+			}
+		});
+		
+		var app = new Vue({
+			el: '#investment-account-app',
+			methods: {
+				createWithdraw: function() {
+					var withdraw_amount_modal = $('#withdraw-app');
+					withdraw_amount_modal.modal('show');
+					withdraw_app.available_amount = parseFloat({{ user_investment_account.deposit|safe }}).toFixed(8);
+					withdraw_app.coin = '{{ account.currency.symbol }}';
+					withdraw_app.is_br_withdraw = false;
+					withdraw_app.currency = {{ user_investment_account.currency.dict|serialize|safe }};
+				}
+			}
+		});
+	});
+</script>

@@ -79,34 +79,18 @@ class Command(BaseCommand):
         # Migracao de cobrancas
         # Investments.objects.all().delete()
 
-        # with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
-        #     reader = csv.DictReader(f)
-        #     accounts = Accounts.objects.filter(user__username__in=[row['username'] for row in reader], currency__type=Currencies.TYPES.investment)
-        #     accounts_pk = {account.user.username: account.pk for account in accounts}
-        #     bulk_investments = []
-
-        #     f.seek(0)
-        #     reader = csv.DictReader(f)
+        with open('/home/juliano/work/new-xfactor/apps/investment/management/commands/data/investments.csv', 'r') as f:
+            reader = csv.DictReader(f)
             
-        #     for row in reader:
-        #         investment = Investments()
-        #         investment.account_id = accounts_pk[row['username']]
-        #         investment.membership_fee = Decimal(row['membership_fee'])
-        #         investment.amount = Decimal(row['amount'])
-        #         investment.paid_date = row['paid_date']
-        #         investment.created = row['created']
-        #         investment.modified = row['modified']
-        #         investment.plan_grace_period = PlanGracePeriods.objects.get(plan__name__iexact=row['name'], grace_period__months=row['months'])
+            for row in reader:
+                print(row['username'], row['paid_date'])
+                # investment = Investments.objects.get(account__user__username=row['username'])
+                # investment.paid_date = 
+                
+                # print('Processando investimento de {} para o usuáro {}'.format(investment.amount, row['username']))
 
-        #         account = investment.account
-        #         account.reserved = investment.amount
-        #         account.save()
-
-        #         bulk_investments.append(investment)
-        #         print('Processando investimento de {} para o usuáro {}'.format(investment.amount, row['username']))
-
-        #     Investments.objects.bulk_create(bulk_investments)
-        #     print('Gravando investimentos no banco')
+            # Investments.objects.bulk_create(bulk_investments)
+            # print('Gravando investimentos no banco')
 
 
         # Referrals.objects.all().delete()
@@ -195,6 +179,6 @@ class Command(BaseCommand):
         #     print('Gravando comissoes')
 
 
-        for user in Users.objects.all():
-            graduations_bulk = []
-            Comissions.objects.filter(referral__promoter=user).update(graduation=Graduations.get_present(user))
+        # for user in Users.objects.all():
+        #     graduations_bulk = []
+        #     Comissions.objects.filter(referral__promoter=user).update(graduation=Graduations.get_present(user))

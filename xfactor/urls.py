@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
 	path('account/statement/', views.StatementView.as_view(), name='core>statement'),
+	path('account/withdraw-income/', views.IncomesWithdrawView.as_view(), name='core>withdraw-income'),
 
 	path('account/select/', views.SelectAccountView.as_view(), name='xfactor>select-account'),
 	path('account/checking/', views.CheckingAccountView.as_view(), name='xfactor>checking'),

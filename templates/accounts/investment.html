@@ -14,6 +14,8 @@
 {% endblock %}
 
 {% block content %}
+{% include "investment/incomes-withdraw.html" %}
+
 <div class="row">
     <div class="conteudo-1 col-md-8">
         {% include "back-button.html" with margin_top='50px' %}
@@ -53,7 +55,9 @@
                     <a href="{% url "core>statement" %}" class="btn btn-primary btn-lg btn-block mb-10 uppercase"><i class="fas fa-calendar-alt"></i> {% trans "Statement" %}</a>
                 </div>
                 <div class="col-md-6">
-                    <a href="" class="btn btn-primary btn-lg btn-block mb-10"><i class="fab fa-btc"></i> {% trans "TO WITHDRAW INCOMES" %}</a>
+                    <div id="investment-account-app">
+                        <a href="#" @click.prevent="createWithdraw()" class="btn btn-primary btn-lg btn-block mb-10"><i class="fab fa-btc"></i> {% trans "TO WITHDRAW INCOMES" %}</a>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <a href="{% url "investment>my-customers" %}" class="btn btn-primary btn-lg btn-block mb-10"><i class="fas fa-users"></i> {% trans "MY CUSTOMERS" %}</a>
@@ -111,5 +115,7 @@
             });
         });
     </script>
+
+    {% include "accounts/scripts/investment.vue.html" %}
     
 {% endblock %}
