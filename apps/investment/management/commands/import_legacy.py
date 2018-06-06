@@ -61,7 +61,7 @@ class Command(BaseCommand):
         #     Accounts.objects.bulk_create(bulk_accounts)
         #     print('Gravando usuários no banco')
 
-        with open('/app/apps/investment/management/commands/data/users.csv', 'r') as f:
+        with open('apps/investment/management/commands/data/users.csv', 'r') as f:
             reader = csv.DictReader(f)
             bulk_users = []
             bulk_accounts = []
@@ -70,11 +70,14 @@ class Command(BaseCommand):
             currencies = Currencies.objects.all()
 
             for row in reader:
-                account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
-                account.deposit = Decimal(row['balance'])
-                account.save()
+                try:
+                    account = Accounts.objects.get(user__username=row['username'], currency__type='investment')
+                    account.deposit = Decimal(row['balance'])
+                    account.save()
 
-                print('Atualizando saldo o usuáro {}'.format(row['username']))
+                    print('Atualizando saldo o usuáro {}'.format(row['username']))
+                except:
+                    print('Usuario {} nao encontrado'.format(row['username']))
 
         # Migracao de cobrancas
         # Investments.objects.all().delete()

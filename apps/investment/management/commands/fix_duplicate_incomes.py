@@ -21,7 +21,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         bulk_incomes = []
 
-        for item in Investments.objects.filter(created__lte=datetime(2018, 5, 28)):
+        for item in Investments.objects.filter(created__date=datetime(2018, 5, 27)):
             start_date = datetime(2018, 5, 29)
             days = (item.end_date - start_date).days
             end_date = start_date + timedelta(days=days)

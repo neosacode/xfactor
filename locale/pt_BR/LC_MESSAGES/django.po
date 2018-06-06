@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-05 19:12+0000\n"
+"POT-Creation-Date: 2018-06-06 15:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,8 +185,8 @@ msgstr "{plan} com {grace_period} meses"
 msgid "Amount"
 msgstr ""
 
-#: apps/investment/models.py:85 apps/investment/models.py:186
-#: apps/investment/models.py:233
+#: apps/investment/models.py:85 apps/investment/models.py:187
+#: apps/investment/models.py:234
 msgid "Account"
 msgstr "Conta"
 
@@ -206,61 +206,61 @@ msgstr "Rendimento"
 msgid "Incomes"
 msgstr "Rendimentos"
 
-#: apps/investment/models.py:128
+#: apps/investment/models.py:129
 msgid "Date to be ignored"
 msgstr "Data a ser ignorada"
 
-#: apps/investment/models.py:131
+#: apps/investment/models.py:132
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:132
+#: apps/investment/models.py:133
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:142
+#: apps/investment/models.py:143
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:142
+#: apps/investment/models.py:143
 msgid "Investment Advisor"
 msgstr "Investment Advisor"
 
-#: apps/investment/models.py:150
+#: apps/investment/models.py:151
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:151
+#: apps/investment/models.py:152
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/models.py:194
+#: apps/investment/models.py:195
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:195
+#: apps/investment/models.py:196
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:207 templates/accounts/checking.html:69
+#: apps/investment/models.py:208 templates/accounts/checking.html:69
 #: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
-#: apps/investment/models.py:220
+#: apps/investment/models.py:221
 msgid "Installment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:221
+#: apps/investment/models.py:222
 msgid "Installments"
 msgstr "Investimentos"
 
-#: apps/investment/models.py:249
+#: apps/investment/models.py:250
 msgid "Credit"
 msgstr "Crédito"
 
-#: apps/investment/models.py:250
+#: apps/investment/models.py:251
 msgid "Credits"
 msgstr "Créditos"
 
@@ -482,6 +482,7 @@ msgid "My Incomes"
 msgstr "Meus Rendimentos"
 
 #: templates/accounts/investment.html:37
+#: templates/accounts/scripts/checking.vue.html:33
 msgid "Available for withdraw:"
 msgstr "Disponível para saque:"
 
@@ -545,12 +546,6 @@ msgstr "Sucesso!"
 msgid "Wallet address has been copied!"
 msgstr "Endereço da carteira foi copiado!"
 
-#: templates/accounts/scripts/checking.vue.html:33
-#: templates/accounts/scripts/investment.vue.html:19
-#, python-brace-format
-msgid "Available {coin} amount for withdraw is:"
-msgstr ""
-
 #: templates/accounts/scripts/checking.vue.html:57
 #: templates/accounts/scripts/investment.vue.html:42
 msgid "Withdraw error!"
@@ -564,6 +559,11 @@ msgstr ""
 #: templates/accounts/scripts/checking.vue.html:84
 msgid "Copy address"
 msgstr "Copiar endereço"
+
+#: templates/accounts/scripts/investment.vue.html:19
+#, python-brace-format
+msgid "Available {coin} amount for withdraw is:"
+msgstr ""
 
 #: templates/back-button.html:3
 msgid "Back"
@@ -750,7 +750,7 @@ msgstr "Disponível para uso"
 msgid "NEW RECHARGE"
 msgstr "NOVA RECARGA"
 
-#: templates/card.html:47
+#: templates/card.html:47 templates/card.html:65
 msgid "Amount local currency"
 msgstr "Valor em moeda local"
 
@@ -779,10 +779,6 @@ msgstr "RECARGAS"
 #: templates/core/statement.html:175
 msgid "Date"
 msgstr "Data"
-
-#: templates/card.html:65
-msgid "Amount REAIS"
-msgstr "Valor em Reais"
 
 #: templates/core/documents.html:7 templates/core/documents.html:21
 #: templates/core/index.html:112
@@ -882,17 +878,17 @@ msgid "Search"
 msgstr ""
 
 #: templates/core/my-customers.html:155 templates/core/statement.html:149
-#: templates/investment/my-customers.html:25
+#: templates/investment/my-customers.html:22
 msgid "Name"
 msgstr ""
 
 #: templates/core/my-customers.html:156
-#: templates/investment/my-customers.html:26
+#: templates/investment/my-customers.html:23
 msgid "Username"
 msgstr ""
 
 #: templates/core/my-customers.html:157
-#: templates/investment/my-customers.html:27
+#: templates/investment/my-customers.html:24
 msgid "E-mail"
 msgstr ""
 
@@ -905,7 +901,7 @@ msgid "Activation Date"
 msgstr ""
 
 #: templates/core/my-customers.html:160
-#: templates/investment/my-customers.html:29
+#: templates/investment/my-customers.html:26
 msgid "Register Date"
 msgstr ""
 
@@ -1219,19 +1215,19 @@ msgstr "Sacar"
 msgid "My Customers"
 msgstr "Meus clientes"
 
-#: templates/investment/my-customers.html:28
+#: templates/investment/my-customers.html:25
 msgid "Mobile Phone"
 msgstr "Telefone Celular"
 
-#: templates/investment/my-customers.html:30
+#: templates/investment/my-customers.html:27
 msgid "Is Investor?"
 msgstr "É Investidor?"
 
-#: templates/investment/my-customers.html:51 templates/investment/plans.html:36
+#: templates/investment/my-customers.html:48 templates/investment/plans.html:36
 msgid "Yes"
 msgstr "Sim"
 
-#: templates/investment/my-customers.html:53 templates/investment/plans.html:36
+#: templates/investment/my-customers.html:50 templates/investment/plans.html:36
 msgid "No"
 msgstr "Não"
 
@@ -1460,6 +1456,9 @@ msgstr "Você não possui saldo suficiente para fazer a inscrição."
 #: xfactor/views.py:141
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
+
+#~ msgid "Amount REAIS"
+#~ msgstr "Valor em Reais"
 
 #~ msgid "Amount REAL"
 #~ msgstr "Valor em Reais"
