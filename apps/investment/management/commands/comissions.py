@@ -23,38 +23,44 @@ class Command(BaseCommand):
         print('Paying comission of {} to user {}'.format(comission_amount, investor.username))
 
     def handle(self, *args, **options):
-        with transaction.atomic():
-            investments = Investments.objects.order_by('-created')
+        while True:
+            with transaction.atomic():
+                investments = Investments.objects.order_by('-created')
 
-            for item in investments:
-                user = item.account.user
-                print(user.username)
-                referral = Referrals.objects.get(user=user)
-                plan = item.plan_grace_period.plan
-                promoter = referral.promoter
-                advisor = referral.advisor
-                amount = item.amount
+                for item in investments:
+                    if Comissions.objects.filter(investment=item).exists():
+                        continue
 
-                # Paga para promoter e para advisor. O promoter pode estar graduado como advisor
-                if promoter and not advisor:
-                    promoter_graduation = Graduations.get_present(promoter)
+                    user = item.account.user
 
-                    if promoter_graduation.type == Graduations._promoter:
+                    try:
+                        referral = Referrals.objects.get(user=user)
+                    except:
+                        continue
+
+                    plan = item.plan_grace_period.plan
+                    promoter = referral.promoter
+                    advisor = referral.advisor
+                    amount = item.amount
+
+                    # Paga para promoter e para advisor. O promoter pode estar graduado como advisor
+                    if promoter and not advisor:
+                        promoter_graduation = Graduations.get_present(promoter)
+
+                        if promoter_graduation.type == Graduations._promoter:
+                            promoter_comission = (plan.promoter_comission / 100) * amount
+                            self.pay_comission(item, referral, promoter, promoter_comission)
+                        elif promoter_graduation.type == Graduations._advisor:
+                            promoter_comission = (plan.advisor_comission / 100) * amount
+                            self.pay_comission(item, referral, promoter, promoter_comission)
+                        else:
+                            continue
+                    # Paga para promoter e advisor com a diferenca para o advisor
+                    elif promoter and advisor and promoter.pk != advisor.pk:
+                        difference = abs(plan.advisor_comission - plan.promoter_comission)
                         promoter_comission = (plan.promoter_comission / 100) * amount
+                        advisor_comission = (difference / 100) * amount
                         self.pay_comission(item, referral, promoter, promoter_comission)
-                    elif promoter_graduation.type == Graduations._advisor:
-                        promoter_comission = (plan.advisor_comission / 100) * amount
-                        self.pay_comission(item, referral, promoter, promoter_comission)
+                        self.pay_comission(item, referral, advisor, advisor_comission)
                     else:
                         continue
-                # Paga para promoter e advisor com a diferenca para o advisor
-                elif promoter and advisor and promoter.pk != advisor.pk:
-                    difference = abs(plan.advisor_comission - plan.promoter_comission)
-                    promoter_comission = (plan.promoter_comission / 100) * amount
-                    advisor_comission = (difference / 100) * amount
-                    self.pay_comission(item, referral, promoter, promoter_comission)
-                    self.pay_comission(item, referral, advisor, advisor_comission)
-                else:
-                    continue
-
-            raise Exception('')
