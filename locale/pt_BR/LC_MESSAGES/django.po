@@ -294,7 +294,7 @@ msgstr "ERRO! Você já possui um investimento"
 
 #: apps/investment/views.py:108
 msgid "ERROR! The investment amount it is out of the plan limit"
-msgstr "ERROR! Valor a ser investido está fora do limite do plano"
+msgstr "ERRO! Valor a ser investido está fora do limite do plano"
 
 #: apps/investment/views.py:111
 msgid "ERROR! Your {} account does not have enought deposit amount"
@@ -1198,7 +1198,7 @@ msgstr "sua senha"
 #: templates/investment/incomes-withdraw.html:48
 #: templates/payments/withdraw.html:52 templates/payments/withdraw.html:65
 msgid "We use this for security reasons"
-msgstr "Nós usamos isso por rasões de segurança"
+msgstr "Nós usamos isso por segurança"
 
 #: templates/investment/incomes-withdraw.html:41
 #: templates/payments/withdraw.html:58
