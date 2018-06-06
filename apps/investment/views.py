@@ -202,6 +202,9 @@ class ReferrerSignupView(SignupView):
         user.last_name = form.cleaned_data['last_name']
         user.save()
 
+        if self.promoter.pk == form.cleaned_data['advisor'].pk:
+            raise Exception('Promoter is equal to advisor')
+
         referral = Referrals()
         referral.user = user
         referral.promoter = self.promoter

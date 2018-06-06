@@ -1,43 +1,60 @@
+import hashlib
+
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from apps.investment.models import Investments, Statement
+from apps.investment.models import Comissions, Investments, Referrals, Graduations
 
 
 class Command(BaseCommand):
     help = 'Pay customer comissions'
 
+    def pay_comission(self, investment, referral, investor, comission_amount):
+        comission = Comissions()
+        comission.referral = referral
+        comission.investment = investment
+        comission.amount = comission_amount
+        comission.created = investment.paid_date
+        comission.save()
+
+        investment_account = investor.accounts.filter(currency__type='investment').first()
+        investment_account.to_deposit(comission_amount)
+
+        print('Paying comission of {} to user {}'.format(comission_amount, investor.username))
+
     def handle(self, *args, **options):
         with transaction.atomic():
-            investments = Investments.objects.filter(status='paid')
+            investments = Investments.objects.order_by('-created')
 
-            for investment in investments:
-                sponsor = investment.user.sponsor
+            for item in investments:
+                user = item.account.user
+                print(user.username)
+                referral = Referrals.objects.get(user=user)
+                plan = item.plan_grace_period.plan
+                promoter = referral.promoter
+                advisor = referral.advisor
+                amount = item.amount
 
-                if not sponsor:
+                # Paga para promoter e para advisor. O promoter pode estar graduado como advisor
+                if promoter and not advisor:
+                    promoter_graduation = Graduations.get_present(promoter)
+
+                    if promoter_graduation.type == Graduations._promoter:
+                        promoter_comission = (plan.promoter_comission / 100) * amount
+                        self.pay_comission(item, referral, promoter, promoter_comission)
+                    elif promoter_graduation.type == Graduations._advisor:
+                        promoter_comission = (plan.advisor_comission / 100) * amount
+                        self.pay_comission(item, referral, promoter, promoter_comission)
+                    else:
+                        continue
+                # Paga para promoter e advisor com a diferenca para o advisor
+                elif promoter and advisor and promoter.pk != advisor.pk:
+                    difference = abs(plan.advisor_comission - plan.promoter_comission)
+                    promoter_comission = (plan.promoter_comission / 100) * amount
+                    advisor_comission = (difference / 100) * amount
+                    self.pay_comission(item, referral, promoter, promoter_comission)
+                    self.pay_comission(item, referral, advisor, advisor_comission)
+                else:
                     continue
 
-                description = 'Indication comission from {}'.format(investment.user.username)
-                # Verifica se o rendimento já foi para o cliente, se sim pula para o próximo pagamento
-                statements = Statement.objects.filter(description=description, charge_in_force=investment.user.sponsor.active_charge)
-
-                if statements.exists():
-                    continue
-
-                # Paga por enquanto comissões somente para usuários
-                # TODO: Mudar depois para pagar as comissões dos corretores
-                comission_amount = round((investment.plan_grace_period.plan.comission_percent / 100) * investment.amount, 8)
-
-                # Cria o rendimento no extrato do cliente
-                if not sponsor.active_charge:
-                    continue
-
-                statement = Statement()
-                statement.charge_in_force = sponsor.active_charge
-                statement.value = comission_amount
-                statement.description = description
-                statement.type = 'comission'
-                statement.save()
-
-                print('Pagando {} para o cliente {}'.format(comission_amount, sponsor.username))
-
+            raise Exception('')

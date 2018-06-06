@@ -27,6 +27,8 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
     max_down = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Max down"))
     min_reinvest = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Min reinvest"), default=Decimal('0.00'))
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Membership Fee"), default=Decimal('0.00'))
+    promoter_comission = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Promoter Comission"), default=Decimal('0.00'))
+    advisor_comission = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Advisor Comission"), default=Decimal('0.00'))
     allow_monthly_draw = models.BooleanField(default=True, verbose_name=_("Allow monthly draw"))
     order = models.IntegerField(default=0)
 
@@ -258,7 +260,7 @@ class Credits(TimeStampedModel, StatusModel, models.Model):
 class Comissions(TimeStampedModel, models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     referral = models.ForeignKey(Referrals, related_name='comissions', on_delete=models.CASCADE)
-    plan = models.ForeignKey(Plans, related_name='comissions', on_delete=models.CASCADE)
+    investment = models.ForeignKey(Investments, null=True, related_name='comissions', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
 
     @classmethod
