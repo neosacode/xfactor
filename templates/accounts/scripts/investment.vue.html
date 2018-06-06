@@ -16,7 +16,7 @@
 			},
 			computed: {
 				available_amount_text: function() {
-					return '{% trans "Available {coin} amount for withdraw is:" %}'.replace('{coin}', this.coin);
+					return '{% trans "Available for withdraw:" %}'.replace('{coin}', this.coin);
 				}
 			},
 			methods: {
