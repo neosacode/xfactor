@@ -311,6 +311,10 @@ main .box-nome .bread .box-2 .imagem-2 {
     color: #0a50a0;
 }
 
+.dropdown .dropdown-item a {
+    color: #0a50a0;
+}
+
 .dropdown .dropdown-item {
     padding: 10px 15px;
 }
