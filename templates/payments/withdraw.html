@@ -18,7 +18,7 @@
           		<li v-for="error_message in errors.amount" v-text="error_message"></li>
           	</ul>
           </div>
-          <p class="text-center b"><i class="fas fa-warning"></i> {% trans "TBXA - Transfer between xfactor accounts" %}</p>
+          
           <p style="font-size: 14px; margin-top: 10px;" class="text-center">
             <span v-text="available_amount_text"></span> <strong v-text="available_amount"></strong><br>
             {% trans "Min transfer amount is:" %} <strong v-text="currency.withdraw_min + ' BTC'"></strong><br>
