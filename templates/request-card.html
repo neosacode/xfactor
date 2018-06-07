@@ -40,7 +40,11 @@
 {% endblock %}
 
 {% block content %} 
-    {% include "card-modal.html" %}
+    {% if is_advisor %}
+        {% include "card-advisor-modal.html" %}
+    {% else %}
+        {% include "card-modal.html" %}
+    {% endif %}
     
 
     <div class="container">

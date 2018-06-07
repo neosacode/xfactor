@@ -6,45 +6,37 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="text-center mt-50">
-          <img src="{% static "img/certificate.png" %}" style="max-width: 200px;" class="img-fluid" alt="">
+          <i style="font-size: 150px; color: #FFF;" class="far fa-credit-card"></i>
         </div>
       <div class="modal-header">
-        <h4 class="modal-title" style="font-size: 35px;">{% trans "MAKE YOUR SUBSCRIPTION" %}</h4>
+        <h4 class="modal-title" style="font-size: 35px;">{% trans "REQUEST YOUR CREDIT CARD" %}</h4>
       </div>
       <div class="modal-body">
         <div id="course-subscription-app">
-          <p>{% trans "To own Xfactor card, you need to first become an investment advisor. To do so fill out the information below and register for the course that started in August. Have immediate access to the card, taking advantage of the promotion you get the costs of sending and making the card. (You will be saving 0.07 BTC of course + US $ 10.00 for making + US $ 45.00 for freight)" %}</p>
+          <p>{% trans 'The Xfactor credit card for Advisor only came along with a number of advantages such as: company promotions, pay-as-you-go, Bitcoin sales on our new Platform. Our course now has more content for you to improve Professional performance. The new modules will be available with a promotional value, and your credit card, freight will not be charged, and you will have full access to the course. Xfactor is proud to have the "Profession of the Future" award and to be another Disruptive Technology that creates a new profession. (As Uber also created!)' %}</p>
           <div class="mt-20">
-            <h4 class="b uppercase text-center mt-50 mb-30">{% trans "Topics that will be covered in the course" %}</h4>
+            <h4 class="b uppercase text-center mt-50 mb-30">{% trans "New Modules" %}</h4>
 
             <div class="row tx-14">
               <div class="col-md-6">
                 <ul class="mb-0">
-                  <li>{% trans "01 - Introduction to Bitcoin" %}</li>
-                  <li>{% trans "02 - Blockchain history" %}</li>
-                  <li>{% trans "03 - Types of financial market" %}</li>
-                  <li>{% trans "04 - Security and investment" %}</li>
-                  <li>{% trans "05 - Strategies of investment" %}</li>
-                  <li>{% trans "06 - Where's the Bitcoin market going" %}</li>
-                  <li>{% trans "07 - Technical analysis" %}</li>
+                  <li>{% trans "1. How to accept Bitcoin in your business" %}</li>
+                  <li>{% trans "2. Techniques of Sale" %}</li>
+                  <li>{% trans "3. Personal Marketing" %}</li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul>
-                  <li>{% trans "08 - Regulatory aspects of bitcoin" %}</li>
-                  <li>{% trans "09 - How accept Bitcoin in my business" %}</li>
-                  <li>{% trans "10 - Sale techniques" %}</li>
-                  <li>{% trans "11 - Personal marketing" %}</li>
-                  <li>{% trans "12 - Leadership and development of crews" %}</li>
-                  <li>{% trans "13 - Mindset and NLP" %}</li>
+                  <li>{% trans "4. Leadership and team development" %}</li>
+                  <li>{% trans "5. Mindset e PNL" %}</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <div class="mt-20">
-            <h4 class="b uppercase text-center mt-50 mb-20 text-pink">{% trans "Start now for just <span class='tx-30'>0.03</span> BTC" %}</h4>
-            <p class="text-center tx-14">{% trans "The course amount will be discount from your checking account" %}<br>
+            <h4 class="b uppercase text-center mt-50 mb-20 text-pink">{% trans "New modules for only <span class='tx-30'>0.01</span> BTC, the card and freight are free." %}</h4>
+            <p class="text-center tx-14">{% trans "The new modules amount will be discount from your checking account" %}<br>
             {% trans "Your checking account balance is: " %} <span class="b" v-text="balance + ' BTC'"></span></p>
 
             <div class="row">
@@ -81,7 +73,7 @@
             </div>
           </div>
 
-          <button type="button" :disabled="loading" class="btn btn-pink b btn-block mb-20 mt-20" @click.prevent="createSubscription()">{% trans "SIGN ME UP" %}</button>
+          <button type="button" :disabled="loading" class="btn btn-pink b btn-block mb-20 mt-20" @click.prevent="createSubscription('{% url "xfactor>create-advisor-subscription" %}')">{% trans "REQUEST CARD" %}</button>
         </div>
       </div>
     </div><!-- /.modal-content -->

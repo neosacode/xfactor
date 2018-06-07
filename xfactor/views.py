@@ -100,6 +100,14 @@ class MyCardView(TemplateView):
 class RequestCardView(TemplateView):
     template_name = 'request-card.html'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['is_advisor'] = Graduations.objects.filter(type=Graduations._advisor, user=self.request.user).exists()
+        return context
+
+    def get(self, request):
+        return render(request, self.template_name, self.get_context_data())
+
 
 @method_decorator([login_required], name='dispatch')
 class LogoutView(View):
@@ -111,6 +119,9 @@ class LogoutView(View):
 @method_decorator([login_required, json_view], name='dispatch')
 class CreateCourseSubscriptionView(View):
     def post(self, request):
+        if Graduations.objects.filter(type=Graduations._advisor, user=request.user).exists():
+            return {'title': _("Error!"), 'message': _("You are a investment advisor, please update this page and request your card."), 'type': 'error'}
+
         if not Investments.objects.filter(account__user=request.user).exists():
             return {'title': _("Error!"), 'message': _("You are not a investor yet, please make a Xfactor investment plan first and go back here to get your card."), 'type': 'error'}
 
@@ -139,6 +150,42 @@ class CreateCourseSubscriptionView(View):
             checking_account.takeout(amount)
 
             return {'title': _("Congratulations!"), 'message': _("Your subscription in the Advisor has been successfully made."), 'type': 'success'}
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class CreateAdvisorSubscriptionView(View):
+    def post(self, request):
+        if not Investments.objects.filter(account__user=request.user).exists():
+            return {'title': _("Error!"), 'message': _("You are not a investor yet, please make a Xfactor investment plan first and go back here to get your card."), 'type': 'error'}
+        
+        if not Graduations.objects.filter(type=Graduations._advisor, user=request.user).exists():
+            return {'title': _("Error!"), 'message': _("You need be a investment advisor first, to request your card."), 'type': 'error'}
+
+        course_subscription_form = CourseSubscriptionForm(request.POST, user=request.user)
+
+        if Statement.objects.filter(account__user=request.user, type='advisor_card_request').exists():
+            return {'title': _("Warning!"), 'message': _("Your already have requested your card."), 'type': 'warning'}
+
+        if not course_subscription_form.is_valid():
+            return {'errors': course_subscription_form.errors}
+
+        amount = Decimal('0.01')
+        checking_account = request.user.accounts.filter(currency__type=Currencies.TYPES.checking).first()
+
+        if amount > checking_account.deposit:
+            return {'title': _("Error!"), 'message': _("You not have enought balance for request your card."), 'type': 'error'}
+        
+        with transaction.atomic():
+            statement = Statement()
+            statement.description = 'Advisor card request'
+            statement.account = checking_account
+            statement.type = 'advisor_card_request'
+            statement.amount = Decimal('0') - amount
+            statement.save()
+
+            checking_account.takeout(amount)
+
+            return {'title': _("Congratulations!"), 'message': _("Your card request has been successfully made."), 'type': 'success'}
 
 
 @method_decorator([login_required], name='dispatch')

@@ -81,7 +81,7 @@
             </div>
           </div>
 
-          <button type="button" :disabled="loading" class="btn btn-pink b btn-block mb-20 mt-20" @click.prevent="createSubscription()">{% trans "SIGN ME UP" %}</button>
+          <button type="button" :disabled="loading" class="btn btn-pink b btn-block mb-20 mt-20" @click.prevent="createSubscription('{% url "xfactor>create-course-subscription" %}')">{% trans "SIGN ME UP" %}</button>
         </div>
       </div>
     </div><!-- /.modal-content -->

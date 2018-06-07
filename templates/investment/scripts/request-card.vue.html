@@ -13,13 +13,13 @@
 				loading: false
 			},
 			methods: {
-				createSubscription: function() {
+				createSubscription: function(endpoint) {
 					var vm = this;
 					var data = {code: vm.code, password: vm.password, terms: vm.terms}
 
 					vm.loading = true;
 
-					$.post('{% url "xfactor>create-course-subscription" %}', data, function(response) {
+					$.post(endpoint, data, function(response) {
 						if (response.errors) {
 							vm.errors = response.errors;
 						}

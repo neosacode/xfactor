@@ -17,6 +17,7 @@ urlpatterns = [
 	path('account/request-card/', views.RequestCardView.as_view(), name='xfactor>request-card'),
 	path('account/raw-logout/', views.LogoutView.as_view(), name='xfactor>logout'),
 	path('account/create-course-subscription/', views.CreateCourseSubscriptionView.as_view(), name='xfactor>create-course-subscription'),
+	path('account/create-advisor-subscription/', views.CreateAdvisorSubscriptionView.as_view(), name='xfactor>create-advisor-subscription'),
 ]
 
 
