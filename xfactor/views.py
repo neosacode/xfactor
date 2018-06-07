@@ -2,6 +2,7 @@ import uuid
 
 from decimal import Decimal
 
+from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.utils import timezone
@@ -18,13 +19,21 @@ from jsonview.decorators import json_view
 from account.decorators import login_required
 
 
-from exchange_core.models import Accounts, Currencies, Statement
+from exchange_core.models import Accounts, Currencies, Statement, Users
 from exchange_core.rates import CurrencyPrice
 from exchange_core.pagination import paginate
 from exchange_core.views import StatementView as CoreStatementView
 from exchange_payments.forms import NewWithdrawForm
 from apps.investment.models import Investments, Incomes, Comissions, Graduations
 from apps.investment.forms import CourseSubscriptionForm
+
+
+
+class HiView(View):
+    def get(self, request, username):
+        if Users.objects.filter(username__iexact=username).exists():
+            request.session['referral_username'] = username
+        return redirect('https://xfactor.cash')
 
 
 @method_decorator([login_required], name='dispatch')

@@ -178,7 +178,16 @@ class ReferrerSignupView(SignupView):
         self._use_address = False
 
     def dispatch(self, *args, **kwargs):
-        self.promoter = Users.objects.get(username=self.request.GET['promoter'], graduations__type=Graduations._promoter)
+        username = self.request.session.get('referral_username', False)
+        promoter_username = self.request.GET.get('promoter', 'xfactor')
+
+        if not username:
+            username = 'xfactor'
+
+        if promoter_username != 'xfactor':
+            username = self.request.GET['promoter']
+
+        self.promoter = Users.objects.get(username=username)
         return super().dispatch(*args, **kwargs)
 
     def get_initial(self):
