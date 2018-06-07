@@ -314,6 +314,7 @@ main .box-nome .bread .box-2 .imagem-2 {
 .dropdown .dropdown-item {
     padding: 10px 15px;
     color: #0a50a0;
+    font-weight: normal !important;
 }
 
 .change-language-dropdown {

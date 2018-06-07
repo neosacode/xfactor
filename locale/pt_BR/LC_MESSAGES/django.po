@@ -383,12 +383,12 @@ msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
 #: templates/account/settings.html:38 templates/core/settings.html:12
-msgid "My Avatar"
-msgstr ""
+msgid "My Profile"
+msgstr "Meu Perfil"
 
 #: templates/account/settings.html:40 templates/core/settings.html:16
-msgid "Select a new avatar image using the field below"
-msgstr ""
+msgid "Select a new profile image using the field below"
+msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
 
 #: templates/account/settings.html:56 templates/core/settings.html:23
 msgid "Update"
@@ -1271,7 +1271,7 @@ msgstr "sua senha"
 #: templates/investment/incomes-withdraw.html:48
 #: templates/payments/withdraw.html:57 templates/payments/withdraw.html:70
 msgid "We use this for security reasons"
-msgstr "Nós usamos isso por segurança"
+msgstr "Nós usamos isso por razões de segurança"
 
 #: templates/investment/incomes-withdraw.html:41
 #: templates/payments/withdraw.html:63

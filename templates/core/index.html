@@ -107,9 +107,9 @@ if(w.style.display=="block"){w.style.display='none';}else{
                                         </a>
 
                                         <div class="dropdown-menu">
-                                            <a href="{% url "core>settings" %}" class="dropdown-item tx-14">{% trans "Settings" %}</a>
-                                            <a href="{% url "two_factor:profile" %}" class="dropdown-item tx-14">{% trans "Two Factor Authentication" %}</a>
-                                            <a href="{% url "core>documents" %}" class="dropdown-item tx-14">{% trans "Documents" %}</a>
+                                            <a href="{% url "core>settings" %}" class="dropdown-item tx-14"><i class="fas fa-cogs text-pink"></i> {% trans "Settings" %}</a>
+                                            <a href="{% url "two_factor:profile" %}" class="dropdown-item tx-14"><i class="fas fa-lock text-pink"></i> {% trans "Two Factor Authentication" %}</a>
+                                            <a href="{% url "core>documents" %}" class="dropdown-item tx-14"><i class="fas fa-file-alt text-pink"></i> {% trans "Documents" %}</a>
                                         </div>
                                     </div>
                                 </li>
