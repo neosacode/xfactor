@@ -143,5 +143,11 @@
 			videoElement.src ="";
 			videoElement.load();
 		});
+
+
+		window.onresize = function() {
+			var new_height = parseInt(window.innerHeight) - 200;
+		    $('#qrcode-scanner-box #preview').css('max-height', new_height + 'px');
+		}
 	});
 </script>
