@@ -11,9 +11,53 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static "css/minha-carteira.css" %}">
+
+    <style>
+        #qrcode-scanner-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999999999;
+            color: #FFF;
+            display: none;
+        }
+
+        #qrcode-scanner-box h2 {
+            padding: 20px 0;
+        }
+
+        #qrcode-scanner-box #preview {
+            width: 90%;
+            max-width: 850px;
+            object-fit: fill;
+        }
+
+        .close-scanner a {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        html.overflow, body.overflow {
+            overflow: hidden;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
+
+    <div id="qrcode-scanner-box" class="text-center">
+        <h2 class="b"><i class="fas fa-qrcode"></i> {% trans "POSITION THE QR CODE" %}</h2>
+        <div id="qrcode-app">
+            <video id="preview"></video>
+        </div>
+
+        <div class="text-center close-scanner">
+            <a href="#" class="text-pink"><i class="far fa-times-circle"></i> {% trans "Back" %}</a>
+        </div>
+    </div>
     
 
     <div id="withdraw_app">

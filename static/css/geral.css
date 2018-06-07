@@ -3,6 +3,7 @@
 
 body {
     zoom: 88%;
+    background-color: #f3f3f4;
 }
 
 header .back-menu {
@@ -472,10 +473,6 @@ main .box-nome .bread .box-2 .imagem-2 {
 
 .form-group {
     margin-bottom: 20px;
-}
-
-.form-group input, .form-group select {
-    margin-top: 5px;
 }
 
 .text-white {

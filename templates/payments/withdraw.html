@@ -33,7 +33,12 @@
 
 		
         <div class="form-group" v-show="!is_br_withdraw">
-          <input type="text" :class="{'form-control': true, 'parsley-error': errors.address}" :placeholder="coin + ' {% trans "wallet address" %}'" v-model="address">
+          <div class="input-group mb-3">
+            <input type="text" :class="{'form-control': true, 'parsley-error': errors.address}" :placeholder="coin + ' {% trans "wallet address" %}'" v-model="address">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" @click.prevent="scan()" type="button"><i class="fas fa-qrcode"></i></button>
+            </div>
+          </div>
           <div class="help-block form-text text-muted form-control-feedback" v-show="errors.address">
           	<ul class="parsley-errors-list filled">
           		<li v-for="error_message in errors.address" v-text="error_message"></li>
