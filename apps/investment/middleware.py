@@ -29,12 +29,12 @@ class StepsMiddleware(UserDocumentsMiddleware):
 		cache.clear()
 		profile_data = Users.objects.get(pk=request.user.pk).profile
 		documents_qty = request.user.documents.count()
+		settings_is_not_ok = (not 'has_personal' in profile_data or not 'has_address' in profile_data)
 
-		if (not 'has_personal' in profile_data
-				or not 'has_address' in profile_data) \
-				and not request.path.startswith(reverse('core>settings')):
+
+		if settings_is_not_ok and not request.path.startswith(reverse('core>settings')):
 			return HttpResponsePermanentRedirect(reverse('core>settings'))
-		if documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
+		if not settings_is_not_ok and documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
 			return HttpResponsePermanentRedirect(reverse('core>documents'))
 		if 'has_personal' in profile_data and 'has_address' in profile_data \
 				and not request.path.startswith(reverse('two_factor:profile')) \
