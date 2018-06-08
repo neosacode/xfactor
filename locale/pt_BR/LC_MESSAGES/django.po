@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 20:18+0000\n"
+"POT-Creation-Date: 2018-06-08 23:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,10 +73,6 @@ msgstr ""
 #: apps/investment/forms.py:51 apps/investment/forms.py:102
 msgid "The 2FA code is invalid"
 msgstr ""
-
-#: apps/investment/forms.py:57
-msgid "-- Select your investment advisor --"
-msgstr "-- Selecione o seu investment advisor --"
 
 #: apps/investment/forms.py:58
 msgid "First name"
@@ -276,19 +272,24 @@ msgstr "Crédito"
 msgid "Credits"
 msgstr "Créditos"
 
-#: apps/investment/templates/investment/signup.html:26
+#: apps/investment/templates/investment/signup.html:19
+#: templates/two_factor/core/login.html:87
+msgid "Open Account"
+msgstr "Abrir Conta"
+
+#: apps/investment/templates/investment/signup.html:29
 msgid "Your investment promoter is"
 msgstr "Seu promotor de investimento é"
 
-#: apps/investment/templates/investment/signup.html:54
+#: apps/investment/templates/investment/signup.html:59
 msgid "Sign Up"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:74
+#: apps/investment/templates/investment/signup.html:79
 msgid "Already have an account?"
 msgstr "Já possui uma conta?"
 
-#: apps/investment/templates/investment/signup.html:74
+#: apps/investment/templates/investment/signup.html:79
 msgid "Log In"
 msgstr "Acessar"
 
@@ -321,17 +322,17 @@ msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:231 templates/accounts/checking.html:95
+#: apps/investment/views.py:240 templates/accounts/checking.html:95
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
 msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:285
+#: apps/investment/views.py:294
 msgid "Your loan application was created with success!"
 msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:319
+#: apps/investment/views.py:328
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
@@ -382,11 +383,11 @@ msgstr ""
 msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
-#: templates/account/settings.html:38 templates/core/settings.html:12
+#: templates/account/settings.html:38
 msgid "My Profile"
 msgstr "Meu Perfil"
 
-#: templates/account/settings.html:40 templates/core/settings.html:16
+#: templates/account/settings.html:40
 msgid "Select a new profile image using the field below"
 msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
 
@@ -677,7 +678,6 @@ msgid "4. Leadership and team development"
 msgstr "4 - Liderança e desenvolvimento de equipes"
 
 #: templates/card-advisor-modal.html:31
-#| msgid "13 - Mindset and NLP"
 msgid "5. Mindset e PNL"
 msgstr "5 - Mindset e PNL"
 
@@ -1005,6 +1005,16 @@ msgstr ""
 #: templates/core/my-customers.html:223
 msgid "You don't have customers yet!"
 msgstr ""
+
+#: templates/core/settings.html:12
+msgid "My Avatar"
+msgstr ""
+
+#: templates/core/settings.html:16
+#, fuzzy
+#| msgid "Select a new profile image using the field below"
+msgid "Select a new avatar image using the field below"
+msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
 
 #: templates/core/settings.html:54
 msgid "Bank Account"
@@ -1352,10 +1362,6 @@ msgstr "INICIAR INVESTIMENTO"
 msgid "Message"
 msgstr "Mensagem"
 
-#: templates/payments/withdraw.html:21
-msgid "TBXA - Transfer between xfactor accounts"
-msgstr "TECX - Transferência entre contas xfactor"
-
 #: templates/payments/withdraw.html:24
 msgid "Min transfer amount is:"
 msgstr "Transferência mínima:"
@@ -1476,12 +1482,8 @@ msgstr "Esqueceu sua senha?"
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/login.html:87
-msgid "Open Account"
-msgstr "Abrir Conta"
-
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:152
-#: xfactor/views.py:188
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:161
+#: xfactor/views.py:197
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1507,12 +1509,12 @@ msgstr ""
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:123 xfactor/views.py:126 xfactor/views.py:140
-#: xfactor/views.py:159 xfactor/views.py:162 xfactor/views.py:176
+#: xfactor/views.py:132 xfactor/views.py:135 xfactor/views.py:149
+#: xfactor/views.py:168 xfactor/views.py:171 xfactor/views.py:185
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:123
+#: xfactor/views.py:132
 #, fuzzy
 #| msgid ""
 #| "You are not a investor yet, please make a Xfactor investment plan first "
@@ -1523,7 +1525,7 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:126 xfactor/views.py:159
+#: xfactor/views.py:135 xfactor/views.py:168
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1531,36 +1533,42 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:131 xfactor/views.py:167
+#: xfactor/views.py:140 xfactor/views.py:176
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:131
+#: xfactor/views.py:140
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:140
+#: xfactor/views.py:149
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:152
+#: xfactor/views.py:161
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#: xfactor/views.py:162
+#: xfactor/views.py:171
 #, fuzzy
 #| msgid "You not have enought balance for request your card."
 msgid "You need be a investment advisor first, to request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:167
+#: xfactor/views.py:176
 msgid "Your already have requested your card."
 msgstr "Você já solicitou o seu cartão."
 
-#: xfactor/views.py:176
+#: xfactor/views.py:185
 msgid "You not have enought balance for request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:188
+#: xfactor/views.py:197
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
+
+#~ msgid "-- Select your investment advisor --"
+#~ msgstr "-- Selecione o seu investment advisor --"
+
+#~ msgid "TBXA - Transfer between xfactor accounts"
+#~ msgstr "TECX - Transferência entre contas xfactor"
