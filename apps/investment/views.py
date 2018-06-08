@@ -214,7 +214,7 @@ class ReferrerSignupView(SignupView):
         referral = Referrals()
         referral.user = user
         referral.promoter = self.promoter
-        referral.advisor = form.cleaned_data['advisor']
+        # referral.advisor = form.cleaned_data['advisor']
         referral.save()
 
 

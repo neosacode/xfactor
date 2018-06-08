@@ -54,14 +54,14 @@ class Code2FAForm(forms.Form):
 
 
 class SignupForm(account.forms.SignupForm):
-    advisor = forms.ModelChoiceField(empty_label=_("-- Select your investment advisor --"), queryset=Users.objects.filter(is_active=True, graduations__type=Graduations._advisor), required=False)
+    # advisor = forms.ModelChoiceField(empty_label=_("-- Select your investment advisor --"), queryset=Users.objects.filter(is_active=True, graduations__type=Graduations._advisor), required=False)
     first_name = forms.CharField(label=_("First name"))
     last_name = forms.CharField(label=_("Last name"))
     confirm_email = forms.EmailField(label=_("Confirm e-mail"))
     password = PasswordField(label=_("Password"), strip=settings.ACCOUNT_PASSWORD_STRIP)
     terms = forms.BooleanField(label=_("I have read and agree to the terms of use: <a href=\"https://www.xfactor.cash/terms.html\" target=\"blank\">open terms</a>"))
     
-    field_order = ['advisor', 'first_name', 'last_name', 'username', 'email', 'confirm_email', 'password', 'password_confirm', 'term']
+    field_order = ['first_name', 'last_name', 'username', 'email', 'confirm_email', 'password', 'password_confirm', 'term']
 
     # Valida o campo de confirmar e-mail
     def clean_confirm_email(self):
