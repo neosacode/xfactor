@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load static %}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="buy-btc-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-size: 35px;">{% trans "BUY" %} <i class="fab fa-btc"></i></h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="amount">{% trans "Bitcoins quantity" %}</label>
+          <input type="number" class="form-control" name="amount">
+        </div>
+
+        <div class="form-group">
+          <label for="price">{% trans "Unit price estimation" %}</label>
+          <input type="number" class="form-control" name="price">
+        </div>
+
+        <p>
+          {% trans "Total:" %} <strong>0.09000000</strong><br>
+          {% trans "Comission:" %} <strong>0.09000000</strong><br>
+          {% trans "Net amount:" %} <strong>0.09000000</strong>
+        </p>
+
+        <a href="#" class="btn btn-pink btn-block">{% trans "Buy" %}</a>
+
+        <div class="text-center">
+          * {% trans "Your order will be received by our staff. Follow you e-mail for any news about it." %}
+        </div>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
