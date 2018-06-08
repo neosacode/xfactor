@@ -16,7 +16,7 @@
                            <form method="POST" novalidate>
                                 {% csrf_token %}
                                 
-                                {% if promoter.username != 'business' %}
+                                {% if promoter.username != 'business' and promoter.username != 'leoschew' and promoter.username != 'leonardoschew' %}
                                 <p class="text-center">
                                     {% if not promoter.avatar %}
                                         <img src="https://www.w3schools.com/howto/img_avatar.png" class="img-fluid rounded-circle" width="100" alt="">
