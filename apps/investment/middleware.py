@@ -33,8 +33,8 @@ class StepsMiddleware(UserDocumentsMiddleware):
 
 		if not settings_is_ok and not request.path.startswith(reverse('core>settings')):
 			return HttpResponsePermanentRedirect(reverse('core>settings'))
-		if documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
+		if settings_is_ok and documents_qty < 4 and not request.path.startswith(reverse('core>documents')):
 			return HttpResponsePermanentRedirect(reverse('core>documents'))
-		if documents_qty >= 4 and not request.path.startswith(reverse('two_factor:profile')) \
+		if settings_is_ok and documents_qty >= 4 and not request.path.startswith(reverse('two_factor:profile')) \
 				and not user_has_device(request.user):
 			return HttpResponsePermanentRedirect(reverse('two_factor:profile'))
