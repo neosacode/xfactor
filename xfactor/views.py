@@ -250,6 +250,6 @@ class IncomesWithdrawView(View):
             statement.type = 'income_deposit'
             statement.save()
 
-            checking_account.to_deposit(amount)
+            checking_account.to_deposit((amount - abs(fee)))
 
             return {'status': 'success', 'amount': amount}
