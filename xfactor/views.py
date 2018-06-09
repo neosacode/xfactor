@@ -236,7 +236,7 @@ class IncomesWithdrawView(View):
 
             statement = Statement()
             statement.account = account
-            statement.amount = Decimal('0.00') - (amount - abs(fee))
+            statement.amount = Decimal('0.00') - amount
             statement.description = 'Income Withdrawal'
             statement.type = 'income_withdraw'
             statement.save()
@@ -250,6 +250,6 @@ class IncomesWithdrawView(View):
             statement.type = 'income_deposit'
             statement.save()
 
-            checking_account.to_deposit((amount - abs(fee)))
+            checking_account.to_deposit((amount - abs(fee)) )
 
             return {'status': 'success', 'amount': amount}
