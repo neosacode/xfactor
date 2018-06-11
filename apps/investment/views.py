@@ -21,7 +21,7 @@ from .models import Plans, Investments, PlanGracePeriods
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
 from apps.investment.forms import SignupForm, CourseSubscriptionForm
-from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits
+from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits, Reinvestments
 from apps.investment.utils import decimal_split
 
 
@@ -41,23 +41,16 @@ class PlansView(TemplateView):
 @method_decorator([json_view, login_required], name='dispatch')
 class GetPlanLacksView(View):
     def post(self, request):
+        investment = Investments.get_by_user(request.user)
         periods = PlanGracePeriods.objects.filter(plan__id=request.POST['id'], 
                                                plan__status=Plans.STATUS.active, 
                                                status=PlanGracePeriods.STATUS.active)
         response = []
         for period in periods:
+            if investment and investment.plan_grace_period.grace_period.months >= period.grace_period.months:
+                continue
             response.append({'period': period.grace_period.months, 'percent': round(period.income_percent, 0), 'id': period.pk})
         return response
-
-
-@method_decorator(login_required, name='dispatch')
-class MyPlansView(TemplateView):
-    template_name = 'financial/my-plans.html'
-
-    def get(self, request):
-        user = request.user
-        investments = Investments.objects.filter(account__user=user).exclude(status=Investments.STATUS.cancelled)
-        return render(request, self.template_name, { 'investments': investments})
 
 
 @method_decorator([login_required], name='dispatch')
@@ -167,6 +160,161 @@ class CreateInvestmentView(View):
 
             return {'message': _("Congratulations! Your investing plan was created."), 'redirect': True}
         return {'message': _("Someting in your new investment plan didn't work as expected.")}
+
+
+@method_decorator(login_required, name='dispatch')
+class ReinvestmentView(TemplateView):
+    template_name = 'investment/reinvestment.html'
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['plans'] = Plans.objects.filter(status=Plans.STATUS.active).order_by('order')
+        context['investment'] = Investments.get_by_user(self.request.user)
+        return context
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class CreateReinvestmentView(View):
+    def post(self, request):
+        investment = Investments.get_by_user(request.user)
+        reinvestment_old_invest = investment.plan_grace_period
+        reinvestment_amount_before = investment.account.reserved
+        reinvestment_incomes = investment.account.deposit
+
+        grace_period_pk = request.POST['grace_period']
+        grace_period = PlanGracePeriods.objects.get(pk=grace_period_pk)
+        use_checking = request.POST['use_checking'] in ['true', '1']
+
+        if grace_period.grace_period.months < investment.plan_grace_period.grace_period.months:
+            return {'message': _("ERROR! Selected grace period is not valid.")}
+
+        checking_account = Accounts.objects.get(user=request.user, currency__symbol=grace_period.currency.symbol, currency__type=Currencies.TYPES.checking)
+        investment_account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
+
+        amount = request.POST.get('amount', '0.00').replace(',', '.')
+        amount = ''.join(c for c in amount if c.isdigit() or c == '.')
+
+        if not amount:
+            amount = '0.00'
+
+        amount = Decimal(amount)
+        reinvestment_amount = amount
+        membership_fee = Decimal('0.00')
+        amount_with_fee = amount + membership_fee
+        amount_with_investment = amount + investment.amount
+        reinvest_plan = Plans.objects.filter(min_down__lte=amount_with_investment, max_down__gte=amount_with_investment).order_by('-max_down').first()
+        min_reinvest = grace_period.plan.min_reinvest
+        months = grace_period.grace_period.months
+        grace_period = PlanGracePeriods.objects.get(plan=reinvest_plan, grace_period__months=months)
+        reinvestment_new_invest = grace_period
+
+        # Se for um upgrade, soma a diferenca do membership_fee
+        if reinvest_plan and reinvest_plan.pk != investment.plan_grace_period.plan.pk:
+            membership_fee = (reinvest_plan.membership_fee - investment.plan_grace_period.plan.membership_fee)
+            amount_with_fee = amount + membership_fee
+
+        reinvestment_membership_fee = membership_fee
+        # Saldo para validacao do reinvestimento
+        balance = investment_account.deposit
+
+        if use_checking:
+            balance += checking_account.deposit
+
+        # Valida se o valor minimo de reinvestimento e compativel com o reinvestimento desejado
+        if min_reinvest > amount:
+            return {'message': _("ERROR! The min reinvestment for this plan is {}").format(min_reinvest)}
+        if amount_with_fee > balance:
+            return {'message': _("ERROR! You does not have enought balance")}
+    
+        with transaction.atomic():
+            investment.plan_grace_period = grace_period
+            investment.amount = amount_with_investment
+            investment.status = Investments.STATUS.paid
+            investment.membership_fee = membership_fee
+            investment.paid_date = timezone.now()
+            investment.save()
+
+            if grace_period.grace_period.months > 0:
+                start_date = datetime.now() + timedelta(days=1)
+                end_date = start_date + relativedelta(months=grace_period.grace_period.months)
+                
+                Incomes.objects.filter(investment=investment, date__gte=start_date.date(), date__lte=end_date.date()).delete()
+
+                range_dates = list(rrule(DAILY, dtstart=start_date, until=end_date))
+                income_amount = (amount_with_investment * (grace_period.income_percent / 100)) * grace_period.grace_period.months
+                income_table = decimal_split(income_amount, len(range_dates), 98, 100)
+
+                date_index = 0
+                bulk_incomes = []
+
+                for dt in range_dates:
+                    income = Incomes()
+                    income.date = dt
+                    income.amount = income_table[date_index]
+                    income.investment = investment
+                    bulk_incomes.append(income)
+
+                    date_index += 1
+
+                Incomes.objects.bulk_create(bulk_incomes)
+
+            discount_amount = investment_account.deposit - amount_with_fee
+
+            if discount_amount < Decimal('0.00'):
+                statement = Statement()
+                statement.account = investment_account
+                statement.amount = Decimal('0.00') - investment_account.deposit
+                statement.type = 'reinvestment'
+                statement.description = 'New reinvestment'
+                statement.fk = investment.pk
+                statement.save()
+
+                investment_account.deposit = Decimal('0.00')
+                investment_account.save()
+            else:
+                statement = Statement()
+                statement.account = investment_account
+                statement.amount = Decimal('0.00') - amount_with_fee
+                statement.type = 'reinvestment'
+                statement.description = 'New reinvestment'
+                statement.fk = investment.pk
+                statement.save()
+
+                investment_account.takeout(amount_with_fee)
+
+            if use_checking and discount_amount < Decimal('0.00'):
+                checking_account.takeout(abs(discount_amount))
+
+                statement = Statement()
+                statement.account = checking_account
+                statement.amount = discount_amount
+                statement.type = 'reinvestment'
+                statement.description = 'New reinvestment'
+                statement.fk = investment.pk
+                statement.save()
+
+            investment_account.reserved += amount
+            investment_account.save()
+
+            statement = Statement()
+            statement.account = investment_account
+            statement.amount = amount
+            statement.type = 'reinvestment'
+            statement.description = 'New reinvestment'
+            statement.fk = investment.pk
+            statement.save()
+
+            reinvestment = Reinvestments()
+            reinvestment.old_invest = reinvestment_old_invest
+            reinvestment.new_invest = reinvestment_new_invest
+            reinvestment.amount = reinvestment_amount
+            reinvestment.amount_before = reinvestment_amount_before
+            reinvestment.incomes = reinvestment_incomes
+            reinvestment.membership_fee = reinvestment_membership_fee
+            reinvestment.investment = investment
+            reinvestment.save()
+
+        return {'message': _("Congratulations! Your reinvesting plan was created."), 'redirect': True}
 
 
 class ReferrerSignupView(SignupView):

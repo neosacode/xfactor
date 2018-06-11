@@ -1,0 +1,131 @@
+{% extends "core/index.html" %}
+{% load static i18n %}
+
+{% block page_title %}
+    {% trans "Invest" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/investing-plan.css" %}">
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="conteudo-1">
+	{% include "back-button.html" with margin_top='30px' %}
+
+	<div id="start-investment-app">
+		<div v-show="show_lack" style="display: none;">
+			<h2 class="section-title">{% trans "Start your reinvestment" %}</h2>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="white-box">
+						<h3 class="section-sub-title"><i class="fas fa-trophy"></i> {% trans "Selected Plan" %}</h3>
+						<p>
+						<span>{% trans "Plan" %}:</span> <strong>{{ investment.plan_grace_period.plan.name }}</strong><br>
+						<span>{% trans "Invest amount:" %}</span> <strong>{{ investment.amount }} BTC</strong><br>
+						<span>{% trans "Min down" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_down|floatformat:2 }} BTC</strong><br>
+						<span>{% trans "Max down" %}:</span> <strong>{{ investment.plan_grace_period.plan.max_down|floatformat:2 }} BTC</strong><br>
+						<span>{% trans "Subscription" %}:</span> <strong>{{ investment.plan_grace_period.plan.membership_fee|floatformat:4 }} BTC</strong><br>
+						<span>{% trans "Min reinvest" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_reinvest|floatformat:2 }} BTC</strong><br>
+						<span>{% trans "Allow monthly withdraw" %}:</span> <strong>{% if investment.plan_grace_period.plan.allow_monthly_draw %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</strong></p>
+						
+						<h3 class="section-sub-title"><i class="fas fa-calendar-alt"></i> {% trans "Grace Period" %}</h3>
+						<p class="paragraph">{% trans "Your current grace period is:" %}<br><strong>{{ investment.plan_grace_period.grace_period.months }} {% trans "months with minimum of" %} {{ investment.plan_grace_period.income_percent|floatformat:0 }}% {% trans "per month" %}</strong></p>
+						
+
+						<span v-show="grace_periods.length > 0" class="paragraph">{% trans "Change your grace period?" %}</span>
+
+						<ul class="list-group">
+						  <li class="list-group-item" v-for="period in grace_periods"><strong><input type="radio" :value="period.id" name="grace_period" v-model="grace_period"> <span v-text="period.period + ' {% trans "months with minimum of" %} ' + period.percent + '% {% trans "per month" %}'"></span></strong></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-6" v-show="show_invest">
+					<div class="white-box">
+						<h3 class="section-sub-title"><i class="fas fa-check"></i> {% trans "Type the amount to be reinvested" %}</h3>
+
+
+						<span>{% trans "Incomes balance:" %} <strong>{{ user_investment_account.deposit }} BTC</strong></span><br>
+						<span><input type="checkbox" v-model="use_checking" value="1"> {% trans "Checking account balance:" %} <strong>{{ user_checking_account.deposit }} BTC</strong></span>
+						<div class="alert alert-warning">
+							{% trans "The system automatically deducts the reinvestment amount from your income." %}<br><br>
+							{% trans "If you also want to use your checking account balance to make this reinvestiment, please mark the check field on the side of the checking account balance." %}
+						</div>
+						<div class="form-group">
+							<input type="number" class="form-control" step="0.00010000" placeholder="{% trans "Desired BTC amount to be invested" %}" v-model="amount">
+							<p>{% trans "The membership fee will be added automatically." %}</p>
+						</div>
+
+						<button class="btn btn-pink btn-block" @click.prevent="create_investment()" :disabled="is_loading"><strong><i class="fas fa-play"></i> {% trans "REINVEST" %}</strong></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+
+	<script>
+		jQuery(function($) {
+			var start_investment_app = new Vue({
+				el: '#start-investment-app',
+				data: {
+					show_lack: true,
+					show_invest: true,
+					grace_periods: [],
+					grace_period: '{{ investment.plan_grace_period.pk }}',
+					amount: (0).toFixed(8),
+					password: '',
+					is_loading: false,
+					use_checking: 0
+				},
+				methods: {
+					create_investment: function() {
+						var vm = this;
+						vm.is_loading = true;
+
+						$.post('{% url "investment>create-reinvestment" %}', {'grace_period': vm.grace_period, 'amount': vm.amount, 'password': vm.password, 'use_checking': vm.use_checking}, function(response) {
+							swal('{% trans "Message" %}', response.message, 'info');
+
+							setTimeout(function() {
+								if (response.redirect) {
+									window.location.href = '{% url "xfactor>investment" %}';
+								}
+							}, 5000);
+
+							vm.is_loading = false;
+						});
+					}
+				},
+				watch: {
+					grace_period: function() {
+						vm = this;
+						vm.show_invest = true;
+					}
+				},
+				mounted: function() {
+					var vm = this;
+					vm.$nextTick(function() {
+						$.post('{% url "investment>get-plan-lacks" %}', {'id': '{{ investment.plan_grace_period.plan.pk }}'}, function(response) {
+							vm.grace_periods = response;
+						});
+					});
+				}
+			});
+		});
+	</script>
+
+{% endblock %} 

@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-8 texto-codigo">
                 <h4 class="title" style="margin-top: 0;">{% trans "My Investment" %}</h4>
-                <h3><span>{% trans "Current investment plan:" %}</span> {{ charge.plan_grace_period.plan.name }}</h3>
+                <h3 class="b"><span>{% trans "Current investment plan:" %}</span> {{ charge.plan_grace_period.plan.name }}</h3>
                 <h3><span>{% trans "Invest amount:" %}</span> {{ charge.amount }} BTC</h3>
                 <h3><span>{% trans "Contracted lack:" %}</span> {{ charge.plan_grace_period.grace_period.months }} {% trans "months" %}</h3>
                 <h3><span>{% trans "Remaining/Contracted days:" %}</span> {{ charge.remaining_days }}/{{ charge.contract_days }} {% trans "days" %}</h3>
@@ -49,7 +49,7 @@
         <div class="box-2 mt-20">
             <div class="row">
                 <div class="col-md-6">
-                    <a disabled="disabled" style="cursor: not-allowed;" class="btn btn-pink btn-lg btn-block mb-10"><i class="fas fa-upload"></i> {% trans "REINVEST" %}</a>
+                    <a href="{% url "investment>reinvestment" %}" class="btn btn-pink btn-lg btn-block mb-10"><i class="fas fa-upload"></i> {% trans "REINVEST" %}</a>
                 </div>
                 <div class="col-md-6">
                     <a href="{% url "core>statement" %}" class="btn btn-primary btn-lg btn-block mb-10 uppercase"><i class="fas fa-calendar-alt"></i> {% trans "Statement" %}</a>

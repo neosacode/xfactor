@@ -74,6 +74,9 @@
               <a class="nav-link uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{% trans "Incomes" %}</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link uppercase" id="reinvestments-tab" data-toggle="tab" href="#reinvestments" role="tab" aria-controls="profile" aria-selected="false">{% trans "Reinvestments" %}</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link uppercase" id="contact-tab" data-toggle="tab" href="#comissions" role="tab" aria-controls="contact" aria-selected="false">{% trans "Comissions" %}</a>
             </li>
             <li class="nav-item">
@@ -137,6 +140,39 @@
 
               <div class="clearfix"></div>
               {% bootstrap_paginate incomes url_param_name='incomes_page' %}
+            </div>
+            <div class="tab-pane fade" id="reinvestments" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="table-wrapper">
+                <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                  <thead>
+                    <tr>
+                      <th>{% trans "Date" %}</th>
+                      <th>{% trans "Prev investment" %}</th>
+                      <th>{% trans "Reinvestment" %}</th>
+                      <th>{% trans "Prev invested amount" %}</th>
+                      <th>{% trans "Reinvested amount" %}</th>
+                      <th>{% trans "Prev incomes" %}</th>
+                      <th>{% trans "Upgrade membership fee" %}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in reinvestments %}
+                    <tr>
+                      <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
+                      <td>{{ item.old_invest.plan.name }} | {{ item.old_invest.grace_period.months }} {% trans "months" %}</td>
+                      <td>{{ item.new_invest.plan.name }} | {{ item.new_invest.grace_period.months }} {% trans "months" %}</td>
+                      <td>{{ item.amount_before }}</td>
+                      <td>{{ item.amount }}</td>
+                      <td>{{ item.incomes }}</td>
+                      <td>{{ item.membership_fee }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="clearfix"></div>
+              {% bootstrap_paginate reinvestments url_param_name='reinvestments_page' %}
             </div>
             <div class="tab-pane fade" id="comissions" role="tabpanel" aria-labelledby="comissions-tab">
               <div class="table-wrapper">

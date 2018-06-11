@@ -108,6 +108,10 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     def __str__(self):
         return '{} - {} BTC - {}'.format(self.account.user.username, self.amount, self.plan_grace_period.plan.name)
 
+    @classmethod
+    def get_by_user(self, user):
+        return Investments.objects.filter(account__user=user).first()
+
     class Meta:
         verbose_name = _("Investment")
         verbose_name_plural = _("Investments")
@@ -274,6 +278,17 @@ class Comissions(TimeStampedModel, models.Model):
     @classmethod
     def get_today_amount(self, user):
         return Comissions.objects.filter(Q(referral__promoter=user) | Q(referral__advisor=user)).filter(created__date=timezone.now()).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00000000')
+
+
+class Reinvestments(TimeStampedModel, models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    old_invest = models.ForeignKey(PlanGracePeriods, related_name='old_invests', on_delete=models.CASCADE)
+    new_invest = models.ForeignKey(PlanGracePeriods, null=True, related_name='new_invests', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=20, decimal_places=8)
+    amount_before = models.DecimalField(max_digits=20, decimal_places=8)
+    incomes = models.DecimalField(max_digits=20, decimal_places=8)
+    membership_fee = models.DecimalField(max_digits=20, decimal_places=8)
+    investment = models.ForeignKey(Investments, related_name='reinvestments', on_delete=models.CASCADE, null=True)
 
 
 class PlanGracePeriodForm(forms.ModelForm):

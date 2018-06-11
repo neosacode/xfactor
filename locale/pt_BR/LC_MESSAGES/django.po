@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-08 23:33+0000\n"
+"POT-Creation-Date: 2018-06-11 15:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Insufficient funds"
 msgstr ""
 
-#: apps/investment/apps.py:7 apps/investment/models.py:113
+#: apps/investment/apps.py:7 apps/investment/models.py:117
 msgid "Investments"
 msgstr "Investimentos"
 
@@ -108,14 +108,17 @@ msgid "Wrong password informed"
 msgstr ""
 
 #: apps/investment/models.py:26 templates/investment/plans.html:32
+#: templates/investment/reinvestment.html:34
 msgid "Min down"
 msgstr "Invest. Min:"
 
 #: apps/investment/models.py:27 templates/investment/plans.html:33
+#: templates/investment/reinvestment.html:35
 msgid "Max down"
 msgstr "Invest. Max:"
 
 #: apps/investment/models.py:28 templates/investment/plans.html:35
+#: templates/investment/reinvestment.html:37
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
@@ -140,7 +143,8 @@ msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
 #: apps/investment/models.py:36 apps/investment/models.py:60
-#: templates/core/statement.html:120 templates/core/statement.html:150
+#: templates/core/statement.html:123 templates/core/statement.html:186
+#: templates/investment/reinvestment.html:32
 msgid "Plan"
 msgstr "Plano"
 
@@ -161,6 +165,7 @@ msgid "Grace periods"
 msgstr "Carências"
 
 #: apps/investment/models.py:61 templates/investment/plans.html:49
+#: templates/investment/reinvestment.html:40
 msgid "Grace Period"
 msgstr "Carência"
 
@@ -168,8 +173,8 @@ msgstr "Carência"
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
-#: apps/investment/models.py:64 templates/core/statement.html:92
-#: templates/core/statement.html:119 templates/core/statement.html:178
+#: apps/investment/models.py:64 templates/core/statement.html:95
+#: templates/core/statement.html:122 templates/core/statement.html:214
 msgid "Currency"
 msgstr "Moeda"
 
@@ -187,14 +192,14 @@ msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
 #: apps/investment/models.py:85 templates/boleto/pay.html:61
-#: templates/core/statement.html:91 templates/core/statement.html:118
-#: templates/core/statement.html:147 templates/core/statement.html:177
+#: templates/core/statement.html:94 templates/core/statement.html:121
+#: templates/core/statement.html:183 templates/core/statement.html:213
 #: templates/investment/credit-line.html:65
 msgid "Amount"
 msgstr ""
 
-#: apps/investment/models.py:87 apps/investment/models.py:189
-#: apps/investment/models.py:236
+#: apps/investment/models.py:87 apps/investment/models.py:193
+#: apps/investment/models.py:240
 msgid "Account"
 msgstr "Conta"
 
@@ -202,73 +207,73 @@ msgstr "Conta"
 msgid "Paid Date"
 msgstr "Data de Pagamento"
 
-#: apps/investment/models.py:112
+#: apps/investment/models.py:116
 msgid "Investment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:124
+#: apps/investment/models.py:128
 msgid "Income"
 msgstr "Rendimento"
 
-#: apps/investment/models.py:125 templates/core/statement.html:74
+#: apps/investment/models.py:129 templates/core/statement.html:74
 msgid "Incomes"
 msgstr "Rendimentos"
 
-#: apps/investment/models.py:131
+#: apps/investment/models.py:135
 msgid "Date to be ignored"
 msgstr "Data a ser ignorada"
 
-#: apps/investment/models.py:134
+#: apps/investment/models.py:138
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:135
+#: apps/investment/models.py:139
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:145
+#: apps/investment/models.py:149
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:145
+#: apps/investment/models.py:149
 msgid "Investment Advisor"
 msgstr "Investment Advisor"
 
-#: apps/investment/models.py:153
+#: apps/investment/models.py:157
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:154
+#: apps/investment/models.py:158
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/models.py:197
+#: apps/investment/models.py:201
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:198
+#: apps/investment/models.py:202
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:210 templates/accounts/checking.html:113
+#: apps/investment/models.py:214 templates/accounts/checking.html:113
 #: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
-#: apps/investment/models.py:223
+#: apps/investment/models.py:227
 msgid "Installment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:224
+#: apps/investment/models.py:228
 msgid "Installments"
 msgstr "Investimentos"
 
-#: apps/investment/models.py:252
+#: apps/investment/models.py:256
 msgid "Credit"
 msgstr "Crédito"
 
-#: apps/investment/models.py:253
+#: apps/investment/models.py:257
 msgid "Credits"
 msgstr "Créditos"
 
@@ -293,50 +298,66 @@ msgstr "Já possui uma conta?"
 msgid "Log In"
 msgstr "Acessar"
 
-#: apps/investment/views.py:70
+#: apps/investment/views.py:63
 msgid "This plan can't be cancelled"
 msgstr "Este plano não pode ser cancelado"
 
-#: apps/investment/views.py:81
+#: apps/investment/views.py:74
 msgid "Your non-fidelity investment has been cancelled"
 msgstr "Seu plano sem fidelidade foi cancelado"
 
-#: apps/investment/views.py:89
+#: apps/investment/views.py:82
 msgid "ERROR! You already have a investment"
 msgstr "ERRO! Você já possui um investimento"
 
-#: apps/investment/views.py:108
+#: apps/investment/views.py:101
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr "ERRO! Valor a ser investido está fora do limite do plano"
 
-#: apps/investment/views.py:111
+#: apps/investment/views.py:104
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:168
+#: apps/investment/views.py:161
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:169
+#: apps/investment/views.py:162
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:240 templates/accounts/checking.html:95
+#: apps/investment/views.py:189
+msgid "ERROR! Selected grace period is not valid."
+msgstr ""
+
+#: apps/investment/views.py:225
+msgid "ERROR! The min reinvestment for this plan is {}"
+msgstr "ERRO! O valor mínimo para reinvestimento é {}"
+
+#: apps/investment/views.py:227
+msgid "ERROR! You does not have enought balance"
+msgstr "ERRO! Você não possui saldo suficiente"
+
+#: apps/investment/views.py:317
+msgid "Congratulations! Your reinvesting plan was created."
+msgstr "Parabéns! Seu plano de reinvestimento foi criado."
+
+#: apps/investment/views.py:388 templates/accounts/checking.html:95
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
 msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:294
+#: apps/investment/views.py:442
 msgid "Your loan application was created with success!"
 msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:328
+#: apps/investment/views.py:476
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
-#: templates/account/base.html:42 templates/two_factor/core/login.html:43
+#: templates/account/base.html:43 templates/two_factor/core/login.html:43
 msgid "Back to site"
 msgstr "Voltar ao site"
 
@@ -363,7 +384,8 @@ msgstr ""
 #: templates/card.html:10 templates/core/documents.html:11
 #: templates/core/statement.html:10 templates/investment/credit-line.html:9
 #: templates/investment/my-customers.html:10 templates/investment/plans.html:9
-#: templates/request-card.html:10 templates/two_factor/_base.html:9
+#: templates/investment/reinvestment.html:9 templates/request-card.html:10
+#: templates/two_factor/_base.html:9
 msgid "Xfactor"
 msgstr ""
 
@@ -439,6 +461,7 @@ msgid "Transfer"
 msgstr "Transferir"
 
 #: templates/accounts/checking.html:101 templates/investment/plans.html:5
+#: templates/investment/reinvestment.html:5
 msgid "Invest"
 msgstr "Investir"
 
@@ -471,6 +494,7 @@ msgid "Current investment plan:"
 msgstr "Plano de investimento atual:"
 
 #: templates/accounts/investment.html:31
+#: templates/investment/reinvestment.html:33
 msgid "Invest amount:"
 msgstr "Valor investido:"
 
@@ -478,7 +502,8 @@ msgstr "Valor investido:"
 msgid "Contracted lack:"
 msgstr "Carência contratada:"
 
-#: templates/accounts/investment.html:32 templates/core/statement.html:131
+#: templates/accounts/investment.html:32 templates/core/statement.html:134
+#: templates/core/statement.html:162 templates/core/statement.html:163
 msgid "months"
 msgstr "Meses"
 
@@ -495,6 +520,8 @@ msgid "Income percent:"
 msgstr "Porcentagem de rendimento:"
 
 #: templates/accounts/investment.html:34 templates/investment/plans.html:52
+#: templates/investment/reinvestment.html:41
+#: templates/investment/reinvestment.html:47
 msgid "per month"
 msgstr "ao mês"
 
@@ -533,6 +560,7 @@ msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
 #: templates/accounts/investment.html:52
+#: templates/investment/reinvestment.html:68
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
@@ -851,9 +879,9 @@ msgstr "Saldo do Cartão"
 msgid "RECHARGES"
 msgstr "RECARGAS"
 
-#: templates/card.html:64 templates/core/statement.html:89
-#: templates/core/statement.html:117 templates/core/statement.html:146
-#: templates/core/statement.html:175
+#: templates/card.html:64 templates/core/statement.html:92
+#: templates/core/statement.html:120 templates/core/statement.html:149
+#: templates/core/statement.html:182 templates/core/statement.html:211
 msgid "Date"
 msgstr "Data"
 
@@ -934,7 +962,7 @@ msgstr "Plano de investimento atual:"
 msgid "Below you can follow all your customers"
 msgstr ""
 
-#: templates/core/my-customers.html:63 templates/core/statement.html:77
+#: templates/core/my-customers.html:63 templates/core/statement.html:80
 msgid "Comissions"
 msgstr "Minhas Comissões"
 
@@ -954,7 +982,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: templates/core/my-customers.html:155 templates/core/statement.html:149
+#: templates/core/my-customers.html:155 templates/core/statement.html:185
 #: templates/investment/my-customers.html:22
 msgid "Name"
 msgstr ""
@@ -1055,23 +1083,51 @@ msgstr ""
 msgid "Transactions"
 msgstr "Movimentações"
 
-#: templates/core/statement.html:80
+#: templates/core/statement.html:77
+msgid "Reinvestments"
+msgstr "Reinvestimentos"
+
+#: templates/core/statement.html:83
 msgid "Withdrawals"
 msgstr "Saques"
 
-#: templates/core/statement.html:90 templates/core/statement.html:176
+#: templates/core/statement.html:93 templates/core/statement.html:212
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/core/statement.html:93 templates/core/statement.html:179
+#: templates/core/statement.html:96 templates/core/statement.html:215
 msgid "Account Type"
 msgstr "Tipo de Conta"
 
-#: templates/core/statement.html:121
+#: templates/core/statement.html:124
 msgid "Lack"
 msgstr ""
 
-#: templates/core/statement.html:148
+#: templates/core/statement.html:150
+msgid "Prev investment"
+msgstr "Investimento anterior"
+
+#: templates/core/statement.html:151
+msgid "Reinvestment"
+msgstr "Reinvestimento"
+
+#: templates/core/statement.html:152
+msgid "Prev invested amount"
+msgstr "investimento anterior"
+
+#: templates/core/statement.html:153
+msgid "Reinvested amount"
+msgstr "Valor reinvestido"
+
+#: templates/core/statement.html:154
+msgid "Prev incomes"
+msgstr "Rendimentos anteriores"
+
+#: templates/core/statement.html:155
+msgid "Upgrade membership fee"
+msgstr "Taxa de upgrade"
+
+#: templates/core/statement.html:184
 msgid "Referral"
 msgstr ""
 
@@ -1311,10 +1367,12 @@ msgid "Is Investor?"
 msgstr "É Investidor?"
 
 #: templates/investment/my-customers.html:48 templates/investment/plans.html:36
+#: templates/investment/reinvestment.html:38
 msgid "Yes"
 msgstr "Sim"
 
 #: templates/investment/my-customers.html:50 templates/investment/plans.html:36
+#: templates/investment/reinvestment.html:38
 msgid "No"
 msgstr "Não"
 
@@ -1322,11 +1380,11 @@ msgstr "Não"
 msgid "Select your plan"
 msgstr "Selecione o seu plano"
 
-#: templates/investment/plans.html:34
+#: templates/investment/plans.html:34 templates/investment/reinvestment.html:36
 msgid "Subscription"
 msgstr "Taxa de adesão"
 
-#: templates/investment/plans.html:36
+#: templates/investment/plans.html:36 templates/investment/reinvestment.html:38
 msgid "Allow monthly withdraw"
 msgstr "Permite saque mensal"
 
@@ -1338,7 +1396,8 @@ msgstr "Inicie um novo investimento"
 msgid "Choose your plan grace period for this plan"
 msgstr "Escolha o seu período de carência para este plano"
 
-#: templates/investment/plans.html:52
+#: templates/investment/plans.html:52 templates/investment/reinvestment.html:41
+#: templates/investment/reinvestment.html:47
 msgid "months with minimum of"
 msgstr "meses com mínimo de"
 
@@ -1346,11 +1405,11 @@ msgstr "meses com mínimo de"
 msgid "Type the desired amount"
 msgstr "Digite o valor desejado"
 
-#: templates/investment/plans.html:62
+#: templates/investment/plans.html:62 templates/investment/reinvestment.html:64
 msgid "Desired BTC amount to be invested"
 msgstr "Quantidade de BTC a ser investida"
 
-#: templates/investment/plans.html:63
+#: templates/investment/plans.html:63 templates/investment/reinvestment.html:65
 msgid "The membership fee will be added automatically."
 msgstr "O valor da taxa de inscrição será somado automaticamente."
 
@@ -1359,8 +1418,53 @@ msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
 #: templates/investment/plans.html:121
+#: templates/investment/reinvestment.html:101
 msgid "Message"
 msgstr "Mensagem"
+
+#: templates/investment/reinvestment.html:25
+msgid "Start your reinvestment"
+msgstr "Inicie o seu reinvestimento"
+
+#: templates/investment/reinvestment.html:30
+msgid "Selected Plan"
+msgstr "Plano Selecionado"
+
+#: templates/investment/reinvestment.html:41
+msgid "Your current grace period is:"
+msgstr "Sua carência atual é:"
+
+#: templates/investment/reinvestment.html:44
+msgid "Change your grace period?"
+msgstr "Mudar carência?"
+
+#: templates/investment/reinvestment.html:54
+msgid "Type the amount to be reinvested"
+msgstr "Digite a quantidade a ser reinvestida"
+
+#: templates/investment/reinvestment.html:57
+msgid "Incomes balance:"
+msgstr "Saldo de rendimentos:"
+
+#: templates/investment/reinvestment.html:58
+msgid "Checking account balance:"
+msgstr "Saldo conta corrente:"
+
+#: templates/investment/reinvestment.html:60
+msgid ""
+"The system automatically deducts the reinvestment amount from your income."
+msgstr ""
+"O sistema automaticamente desconta o valor a ser reinvestido dos seus rendimentos."
+
+#: templates/investment/reinvestment.html:61
+msgid ""
+"If you also want to use your checking account balance to make this "
+"reinvestiment, please mark the check field on the side of the checking "
+"account balance."
+msgstr ""
+"Se você também deseja usar o saldo de sua conta corrente para realizar esse "
+"reinvestimento, por favor marque o campo ao lado do saldo de sua conta "
+"corrente."
 
 #: templates/payments/withdraw.html:24
 msgid "Min transfer amount is:"

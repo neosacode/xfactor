@@ -24,7 +24,7 @@ from exchange_core.rates import CurrencyPrice
 from exchange_core.pagination import paginate
 from exchange_core.views import StatementView as CoreStatementView
 from exchange_payments.forms import NewWithdrawForm
-from apps.investment.models import Investments, Incomes, Comissions, Graduations
+from apps.investment.models import Investments, Incomes, Comissions, Graduations, Reinvestments
 from apps.investment.forms import CourseSubscriptionForm
 
 
@@ -204,6 +204,7 @@ class StatementView(CoreStatementView):
         context['incomes'] = paginate(self.request, Statement.objects.filter(account__user=self.request.user, type__in=['income']).order_by('-created'), url_param_name='incomes_page')
         context['statement'] = paginate(self.request, Statement.objects.filter(account__user=self.request.user).exclude(type__in=['income', 'comission']).order_by('-created'), url_param_name='statement_page')
         context['comissions'] = paginate(self.request, Comissions.objects.filter(Q(referral__promoter=self.request.user) | Q(referral__advisor=self.request.user)).order_by('-created'), url_param_name='comissions_page')
+        context['reinvestments'] = paginate(self.request, Reinvestments.objects.filter(investment__account__user=self.request.user).order_by('-created'), url_param_name='reinvestments_page')
         context['total_comission'] = Comissions.get_amount(self.request.user)
         return context
 
