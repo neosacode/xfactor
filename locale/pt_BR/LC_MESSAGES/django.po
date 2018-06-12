@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-11 15:51+0000\n"
+"POT-Creation-Date: 2018-06-12 22:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,19 +282,19 @@ msgstr "Créditos"
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:29
+#: apps/investment/templates/investment/signup.html:32
 msgid "Your investment promoter is"
 msgstr "Seu promotor de investimento é"
 
-#: apps/investment/templates/investment/signup.html:59
+#: apps/investment/templates/investment/signup.html:63
 msgid "Sign Up"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:79
+#: apps/investment/templates/investment/signup.html:83
 msgid "Already have an account?"
 msgstr "Já possui uma conta?"
 
-#: apps/investment/templates/investment/signup.html:79
+#: apps/investment/templates/investment/signup.html:83
 msgid "Log In"
 msgstr "Acessar"
 
@@ -1088,8 +1088,9 @@ msgid "Reinvestments"
 msgstr "Reinvestimentos"
 
 #: templates/core/statement.html:83
-msgid "Withdrawals"
-msgstr "Saques"
+#| msgid "Transfer"
+msgid "Transfers"
+msgstr "Transferências"
 
 #: templates/core/statement.html:93 templates/core/statement.html:212
 msgid "Description"
@@ -1454,7 +1455,8 @@ msgstr "Saldo conta corrente:"
 msgid ""
 "The system automatically deducts the reinvestment amount from your income."
 msgstr ""
-"O sistema automaticamente desconta o valor a ser reinvestido dos seus rendimentos."
+"O sistema automaticamente desconta o valor a ser reinvestido dos seus "
+"rendimentos."
 
 #: templates/investment/reinvestment.html:61
 msgid ""
@@ -1670,6 +1672,9 @@ msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 #: xfactor/views.py:197
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
+
+#~ msgid "Withdrawals"
+#~ msgstr "Saques"
 
 #~ msgid "-- Select your investment advisor --"
 #~ msgstr "-- Selecione o seu investment advisor --"
