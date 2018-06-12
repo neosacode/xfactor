@@ -21,17 +21,17 @@
                                 {% if promoter.username != 'business' and promoter.username != 'leoschew' and promoter.username != 'leonardoschew' %}
                                 <p class="text-center">
                                     {% if promoter.username == 'xfactor' %}
-                                        <img class="img-fluid" src="https://accounts.xfactor.cash/static/img/logo-login.a2a21fb36f21.png">
+                                        <img class="img-fluid" src="https://accounts.xfactor.cash/static/img/logo-login.a2a21fb36f21.png"><br><br>
                                     {% else %}
                                         {% if not promoter.avatar %}
                                             <img src="https://www.w3schools.com/howto/img_avatar.png" class="img-fluid rounded-circle" width="100" alt="">
                                         {% else %}
                                             <img src="{% thumbnail promoter.avatar 100x100 crop %}" class="rounded-circle">
                                         {% endif %}<br><br>
-                                    {% endif %}
 
-                                    {% trans "Your investment promoter is" %}<br>
-                                    <strong style="font-size: 20px;">{{ promoter.first_name }} - {{ promoter.username }}</strong>
+                                        {% trans "Your investment promoter is" %}<br>
+                                        <strong style="font-size: 20px;">{{ promoter.first_name }} - {{ promoter.username }}</strong>
+                                    {% endif %}
                                 </p>
 
                                 <hr>
