@@ -5,4 +5,3 @@
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-orderbook.git#egg=exchange_orderbook
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-comissions.git#egg=exchange_comissions
 -e git+https://github.com/julianogouveia/python-bitcoinlib.git#egg=bitcoin
-uwsgi

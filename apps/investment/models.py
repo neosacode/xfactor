@@ -266,6 +266,7 @@ class Comissions(TimeStampedModel, models.Model):
     referral = models.ForeignKey(Referrals, related_name='comissions', on_delete=models.CASCADE)
     investment = models.ForeignKey(Investments, null=True, related_name='comissions', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
+    reinvestment = models.ForeignKey('investment.Reinvestments', related_name='comissions', on_delete=models.CASCADE, null=True)
 
     @classmethod
     def get_amount(self, user):
