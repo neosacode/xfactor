@@ -64,4 +64,3 @@ class Command(BaseCommand):
                     else:
                         continue
 
-                raise('Exception')
