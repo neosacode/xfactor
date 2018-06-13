@@ -913,7 +913,7 @@ msgstr "Enviar"
 
 #: templates/core/documents.html:59
 msgid "Drivers License or ID - Back"
-msgstr "Carteira de Motorista ou RG - Trás"
+msgstr "Carteira de Motorista ou RG - Verso"
 
 #: templates/core/documents.html:91
 msgid "Document Selfie"
