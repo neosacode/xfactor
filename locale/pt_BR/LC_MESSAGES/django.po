@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-12 22:43+0000\n"
+"POT-Creation-Date: 2018-06-14 14:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,15 +35,15 @@ msgstr "Serviços > Boleto"
 
 #: apps/boleto/views.py:28
 msgid "Your bank slip payment request was created"
-msgstr ""
+msgstr "Sua solicitação de pagamento foi criada"
 
 #: apps/boleto/views.py:37
 msgid "This bank slip is already registered in our system"
-msgstr ""
+msgstr "O boleto já está registrado em nosso sistema"
 
 #: apps/boleto/views.py:40
 msgid "Insufficient funds"
-msgstr ""
+msgstr "Saldo insuficiente"
 
 #: apps/investment/apps.py:7 apps/investment/models.py:117
 msgid "Investments"
@@ -51,45 +51,45 @@ msgstr "Investimentos"
 
 #: apps/investment/forms.py:18 apps/investment/models.py:63
 msgid "Payment Type"
-msgstr ""
+msgstr "Tipo de Pagamento"
 
 #: apps/investment/forms.py:20
 msgid "User plan"
-msgstr ""
+msgstr "Plano do usuário"
 
 #: apps/investment/forms.py:20
 msgid "Course"
-msgstr ""
+msgstr "Curso"
 
 #: apps/investment/forms.py:23 apps/investment/forms.py:25
 msgid "Payment Code"
-msgstr ""
+msgstr "Código de Pagamento"
 
 #: apps/investment/forms.py:38 apps/investment/forms.py:40
 #: apps/investment/forms.py:79 apps/investment/forms.py:81
 msgid "2FA Code"
-msgstr ""
+msgstr "Código 2FA"
 
 #: apps/investment/forms.py:51 apps/investment/forms.py:102
 msgid "The 2FA code is invalid"
-msgstr ""
+msgstr "O código 2FA é inválido"
 
 #: apps/investment/forms.py:58
 msgid "First name"
-msgstr ""
+msgstr "Primeiro nome"
 
 #: apps/investment/forms.py:59
 msgid "Last name"
-msgstr ""
+msgstr "Sobrenome"
 
 #: apps/investment/forms.py:60
 msgid "Confirm e-mail"
-msgstr ""
+msgstr "Confirmar e-mail"
 
 #: apps/investment/forms.py:61 apps/investment/forms.py:84
 #: templates/card.html:49
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 #: apps/investment/forms.py:62
 msgid ""
@@ -101,11 +101,11 @@ msgstr ""
 
 #: apps/investment/forms.py:72
 msgid "The e-mails aren't equal"
-msgstr ""
+msgstr "Os e-mails não são iguais"
 
 #: apps/investment/forms.py:96
 msgid "Wrong password informed"
-msgstr ""
+msgstr "Senha errada informada"
 
 #: apps/investment/models.py:26 templates/investment/plans.html:32
 #: templates/investment/reinvestment.html:34
@@ -277,24 +277,24 @@ msgstr "Crédito"
 msgid "Credits"
 msgstr "Créditos"
 
-#: apps/investment/templates/investment/signup.html:19
+#: apps/investment/templates/investment/signup.html:26
 #: templates/two_factor/core/login.html:87
 msgid "Open Account"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:32
+#: apps/investment/templates/investment/signup.html:36
 msgid "Your investment promoter is"
 msgstr "Seu promotor de investimento é"
 
-#: apps/investment/templates/investment/signup.html:63
+#: apps/investment/templates/investment/signup.html:66
 msgid "Sign Up"
 msgstr "Abrir Conta"
 
-#: apps/investment/templates/investment/signup.html:83
+#: apps/investment/templates/investment/signup.html:86
 msgid "Already have an account?"
 msgstr "Já possui uma conta?"
 
-#: apps/investment/templates/investment/signup.html:83
+#: apps/investment/templates/investment/signup.html:86
 msgid "Log In"
 msgstr "Acessar"
 
@@ -374,10 +374,36 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
+#: templates/account/password_reset.html:9
+msgid "Password reset"
+msgstr "Redefinir senha"
+
+#: templates/account/password_reset.html:10
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll send you "
+"an email allowing you to reset it."
+msgstr ""
+"Esqueceu sua senha? Informe seu endereço de e-mail abaixo, e nós enviaremos "
+"um email para você redefinir a sua senha."
+
+#: templates/account/password_reset.html:20
+#| msgid "Forgot your password?"
+msgid "Reset my password"
+msgstr "Redefinir minha senha?"
+
+#: templates/account/password_reset.html:26
+#, python-format
+msgid ""
+"If you have any trouble resetting your password, contact us at <a href="
+"\"mailto:%(THEME_CONTACT_EMAIL)s\">%(THEME_CONTACT_EMAIL)s</a>."
+msgstr ""
+"Se você estiver com problemas para redefinir sua senha, contate-nos <a href="
+"\"mailto:%(THEME_CONTACT_EMAIL)s\">%(THEME_CONTACT_EMAIL)s</a>."
+
 #: templates/account/settings.html:6 templates/account/settings.html:27
 #: templates/core/index.html:110
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: templates/account/settings.html:10 templates/accounts/checking.html:9
 #: templates/accounts/investment.html:9 templates/boleto/pay.html:10
@@ -419,13 +445,13 @@ msgstr ""
 
 #: templates/account/settings.html:63 templates/core/settings.html:38
 msgid "Change My Password"
-msgstr ""
+msgstr "Mudar Minha Senha"
 
 #: templates/account/settings.html:73 templates/account/settings.html:97
 #: templates/account/settings.html:108 templates/core/settings.html:48
 #: templates/core/settings.html:74
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: templates/account/settings.html:79
 msgid "Personal Data"
@@ -1088,7 +1114,6 @@ msgid "Reinvestments"
 msgstr "Reinvestimentos"
 
 #: templates/core/statement.html:83
-#| msgid "Transfer"
 msgid "Transfers"
 msgstr "Transferências"
 
@@ -1672,12 +1697,3 @@ msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 #: xfactor/views.py:197
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
-
-#~ msgid "Withdrawals"
-#~ msgstr "Saques"
-
-#~ msgid "-- Select your investment advisor --"
-#~ msgstr "-- Selecione o seu investment advisor --"
-
-#~ msgid "TBXA - Transfer between xfactor accounts"
-#~ msgstr "TECX - Transferência entre contas xfactor"
