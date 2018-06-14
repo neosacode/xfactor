@@ -1,4 +1,4 @@
-{% load static i18n widget_tweaks %}
+{% load static i18n widget_tweaks lang %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="{% static "css/login.css" %}">
 	<link rel="stylesheet" href="{% static "css/plugins.css" %}">
 	<link rel="icon" type="image/png" href="https://www.xfactor.cash/img/favi.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.9.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" />
 		<script>
 function mostra(theId){
 var theArray= new Array('item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8');
@@ -35,11 +36,36 @@ if(w.style.display=="block"){w.style.display='none';}else{
 </head>
 <body>
 	<div class="container">
-		<div class="menu">
-			<div class="logo">
+		<div class="menu row">
+			<div class="col-md-6 logo">
 				<img src="{% static "img/logo-login.png" %}" alt="">
 			</div>
-			<div class="voltar">
+            <div class="col-md-4">
+                <div class="dropdown show float-right">
+                  <a class="btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <span class="flag-icon {{ LANGUAGE_CODE|language_css_class }}"></span>
+                  </a>
+
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+
+                  <div class="dropdown-menu">
+                    <div id="change-language-app">
+                        <form action="{% url 'set_language' %}" method="post" id="change-language-form">{% csrf_token %}
+                            <input type="hidden" name="language" v-model="language">
+                            {% for language in languages %}
+                            <a href="#" @click.prevent="set_language('{{ language.code }}')" class="dropdown-item tx-14">
+                                <span class="flag-icon {{ language.code|language_css_class }}"></span>
+                                {{ language.name_local }}
+                            </a>
+                            {% endfor %}
+                        </form>
+                    </div>
+                  </div>
+                </div>
+            </div>
+			<div class="voltar col-md-2 text-right">
 				<a href="http://xfactor.cash">{% trans "Back to site" %}</a>
 			</div>
 		</div>
@@ -88,7 +114,9 @@ if(w.style.display=="block"){w.style.display='none';}else{
 		</div>
 	</div>
 
-<script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
-<script src="{% static "bower_components/font-awesome/svg-with-js/js/fontawesome-all.js" %}"></script>
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static "bower_components/font-awesome/svg-with-js/js/fontawesome-all.js" %}"></script>
+    {% include "core/scripts.html" %}
 </body>
 </html>
