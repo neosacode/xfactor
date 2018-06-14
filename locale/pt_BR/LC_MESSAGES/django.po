@@ -389,7 +389,7 @@ msgstr ""
 #: templates/account/password_reset.html:20
 #| msgid "Forgot your password?"
 msgid "Reset my password"
-msgstr "Redefinir minha senha?"
+msgstr "Redefinir minha senha"
 
 #: templates/account/password_reset.html:26
 #, python-format
