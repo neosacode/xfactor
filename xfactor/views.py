@@ -1,16 +1,10 @@
-import uuid
-
 from decimal import Decimal
-
-from django.http import HttpResponse
-from django.contrib import messages
 from django.contrib.auth import logout
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, View
-from django.conf import settings
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import transaction
 from django.db.models import Q, Sum
@@ -86,7 +80,6 @@ class InvestmentAccountView(TemplateView):
 
         incomes = []
         incomes_qs = Incomes.objects.filter(investment=self.investment, date__lte=timezone.now()).order_by('-date')[:30]
-        increment_amount = 0
 
         for income in reversed(incomes_qs):
             incomes.append({'amount': str(income.amount).replace(',', '.'), 'date': income.date})
