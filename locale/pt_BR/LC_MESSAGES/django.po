@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-14 14:39+0000\n"
+"POT-Creation-Date: 2018-06-21 21:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,49 +49,54 @@ msgstr "Saldo insuficiente"
 msgid "Investments"
 msgstr "Investimentos"
 
-#: apps/investment/forms.py:18 apps/investment/models.py:63
+#: apps/investment/forms.py:16 apps/investment/models.py:63
 msgid "Payment Type"
 msgstr "Tipo de Pagamento"
 
-#: apps/investment/forms.py:20
+#: apps/investment/forms.py:18
 msgid "User plan"
 msgstr "Plano do usuário"
 
-#: apps/investment/forms.py:20
+#: apps/investment/forms.py:18
 msgid "Course"
 msgstr "Curso"
 
-#: apps/investment/forms.py:23 apps/investment/forms.py:25
+#: apps/investment/forms.py:21 apps/investment/forms.py:23
 msgid "Payment Code"
 msgstr "Código de Pagamento"
 
-#: apps/investment/forms.py:38 apps/investment/forms.py:40
-#: apps/investment/forms.py:79 apps/investment/forms.py:81
+#: apps/investment/forms.py:36 apps/investment/forms.py:38
+#: apps/investment/forms.py:86 apps/investment/forms.py:88
 msgid "2FA Code"
 msgstr "Código 2FA"
 
-#: apps/investment/forms.py:51 apps/investment/forms.py:102
+#: apps/investment/forms.py:49 apps/investment/forms.py:109
 msgid "The 2FA code is invalid"
 msgstr "O código 2FA é inválido"
 
-#: apps/investment/forms.py:58
+#: apps/investment/forms.py:55
+#| msgid "Investment Advisor"
+msgid "Investment advisor username (optional)"
+msgstr "Usuário do seu investment advisor (opcional)"
+
+#: apps/investment/forms.py:56
 msgid "First name"
 msgstr "Primeiro nome"
 
-#: apps/investment/forms.py:59
+#: apps/investment/forms.py:57
 msgid "Last name"
 msgstr "Sobrenome"
 
-#: apps/investment/forms.py:60
+#: apps/investment/forms.py:58
 msgid "Confirm e-mail"
 msgstr "Confirmar e-mail"
 
-#: apps/investment/forms.py:61 apps/investment/forms.py:84
+#: apps/investment/forms.py:59 apps/investment/forms.py:91
 #: templates/card.html:49
 msgid "Password"
 msgstr "Senha"
 
-#: apps/investment/forms.py:62
+#: apps/investment/forms.py:60
 msgid ""
 "I have read and agree to the terms of use: <a href=\"https://www.xfactor."
 "cash/terms.html\" target=\"blank\">open terms</a>"
@@ -99,11 +104,16 @@ msgstr ""
 "Eu li e concordo com os termos de uso: <a href=\"https://www.xfactor.cash/"
 "terms.html\" target=\"blank\">abrir termos</a>"
 
-#: apps/investment/forms.py:72
+#: apps/investment/forms.py:70
 msgid "The e-mails aren't equal"
 msgstr "Os e-mails não são iguais"
 
-#: apps/investment/forms.py:96
+#: apps/investment/forms.py:79
+#| msgid "Comission"
+msgid "Advisor doesn't exists"
+msgstr "Advisor não existe"
+
+#: apps/investment/forms.py:103
 msgid "Wrong password informed"
 msgstr "Senha errada informada"
 
@@ -194,6 +204,7 @@ msgstr "{plan} com {grace_period} meses"
 #: apps/investment/models.py:85 templates/boleto/pay.html:61
 #: templates/core/statement.html:94 templates/core/statement.html:121
 #: templates/core/statement.html:183 templates/core/statement.html:213
+#: templates/financial/payments.html:94
 #: templates/investment/credit-line.html:65
 msgid "Amount"
 msgstr ""
@@ -255,7 +266,7 @@ msgstr "Empréstimo"
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:214 templates/accounts/checking.html:113
+#: apps/investment/models.py:214 templates/accounts/checking.html:119
 #: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
@@ -278,7 +289,7 @@ msgid "Credits"
 msgstr "Créditos"
 
 #: apps/investment/templates/investment/signup.html:26
-#: templates/two_factor/core/login.html:87
+#: templates/two_factor/core/login.html:113
 msgid "Open Account"
 msgstr "Abrir Conta"
 
@@ -343,21 +354,21 @@ msgstr "ERRO! Você não possui saldo suficiente"
 msgid "Congratulations! Your reinvesting plan was created."
 msgstr "Parabéns! Seu plano de reinvestimento foi criado."
 
-#: apps/investment/views.py:388 templates/accounts/checking.html:95
+#: apps/investment/views.py:391 templates/accounts/checking.html:101
 #: templates/investment/credit-line.html:5
 #: templates/investment/credit-line.html:16
 msgid "Credit Line"
 msgstr "Linha de Crédito"
 
-#: apps/investment/views.py:442
+#: apps/investment/views.py:445
 msgid "Your loan application was created with success!"
 msgstr "Seu empréstimo foi criado com sucesso!"
 
-#: apps/investment/views.py:476
+#: apps/investment/views.py:479
 msgid "Your credit application was created with success!"
 msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
-#: templates/account/base.html:43 templates/two_factor/core/login.html:43
+#: templates/account/base.html:43 templates/two_factor/core/login.html:69
 msgid "Back to site"
 msgstr "Voltar ao site"
 
@@ -387,7 +398,6 @@ msgstr ""
 "um email para você redefinir a sua senha."
 
 #: templates/account/password_reset.html:20
-#| msgid "Forgot your password?"
 msgid "Reset my password"
 msgstr "Redefinir minha senha"
 
@@ -408,7 +418,8 @@ msgstr "Configurações"
 #: templates/account/settings.html:10 templates/accounts/checking.html:9
 #: templates/accounts/investment.html:9 templates/boleto/pay.html:10
 #: templates/card.html:10 templates/core/documents.html:11
-#: templates/core/statement.html:10 templates/investment/credit-line.html:9
+#: templates/core/statement.html:10 templates/financial/payments.html:10
+#: templates/investment/credit-line.html:9
 #: templates/investment/my-customers.html:10 templates/investment/plans.html:9
 #: templates/investment/reinvestment.html:9 templates/request-card.html:10
 #: templates/two_factor/_base.html:9
@@ -431,37 +442,51 @@ msgstr ""
 msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
-#: templates/account/settings.html:38
+#: templates/account/settings.html:40
 msgid "My Profile"
 msgstr "Meu Perfil"
 
-#: templates/account/settings.html:40
+#: templates/account/settings.html:42
+msgid "My Brand"
+msgstr ""
+
+#: templates/account/settings.html:48
 msgid "Select a new profile image using the field below"
 msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
 
-#: templates/account/settings.html:56 templates/core/settings.html:23
+#: templates/account/settings.html:50
+#, fuzzy
+#| msgid "Select a new profile image using the field below"
+msgid "Select a new brand image using the field below"
+msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
+
+#: templates/account/settings.html:68 templates/core/settings.html:23
 msgid "Update"
 msgstr ""
 
-#: templates/account/settings.html:63 templates/core/settings.html:38
+#: templates/account/settings.html:75 templates/core/settings.html:38
 msgid "Change My Password"
 msgstr "Mudar Minha Senha"
 
-#: templates/account/settings.html:73 templates/account/settings.html:97
-#: templates/account/settings.html:108 templates/core/settings.html:48
+#: templates/account/settings.html:85 templates/account/settings.html:115
+#: templates/account/settings.html:126 templates/core/settings.html:48
 #: templates/core/settings.html:74
 msgid "Save"
 msgstr "Salvar"
 
-#: templates/account/settings.html:79
+#: templates/account/settings.html:93
 msgid "Personal Data"
 msgstr "Dados Pessoais"
 
-#: templates/account/settings.html:101
+#: templates/account/settings.html:95
+msgid "Business Data"
+msgstr ""
+
+#: templates/account/settings.html:119
 msgid "Address"
 msgstr "Endereço"
 
-#: templates/accounts/checking.html:5 templates/accounts/checking.html:73
+#: templates/accounts/checking.html:5 templates/accounts/checking.html:75
 #: templates/core/index.html:139 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
@@ -475,31 +500,37 @@ msgid "Back"
 msgstr ""
 
 #: templates/accounts/checking.html:77
+#, fuzzy
+#| msgid "Open Account"
+msgid "Corporate Account"
+msgstr "Abrir Conta"
+
+#: templates/accounts/checking.html:83
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:83
+#: templates/accounts/checking.html:89
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:89 templates/payments/withdraw.html:7
+#: templates/accounts/checking.html:95 templates/payments/withdraw.html:7
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:101 templates/investment/plans.html:5
+#: templates/accounts/checking.html:107 templates/investment/plans.html:5
 #: templates/investment/reinvestment.html:5
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:107 templates/boleto/pay.html:6
+#: templates/accounts/checking.html:113 templates/boleto/pay.html:6
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:119 templates/card.html:6
+#: templates/accounts/checking.html:125 templates/card.html:6
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:125
+#: templates/accounts/checking.html:131
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
@@ -586,7 +617,7 @@ msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
 #: templates/accounts/investment.html:52
-#: templates/investment/reinvestment.html:68
+#: templates/investment/reinvestment.html:70
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
@@ -602,7 +633,7 @@ msgstr "MEUS CLIENTES"
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:99
+#: templates/accounts/investment.html:99 templates/financial/payments.html:53
 msgid "Last 30 days"
 msgstr ""
 
@@ -764,6 +795,7 @@ msgid "I read and agree with the terms: "
 msgstr "Eu li e concordo com os termos:"
 
 #: templates/card-advisor-modal.html:67 templates/card-modal.html:75
+#: templates/investment/reinvestment.html:67
 msgid "Open terms"
 msgstr "Abrir termos"
 
@@ -908,6 +940,7 @@ msgstr "RECARGAS"
 #: templates/card.html:64 templates/core/statement.html:92
 #: templates/core/statement.html:120 templates/core/statement.html:149
 #: templates/core/statement.html:182 templates/core/statement.html:211
+#: templates/financial/payments.html:95
 msgid "Date"
 msgstr "Data"
 
@@ -949,7 +982,7 @@ msgstr "Selfie com o Documento"
 msgid "Proof of Residence"
 msgstr "Comprovante de Residência"
 
-#: templates/core/documents.html:163
+#: templates/core/documents.html:163 templates/financial/payments.html:130
 msgid "Choose"
 msgstr "Procurar"
 
@@ -1009,16 +1042,17 @@ msgid "Search"
 msgstr ""
 
 #: templates/core/my-customers.html:155 templates/core/statement.html:185
+#: templates/financial/payments.html:90
 #: templates/investment/my-customers.html:22
 msgid "Name"
 msgstr ""
 
-#: templates/core/my-customers.html:156
+#: templates/core/my-customers.html:156 templates/financial/payments.html:91
 #: templates/investment/my-customers.html:23
 msgid "Username"
 msgstr ""
 
-#: templates/core/my-customers.html:157
+#: templates/core/my-customers.html:157 templates/financial/payments.html:92
 #: templates/investment/my-customers.html:24
 msgid "E-mail"
 msgstr ""
@@ -1155,6 +1189,123 @@ msgstr "Taxa de upgrade"
 
 #: templates/core/statement.html:184
 msgid "Referral"
+msgstr ""
+
+#: templates/financial/import-favored-modal.html:7
+msgid "Import Favored"
+msgstr ""
+
+#: templates/financial/import-favored-modal.html:24
+#: templates/investment/incomes-withdraw.html:29
+#: templates/payments/withdraw.html:51
+msgid "account password"
+msgstr "sua senha"
+
+#: templates/financial/import-favored-modal.html:30
+#: templates/financial/import-favored-modal.html:43
+#: templates/investment/incomes-withdraw.html:35
+#: templates/investment/incomes-withdraw.html:48
+#: templates/payments/withdraw.html:57 templates/payments/withdraw.html:70
+msgid "We use this for security reasons"
+msgstr "Nós usamos isso por razões de segurança"
+
+#: templates/financial/import-favored-modal.html:36
+#: templates/investment/incomes-withdraw.html:41
+#: templates/payments/withdraw.html:63
+msgid "Your account two factor code"
+msgstr "Código 2 Fatores da sua conta"
+
+#: templates/financial/import-favored-modal.html:37
+#: templates/investment/incomes-withdraw.html:42
+#: templates/payments/withdraw.html:64
+msgid "two factor code"
+msgstr "código 2 fatores"
+
+#: templates/financial/import-favored-modal.html:48
+msgid "Import"
+msgstr ""
+
+#: templates/financial/payments.html:6 templates/investment/my-customers.html:6
+#: templates/investment/my-customers.html:15
+msgid "My Customers"
+msgstr "Meus clientes"
+
+#: templates/financial/payments.html:17
+msgid "Payments Management"
+msgstr ""
+
+#: templates/financial/payments.html:22
+msgid "Schedule"
+msgstr ""
+
+#: templates/financial/payments.html:25
+msgid "Consolidated"
+msgstr ""
+
+#: templates/financial/payments.html:30
+msgid "For Authorization"
+msgstr ""
+
+#: templates/financial/payments.html:33
+#, fuzzy
+#| msgid "Receipt"
+msgid "Receipts"
+msgstr "Comprovante"
+
+#: templates/financial/payments.html:39
+msgid "Scheduled Payments"
+msgstr ""
+
+#: templates/financial/payments.html:44
+msgid "Date Filter"
+msgstr ""
+
+#: templates/financial/payments.html:49 templates/financial/payments.html:52
+msgid "Today"
+msgstr ""
+
+#: templates/financial/payments.html:54
+msgid "Last 60 days"
+msgstr ""
+
+#: templates/financial/payments.html:55
+msgid "Last 90 days"
+msgstr ""
+
+#: templates/financial/payments.html:56
+#, fuzzy
+#| msgid "Grace period"
+msgid "By period"
+msgstr "Carência"
+
+#: templates/financial/payments.html:62
+#, fuzzy
+#| msgid "Started at: "
+msgid "Start date"
+msgstr "Incio em:"
+
+#: templates/financial/payments.html:66
+#, fuzzy
+#| msgid "Due date"
+msgid "End date"
+msgstr "Vencimento"
+
+#: templates/financial/payments.html:72
+#, fuzzy
+#| msgid "Transactions"
+msgid "Actions"
+msgstr "Movimentações"
+
+#: templates/financial/payments.html:74
+msgid "Export current filter to excel"
+msgstr ""
+
+#: templates/financial/payments.html:77
+msgid "Import favored"
+msgstr ""
+
+#: templates/financial/payments.html:93
+msgid "Wallet"
 msgstr ""
 
 #: templates/investment/credit-line.html:22
@@ -1354,35 +1505,9 @@ msgstr "Valor máximo de saque:"
 msgid "Operation fee:"
 msgstr "Taxa de operação"
 
-#: templates/investment/incomes-withdraw.html:29
-#: templates/payments/withdraw.html:51
-msgid "account password"
-msgstr "sua senha"
-
-#: templates/investment/incomes-withdraw.html:35
-#: templates/investment/incomes-withdraw.html:48
-#: templates/payments/withdraw.html:57 templates/payments/withdraw.html:70
-msgid "We use this for security reasons"
-msgstr "Nós usamos isso por razões de segurança"
-
-#: templates/investment/incomes-withdraw.html:41
-#: templates/payments/withdraw.html:63
-msgid "Your account two factor code"
-msgstr "Código 2 Fatores da sua conta"
-
-#: templates/investment/incomes-withdraw.html:42
-#: templates/payments/withdraw.html:64
-msgid "two factor code"
-msgstr "código 2 fatores"
-
 #: templates/investment/incomes-withdraw.html:53
 msgid "To Withdraw"
 msgstr "Sacar"
-
-#: templates/investment/my-customers.html:6
-#: templates/investment/my-customers.html:15
-msgid "My Customers"
-msgstr "Meus clientes"
 
 #: templates/investment/my-customers.html:25
 msgid "Mobile Phone"
@@ -1444,7 +1569,7 @@ msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
 #: templates/investment/plans.html:121
-#: templates/investment/reinvestment.html:101
+#: templates/investment/reinvestment.html:110
 msgid "Message"
 msgstr "Mensagem"
 
@@ -1492,6 +1617,21 @@ msgstr ""
 "Se você também deseja usar o saldo de sua conta corrente para realizar esse "
 "reinvestimento, por favor marque o campo ao lado do saldo de sua conta "
 "corrente."
+
+#: templates/investment/reinvestment.html:67
+msgid "I read and accept the reinvestment terms"
+msgstr "Eu li e concordo com os termos de reinvestimento:"
+
+#: templates/investment/reinvestment.html:103 xfactor/views.py:125
+#: xfactor/views.py:128 xfactor/views.py:142 xfactor/views.py:161
+#: xfactor/views.py:164 xfactor/views.py:178
+msgid "Error!"
+msgstr "Erro!"
+
+#: templates/investment/reinvestment.html:103
+msgid "You must accept the terms to do your reinvestment"
+msgstr ""
+"Você precisa aceitar os termos de uso para realizar o seu reinvestimento"
 
 #: templates/payments/withdraw.html:24
 msgid "Min transfer amount is:"
@@ -1597,24 +1737,24 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/two_factor/core/login.html:63
+#: templates/two_factor/core/login.html:89
 msgid "Login in, to access your back office"
 msgstr "Informe seus dados para acessar sua conta"
 
-#: templates/two_factor/core/login.html:83
+#: templates/two_factor/core/login.html:109
 msgid "Log in"
 msgstr "Acessar Conta"
 
-#: templates/two_factor/core/login.html:85
+#: templates/two_factor/core/login.html:111
 msgid "Forgot your password?"
 msgstr "Esqueceu sua senha?"
 
-#: templates/two_factor/core/login.html:87
+#: templates/two_factor/core/login.html:113
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:161
-#: xfactor/views.py:197
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:154
+#: xfactor/views.py:190
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1637,15 +1777,93 @@ msgid ""
 msgstr ""
 
 #: templates/two_factor/core/setup_complete.html:20
+#: templates/two_factor/profile/profile.html:34
 msgid "Add Phone Number"
 msgstr ""
 
-#: xfactor/views.py:132 xfactor/views.py:135 xfactor/views.py:149
-#: xfactor/views.py:168 xfactor/views.py:171 xfactor/views.py:185
-msgid "Error!"
-msgstr "Erro!"
+#: templates/two_factor/profile/profile.html:5
+#, fuzzy
+#| msgid "Account Type"
+msgid "Account Security"
+msgstr "Tipo de Conta"
 
-#: xfactor/views.py:132
+#: templates/two_factor/profile/profile.html:9
+msgid "Tokens will be generated by your token generator."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:11
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:13
+msgid "Tokens will be generated by your YubiKey."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:17
+msgid "Backup Phone Numbers"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:18
+msgid ""
+"If your primary method is not available, we are able to\n"
+"        send backup tokens to the phone numbers listed below."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:28
+msgid "Unregister"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:37
+msgid "Backup Tokens"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:39
+msgid ""
+"If you don't have any device with you, you can access\n"
+"        your account using backup tokens."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:41
+#, python-format
+msgid ""
+"\n"
+"        You have only one backup token remaining.\n"
+"      "
+msgid_plural ""
+"\n"
+"        You have %(counter)s backup tokens remaining.\n"
+"      "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/two_factor/profile/profile.html:48
+msgid "Show Codes"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:50
+#: templates/two_factor/profile/profile.html:54
+msgid "Disable Two-Factor Authentication"
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"However we strongly discourage you to do so, you can\n"
+"      also disable two-factor authentication for your account."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:56
+msgid ""
+"Two-factor authentication is not enabled for your\n"
+"      account. Enable two-factor authentication for enhanced account\n"
+"      security."
+msgstr ""
+
+#: templates/two_factor/profile/profile.html:60
+msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+#: xfactor/views.py:125
 #, fuzzy
 #| msgid ""
 #| "You are not a investor yet, please make a Xfactor investment plan first "
@@ -1656,7 +1874,7 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:135 xfactor/views.py:168
+#: xfactor/views.py:128 xfactor/views.py:161
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1664,36 +1882,41 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:140 xfactor/views.py:176
+#: xfactor/views.py:133 xfactor/views.py:169
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:140
+#: xfactor/views.py:133
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:149
+#: xfactor/views.py:142
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:161
+#: xfactor/views.py:154
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#: xfactor/views.py:171
+#: xfactor/views.py:164
 #, fuzzy
 #| msgid "You not have enought balance for request your card."
 msgid "You need be a investment advisor first, to request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:176
+#: xfactor/views.py:169
 msgid "Your already have requested your card."
 msgstr "Você já solicitou o seu cartão."
 
-#: xfactor/views.py:185
+#: xfactor/views.py:178
 msgid "You not have enought balance for request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:197
+#: xfactor/views.py:190
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
+
+#, fuzzy
+#~| msgid "Account Type"
+#~ msgid "Account type"
+#~ msgstr "Tipo de Conta"
