@@ -1,5 +1,5 @@
 {% extends "core/index.html" %}
-{% load static i18n %}
+{% load static exchange i18n %}
 
 {% block page_title %}
     {% trans "Invest" %}
@@ -29,10 +29,10 @@
 					<div class="titulo">
 						<h2 class="text-center"><i class="fas fa-trophy"></i> {{ plan.name }}</h2>
 					</div>
-					<p><span>{% trans "Min down" %}:</span> {{ plan.min_down|floatformat:2 }} BTC</p>
-					<p><span>{% trans "Max down" %}:</span> {{ plan.max_down|floatformat:2 }} BTC</p>
-					<p><span>{% trans "Subscription" %}:</span> {{ plan.membership_fee|floatformat:4 }} BTC</p>
-					<p><span>{% trans "Min reinvest" %}:</span> {{ plan.min_reinvest|floatformat:2 }} BTC</p>
+					<p><span>{% trans "Min down" %}:</span> {{ plan.min_down|decimal_slice:2 }} BTC</p>
+					<p><span>{% trans "Max down" %}:</span> {{ plan.max_down|decimal_slice:2 }} BTC</p>
+					<p><span>{% trans "Subscription" %}:</span> {{ plan.membership_fee|decimal_slice:4 }} BTC</p>
+					<p><span>{% trans "Min reinvest" %}:</span> {{ plan.min_reinvest|decimal_slice:2 }} BTC</p>
 					<p class="no-border"><span>{% trans "Allow monthly withdraw" %}:</span> {% if plan.allow_monthly_draw %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</p>
 				</div>
 			</div>

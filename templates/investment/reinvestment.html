@@ -1,5 +1,5 @@
 {% extends "core/index.html" %}
-{% load static i18n %}
+{% load static exchange i18n %}
 
 {% block page_title %}
     {% trans "Invest" %}
@@ -31,14 +31,14 @@
 						<p>
 						<span>{% trans "Plan" %}:</span> <strong>{{ investment.plan_grace_period.plan.name }}</strong><br>
 						<span>{% trans "Invest amount:" %}</span> <strong>{{ investment.amount }} BTC</strong><br>
-						<span>{% trans "Min down" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_down|floatformat:2 }} BTC</strong><br>
-						<span>{% trans "Max down" %}:</span> <strong>{{ investment.plan_grace_period.plan.max_down|floatformat:2 }} BTC</strong><br>
-						<span>{% trans "Subscription" %}:</span> <strong>{{ investment.plan_grace_period.plan.membership_fee|floatformat:4 }} BTC</strong><br>
-						<span>{% trans "Min reinvest" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_reinvest|floatformat:2 }} BTC</strong><br>
+						<span>{% trans "Min down" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_down|decimal_slice:2 }} BTC</strong><br>
+						<span>{% trans "Max down" %}:</span> <strong>{{ investment.plan_grace_period.plan.max_down|decimal_slice:2 }} BTC</strong><br>
+						<span>{% trans "Subscription" %}:</span> <strong>{{ investment.plan_grace_period.plan.membership_fee|decimal_slice:4 }} BTC</strong><br>
+						<span>{% trans "Min reinvest" %}:</span> <strong>{{ investment.plan_grace_period.plan.min_reinvest|decimal_slice:2 }} BTC</strong><br>
 						<span>{% trans "Allow monthly withdraw" %}:</span> <strong>{% if investment.plan_grace_period.plan.allow_monthly_draw %}{% trans "Yes" %}{% else %}{% trans "No" %}{% endif %}</strong></p>
 						
 						<h3 class="section-sub-title"><i class="fas fa-calendar-alt"></i> {% trans "Grace Period" %}</h3>
-						<p class="paragraph">{% trans "Your current grace period is:" %}<br><strong>{{ investment.plan_grace_period.grace_period.months }} {% trans "months with minimum of" %} {{ investment.plan_grace_period.income_percent|floatformat:0 }}% {% trans "per month" %}</strong></p>
+						<p class="paragraph">{% trans "Your current grace period is:" %}<br><strong>{{ investment.plan_grace_period.grace_period.months }} {% trans "months with minimum of" %} {{ investment.plan_grace_period.income_percent|decimal_slice:0 }}% {% trans "per month" %}</strong></p>
 						
 
 						<span v-show="grace_periods.length > 0" class="paragraph">{% trans "Change your grace period?" %}</span>
