@@ -24,7 +24,7 @@
                                 {% endif %}
 
                                 <h2 class="text-center mb-30 uppercase" style="font-size: 16px !important; font-weight: bold;">{% trans "Open Account" %}</h2>
-                                
+
                                 {% if promoter.username != 'business' and promoter.username != 'leoschew' and promoter.username != 'leonardoschew' and promoter.username != 'xfactor' %}
                                 <p class="text-center">
                                         {% if not promoter.avatar %}
@@ -55,11 +55,11 @@
                                         {% elif field.is_hidden %}
                                             {{ field }}
                                         {% else %}
-                                            {% include "core/forms/field-no-label.html" with field=field %}
+                                            {% include "core/forms/field.html" with field=field %}
                                         {% endif %}
                                     </div>
                                 {% endfor %}
-                                
+
 
                                 <div class="form-group text-center row m-t-10">
                                     <div class="col-12">
