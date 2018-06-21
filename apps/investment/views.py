@@ -362,7 +362,10 @@ class ReferrerSignupView(SignupView):
         referral = Referrals()
         referral.user = user
         referral.promoter = self.promoter
-        # referral.advisor = form.cleaned_data['advisor']
+
+        if form.cleaned_data['advisor']:
+            referral.advisor = Users.objects.filter(username=form.cleaned_data['advisor'], graduations__type=Graduations._advisor).first()
+
         referral.save()
 
 
