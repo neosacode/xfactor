@@ -112,6 +112,10 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     def get_by_user(self, user):
         return Investments.objects.filter(account__user=user).first()
 
+    @classmethod
+    def get_active_by_user(self, user):
+        return Investments.objects.filter(account__user=user, status=self.STATUS.paid).first()
+
     class Meta:
         verbose_name = _("Investment")
         verbose_name_plural = _("Investments")

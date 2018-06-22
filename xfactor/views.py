@@ -124,7 +124,7 @@ class CreateCourseSubscriptionView(View):
         if Graduations.objects.filter(type=Graduations._advisor, user=request.user).exists():
             return {'title': _("Error!"), 'message': _("You are a investment advisor, please update this page and request your card."), 'type': 'error'}
 
-        if not Investments.objects.filter(account__user=request.user).exists():
+        if not Investments.get_active_by_user(request.user):
             return {'title': _("Error!"), 'message': _("You are not a investor yet, please make a Xfactor investment plan first and go back here to get your card."), 'type': 'error'}
 
         course_subscription_form = CourseSubscriptionForm(request.POST, user=request.user)
@@ -157,7 +157,7 @@ class CreateCourseSubscriptionView(View):
 @method_decorator([login_required, json_view], name='dispatch')
 class CreateAdvisorSubscriptionView(View):
     def post(self, request):
-        if not Investments.objects.filter(account__user=request.user).exists():
+        if not Investments.get_active_by_user(request.user):
             return {'title': _("Error!"), 'message': _("You are not a investor yet, please make a Xfactor investment plan first and go back here to get your card."), 'type': 'error'}
         
         if not Graduations.objects.filter(type=Graduations._advisor, user=request.user).exists():
@@ -247,3 +247,8 @@ class IncomesWithdrawView(View):
             checking_account.to_deposit((amount - abs(fee)) )
 
             return {'status': 'success', 'amount': amount}
+
+
+@method_decorator([login_required], name='dispatch')
+class PaymentsView(TemplateView):
+    template_name = 'financial/payments.html'
