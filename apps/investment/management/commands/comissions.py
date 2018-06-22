@@ -25,7 +25,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         while True:
             with transaction.atomic():
-                investments = Investments.objects.order_by('-created')
+                investments = Investments.objects.filter(status=Investments.STATUS.paid).order_by('-created')
 
                 for item in investments:
                     if Comissions.objects.filter(investment=item).exists():

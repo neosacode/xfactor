@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         while True:
-            for item in Investments.objects.order_by('created'):
+            for item in Investments.objects.filter(status=Investments.STATUS.paid).order_by('created'):
                 with transaction.atomic():
                     reinvestments = Reinvestments.objects.filter(investment=item)
 

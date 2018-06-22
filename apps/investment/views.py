@@ -20,7 +20,7 @@ from .models import Plans, Investments, PlanGracePeriods
 
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
-from apps.investment.forms import SignupForm, CourseSubscriptionForm
+from apps.investment.forms import SignupForm
 from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits, Reinvestments
 from apps.investment.utils import decimal_split
 
@@ -30,12 +30,11 @@ class PlansView(TemplateView):
     template_name = 'investment/plans.html'
 
     def get(self, request):
-        if Investments.objects.filter(account__user=self.request.user).exists():
+        if Investments.get_active_by_user(self.request.user):
             return redirect(reverse('xfactor>investment'))
 
         plans = Plans.objects.filter(status=Plans.STATUS.active).order_by('order')
-        investments = Investments.objects.filter(account__user=request.user)
-        return render(request, self.template_name, {'plans': plans, 'investments': investments})
+        return render(request, self.template_name, {'plans': plans})
 
 
 @method_decorator([json_view, login_required], name='dispatch')
@@ -53,32 +52,10 @@ class GetPlanLacksView(View):
         return response
 
 
-@method_decorator([login_required], name='dispatch')
-class CancelNoFidelityPlanView(TemplateView):
-    def get(self, request):
-        investment_id = request.GET['charge']
-        investment = Investments.objects.get(account__user=request.user, pk=investment_id)
-
-        if investment.plan_grace_period.grace_period.months > 0:
-            messages.error(request, _("This plan can't be cancelled"))
-
-        with transaction.atomic():
-            account = investment.account
-            account.reserved -= investment.amount
-            account.deposit += investment.amount
-            account.save()
-
-            investment.status = Investments.STATUS.cancelled
-            investment.save()
-            
-            messages.success(request, _("Your non-fidelity investment has been cancelled"))
-        return redirect(reverse('financial-my-plans'))
-
-
 @method_decorator([login_required, json_view], name='dispatch')
 class CreateInvestmentView(View):
     def post(self, request):
-        if Investments.objects.filter(account__user=self.request.user).exists():
+        if Investments.get_active_by_user(self.request.user):
             return {'message': _("ERROR! You already have a investment")}
 
         grace_period_pk = request.POST['grace_period']

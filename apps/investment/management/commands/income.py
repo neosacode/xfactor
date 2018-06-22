@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         while True:
-            incomes = Incomes.objects.filter(date__lte=timezone.now()).order_by('-date')
+            incomes = Incomes.objects.filter(date__lte=timezone.now(), status=Investments.STATUS.paid).order_by('-date')
             
             for income in incomes:
                 with transaction.atomic():
