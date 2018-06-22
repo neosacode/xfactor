@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('account/statement/', views.StatementView.as_view(), name='core>statement'),
     path('account/withdraw-income/', views.IncomesWithdrawView.as_view(), name='core>withdraw-income'),
+    path('financial/payments/', views.PaymentsView.as_view(), name='financial>payments'),
 
     path('account/select/', views.SelectAccountView.as_view(), name='xfactor>select-account'),
     path('account/checking/', views.CheckingAccountView.as_view(), name='xfactor>checking'),
@@ -17,6 +18,7 @@ urlpatterns = [
     path('account/raw-logout/', views.LogoutView.as_view(), name='xfactor>logout'),
     path('account/create-course-subscription/', views.CreateCourseSubscriptionView.as_view(), name='xfactor>create-course-subscription'),
     path('account/create-advisor-subscription/', views.CreateAdvisorSubscriptionView.as_view(), name='xfactor>create-advisor-subscription'),
+
     path('', include('apps.investment.urls')),
     path('', include('apps.boleto.urls')),
 ]
