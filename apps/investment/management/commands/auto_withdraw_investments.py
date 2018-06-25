@@ -59,5 +59,8 @@ class Command(BaseCommand):
                     statement.fk = item.pk
                     statement.save()
 
+                    item.status = Investments.STATUS.consumed
+                    item.save()
+
                     print(total_amount)
                     print('Auto withdraw reinvestment of {} from {} user'.format(item.amount, item.account.user.username))

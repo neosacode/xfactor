@@ -77,8 +77,8 @@ def gen_code():
     return str(uuid.uuid4().hex)[0:10]
 
 
-class Investments(TimeStampedModel, StatusModel, models.Model):
-    STATUS = Choices('pending', 'paid', 'consumed', 'cancelled')
+class Investments(TimeStampedModel, models.Model):
+    STATUS = Choices('paid', 'consumed', 'cancelled')
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     plan_grace_period = models.ForeignKey(PlanGracePeriods, related_name='investments', verbose_name=_("Plan grace period"), on_delete=models.CASCADE)
@@ -86,6 +86,7 @@ class Investments(TimeStampedModel, StatusModel, models.Model):
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8, default=Decimal('0.00'), verbose_name=_("Membership Fee"))
     account = models.ForeignKey('exchange_core.Accounts', related_name='investments', verbose_name=_("Account"), on_delete=models.CASCADE)
     paid_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Paid Date"))
+    status = models.CharField(max_length=255, choices=STATUS, default=STATUS.paid)
 
     @property
     def end_date(self):
@@ -327,7 +328,7 @@ class PlanGracePeriodsAdmin(BaseAdmin):
 class InvestmentsAdmin(BaseAdmin):
     list_display = ['plan_grace_period', 'account', 'created', 'status']
     ordering = ('-created',)
-    readonly_fields = ['status_changed', 'status', 'plan_grace_period', 'amount', 'account', 'paid_date']
+    readonly_fields = ['status', 'plan_grace_period', 'amount', 'account', 'paid_date']
 
     class Media:
         css = {'all': ('css/admin/hide-submit-buttons.css',)}
