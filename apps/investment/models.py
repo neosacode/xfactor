@@ -123,11 +123,14 @@ class Investments(TimeStampedModel, models.Model):
 
 
 class Incomes(models.Model):
+    STATUS = Choices('created', 'paid')
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField()
     amount = models.DecimalField(max_digits=20, decimal_places=8)
     investment = models.ForeignKey(Investments, related_name='incomes', on_delete=models.CASCADE, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30, default=STATUS.created)
 
     class Meta:
         verbose_name = _("Income")
