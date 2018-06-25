@@ -24,9 +24,10 @@ class Command(BaseCommand):
                     tx_id = hashlib.sha1(tx_bytes).hexdigest()
                     statements = Statement.objects.filter(tx_id=tx_id)
 
+                    income.status = Incomes.STATUS.paid
+                    income.save()
+
                     if statements.exists():
-                        income.status = Incomes.STATUS.paid
-                        income.save()
                         continue
 
                     # Transfere o rendimento para a conta do investidor
