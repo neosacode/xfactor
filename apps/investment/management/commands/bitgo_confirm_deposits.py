@@ -1,12 +1,9 @@
-import hashlib
+import time
 import gevent
 
 from decimal import Decimal
 
-from dateutil.relativedelta import relativedelta
-from django.utils import timezone
-
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from exchange_core.models import Accounts, Statement
@@ -59,9 +56,9 @@ class Command(BaseCommand):
             wallets = bitgo.get_wallets()
 
             for wallet in wallets['wallets']:
-                offset = 0
-                payments = []
                 transactions = bitgo.get_transactions(wallet['id'])
 
                 for transfer in transactions['transfers']:
                     gevent.wait([gevent.spawn(check_transaction, output) for output in transfer['outputs']])
+
+            time.sleep(30)
