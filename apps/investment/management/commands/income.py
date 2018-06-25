@@ -2,7 +2,7 @@ import hashlib
 
 from django.utils import timezone
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from exchange_core.models import Statement
@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         while True:
-            incomes = Incomes.objects.filter(date__lte=timezone.now(), status=Investments.STATUS.paid).order_by('-date')
+            incomes = Incomes.objects.filter(date__lte=timezone.now(), investment__status=Investments.STATUS.paid).order_by('-date')
             
             for income in incomes:
                 with transaction.atomic():
