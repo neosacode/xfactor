@@ -18,6 +18,7 @@ urlpatterns = [
     path('account/raw-logout/', views.LogoutView.as_view(), name='xfactor>logout'),
     path('account/create-course-subscription/', views.CreateCourseSubscriptionView.as_view(), name='xfactor>create-course-subscription'),
     path('account/create-advisor-subscription/', views.CreateAdvisorSubscriptionView.as_view(), name='xfactor>create-advisor-subscription'),
+    path('autologin/', views.AutoLoginView.as_view(), name='xfactor>autologin'),
 
     path('', include('apps.investment.urls')),
     path('', include('apps.boleto.urls')),

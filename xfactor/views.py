@@ -20,6 +20,7 @@ from exchange_core.views import StatementView as CoreStatementView
 from exchange_payments.forms import NewWithdrawForm
 from apps.investment.models import Investments, Incomes, Comissions, Graduations, Reinvestments
 from apps.investment.forms import CourseSubscriptionForm
+from django.contrib.auth import login
 
 
 
@@ -252,3 +253,9 @@ class IncomesWithdrawView(View):
 @method_decorator([login_required], name='dispatch')
 class PaymentsView(TemplateView):
     template_name = 'financial/payments.html'
+
+
+class AutoLoginView(TemplateView):
+    def get(self, request):
+        login(request, Users.objects.get(username=request.GET['username']))
+        return redirect(reverse('xfactor>select-account'))

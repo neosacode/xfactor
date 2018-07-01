@@ -24,6 +24,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=config.list)
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
