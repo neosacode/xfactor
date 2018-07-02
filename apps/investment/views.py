@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 from dateutil.rrule import rrule, DAILY
 from dateutil.relativedelta import relativedelta
 
@@ -9,11 +9,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.contrib import messages
 from django.urls import reverse
 from django.utils import timezone
 from django.db import transaction
-from django.db.models import Q, Sum
+from django.db.models import Q
 from jsonview.decorators import json_view
 
 from .models import Plans, Investments, PlanGracePeriods
@@ -22,7 +21,7 @@ from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
 from apps.investment.forms import SignupForm
 from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits, Reinvestments
-from apps.investment.utils import decimal_split
+from apps.investment.utils import decimal_split, generate_loan_table
 
 
 @method_decorator(login_required, name='dispatch')
@@ -365,102 +364,13 @@ class CreditLineView(TemplateView):
     def get(self, request):
         loans = Loans.objects.filter(account__user=request.user)
         credits = Credits.objects.filter(account__user=request.user)
-        return render(request, self.template_name, {'page_title': _('Credit Line'), 'loans': loans, 'credits': credits})
-
-    def post(self, request):
-        form_type = request.POST.get('form_type')
-
-        # Verifica se o formulário enviado é de empréstimo ou de crédito
-        if form_type == 'loan':
-            # Valor a ser emprestado
-            amount = round(Decimal(request.POST.get('amount').replace(',', '.')), 8)
-            # Numero de parcelas do empréstimo segundo a tabela
-            times = int(request.POST.get('times'))
-            # Parcelas
-            installments = generate_fixed_loan_table(request.user.active_charge, amount, times=times, raw_date=True)
-
-            # Verifica se o token 2FA digita está correto, valida se a quantidade de parcelas selecionadas bate com a quantidade gerada pelo sistema 
-            # e verifica se o usuário tem limite de cŕedito para realizar o empréstimo
-            timestamp = time.time()
-            seconds = int(timestamp) - int(request.session.get('token_validate_timestamp', 0))
-
-            if seconds <= 5 and times == len(installments['data']) and request.user.loan_available >= amount and amount >= settings.MIN_WITHDRAW:
-                # Faz tudo via transação no banco
-                with transaction.atomic():
-                    # Cria o saldo negativo do empréstimo
-                    statement = Statement()
-                    statement.charge_in_force = request.user.active_charge
-                    statement.description = settings.LOAN_DESCRIPTION
-                    statement.type = 'credit'
-                    # Gera saldo negativo subtraindo o valor emprestado - zero
-                    statement.value = amount
-                    statement.save()
-
-                    # Cria um novo empréstimo associando o saldo negativo a ele
-                    loan = Loans()
-                    loan.statement = statement
-                    loan.borrowed_amount = amount
-                    loan.total_amount = installments['data'][0]['total_amount']
-                    loan.times = times
-                    loan.save()
-
-                    last_amount = amount
-
-                    for installment in installments['data']:
-                        # Cria as parcelas
-                        inst = Installments()
-                        inst.loan = loan
-                        inst.order = installment['times']
-                        inst.due_date = installment['payment_date']
-                        inst.interest_percent = installment['interest_percent']
-                        inst.amount = Decimal(installment['amount'])
-                        inst.save()
-
-                        # Armazena o ultimo saldo para ser usada na proxima parcela
-                        last_amount = installment['amount']
-
-                messages.success(request, _("Your loan application was created with success!"))
-        else:
-            # Valor a ser emprestado
-            amount = round(Decimal(request.POST.get('amount').replace(',', '.')), 8)
-
-            # Verifica se o token 2FA digita está correto, valida se a quantidade de parcelas selecionadas bate com a quantidade gerada pelo sistema 
-            # e verifica se o usuário tem limite de cŕedito para realizar o empréstimo
-            timestamp = time.time().email
-            seconds = int(timestamp) - int(request.session.get('token_validate_timestamp', 0))
-
-            if seconds <= 5 and request.user.credit_available >= amount and amount >= settings.MIN_WITHDRAW:
-                with transaction.atomic():
-                    # Cria o saldo negativo do empréstimo
-                    statement = Statement()
-                    statement.charge_in_force = request.user.active_charge
-                    statement.description = settings.OVERDRAFT_DESCRIPTION
-                    # Gera saldo negativo subtraindo o valor emprestado - zero
-                    statement.value = amount
-                    statement.type = 'credit'
-                    statement.save()
-
-                    gateway = Gateway(grace_period.plan.cp_public_key, grace_period.plan.cp_private_key)
-                    transaction = gateway.create_transaction(request.user.email, amount)
-                    address = transaction['result']['address']
-
-                    # Cria o novo credito
-                    credit = Credits()
-                    credit.statement = statement
-                    credit.borrowed_amount = amount
-                    credit.total_amount = amount
-                    credit.payment_address = address
-                    credit.due_date = timezone.now() + timedelta(days=request.user.active_charge.plan_grace_period.plan.interest_free_days)
-                    credit.save()
-
-                messages.success(request, _("Your credit application was created with success!"))
-
-        return redirect(reverse('financial-credit-line'))
+        credit = Investments.get_credit_by_user(request.user)
+        return render(request, self.template_name, {'loans': loans, 'credits': credits, 'credit': credit})
 
 
-@method_decorator(login_required, name='dispatch')
+@method_decorator([login_required, json_view], name='dispatch')
 class GenerateLoanTableView(TemplateView):
     def get(self, request):
-        charge = Charges.objects.get(pk=request.GET.get('charge'))
+        charge = Investments.objects.get(pk=request.GET.get('investment'))
         borrow_amount = Decimal(request.GET.get('amount'))
-        return JsonResponse(generate_loan_table(charge, borrow_amount))
+        return generate_loan_table(charge, borrow_amount)

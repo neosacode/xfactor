@@ -11,6 +11,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.db.models import Q, Sum
 from django import forms
+from django.conf import settings
 from model_utils.models import TimeStampedModel, StatusModel
 from model_utils import Choices
 
@@ -110,12 +111,26 @@ class Investments(TimeStampedModel, models.Model):
         return '{} - {} BTC - {}'.format(self.account.user.username, self.amount, self.plan_grace_period.plan.name)
 
     @classmethod
-    def get_by_user(self, user):
+    def get_by_user(cls, user):
         return Investments.objects.filter(account__user=user).first()
 
     @classmethod
-    def get_active_by_user(self, user):
-        return Investments.objects.filter(account__user=user, status=self.STATUS.paid).first()
+    def get_active_by_user(cls, user):
+        return Investments.objects.filter(account__user=user, status=cls.STATUS.paid).first()
+
+    @classmethod
+    def get_credit_by_user(cls, user):
+        investment = cls.get_active_by_user(user)
+
+        if investment:
+            return {
+                'loan': {
+                    'limit': '{:8f}'.format(investment.amount * (settings.LOAN_INTEREST_PERCENT / 100))
+                },
+                'overdraft': {
+                    'limit': '{:8f}'.format(investment.amount * (settings.OVERDRAFT_INTEREST_PERCENT / 100))
+                }
+            }
 
     class Meta:
         verbose_name = _("Investment")
@@ -275,6 +290,7 @@ class Comissions(TimeStampedModel, models.Model):
     investment = models.ForeignKey(Investments, null=True, related_name='comissions', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
     reinvestment = models.ForeignKey('investment.Reinvestments', related_name='comissions', on_delete=models.CASCADE, null=True)
+    fk = models.UUIDField(null=True)
 
     @classmethod
     def get_amount(self, user):
