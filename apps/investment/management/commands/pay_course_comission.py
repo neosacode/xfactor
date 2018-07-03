@@ -37,6 +37,9 @@ class Command(BaseCommand):
                 if not advisor:
                     continue
 
+                if not payment_month:
+                    payment_month = month
+
                 if month != payment_month and item.created.day >= 10:
                     payment_month = month
                     ledger = defaultdict(lambda: 0)
@@ -47,8 +50,8 @@ class Command(BaseCommand):
                     comission_amount = abs(item.amount) * Decimal('0.1')
                 elif ledger[advisor.username] >= 5 and ledger[advisor.username] <= 10:
                     comission_amount = abs(item.amount)
-                else:
-                    continue
+                elif ledger[advisor.username] >= 11:
+                    comission_amount = abs(item.amount) * Decimal('0.1')
 
                 # Skip if comission is already paid
                 if Comissions.objects.filter(fk=item.pk).exists():
