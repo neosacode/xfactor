@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-21 21:06+0000\n"
+"POT-Creation-Date: 2018-07-04 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr "O boleto já está registrado em nosso sistema"
 msgid "Insufficient funds"
 msgstr "Saldo insuficiente"
 
-#: apps/investment/apps.py:7 apps/investment/models.py:117
+#: apps/investment/apps.py:7 apps/investment/models.py:137
 msgid "Investments"
 msgstr "Investimentos"
 
-#: apps/investment/forms.py:16 apps/investment/models.py:63
+#: apps/investment/forms.py:16 apps/investment/models.py:64
 msgid "Payment Type"
 msgstr "Tipo de Pagamento"
 
@@ -75,7 +75,6 @@ msgid "The 2FA code is invalid"
 msgstr "O código 2FA é inválido"
 
 #: apps/investment/forms.py:55
-#| msgid "Investment Advisor"
 msgid "Investment advisor username (optional)"
 msgstr "Usuário do seu investment advisor (opcional)"
 
@@ -109,7 +108,6 @@ msgid "The e-mails aren't equal"
 msgstr "Os e-mails não são iguais"
 
 #: apps/investment/forms.py:79
-#| msgid "Comission"
 msgid "Advisor doesn't exists"
 msgstr "Advisor não existe"
 
@@ -117,176 +115,193 @@ msgstr "Advisor não existe"
 msgid "Wrong password informed"
 msgstr "Senha errada informada"
 
-#: apps/investment/models.py:26 templates/investment/plans.html:32
+#: apps/investment/models.py:27 templates/investment/plans.html:32
 #: templates/investment/reinvestment.html:34
 msgid "Min down"
 msgstr "Invest. Min:"
 
-#: apps/investment/models.py:27 templates/investment/plans.html:33
+#: apps/investment/models.py:28 templates/investment/plans.html:33
 #: templates/investment/reinvestment.html:35
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:28 templates/investment/plans.html:35
+#: apps/investment/models.py:29 templates/investment/plans.html:35
 #: templates/investment/reinvestment.html:37
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:29 apps/investment/models.py:86
+#: apps/investment/models.py:30 apps/investment/models.py:87
 msgid "Membership Fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:30
+#: apps/investment/models.py:31
 #, fuzzy
 #| msgid "Total Comissions"
 msgid "Promoter Comission"
 msgstr "Total Comissões"
 
-#: apps/investment/models.py:31
+#: apps/investment/models.py:32
 #, fuzzy
 #| msgid "Comission"
 msgid "Advisor Comission"
 msgstr "Minhas Comissões"
 
-#: apps/investment/models.py:32
+#: apps/investment/models.py:33
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:36 apps/investment/models.py:60
+#: apps/investment/models.py:37 apps/investment/models.py:61
 #: templates/core/statement.html:123 templates/core/statement.html:186
 #: templates/investment/reinvestment.html:32
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:37
+#: apps/investment/models.py:38
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:45
+#: apps/investment/models.py:46
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:48
+#: apps/investment/models.py:49
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:49
+#: apps/investment/models.py:50
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:61 templates/investment/plans.html:49
+#: apps/investment/models.py:62 templates/investment/plans.html:49
 #: templates/investment/reinvestment.html:40
 msgid "Grace Period"
 msgstr "Carência"
 
-#: apps/investment/models.py:62
+#: apps/investment/models.py:63
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
-#: apps/investment/models.py:64 templates/core/statement.html:95
-#: templates/core/statement.html:122 templates/core/statement.html:214
+#: apps/investment/models.py:65 templates/core/statement.html:95
+#: templates/core/statement.html:122 templates/core/statement.html:213
 msgid "Currency"
 msgstr "Moeda"
 
-#: apps/investment/models.py:67 apps/investment/models.py:84
+#: apps/investment/models.py:68 apps/investment/models.py:85
 msgid "Plan grace period"
 msgstr "Carência do plano"
 
-#: apps/investment/models.py:68
+#: apps/investment/models.py:69
 msgid "Plan grace periods"
 msgstr "Carências do plano"
 
-#: apps/investment/models.py:73
+#: apps/investment/models.py:74
 #, python-brace-format
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:85 templates/boleto/pay.html:61
+#: apps/investment/models.py:86 templates/boleto/pay.html:61
 #: templates/core/statement.html:94 templates/core/statement.html:121
-#: templates/core/statement.html:183 templates/core/statement.html:213
-#: templates/financial/payments.html:94
-#: templates/investment/credit-line.html:65
+#: templates/core/statement.html:183 templates/core/statement.html:212
+#: templates/investment/credit-line.html:74
 msgid "Amount"
 msgstr ""
 
-#: apps/investment/models.py:87 apps/investment/models.py:193
-#: apps/investment/models.py:240
+#: apps/investment/models.py:88 apps/investment/models.py:216
+#: apps/investment/models.py:263
 msgid "Account"
 msgstr "Conta"
 
-#: apps/investment/models.py:88
+#: apps/investment/models.py:89
 msgid "Paid Date"
 msgstr "Data de Pagamento"
 
-#: apps/investment/models.py:116
+#: apps/investment/models.py:136
 msgid "Investment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:128
+#: apps/investment/models.py:151
 msgid "Income"
 msgstr "Rendimento"
 
-#: apps/investment/models.py:129 templates/core/statement.html:74
+#: apps/investment/models.py:152 templates/core/statement.html:74
 msgid "Incomes"
 msgstr "Rendimentos"
 
-#: apps/investment/models.py:135
+#: apps/investment/models.py:158
 msgid "Date to be ignored"
 msgstr "Data a ser ignorada"
 
-#: apps/investment/models.py:138
+#: apps/investment/models.py:161
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:139
+#: apps/investment/models.py:162
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:149
+#: apps/investment/models.py:172
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:149
+#: apps/investment/models.py:172
 msgid "Investment Advisor"
 msgstr "Investment Advisor"
 
-#: apps/investment/models.py:157
+#: apps/investment/models.py:180
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:158
+#: apps/investment/models.py:181
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/models.py:201
+#: apps/investment/models.py:224
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:202
+#: apps/investment/models.py:225
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:214 templates/accounts/checking.html:119
+#: apps/investment/models.py:237 templates/accounts/checking.html:113
 #: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
-#: apps/investment/models.py:227
+#: apps/investment/models.py:250
 msgid "Installment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:228
+#: apps/investment/models.py:251
 msgid "Installments"
 msgstr "Investimentos"
 
-#: apps/investment/models.py:256
+#: apps/investment/models.py:279
 msgid "Credit"
 msgstr "Crédito"
 
-#: apps/investment/models.py:257
+#: apps/investment/models.py:280
 msgid "Credits"
 msgstr "Créditos"
+
+#: apps/investment/models.py:296 templates/core/my-customers.html:19
+#: templates/core/my-customers.html:41
+msgid "Comission"
+msgstr "Minhas Comissões"
+
+#: apps/investment/models.py:297 templates/core/my-customers.html:63
+#: templates/core/statement.html:80
+msgid "Comissions"
+msgstr "Minhas Comissões"
+
+#: apps/investment/models.py:323 templates/core/statement.html:151
+msgid "Reinvestment"
+msgstr "Reinvestimento"
+
+#: apps/investment/models.py:324 templates/core/statement.html:77
+msgid "Reinvestments"
+msgstr "Reinvestimentos"
 
 #: apps/investment/templates/investment/signup.html:26
 #: templates/two_factor/core/login.html:113
@@ -309,64 +324,42 @@ msgstr "Já possui uma conta?"
 msgid "Log In"
 msgstr "Acessar"
 
-#: apps/investment/views.py:63
-msgid "This plan can't be cancelled"
-msgstr "Este plano não pode ser cancelado"
-
-#: apps/investment/views.py:74
-msgid "Your non-fidelity investment has been cancelled"
-msgstr "Seu plano sem fidelidade foi cancelado"
-
-#: apps/investment/views.py:82
+#: apps/investment/views.py:58
 msgid "ERROR! You already have a investment"
 msgstr "ERRO! Você já possui um investimento"
 
-#: apps/investment/views.py:101
+#: apps/investment/views.py:77
 msgid "ERROR! The investment amount it is out of the plan limit"
 msgstr "ERRO! Valor a ser investido está fora do limite do plano"
 
-#: apps/investment/views.py:104
+#: apps/investment/views.py:80
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:161
+#: apps/investment/views.py:137
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:162
+#: apps/investment/views.py:138
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:189
+#: apps/investment/views.py:165
 msgid "ERROR! Selected grace period is not valid."
 msgstr ""
 
-#: apps/investment/views.py:225
+#: apps/investment/views.py:201
 msgid "ERROR! The min reinvestment for this plan is {}"
 msgstr "ERRO! O valor mínimo para reinvestimento é {}"
 
-#: apps/investment/views.py:227
+#: apps/investment/views.py:203
 msgid "ERROR! You does not have enought balance"
 msgstr "ERRO! Você não possui saldo suficiente"
 
-#: apps/investment/views.py:317
+#: apps/investment/views.py:293
 msgid "Congratulations! Your reinvesting plan was created."
 msgstr "Parabéns! Seu plano de reinvestimento foi criado."
-
-#: apps/investment/views.py:391 templates/accounts/checking.html:101
-#: templates/investment/credit-line.html:5
-#: templates/investment/credit-line.html:16
-msgid "Credit Line"
-msgstr "Linha de Crédito"
-
-#: apps/investment/views.py:445
-msgid "Your loan application was created with success!"
-msgstr "Seu empréstimo foi criado com sucesso!"
-
-#: apps/investment/views.py:479
-msgid "Your credit application was created with success!"
-msgstr "Sua solicitação de crédito foi criada com sucesso!"
 
 #: templates/account/base.html:43 templates/two_factor/core/login.html:69
 msgid "Back to site"
@@ -418,8 +411,7 @@ msgstr "Configurações"
 #: templates/account/settings.html:10 templates/accounts/checking.html:9
 #: templates/accounts/investment.html:9 templates/boleto/pay.html:10
 #: templates/card.html:10 templates/core/documents.html:11
-#: templates/core/statement.html:10 templates/financial/payments.html:10
-#: templates/investment/credit-line.html:9
+#: templates/core/statement.html:10 templates/investment/credit-line.html:9
 #: templates/investment/my-customers.html:10 templates/investment/plans.html:9
 #: templates/investment/reinvestment.html:9 templates/request-card.html:10
 #: templates/two_factor/_base.html:9
@@ -442,51 +434,37 @@ msgstr ""
 msgid "Here you can change your Xfactor settings as you prefer."
 msgstr "Aqui você pode alterar as suas configurações Xfactor como preferir."
 
-#: templates/account/settings.html:40
+#: templates/account/settings.html:38
 msgid "My Profile"
 msgstr "Meu Perfil"
 
-#: templates/account/settings.html:42
-msgid "My Brand"
-msgstr ""
-
-#: templates/account/settings.html:48
+#: templates/account/settings.html:40
 msgid "Select a new profile image using the field below"
 msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
 
-#: templates/account/settings.html:50
-#, fuzzy
-#| msgid "Select a new profile image using the field below"
-msgid "Select a new brand image using the field below"
-msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
-
-#: templates/account/settings.html:68 templates/core/settings.html:23
+#: templates/account/settings.html:56 templates/core/settings.html:23
 msgid "Update"
 msgstr ""
 
-#: templates/account/settings.html:75 templates/core/settings.html:38
+#: templates/account/settings.html:63 templates/core/settings.html:38
 msgid "Change My Password"
 msgstr "Mudar Minha Senha"
 
-#: templates/account/settings.html:85 templates/account/settings.html:115
-#: templates/account/settings.html:126 templates/core/settings.html:48
+#: templates/account/settings.html:73 templates/account/settings.html:97
+#: templates/account/settings.html:108 templates/core/settings.html:48
 #: templates/core/settings.html:74
 msgid "Save"
 msgstr "Salvar"
 
-#: templates/account/settings.html:93
+#: templates/account/settings.html:79
 msgid "Personal Data"
 msgstr "Dados Pessoais"
 
-#: templates/account/settings.html:95
-msgid "Business Data"
-msgstr ""
-
-#: templates/account/settings.html:119
+#: templates/account/settings.html:101
 msgid "Address"
 msgstr "Endereço"
 
-#: templates/accounts/checking.html:5 templates/accounts/checking.html:75
+#: templates/accounts/checking.html:5 templates/accounts/checking.html:73
 #: templates/core/index.html:139 templates/select-account2.html:106
 msgid "Checking Account"
 msgstr "Conta Corrente"
@@ -500,37 +478,38 @@ msgid "Back"
 msgstr ""
 
 #: templates/accounts/checking.html:77
-#, fuzzy
-#| msgid "Open Account"
-msgid "Corporate Account"
-msgstr "Abrir Conta"
-
-#: templates/accounts/checking.html:83
 msgid "available balance"
 msgstr "saldo disponível"
 
-#: templates/accounts/checking.html:89
+#: templates/accounts/checking.html:83
 msgid "Receive"
 msgstr "Receber"
 
-#: templates/accounts/checking.html:95 templates/payments/withdraw.html:7
+#: templates/accounts/checking.html:89
+#: templates/financial/import-favored-modal.html:7
+#: templates/payments/withdraw.html:7
 msgid "Transfer"
 msgstr "Transferir"
 
-#: templates/accounts/checking.html:107 templates/investment/plans.html:5
+#: templates/accounts/checking.html:95 templates/investment/credit-line.html:5
+#: templates/investment/credit-line.html:16
+msgid "Credit Line"
+msgstr "Linha de Crédito"
+
+#: templates/accounts/checking.html:101 templates/investment/plans.html:5
 #: templates/investment/reinvestment.html:5
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:113 templates/boleto/pay.html:6
+#: templates/accounts/checking.html:107 templates/boleto/pay.html:6
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
-#: templates/accounts/checking.html:125 templates/card.html:6
+#: templates/accounts/checking.html:119 templates/card.html:6
 msgid "My Card"
 msgstr "Meu Cartão"
 
-#: templates/accounts/checking.html:131
+#: templates/accounts/checking.html:125
 msgid "Sell BTC"
 msgstr "Vender BTC"
 
@@ -617,7 +596,7 @@ msgid "Today Comissions"
 msgstr "Comissões de Hoje"
 
 #: templates/accounts/investment.html:52
-#: templates/investment/reinvestment.html:70
+#: templates/investment/reinvestment.html:68
 msgid "REINVEST"
 msgstr "REINVESTIR"
 
@@ -633,7 +612,7 @@ msgstr "MEUS CLIENTES"
 msgid "Follow your investment"
 msgstr "Acompanhe seu investimento"
 
-#: templates/accounts/investment.html:99 templates/financial/payments.html:53
+#: templates/accounts/investment.html:99
 msgid "Last 30 days"
 msgstr ""
 
@@ -795,7 +774,6 @@ msgid "I read and agree with the terms: "
 msgstr "Eu li e concordo com os termos:"
 
 #: templates/card-advisor-modal.html:67 templates/card-modal.html:75
-#: templates/investment/reinvestment.html:67
 msgid "Open terms"
 msgstr "Abrir termos"
 
@@ -940,7 +918,6 @@ msgstr "RECARGAS"
 #: templates/card.html:64 templates/core/statement.html:92
 #: templates/core/statement.html:120 templates/core/statement.html:149
 #: templates/core/statement.html:182 templates/core/statement.html:211
-#: templates/financial/payments.html:95
 msgid "Date"
 msgstr "Data"
 
@@ -982,7 +959,7 @@ msgstr "Selfie com o Documento"
 msgid "Proof of Residence"
 msgstr "Comprovante de Residência"
 
-#: templates/core/documents.html:163 templates/financial/payments.html:130
+#: templates/core/documents.html:163
 msgid "Choose"
 msgstr "Procurar"
 
@@ -1009,10 +986,6 @@ msgid ""
 "customers"
 msgstr ""
 
-#: templates/core/my-customers.html:19 templates/core/my-customers.html:41
-msgid "Comission"
-msgstr "Minhas Comissões"
-
 #: templates/core/my-customers.html:20 templates/core/my-customers.html:42
 msgid "Current Plan"
 msgstr "Plano de investimento atual:"
@@ -1020,10 +993,6 @@ msgstr "Plano de investimento atual:"
 #: templates/core/my-customers.html:52
 msgid "Below you can follow all your customers"
 msgstr ""
-
-#: templates/core/my-customers.html:63 templates/core/statement.html:80
-msgid "Comissions"
-msgstr "Minhas Comissões"
 
 #: templates/core/my-customers.html:77
 msgid "Active Customers"
@@ -1042,17 +1011,16 @@ msgid "Search"
 msgstr ""
 
 #: templates/core/my-customers.html:155 templates/core/statement.html:185
-#: templates/financial/payments.html:90
 #: templates/investment/my-customers.html:22
 msgid "Name"
 msgstr ""
 
-#: templates/core/my-customers.html:156 templates/financial/payments.html:91
+#: templates/core/my-customers.html:156
 #: templates/investment/my-customers.html:23
 msgid "Username"
 msgstr ""
 
-#: templates/core/my-customers.html:157 templates/financial/payments.html:92
+#: templates/core/my-customers.html:157
 #: templates/investment/my-customers.html:24
 msgid "E-mail"
 msgstr ""
@@ -1071,8 +1039,8 @@ msgid "Register Date"
 msgstr ""
 
 #: templates/core/my-customers.html:161
-#: templates/investment/credit-line.html:181
-#: templates/investment/credit-line.html:227
+#: templates/investment/credit-line.html:204
+#: templates/investment/credit-line.html:251
 msgid "Status"
 msgstr ""
 
@@ -1143,19 +1111,15 @@ msgstr ""
 msgid "Transactions"
 msgstr "Movimentações"
 
-#: templates/core/statement.html:77
-msgid "Reinvestments"
-msgstr "Reinvestimentos"
-
 #: templates/core/statement.html:83
 msgid "Transfers"
 msgstr "Transferências"
 
-#: templates/core/statement.html:93 templates/core/statement.html:212
+#: templates/core/statement.html:93
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/core/statement.html:96 templates/core/statement.html:215
+#: templates/core/statement.html:96 templates/core/statement.html:216
 msgid "Account Type"
 msgstr "Tipo de Conta"
 
@@ -1166,10 +1130,6 @@ msgstr ""
 #: templates/core/statement.html:150
 msgid "Prev investment"
 msgstr "Investimento anterior"
-
-#: templates/core/statement.html:151
-msgid "Reinvestment"
-msgstr "Reinvestimento"
 
 #: templates/core/statement.html:152
 msgid "Prev invested amount"
@@ -1191,303 +1151,277 @@ msgstr "Taxa de upgrade"
 msgid "Referral"
 msgstr ""
 
-#: templates/financial/import-favored-modal.html:7
-msgid "Import Favored"
+#: templates/core/statement.html:214
+#| msgid "Payment Address"
+msgid "Destination Address"
+msgstr "Endereço de Destino"
+
+#: templates/core/statement.html:215
+msgid "TX ID"
 msgstr ""
 
+#: templates/financial/import-favored-modal.html:15
+#: templates/investment/incomes-withdraw.html:12
+#: templates/payments/withdraw.html:15
+msgid "transfer amount"
+msgstr "quantidade a ser transferêrida"
+
 #: templates/financial/import-favored-modal.html:24
+#: templates/payments/withdraw.html:24
+msgid "Min transfer amount is:"
+msgstr "Transferência mínima:"
+
+#: templates/financial/import-favored-modal.html:25
+#: templates/payments/withdraw.html:25
+msgid "Max tranfer amount is:"
+msgstr "Transferência máxima:"
+
+#: templates/financial/import-favored-modal.html:26
+#: templates/payments/withdraw.html:26
+msgid "Tranfer percent fee is:"
+msgstr "Taxa de transferência"
+
+#: templates/financial/import-favored-modal.html:27
+#: templates/payments/withdraw.html:27
+msgid "Transfer fixed fee is:"
+msgstr "Taxa fixa de transferência:"
+
+#: templates/financial/import-favored-modal.html:28
+#: templates/payments/withdraw.html:28
+msgid "Xfactor percent fee is:"
+msgstr "Taxa entre contas Xfactor:"
+
+#: templates/financial/import-favored-modal.html:29
+#: templates/payments/withdraw.html:29
+msgid "Xfactor fixed fee is:"
+msgstr "Taxa fixa entre contas Xfactor:"
+
+#: templates/financial/import-favored-modal.html:30
+#: templates/payments/withdraw.html:30
+msgid "Max receive hours is:"
+msgstr "Horas máximas para recebimento:"
+
+#: templates/financial/import-favored-modal.html:30
+#: templates/payments/withdraw.html:30
+msgid "hours"
+msgstr "horas"
+
+#: templates/financial/import-favored-modal.html:37
+#: templates/payments/withdraw.html:37
+msgid "wallet address"
+msgstr "endereço de carteira"
+
+#: templates/financial/import-favored-modal.html:47
+#: templates/payments/withdraw.html:47
+msgid "The wallet address to the amount be transfered to"
+msgstr "O endereço de carteira para ser transfêrido o valor"
+
+#: templates/financial/import-favored-modal.html:51
 #: templates/investment/incomes-withdraw.html:29
 #: templates/payments/withdraw.html:51
 msgid "account password"
 msgstr "sua senha"
 
-#: templates/financial/import-favored-modal.html:30
-#: templates/financial/import-favored-modal.html:43
+#: templates/financial/import-favored-modal.html:57
+#: templates/financial/import-favored-modal.html:70
 #: templates/investment/incomes-withdraw.html:35
 #: templates/investment/incomes-withdraw.html:48
 #: templates/payments/withdraw.html:57 templates/payments/withdraw.html:70
 msgid "We use this for security reasons"
 msgstr "Nós usamos isso por razões de segurança"
 
-#: templates/financial/import-favored-modal.html:36
+#: templates/financial/import-favored-modal.html:63
 #: templates/investment/incomes-withdraw.html:41
 #: templates/payments/withdraw.html:63
 msgid "Your account two factor code"
 msgstr "Código 2 Fatores da sua conta"
 
-#: templates/financial/import-favored-modal.html:37
+#: templates/financial/import-favored-modal.html:64
 #: templates/investment/incomes-withdraw.html:42
 #: templates/payments/withdraw.html:64
 msgid "two factor code"
 msgstr "código 2 fatores"
 
-#: templates/financial/import-favored-modal.html:48
-msgid "Import"
-msgstr ""
-
-#: templates/financial/payments.html:6 templates/investment/my-customers.html:6
-#: templates/investment/my-customers.html:15
-msgid "My Customers"
-msgstr "Meus clientes"
-
-#: templates/financial/payments.html:17
-msgid "Payments Management"
-msgstr ""
-
-#: templates/financial/payments.html:22
-msgid "Schedule"
-msgstr ""
-
-#: templates/financial/payments.html:25
-msgid "Consolidated"
-msgstr ""
-
-#: templates/financial/payments.html:30
-msgid "For Authorization"
-msgstr ""
-
-#: templates/financial/payments.html:33
-#, fuzzy
-#| msgid "Receipt"
-msgid "Receipts"
-msgstr "Comprovante"
-
-#: templates/financial/payments.html:39
-msgid "Scheduled Payments"
-msgstr ""
-
-#: templates/financial/payments.html:44
-msgid "Date Filter"
-msgstr ""
-
-#: templates/financial/payments.html:49 templates/financial/payments.html:52
-msgid "Today"
-msgstr ""
-
-#: templates/financial/payments.html:54
-msgid "Last 60 days"
-msgstr ""
-
-#: templates/financial/payments.html:55
-msgid "Last 90 days"
-msgstr ""
-
-#: templates/financial/payments.html:56
-#, fuzzy
-#| msgid "Grace period"
-msgid "By period"
-msgstr "Carência"
-
-#: templates/financial/payments.html:62
-#, fuzzy
-#| msgid "Started at: "
-msgid "Start date"
-msgstr "Incio em:"
-
-#: templates/financial/payments.html:66
-#, fuzzy
-#| msgid "Due date"
-msgid "End date"
-msgstr "Vencimento"
-
-#: templates/financial/payments.html:72
-#, fuzzy
-#| msgid "Transactions"
-msgid "Actions"
-msgstr "Movimentações"
-
-#: templates/financial/payments.html:74
-msgid "Export current filter to excel"
-msgstr ""
-
-#: templates/financial/payments.html:77
-msgid "Import favored"
-msgstr ""
-
-#: templates/financial/payments.html:93
-msgid "Wallet"
-msgstr ""
+#: templates/financial/import-favored-modal.html:75
+#: templates/payments/withdraw.html:75
+msgid "Finish Withdraw"
+msgstr "Sacar"
 
 #: templates/investment/credit-line.html:22
 msgid "NEW LOAN"
 msgstr "NOVO PAGAMENTO"
 
-#: templates/investment/credit-line.html:22
+#: templates/investment/credit-line.html:26
 msgid "New Loan"
 msgstr "Empréstimo"
 
-#: templates/investment/credit-line.html:33
-#: templates/investment/credit-line.html:105
+#: templates/investment/credit-line.html:40
+#: templates/investment/credit-line.html:120
 msgid "Limit"
 msgstr "Limite"
 
-#: templates/investment/credit-line.html:34
-#: templates/investment/credit-line.html:106
+#: templates/investment/credit-line.html:41
+#: templates/investment/credit-line.html:121
 msgid "In Use"
 msgstr "Em Uso"
 
-#: templates/investment/credit-line.html:35
-#: templates/investment/credit-line.html:107
+#: templates/investment/credit-line.html:42
+#: templates/investment/credit-line.html:122
 msgid "Available"
 msgstr "Limite Disponível"
 
-#: templates/investment/credit-line.html:48
+#: templates/investment/credit-line.html:55
 msgid "Type the loan amount on the field below"
 msgstr "Digite a quantidade para empréstimo no campo abaixo"
 
-#: templates/investment/credit-line.html:51
+#: templates/investment/credit-line.html:59
 msgid "The loan amount can't exceed the available amount"
 msgstr "A quantidade emprestada não pode exceder o seu crédito"
 
-#: templates/investment/credit-line.html:52
+#: templates/investment/credit-line.html:61
 msgid "The min amount for loan is"
 msgstr "Quantidade mínimo para empréstimo é:"
 
-#: templates/investment/credit-line.html:56
+#: templates/investment/credit-line.html:65
 msgid "Select the loan table"
 msgstr "Selecione a parcela"
 
-#: templates/investment/credit-line.html:62
+#: templates/investment/credit-line.html:71
 msgid "Times"
 msgstr "Vezes"
 
-#: templates/investment/credit-line.html:63
+#: templates/investment/credit-line.html:72
 msgid "Month"
 msgstr "Meses"
 
-#: templates/investment/credit-line.html:64
+#: templates/investment/credit-line.html:73
 msgid "Percent"
 msgstr "Porcentagem"
 
-#: templates/investment/credit-line.html:66
+#: templates/investment/credit-line.html:75
 msgid "Total"
 msgstr ""
 
-#: templates/investment/credit-line.html:76
+#: templates/investment/credit-line.html:85
 msgid "Read the loan contract and accept the terms"
 msgstr "Leia o contrato de empréstimo e aceite os termos"
 
-#: templates/investment/credit-line.html:81
-#: templates/investment/credit-line.html:135
+#: templates/investment/credit-line.html:90
+#: templates/investment/credit-line.html:152
 msgid "I accept the contract terms"
 msgstr "Eu aceito os termos de contrato"
 
-#: templates/investment/credit-line.html:81
-#: templates/investment/credit-line.html:135
+#: templates/investment/credit-line.html:91
+#: templates/investment/credit-line.html:153
 msgid "Click here"
 msgstr "Clique aqui"
 
-#: templates/investment/credit-line.html:81
+#: templates/investment/credit-line.html:91
 msgid "to open the loan contract."
 msgstr "para abrir o contrato de empréstimo"
 
-#: templates/investment/credit-line.html:86
+#: templates/investment/credit-line.html:96
 msgid "Finish your loan"
 msgstr "Finialize seu empréstimo"
 
-#: templates/investment/credit-line.html:87
+#: templates/investment/credit-line.html:98
 msgid "FINISH LOAN"
 msgstr "FINALIZAR EMPRÉSTIMO"
 
-#: templates/investment/credit-line.html:95
+#: templates/investment/credit-line.html:106
 msgid "NEW OVERDRAFT"
 msgstr "NOVO CHEQUE ESPECIAL"
 
-#: templates/investment/credit-line.html:95
+#: templates/investment/credit-line.html:108
 msgid "New Overdraft"
 msgstr "Novo Cheque Especial"
 
-#: templates/investment/credit-line.html:108
+#: templates/investment/credit-line.html:123
 msgid "Days to Pay"
 msgstr "Dias para Pagar"
 
-#: templates/investment/credit-line.html:122
+#: templates/investment/credit-line.html:137
 msgid "Type the overdraft amount on the field below"
 msgstr "Digite o valor do cheque especial no campo abaixo"
 
-#: templates/investment/credit-line.html:125
+#: templates/investment/credit-line.html:141
 msgid "The overdraft amount can't exceed the available amount"
 msgstr "O valor solicitado não pode exceder o saldo da sua conta"
 
-#: templates/investment/credit-line.html:126
+#: templates/investment/credit-line.html:143
 msgid "The min amount for overdraft is"
 msgstr "O valor mínimo para este tipo de crédito é"
 
-#: templates/investment/credit-line.html:130
+#: templates/investment/credit-line.html:147
 msgid "Read the overdraft contract and accept the terms"
 msgstr "Leia o contrato do cheque especial e aceite os termos"
 
-#: templates/investment/credit-line.html:135
+#: templates/investment/credit-line.html:153
 msgid "to open the overdraft contract."
 msgstr "para abrir o contrato do cheque especial"
 
-#: templates/investment/credit-line.html:140
+#: templates/investment/credit-line.html:158
 msgid "Finish your overdraft"
 msgstr "Finalizar cheque especial"
 
-#: templates/investment/credit-line.html:141
+#: templates/investment/credit-line.html:160
 msgid "FINISH OVERDRAFT"
 msgstr "FINIALIZAR CHEQUE ESPECIAL"
 
-#: templates/investment/credit-line.html:152
+#: templates/investment/credit-line.html:171
 msgid "MY LOANS"
 msgstr "MEUS EMPRÉSTIMOS"
 
-#: templates/investment/credit-line.html:171
+#: templates/investment/credit-line.html:193
 msgid "Started at: "
 msgstr "Incio em:"
 
-#: templates/investment/credit-line.html:172
+#: templates/investment/credit-line.html:194
 msgid "Borrowed amount: "
 msgstr "Quantidade emprestada"
 
-#: templates/investment/credit-line.html:178
-#: templates/investment/credit-line.html:225
+#: templates/investment/credit-line.html:200
+#: templates/investment/credit-line.html:249
 msgid "Amount To Be Paid"
 msgstr "Quantidade a ser paga"
 
-#: templates/investment/credit-line.html:179
-#: templates/investment/credit-line.html:223
+#: templates/investment/credit-line.html:201
+#: templates/investment/credit-line.html:247
 msgid "Due Date"
 msgstr "Vencimento"
 
-#: templates/investment/credit-line.html:180
-#: templates/investment/credit-line.html:226
+#: templates/investment/credit-line.html:202
+#: templates/investment/credit-line.html:250
 msgid "Payment Address"
 msgstr "endereço de carteira"
 
-#: templates/investment/credit-line.html:190
+#: templates/investment/credit-line.html:213
 msgid "Available 7 days before due date"
 msgstr "Disponível para uso"
 
-#: templates/investment/credit-line.html:209
+#: templates/investment/credit-line.html:233
 msgid "No loans to show"
 msgstr "Sem empréstimos para exibir"
 
-#: templates/investment/credit-line.html:214
+#: templates/investment/credit-line.html:238
 msgid "MY OVERDRAFTS"
 msgstr "MEUS CHQUES ESPECIAIS"
 
-#: templates/investment/credit-line.html:222
+#: templates/investment/credit-line.html:246
 msgid "Started At"
 msgstr "Começou Em"
 
-#: templates/investment/credit-line.html:224
+#: templates/investment/credit-line.html:248
 msgid "Remaining Days"
 msgstr "Dias Restantes"
 
-#: templates/investment/credit-line.html:251
+#: templates/investment/credit-line.html:276
 msgid "No overdrafts to show"
 msgstr "Sem cheques especiais para exibir"
 
 #: templates/investment/incomes-withdraw.html:7
 msgid "To Withdraw Incomes"
 msgstr "Sacar Rendimentos"
-
-#: templates/investment/incomes-withdraw.html:12
-#: templates/payments/withdraw.html:15
-msgid "transfer amount"
-msgstr "quantidade a ser transferêrida"
 
 #: templates/investment/incomes-withdraw.html:18
 msgid "The amount will be available in your checking account"
@@ -1508,6 +1442,11 @@ msgstr "Taxa de operação"
 #: templates/investment/incomes-withdraw.html:53
 msgid "To Withdraw"
 msgstr "Sacar"
+
+#: templates/investment/my-customers.html:6
+#: templates/investment/my-customers.html:15
+msgid "My Customers"
+msgstr "Meus clientes"
 
 #: templates/investment/my-customers.html:25
 msgid "Mobile Phone"
@@ -1569,7 +1508,7 @@ msgid "START INVESTMENT"
 msgstr "INICIAR INVESTIMENTO"
 
 #: templates/investment/plans.html:121
-#: templates/investment/reinvestment.html:110
+#: templates/investment/reinvestment.html:101
 msgid "Message"
 msgstr "Mensagem"
 
@@ -1617,65 +1556,6 @@ msgstr ""
 "Se você também deseja usar o saldo de sua conta corrente para realizar esse "
 "reinvestimento, por favor marque o campo ao lado do saldo de sua conta "
 "corrente."
-
-#: templates/investment/reinvestment.html:67
-msgid "I read and accept the reinvestment terms"
-msgstr "Eu li e concordo com os termos de reinvestimento:"
-
-#: templates/investment/reinvestment.html:103 xfactor/views.py:125
-#: xfactor/views.py:128 xfactor/views.py:142 xfactor/views.py:161
-#: xfactor/views.py:164 xfactor/views.py:178
-msgid "Error!"
-msgstr "Erro!"
-
-#: templates/investment/reinvestment.html:103
-msgid "You must accept the terms to do your reinvestment"
-msgstr ""
-"Você precisa aceitar os termos de uso para realizar o seu reinvestimento"
-
-#: templates/payments/withdraw.html:24
-msgid "Min transfer amount is:"
-msgstr "Transferência mínima:"
-
-#: templates/payments/withdraw.html:25
-msgid "Max tranfer amount is:"
-msgstr "Transferência máxima:"
-
-#: templates/payments/withdraw.html:26
-msgid "Tranfer percent fee is:"
-msgstr "Taxa de transferência"
-
-#: templates/payments/withdraw.html:27
-msgid "Transfer fixed fee is:"
-msgstr "Taxa fixa de transferência:"
-
-#: templates/payments/withdraw.html:28
-msgid "Xfactor percent fee is:"
-msgstr "Taxa entre contas Xfactor:"
-
-#: templates/payments/withdraw.html:29
-msgid "Xfactor fixed fee is:"
-msgstr "Taxa fixa entre contas Xfactor:"
-
-#: templates/payments/withdraw.html:30
-msgid "Max receive hours is:"
-msgstr "Horas máximas para recebimento:"
-
-#: templates/payments/withdraw.html:30
-msgid "hours"
-msgstr "horas"
-
-#: templates/payments/withdraw.html:37
-msgid "wallet address"
-msgstr "endereço de carteira"
-
-#: templates/payments/withdraw.html:47
-msgid "The wallet address to the amount be transfered to"
-msgstr "O endereço de carteira para ser transfêrido o valor"
-
-#: templates/payments/withdraw.html:75
-msgid "Finish Withdraw"
-msgstr "Sacar"
 
 #: templates/request-card.html:6
 msgid "Request <span>Card</span>"
@@ -1753,8 +1633,8 @@ msgstr "Esqueceu sua senha?"
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:154
-#: xfactor/views.py:190
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:155
+#: xfactor/views.py:191
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1863,7 +1743,12 @@ msgstr ""
 msgid "Enable Two-Factor Authentication"
 msgstr ""
 
-#: xfactor/views.py:125
+#: xfactor/views.py:126 xfactor/views.py:129 xfactor/views.py:143
+#: xfactor/views.py:162 xfactor/views.py:165 xfactor/views.py:179
+msgid "Error!"
+msgstr "Erro!"
+
+#: xfactor/views.py:126
 #, fuzzy
 #| msgid ""
 #| "You are not a investor yet, please make a Xfactor investment plan first "
@@ -1874,7 +1759,7 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:128 xfactor/views.py:161
+#: xfactor/views.py:129 xfactor/views.py:162
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1882,39 +1767,93 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:133 xfactor/views.py:169
+#: xfactor/views.py:134 xfactor/views.py:170
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:133
+#: xfactor/views.py:134
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:142
+#: xfactor/views.py:143
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:154
+#: xfactor/views.py:155
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#: xfactor/views.py:164
+#: xfactor/views.py:165
 #, fuzzy
 #| msgid "You not have enought balance for request your card."
 msgid "You need be a investment advisor first, to request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:169
+#: xfactor/views.py:170
 msgid "Your already have requested your card."
 msgstr "Você já solicitou o seu cartão."
 
-#: xfactor/views.py:178
+#: xfactor/views.py:179
 msgid "You not have enought balance for request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:190
+#: xfactor/views.py:191
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
+
+#~ msgid "This plan can't be cancelled"
+#~ msgstr "Este plano não pode ser cancelado"
+
+#~ msgid "Your non-fidelity investment has been cancelled"
+#~ msgstr "Seu plano sem fidelidade foi cancelado"
+
+#~ msgid "Your loan application was created with success!"
+#~ msgstr "Seu empréstimo foi criado com sucesso!"
+
+#~ msgid "Your credit application was created with success!"
+#~ msgstr "Sua solicitação de crédito foi criada com sucesso!"
+
+#, fuzzy
+#~| msgid "Select a new profile image using the field below"
+#~ msgid "Select a new brand image using the field below"
+#~ msgstr "Selecione uma nova imagem de perfil usando o campo abaixo"
+
+#, fuzzy
+#~| msgid "Open Account"
+#~ msgid "Corporate Account"
+#~ msgstr "Abrir Conta"
+
+#, fuzzy
+#~| msgid "Receipt"
+#~ msgid "Receipts"
+#~ msgstr "Comprovante"
+
+#, fuzzy
+#~| msgid "Grace period"
+#~ msgid "By period"
+#~ msgstr "Carência"
+
+#, fuzzy
+#~| msgid "Started at: "
+#~ msgid "Start date"
+#~ msgstr "Incio em:"
+
+#, fuzzy
+#~| msgid "Due date"
+#~ msgid "End date"
+#~ msgstr "Vencimento"
+
+#, fuzzy
+#~| msgid "Transactions"
+#~ msgid "Actions"
+#~ msgstr "Movimentações"
+
+#~ msgid "I read and accept the reinvestment terms"
+#~ msgstr "Eu li e concordo com os termos de reinvestimento:"
+
+#~ msgid "You must accept the terms to do your reinvestment"
+#~ msgstr ""
+#~ "Você precisa aceitar os termos de uso para realizar o seu reinvestimento"
 
 #, fuzzy
 #~| msgid "Account Type"
