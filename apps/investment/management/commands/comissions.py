@@ -38,7 +38,8 @@ class Command(BaseCommand):
                     except:
                         continue
 
-                    plan = item.plan_grace_period.plan
+                    promoter_plan = Investments.get_active_by_user(referral.promoter).plan
+                    advisor_plan = Investments.get_active_by_user(referral.advisor).plan
                     promoter = referral.promoter
                     advisor = referral.advisor
                     amount = item.amount
@@ -48,17 +49,17 @@ class Command(BaseCommand):
                         promoter_graduation = Graduations.get_present(promoter)
 
                         if promoter_graduation.type == Graduations._promoter:
-                            promoter_comission = (plan.promoter_comission / 100) * amount
+                            promoter_comission = (promoter_plan.promoter_comission / 100) * amount
                             self.pay_comission(item, referral, promoter, promoter_comission)
                         elif promoter_graduation.type == Graduations._advisor:
-                            promoter_comission = (plan.advisor_comission / 100) * amount
+                            promoter_comission = (promoter_plan.advisor_comission / 100) * amount
                             self.pay_comission(item, referral, promoter, promoter_comission)
                         else:
                             continue
                     # Paga para promoter e advisor com a diferenca para o advisor
                     elif promoter and advisor and promoter.pk != advisor.pk:
-                        difference = abs(plan.advisor_comission - plan.promoter_comission)
-                        promoter_comission = (plan.promoter_comission / 100) * amount
+                        difference = abs(advisor_plan.advisor_comission - promoter_plan.promoter_comission)
+                        promoter_comission = (promoter_plan.promoter_comission / 100) * amount
                         advisor_comission = (difference / 100) * amount
                         self.pay_comission(item, referral, promoter, promoter_comission)
                         self.pay_comission(item, referral, advisor, advisor_comission)

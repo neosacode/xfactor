@@ -8,14 +8,14 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_delete
 from django.db.models import Q, Sum
 from django import forms
 from django.conf import settings
 from model_utils.models import TimeStampedModel, StatusModel
 from model_utils import Choices
 
-from exchange_core.models import Users, Currencies, Accounts
+from exchange_core.models import Users, Currencies, Accounts, Statement
 from exchange_core.admin import BaseAdmin
 
 
@@ -292,6 +292,10 @@ class Comissions(TimeStampedModel, models.Model):
     reinvestment = models.ForeignKey('investment.Reinvestments', related_name='comissions', on_delete=models.CASCADE, null=True)
     fk = models.UUIDField(null=True)
 
+    class Meta:
+        verbose_name = _("Comission")
+        verbose_name_plural = _("Comissions")
+
     @classmethod
     def get_amount(self, user):
         return Comissions.objects.filter(Q(referral__promoter=user) | Q(referral__advisor=user)).aggregate(amount=Sum('amount'))['amount'] or Decimal('0.00000000')
@@ -314,6 +318,10 @@ class Reinvestments(TimeStampedModel, models.Model):
     incomes = models.DecimalField(max_digits=20, decimal_places=8)
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8)
     investment = models.ForeignKey(Investments, related_name='reinvestments', on_delete=models.CASCADE, null=True)
+
+    class Meta:
+        verbose_name = _("Reinvestment")
+        verbose_name_plural = _("Reinvestments")
 
 
 class PlanGracePeriodForm(forms.ModelForm):
@@ -373,6 +381,33 @@ class IncomesAdmin(BaseAdmin):
     list_display = ['investment', 'amount', 'date']
     ordering = ('-created',)
     readonly_fields = ['investment']
+
+
+@admin.register(Comissions)
+class ComissionsAdmin(BaseAdmin):
+    list_display = ['amount', 'investment', 'reinvestment', 'fk', 'created']
+    ordering = ('-created',)
+    readonly_fields = ['investment', 'reinvestment', 'fk', 'created']
+
+    def has_delete_permission(self, request, obj=None):
+        return True
+
+@admin.register(Reinvestments)
+class ReinvestmentsAdmin(BaseAdmin):
+    list_display = ['investment', 'amount', 'old_invest', 'new_invest', 'created']
+    ordering = ('-created',)
+    readonly_fields = ['investment', 'amount', 'old_invest', 'new_invest']
+
+
+@receiver(pre_delete, sender=Comissions)
+def comissions_pre_delete(sender, **kwargs):
+    instance = kwargs['instance']
+    account = instance.investment.account
+    account.takeout(instance.amount)
+    statement = Statement.objects.filter(pk=instance.fk).first()
+
+    if statement:
+        statement.delete()
 
 
 # Cria as contas do usuário
