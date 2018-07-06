@@ -48,6 +48,16 @@
         </div>
 
         <div class="form-group">
+          <input type="text" :class="{'form-control': true, 'parsley-error': errors.description}" placeholder="{% trans "description (optional)" %}" v-model="description">
+          <div class="help-block form-text text-muted form-control-feedback" v-show="errors.description">
+          	<ul class="parsley-errors-list filled">
+          		<li v-for="error_message in errors.description" v-text="error_message"></li>
+          	</ul>
+          </div>
+            <p class="text-muted" style="font-size: 14px;">{% trans "Use this field to remember why this transfer" %}</p>
+        </div>
+
+        <div class="form-group">
           <input type="password" :class="{'form-control': true, 'parsley-error': errors.password}" placeholder="{% trans "account password" %}" v-model="password">
           <div class="help-block form-text text-muted form-control-feedback" v-show="errors.password">
           	<ul class="parsley-errors-list filled">

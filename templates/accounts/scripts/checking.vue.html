@@ -28,7 +28,8 @@
 				errors: {},
 				is_br_withdraw: false,
 				currency: {},
-				scanner: null
+				scanner: null,
+                description: null
 			},
 			computed: {
 				available_amount_text: function() {
@@ -42,7 +43,8 @@
 						amount: this.amount,
 						address: this.address,
 						password: this.password,
-						code: this.code
+						code: this.code,
+                        description: this.description
 					}
 
 					var vm = this;

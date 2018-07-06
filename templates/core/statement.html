@@ -210,6 +210,7 @@
                     <tr>
                       <th>{% trans "Date" %}</th>
                       <th>{% trans "Amount" %}</th>
+                      <th>{% trans "Description" %}</th>
                       <th>{% trans "Destination Address" %}</th>
                       <th>{% trans "TX ID" %}</th>
                       <th>{% trans "Account Type" %}</th>
@@ -220,6 +221,7 @@
                     <tr>
                       <td>{{ item.created|date:"SHORT_DATE_FORMAT" }}</td>
                       <td>{{ item.amount }} BTC</td>
+                      <td>{{ item.description|default_if_none:"N/A" }}</td>
                       <td>{{ item.address }}</td>
                       <td>{{ item.tx_id|default_if_none:"" }}</td>
                       <td>{% trans item.account.currency.type_title %}</td>

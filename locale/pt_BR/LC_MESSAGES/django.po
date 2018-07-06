@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-04 19:59+0000\n"
+"POT-Creation-Date: 2018-07-06 14:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,7 +182,7 @@ msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
 #: apps/investment/models.py:65 templates/core/statement.html:95
-#: templates/core/statement.html:122 templates/core/statement.html:213
+#: templates/core/statement.html:122
 msgid "Currency"
 msgstr "Moeda"
 
@@ -566,7 +566,7 @@ msgid "My Incomes"
 msgstr "Meus Rendimentos"
 
 #: templates/accounts/investment.html:37
-#: templates/accounts/scripts/checking.vue.html:35
+#: templates/accounts/scripts/checking.vue.html:36
 #: templates/accounts/scripts/investment.vue.html:19
 msgid "Available for withdraw:"
 msgstr "Disponível para saque:"
@@ -632,17 +632,17 @@ msgstr "Sucesso!"
 msgid "Wallet address has been copied!"
 msgstr "Endereço da carteira foi copiado!"
 
-#: templates/accounts/scripts/checking.vue.html:59
+#: templates/accounts/scripts/checking.vue.html:61
 #: templates/accounts/scripts/investment.vue.html:42
 msgid "Withdraw error!"
 msgstr ""
 
-#: templates/accounts/scripts/checking.vue.html:113
+#: templates/accounts/scripts/checking.vue.html:115
 #, python-brace-format
 msgid "Your {coin} address"
 msgstr ""
 
-#: templates/accounts/scripts/checking.vue.html:116
+#: templates/accounts/scripts/checking.vue.html:118
 msgid "Copy address"
 msgstr "Copiar endereço"
 
@@ -1119,7 +1119,7 @@ msgstr "Transferências"
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/core/statement.html:96 templates/core/statement.html:216
+#: templates/core/statement.html:96 templates/core/statement.html:215
 msgid "Account Type"
 msgstr "Tipo de Conta"
 
@@ -1151,12 +1151,11 @@ msgstr "Taxa de upgrade"
 msgid "Referral"
 msgstr ""
 
-#: templates/core/statement.html:214
-#| msgid "Payment Address"
+#: templates/core/statement.html:213
 msgid "Destination Address"
 msgstr "Endereço de Destino"
 
-#: templates/core/statement.html:215
+#: templates/core/statement.html:214
 msgid "TX ID"
 msgstr ""
 
@@ -1218,7 +1217,7 @@ msgstr "O endereço de carteira para ser transfêrido o valor"
 
 #: templates/financial/import-favored-modal.html:51
 #: templates/investment/incomes-withdraw.html:29
-#: templates/payments/withdraw.html:51
+#: templates/payments/withdraw.html:61
 msgid "account password"
 msgstr "sua senha"
 
@@ -1226,24 +1225,24 @@ msgstr "sua senha"
 #: templates/financial/import-favored-modal.html:70
 #: templates/investment/incomes-withdraw.html:35
 #: templates/investment/incomes-withdraw.html:48
-#: templates/payments/withdraw.html:57 templates/payments/withdraw.html:70
+#: templates/payments/withdraw.html:67 templates/payments/withdraw.html:80
 msgid "We use this for security reasons"
 msgstr "Nós usamos isso por razões de segurança"
 
 #: templates/financial/import-favored-modal.html:63
 #: templates/investment/incomes-withdraw.html:41
-#: templates/payments/withdraw.html:63
+#: templates/payments/withdraw.html:73
 msgid "Your account two factor code"
 msgstr "Código 2 Fatores da sua conta"
 
 #: templates/financial/import-favored-modal.html:64
 #: templates/investment/incomes-withdraw.html:42
-#: templates/payments/withdraw.html:64
+#: templates/payments/withdraw.html:74
 msgid "two factor code"
 msgstr "código 2 fatores"
 
 #: templates/financial/import-favored-modal.html:75
-#: templates/payments/withdraw.html:75
+#: templates/payments/withdraw.html:85
 msgid "Finish Withdraw"
 msgstr "Sacar"
 
@@ -1556,6 +1555,15 @@ msgstr ""
 "Se você também deseja usar o saldo de sua conta corrente para realizar esse "
 "reinvestimento, por favor marque o campo ao lado do saldo de sua conta "
 "corrente."
+
+#: templates/payments/withdraw.html:51
+#| msgid "Description"
+msgid "description (optional)"
+msgstr "descrição (opcional)"
+
+#: templates/payments/withdraw.html:57
+msgid "Use this field to remember why this transfer"
+msgstr "Use este campo para lembrar o porque dessa transferência"
 
 #: templates/request-card.html:6
 msgid "Request <span>Card</span>"
