@@ -1,18 +1,11 @@
-import hashlib
-from datetime import datetime
 from decimal import Decimal
 
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 from dateutil.rrule import rrule, DAILY
-from dateutil.relativedelta import relativedelta
 from apps.investment.utils import decimal_split
 
-from django.core.management.base import BaseCommand, CommandError
-from django.db import transaction
-from django.db.models import Count
-
-from exchange_core.models import Accounts, Statement
-from apps.investment.models import Investments, IgnoreIncomeDays, PlanGracePeriods, Incomes
+from django.core.management.base import BaseCommand
+from apps.investment.models import Investments, Incomes
 
 
 class Command(BaseCommand):

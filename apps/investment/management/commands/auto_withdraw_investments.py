@@ -15,12 +15,13 @@ STATEMENT_TYPE_RETURN = 'return_of_invested_amount'
 
 
 def withdraw_investments():
-    for item in Investments.objects.order_by('created'):
+    for item in Investments.objects.order_by('paid_date'):
         with transaction.atomic():
             reinvestments_qs = Reinvestments.objects.filter(investment=item, status=Reinvestments.STATUS.paid).order_by('created')
             reinvestment = reinvestments_qs.first()
-            main_investment_was_paid = Statement.objects.filter(type=STATEMENT_TYPE).exists()
+            main_investment_was_paid = Statement.objects.filter(fk=item.pk, type=STATEMENT_TYPE).exists()
             remaining_days = item.remaining_days
+
             foreign_key = item.pk
             message_amount = item.amount
 

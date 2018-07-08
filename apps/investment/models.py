@@ -100,7 +100,12 @@ class Investments(TimeStampedModel, models.Model):
 
     @property
     def end_date(self):
-        return self.paid_date + relativedelta(months=self.plan_grace_period.grace_period.months)
+        reinvestment = self.reinvestments.filter(status='paid').first()
+        if reinvestment:
+            months = reinvestment.old_invest.grace_period.months
+        else:
+            months = self.plan_grace_period.grace_period.months
+        return self.paid_date + relativedelta(months=months)
 
     # Retorna quantos dias faltam para vencer a carência
     @property
