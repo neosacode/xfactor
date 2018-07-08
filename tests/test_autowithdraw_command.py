@@ -263,8 +263,8 @@ def test_auto_withdraw_downgrade():
 
     plan_grace_period = PlanGracePeriodFactory(**kwargs)
     paid_date = datetime.now() - relativedelta(months=12)
-    reinvestment = ReinvestmentFactory(investment__paid_date=paid_date, investment__amount=Decimal('1'),
-                                       investment__account__reserved=Decimal('1'), amount_before=Decimal('0.91'), amount=Decimal('0.09'))
+    reinvestment = ReinvestmentFactory(investment__paid_date=paid_date, investment__amount=Decimal('0.1'),
+                                       investment__account__reserved=Decimal('0.1'), amount_before=Decimal('0.09'), amount=Decimal('0.01'))
     investment = reinvestment.investment
     investment.plan_grace_period = plan_grace_period
     investment.save()
@@ -274,9 +274,9 @@ def test_auto_withdraw_downgrade():
 
     AccountFactory(user=investment.account.user, currency__type='checking')
 
-    assert reinvestment.amount_before == Decimal('0.91')
-    assert reinvestment.amount == Decimal('0.09')
-    assert investment.amount == Decimal('1')
+    assert reinvestment.amount == Decimal('0.01')
+    assert reinvestment.amount_before == Decimal('0.09')
+    assert investment.amount == Decimal('0.1')
     assert investment.plan_grace_period.plan.name == 'MUTUAL FUNDS'
     assert reinvestment.old_invest.plan.name == 'SAVINGS'
     assert reinvestment.new_invest.plan.name == 'MUTUAL FUNDS'
@@ -285,7 +285,8 @@ def test_auto_withdraw_downgrade():
     reinvestment.refresh_from_db()
     investment.refresh_from_db()
 
-    assert investment.amount == Decimal('0.09')
+    assert investment.amount == Decimal('0.01')
+    assert investment.plan_grace_period.plan.name == 'SAVINGS'
     assert reinvestment.old_invest.plan.name == 'SAVINGS'
     assert reinvestment.new_invest.plan.name == 'MUTUAL FUNDS'
 
