@@ -1,0 +1,8 @@
+[
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_investment",
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_reinvestment_status",
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_reinvestment",
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_reinvestments",
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_income_payment",
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_downgrade"
+]

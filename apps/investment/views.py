@@ -133,7 +133,6 @@ class CreateInvestmentView(View):
                 statement.fk = investment.pk
                 statement.save()
 
-
             return {'message': _("Congratulations! Your investing plan was created."), 'redirect': True}
         return {'message': _("Someting in your new investment plan didn't work as expected.")}
 

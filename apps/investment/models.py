@@ -19,6 +19,10 @@ from exchange_core.models import Users, Currencies, Accounts, Statement
 from exchange_core.admin import BaseAdmin
 
 
+def diff_month(d1, d2):
+    return abs(d1.year - d2.year) * 12 + d1.month - d2.month
+
+
 class Plans(TimeStampedModel, StatusModel, models.Model):
     STATUS = Choices('inactive', 'active')
 
@@ -39,6 +43,11 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
 
     def __str__(self):
         return self.name
+
+
+    @classmethod
+    def get_by_amount(cls, amount):
+        return cls.objects.filter(min_down__lte=amount, max_down__gte=amount).order_by('-max_down').first()
 
 
 class GracePeriods(TimeStampedModel, models.Model):
@@ -105,7 +114,7 @@ class Investments(TimeStampedModel, models.Model):
     # Retorna quantos meses faltam para vencer a carência
     @property
     def remaining_months(self):
-        return len(list(rrule.rrule(rrule.MONTHLY, dtstart=timezone.now(), until=self.end_date)))
+        return diff_month(timezone.now(), self.end_date)
 
     def __str__(self):
         return '{} - {} BTC - {}'.format(self.account.user.username, self.amount, self.plan_grace_period.plan.name)
@@ -310,6 +319,8 @@ class Comissions(TimeStampedModel, models.Model):
 
 
 class Reinvestments(TimeStampedModel, models.Model):
+    STATUS = Choices('paid', 'consumed')
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     old_invest = models.ForeignKey(PlanGracePeriods, related_name='old_invests', on_delete=models.CASCADE)
     new_invest = models.ForeignKey(PlanGracePeriods, null=True, related_name='new_invests', on_delete=models.CASCADE)
@@ -318,10 +329,29 @@ class Reinvestments(TimeStampedModel, models.Model):
     incomes = models.DecimalField(max_digits=20, decimal_places=8)
     membership_fee = models.DecimalField(max_digits=20, decimal_places=8)
     investment = models.ForeignKey(Investments, related_name='reinvestments', on_delete=models.CASCADE, null=True)
+    status = models.CharField(max_length=30, default=STATUS.paid, choices=STATUS)
 
     class Meta:
         verbose_name = _("Reinvestment")
         verbose_name_plural = _("Reinvestments")
+
+    @property
+    def end_date(self):
+        return self.created + relativedelta(months=self.new_invest.grace_period.months)
+
+    # Retorna quantos dias faltam para vencer a carência
+    @property
+    def remaining_days(self):
+        return (self.end_date - timezone.now()).days
+
+    @property
+    def contract_days(self):
+        return (self.end_date - self.created).days
+
+    # Retorna quantos meses faltam para vencer a carência
+    @property
+    def remaining_months(self):
+        return diff_month(timezone.now(), self.end_date)
 
 
 class PlanGracePeriodForm(forms.ModelForm):
