@@ -4,6 +4,9 @@ from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from django.utils import timezone
 from django.conf import settings
+from django.db import transaction
+
+from apps.investment.models import Referrals, Comissions, Statement
 
 
 def generate_loan_table(investment, borrow_amount, times=24, raw_date=False):
@@ -75,3 +78,27 @@ def decimal_split(amount, split_times=10, min_split_amount_percent=70, max_split
 
     increment_amount = (Decimal(amount) - sum(split_table)) / split_times
     return [increment_amount + n for n in split_table]
+
+
+def change_referral(user, promoter):
+    referral = Referrals.objects.get(user=user)
+
+    if  referral.promoter and referral.advisor:
+        return
+
+    comissions = Comissions.objects.filter(referral=referral)
+    account = referral.promoter.accounts.filter(currency__type='investment').first()
+
+    # Starts a transaction for not data damages
+    with transaction.atomic():
+        # Loop over comissions and take them from investment account of promoter
+        for comission in comissions:
+            account.takeout(comission.amount)
+            statement = Statement.objects.filter(pk=comission.fk)
+            if statement:
+                statement.delete()
+            comission.delete()
+
+        # Updates the referral promoter to the correct one
+        referral.promoter = promoter
+        referral.save()

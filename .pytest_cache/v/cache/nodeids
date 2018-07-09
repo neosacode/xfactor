@@ -4,5 +4,9 @@
   "tests/test_autowithdraw_command.py::test_auto_withdraw_reinvestment",
   "tests/test_autowithdraw_command.py::test_auto_withdraw_reinvestments",
   "tests/test_autowithdraw_command.py::test_auto_withdraw_income_payment",
-  "tests/test_autowithdraw_command.py::test_auto_withdraw_downgrade"
+  "tests/test_autowithdraw_command.py::test_auto_withdraw_downgrade",
+  "tests/test_change_referral.py::test_referral_not_found_exception",
+  "tests/test_change_referral.py::test_referral_was_found",
+  "tests/test_change_referral.py::test_if_comissions_are_being_properly_returned",
+  "tests/test_change_referral.py::test_if_course_comission_has_being_properly_returned"
 ]

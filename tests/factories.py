@@ -3,8 +3,8 @@ from datetime import datetime
 
 import factory
 
-from exchange_core.models import Users, Currencies, Accounts
-from apps.investment.models import Investments, Plans, GracePeriods, PlanGracePeriods, Reinvestments
+from exchange_core.models import Users, Currencies, Accounts, Statement
+from apps.investment.models import Investments, Plans, GracePeriods, PlanGracePeriods, Reinvestments, Referrals, Graduations
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -16,6 +16,7 @@ class UserFactory(factory.DjangoModelFactory):
     username = factory.Faker('user_name')
     email = factory.Faker('email')
     password = factory.PostGenerationMethodCall('set_password', '123456')
+    is_active = True
 
 
 class CurrencyFactory(factory.DjangoModelFactory):
@@ -96,3 +97,30 @@ class ReinvestmentFactory(factory.DjangoModelFactory):
     investment = factory.SubFactory(InvestmentFactory)
     status = Reinvestments.STATUS.paid
     created = factory.LazyFunction(datetime.now)
+
+
+class ReferralFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Referrals
+
+    user = factory.SubFactory(UserFactory)
+    promoter = factory.SubFactory(UserFactory)
+    advisor = None
+
+
+class StatementFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Statement
+
+    description = None
+    amount = None
+    type = None
+    account = None
+
+
+class GraduationFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Graduations
+
+    user = factory.SubFactory(UserFactory)
+    type = Graduations._advisor

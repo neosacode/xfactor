@@ -424,25 +424,12 @@ class ComissionsAdmin(BaseAdmin):
     ordering = ('-created',)
     readonly_fields = ['investment', 'reinvestment', 'fk', 'created']
 
-    def has_delete_permission(self, request, obj=None):
-        return True
 
 @admin.register(Reinvestments)
 class ReinvestmentsAdmin(BaseAdmin):
     list_display = ['investment', 'amount', 'old_invest', 'new_invest', 'created']
     ordering = ('-created',)
     readonly_fields = ['investment', 'amount', 'old_invest', 'new_invest']
-
-
-@receiver(pre_delete, sender=Comissions)
-def comissions_pre_delete(sender, **kwargs):
-    instance = kwargs['instance']
-    account = instance.investment.account
-    account.takeout(instance.amount)
-    statement = Statement.objects.filter(pk=instance.fk).first()
-
-    if statement:
-        statement.delete()
 
 
 # Cria as contas do usuário
