@@ -370,6 +370,6 @@ class CreditLineView(TemplateView):
 @method_decorator([login_required, json_view], name='dispatch')
 class GenerateLoanTableView(TemplateView):
     def get(self, request):
-        charge = Investments.objects.get(pk=request.GET.get('investment'))
+        charge = Investments.objects.get(pk=request.GET.get('investment'), status=Investments.STATUS.paid)
         borrow_amount = Decimal(request.GET.get('amount'))
         return generate_loan_table(charge, borrow_amount)

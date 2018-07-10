@@ -42,6 +42,9 @@ class Command(BaseCommand):
             savings = Plans.objects.get(name__iexact='savings')
 
             for advisor in advisors:
+                if advisor.user.username != 'diego_americo':
+                    continue
+
                 investment = Investments.get_active_by_user(advisor.user)
 
                 if not investment:
@@ -50,7 +53,7 @@ class Command(BaseCommand):
                 _1 = get_descents([advisor.user], LINE_1_LIMIT)
                 _2 = get_descents(_1, LINE_2_LIMIT)
                 _3 = get_descents(_2, LINE_3_LIMIT)
-
+                
                 comission_amount = len(_1 + _2 + _3) * savings.membership_fee
 
                 with transaction.atomic():

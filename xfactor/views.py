@@ -68,9 +68,8 @@ class InvestmentAccountView(TemplateView):
     template_name = 'accounts/investment.html'
 
     def get(self, *args, **kwargs):
-        try:
-            self.investment = Investments.objects.get(account__user=self.request.user)
-        except Investments.DoesNotExist:
+        self.investment = Investments.get_active_by_user(self.request.user)
+        if not self.investment:
             return redirect(reverse('investment>plans'))
         return super().get(*args, **kwargs)
 
