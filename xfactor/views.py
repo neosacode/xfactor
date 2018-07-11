@@ -135,7 +135,7 @@ class CreateCourseSubscriptionView(View):
         if not course_subscription_form.is_valid():
             return {'errors': course_subscription_form.errors}
 
-        amount = Decimal('0.03')
+        amount = Decimal('0.05')
         checking_account = request.user.accounts.filter(currency__type=Currencies.TYPES.checking).first()
 
         if amount > checking_account.deposit:
