@@ -856,8 +856,8 @@ msgid "13 - Mindset and NLP"
 msgstr "13 - Mindset e PNL"
 
 #: templates/card-modal.html:46
-msgid "Start now for just <span class='tx-30'>0.03</span> BTC"
-msgstr "Inicie agora por apenas <span class='tx-30'>0.03</span> BTC"
+msgid "Start now for just <span class='tx-30'>0.05</span> BTC"
+msgstr "Inicie agora por apenas <span class='tx-30'>0.05</span> BTC"
 
 #: templates/card-modal.html:47
 msgid "The course amount will be discount from your checking account"

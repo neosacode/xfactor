@@ -26,14 +26,17 @@
 		<div class="conteudo-1 col-md-8">
 			{% include "back-button.html" with margin_top='0' %}
 
+            {% if not user_has_card %}
 			<div class="alert alert-danger text-center" style="font-size: 18px;">
 				<strong class="tx-14">{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}" class="tx-14">{% trans "Request card" %}</a>
 			</div>
+            {% endif %}
 
 			<div class="box-1">
 				<h2>{% trans "MY CARD" %}</h2>
 				<p>{% trans "This is yours card. You can add money in it when you need. The amount will be discount from your checking account" %}</p>
 			</div>
+
 			<div class="box-2">
 				<img src="{% static "img/cards/01.png" %}" class="img-fluid" width="300" alt="">
 				<div class="saldo">
