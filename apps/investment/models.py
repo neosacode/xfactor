@@ -129,6 +129,10 @@ class Investments(TimeStampedModel, models.Model):
         return Investments.objects.filter(account__user=user).first()
 
     @classmethod
+    def get_last_by_user(cls, user):
+        return Investments.objects.filter(account__user=user).order_by('-created').first()
+
+    @classmethod
     def get_active_by_user(cls, user):
         return Investments.objects.filter(account__user=user, status=cls.STATUS.paid).first()
 
