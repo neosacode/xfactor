@@ -40,6 +40,18 @@
 			<div class="box-2">
 				<img src="{% static "img/cards/01.png" %}" class="img-fluid" width="300" alt="">
 				<div class="saldo">
+                {% if cards %}
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ cards.first.masked_number }}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for card in cards %}
+                            <a class="dropdown-item" href="#">{{ card.masked_number }}</a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                {% endif %}
 					<h3>0,00</h3>
 					<p>{% trans "Available for use" %}:</p>
 				</div>
