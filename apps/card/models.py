@@ -9,12 +9,12 @@ from exchange_core.admin import BaseAdmin
 class Cards(TimeStampedModel, BaseModel, models.Model):
     account = models.ForeignKey('exchange_core.Accounts', related_name='cards', on_delete=models.CASCADE)
     number = models.CharField(max_length=16, unique=True)
-    name = models.CharField(max_length=50)
-    document_1 = models.CharField(max_length=30, null=True)
-    document_2 = models.CharField(max_length=30, null=True)
-    birth_date = models.DateField(null=True)
-    mothers_name = models.CharField(max_length=50, null=True)
-    fathers_name = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
+    document_1 = models.CharField(max_length=30, null=True, blank=True)
+    document_2 = models.CharField(max_length=30, null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    mothers_name = models.CharField(max_length=50, null=True, blank=True)
+    fathers_name = models.CharField(max_length=50, null=True, blank=True)
     is_active = models.BooleanField(default=False)
 
     @property

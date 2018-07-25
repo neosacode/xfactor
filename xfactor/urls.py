@@ -22,6 +22,7 @@ urlpatterns = [
 
     path('', include('apps.investment.urls')),
     path('', include('apps.boleto.urls')),
+    path('', include('apps.card.urls')),
 ]
 
 # Dynamic loads the exchange urls
