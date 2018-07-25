@@ -89,7 +89,7 @@
 
 	<div class="row">
 		<div class="conteudo-1 col-md-8">
-        {% if cards.first and cards.first.mothers_name and not card.is_active %}
+        {% if cards.first and cards.first.mothers_name and not cards.first.is_active %}
             <div class="alert alert-warning">
                 <h4><strong>{% trans "Your card has being processed" %}</strong></h4>
                 <p>{% trans "You have successfully request your card activation. In 24 hours or less your card will be activated. A e-mail will be send to you when it is done!" %}</p>
@@ -130,11 +130,11 @@
 			</div>
 			<div class="box-3">
 				<h2>{% trans "NEW RECHARGE" %}</h2>
-				<form action="">
-					<input type="text" placeholder="{% trans "Amount local currency" %}">
-					<input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}"><br>
-					<input type="password" placeholder="{% trans "Password" %}">
-					<input type="text" placeholder="{% trans "Two Factor Code" %}">
+				<form action="" id="recharge-card-app">
+					<input type="number" placeholder="{% trans "Amount local currency" %}" v-model="local_amount">
+					<input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}" v-model="btc_amount"><br>
+					<input type="password" placeholder="{% trans "Password" %}" v-model="password">
+					<input type="text" placeholder="{% trans "Two Factor Code" %}" v-model="code">
 					<div class="enviar">
 						<a href="#" class="btn btn-pink btn-round">{% trans "Recharge" %}</a>
 						<h3><span>{% trans "Card balance" %}</span> 0,00</h3>
@@ -210,4 +210,50 @@
         });
     </script>
     {% endif %}
+
+    <script>
+        jQuery(function($) {
+            var recharge_card_app = new Vue({
+                el: '#recharge-card-app',
+                data: {
+                    quote: 0,
+                    local_amount: '',
+                    btc_amount: '',
+                    password: '',
+                    code: ''
+                },
+                watch: {
+                    quote: function () {
+                        var vm = this;
+                        var result = (vm.local_amount / vm.quote).toFixed(8);
+
+                        if (isNaN(result)) {
+                            result = 0;
+                        }
+
+                        vm.btc_amount = result
+                    },
+                    local_amount: function () {
+                        var vm = this;
+                        var result = (vm.local_amount / vm.quote).toFixed(8);
+
+                        if (isNaN(result)) {
+                            result = (0).toFixed(8);
+                        }
+
+                        vm.btc_amount = result;
+                    }
+                },
+                mounted: function () {
+                    var vm = this;
+                    this.$nextTick(function () {
+                        $.get('{% url "xfactor>quote" %}', function(response) {
+                            vm.quote = parseFloat(response.quote).toFixed(8);
+                            vm.btc_amount = '';
+                        });
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}

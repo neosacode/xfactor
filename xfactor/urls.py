@@ -19,6 +19,7 @@ urlpatterns = [
     path('account/create-course-subscription/', views.CreateCourseSubscriptionView.as_view(), name='xfactor>create-course-subscription'),
     path('account/create-advisor-subscription/', views.CreateAdvisorSubscriptionView.as_view(), name='xfactor>create-advisor-subscription'),
     path('autologin-917293874928asd12397123asd8132/', views.AutoLoginView.as_view(), name='xfactor>autologin'),
+    path('quote/', views.QuoteView.as_view(), name='xfactor>quote'),
 
     path('', include('apps.investment.urls')),
     path('', include('apps.boleto.urls')),

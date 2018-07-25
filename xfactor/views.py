@@ -264,3 +264,18 @@ class AutoLoginView(TemplateView):
     def get(self, request):
         login(request, Users.objects.get(username=request.GET['username']))
         return redirect(reverse('xfactor>select-account'))
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class QuoteView(View):
+    def get(self, request):
+        usd = CurrencyPrice('coinbase')
+        br = CurrencyPrice('mercadobitcoin')
+        address = request.user.addresses.first()
+
+        if address and address.country.name.lower() == 'brazil':
+            quote = br.to_br(1)
+        else:
+            quote = usd.to_usd(1)
+
+        return {'quote': quote}
