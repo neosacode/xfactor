@@ -1,3 +1,5 @@
+-e git+https://github.com/Bouke/django-two-factor-auth/#egg=django-two-factor-auth
+-e git+https://github.com/julianogouveia/dj-pagination/#egg=dj-pagination
 -e git+https://github.com/jazzband/django-widget-tweaks/#egg=django-widget-tweaks
 -e git+https://github.com/yourlabs/django-session-security/#egg=django-session-security
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-core.git#egg=exchange_core
