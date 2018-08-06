@@ -3,7 +3,7 @@
 -e git+https://github.com/jazzband/django-widget-tweaks/#egg=django-widget-tweaks
 -e git+https://github.com/yourlabs/django-session-security/#egg=django-session-security
 -e git+https://github.com/julianogouveia/python-bitcoinlib.git#egg=bitcoin
--e https://github.com/julianogouveia/django-bootstrap-pagination#egg=django-bootstrap-pagination
+-e git+https://github.com/julianogouveia/django-bootstrap-pagination#egg=django-bootstrap-pagination
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-core.git#egg=exchange_core
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-payments.git#egg=exchange_payments
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/neosacode/exchange-orderbook.git#egg=exchange_orderbook
