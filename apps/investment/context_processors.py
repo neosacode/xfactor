@@ -9,9 +9,15 @@ def accounts(request):
     investment_accounts = Accounts.objects.filter(user=request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
     checking_account = checking_accounts.first() if checking_accounts.exists() else None
     investment_account = investment_accounts.first() if investment_accounts.exists() else None
+    address = request.user.addresses.first()
+    country = 'america'
+
+    if address:
+        country = address.country.name.lower()
 
     return {
         'user_checking_account': checking_account,
         'user_investment_account': investment_account,
-        'user_has_card': Statement.objects.filter(type__in=['course_subscription', 'advisor_card_request'], account__user=request.user).exists()
+        'user_has_card': Statement.objects.filter(type__in=['course_subscription', 'advisor_card_request'], account__user=request.user).exists(),
+        'CCS': 'R$' if country == 'brazil' else '$'
     }

@@ -24,6 +24,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=config.list)
 # Application definition
 
 INSTALLED_APPS = [
+    'django_admin_select2',
     'admin_interface',
     'colorfield',
     'django.contrib.admin',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     
     'apps.investment',
     'apps.boleto',
+    'apps.card',
 ]
 
 MIDDLEWARE = [

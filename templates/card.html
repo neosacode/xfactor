@@ -22,8 +22,80 @@
 
 {% block content %}
 
+    {% if cards.first and not cards.first.mothers_name %}
+    <div class="modal" id="modal-card-data" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{% trans "XFACTOR CARD DATA" %}</h5>
+          </div>
+          <div class="modal-body">
+              <div id="card-data-app">
+                  <strong>
+                      {% trans "Card" %}: {{ cards.first.masked_number }}<br>
+                      {% trans "Carrier" %}: {{ request.user.name }}<br>
+                      {% trans "Carrier document" %}: {{ request.user.document_1 }}<br>
+                  </strong>
+                  <hr>
+
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label>{% trans "What is the number of the card who you receive?" %}</label>
+                              <input type="text" class="form-control" placeholder="{% trans "What is the number of the card who you receive?" %}" v-model="number">
+                              <div class="help-block form-text text-muted form-control-feedback" v-show="errors.number">
+                                <ul class="parsley-errors-list filled">
+                                  <li v-for="error_message in errors.number" v-text="error_message"></li>
+                                </ul>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label>{% trans "What is your birth date?" %}</label>
+                              <input type="date" class="form-control" placeholder="{% trans "What is your birth date?" %}" v-model="birth_date">
+                              <div class="help-block form-text text-muted form-control-feedback" v-show="errors.birth_date">
+                                <ul class="parsley-errors-list filled">
+                                  <li v-for="error_message in errors.birth_date" v-text="error_message"></li>
+                                </ul>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label>{% trans "What is your mothers full name?" %}</label>
+                              <input type="text" class="form-control" placeholder="{% trans "What is your mothers full name?" %}" v-model="mothers_name">
+                              <div class="help-block form-text text-muted form-control-feedback" v-show="errors.mothers_name">
+                                <ul class="parsley-errors-list filled">
+                                  <li v-for="error_message in errors.mothers_name" v-text="error_message"></li>
+                                </ul>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label>{% trans "What is your fathers full name?" %}</label>
+                              <input type="text" class="form-control" placeholder="{% trans "What is your fathers full name?" %}" v-model="fathers_name">
+                              <div class="help-block form-text text-muted form-control-feedback" v-show="errors.fathers_name">
+                                <ul class="parsley-errors-list filled">
+                                  <li v-for="error_message in errors.fathers_name" v-text="error_message"></li>
+                                </ul>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+                  <button type="button" class="btn btn-pink btn-block" @click.prevent="update_card()" :disabled="loading">{% trans "Save" %}</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
 	<div class="row">
 		<div class="conteudo-1 col-md-8">
+        {% if cards.first and cards.first.mothers_name and not cards.first.is_active %}
+            <div class="alert alert-warning">
+                <h4><strong>{% trans "Your card has being processed" %}</strong></h4>
+                <p>{% trans "You have successfully request your card activation. In 24 hours or less your card will be activated. A e-mail will be send to you when it is done!" %}</p>
+            </div>
+        {% endif %}
+
 			{% include "back-button.html" with margin_top='0' %}
 
             {% if not user_has_card %}
@@ -40,17 +112,29 @@
 			<div class="box-2">
 				<img src="{% static "img/cards/01.png" %}" class="img-fluid" width="300" alt="">
 				<div class="saldo">
-					<h3>0,00</h3>
+                {% if cards %}
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ cards.first.masked_number }}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for card in cards %}
+                            <a class="dropdown-item" href="#">{{ card.masked_number }}</a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                {% endif %}
+					<h3>{{ CCS }} 0,00</h3>
 					<p>{% trans "Available for use" %}:</p>
 				</div>
 			</div>
 			<div class="box-3">
 				<h2>{% trans "NEW RECHARGE" %}</h2>
-				<form action="">
-					<input type="text" placeholder="{% trans "Amount local currency" %}">
-					<input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}"><br>
-					<input type="password" placeholder="{% trans "Password" %}">
-					<input type="text" placeholder="{% trans "Two Factor Code" %}">
+				<form action="" id="recharge-card-app">
+					<input type="number" placeholder="{% trans "Amount local currency" %}" v-model="local_amount">
+					<input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}" v-model="btc_amount"><br>
+					<input type="password" placeholder="{% trans "Password" %}" v-model="password">
+					<input type="text" placeholder="{% trans "Two Factor Code" %}" v-model="code">
 					<div class="enviar">
 						<a href="#" class="btn btn-pink btn-round">{% trans "Recharge" %}</a>
 						<h3><span>{% trans "Card balance" %}</span> 0,00</h3>
@@ -83,4 +167,93 @@
 	</div>
 
 
+{% endblock %}
+
+{% block scripts %}
+    {% if cards.first and not cards.first.mothers_name %}
+    <script>
+        jQuery(function () {
+            $('#modal-card-data').modal({backdrop: 'static', keyboard: false, show: true});
+
+            var card_data_app = new Vue({
+                el: '#card-data-app',
+                data: {
+                    number: '',
+                    birth_date: '',
+                    mothers_name: '',
+                    fathers_name: '',
+                    errors: '',
+                    loading: false
+                },
+                methods:  {
+                    update_card: function() {
+                        var vm = this;
+                        vm.loading = true;
+                        var data = {
+                            number: vm.number,
+                            birth_date: vm.birth_date,
+                            mothers_name: vm.mothers_name,
+                            fathers_name: vm.fathers_name
+                        };
+                        $.post('{% url "card>update" %}', data, function(response) {
+                            if ('errors' in response) {
+                                vm.errors = response.errors;
+                            } else {
+                                window.location.reload();
+                            }
+
+                            vm.loading = false;
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+    {% endif %}
+
+    <script>
+        jQuery(function($) {
+            var recharge_card_app = new Vue({
+                el: '#recharge-card-app',
+                data: {
+                    quote: 0,
+                    local_amount: '',
+                    btc_amount: '',
+                    password: '',
+                    code: ''
+                },
+                watch: {
+                    quote: function () {
+                        var vm = this;
+                        var result = (vm.local_amount / vm.quote).toFixed(8);
+
+                        if (isNaN(result)) {
+                            result = 0;
+                        }
+
+                        vm.btc_amount = result
+                    },
+                    local_amount: function () {
+                        var vm = this;
+                        var result = (vm.local_amount / vm.quote).toFixed(8);
+
+                        if (isNaN(result)) {
+                            result = (0).toFixed(8);
+                        }
+
+                        vm.btc_amount = result;
+                    }
+                },
+                mounted: function () {
+                    var vm = this;
+                    this.$nextTick(function () {
+                        $.get('{% url "xfactor>quote" %}', function(response) {
+                            vm.quote = parseFloat(response.quote).toFixed(8);
+                            vm.btc_amount = '';
+                        });
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-06 14:11+0000\n"
+"POT-Creation-Date: 2018-07-25 13:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,31 @@ msgstr "O boleto já está registrado em nosso sistema"
 msgid "Insufficient funds"
 msgstr "Saldo insuficiente"
 
-#: apps/investment/apps.py:7 apps/investment/models.py:137
+#: apps/card/forms.py:19
+msgid "Card number must have 16 digits"
+msgstr "Número do cartão deve possuir 16 digitos"
+
+#: apps/card/forms.py:21
+msgid "Card not found in our system"
+msgstr "Cartão não encontrado no sistema"
+
+#: apps/card/models.py:26 templates/card.html:35
+#, fuzzy
+#| msgid "My Card"
+msgid "Card"
+msgstr "Meu Cartão"
+
+#: apps/card/models.py:27
+#, fuzzy
+#| msgid "My Card"
+msgid "Cards"
+msgstr "Meu Cartão"
+
+#: apps/investment/apps.py:7 apps/investment/models.py:155
 msgid "Investments"
 msgstr "Investimentos"
 
-#: apps/investment/forms.py:16 apps/investment/models.py:64
+#: apps/investment/forms.py:16 apps/investment/models.py:73
 msgid "Payment Type"
 msgstr "Tipo de Pagamento"
 
@@ -91,7 +111,7 @@ msgid "Confirm e-mail"
 msgstr "Confirmar e-mail"
 
 #: apps/investment/forms.py:59 apps/investment/forms.py:91
-#: templates/card.html:49
+#: templates/card.html:136
 msgid "Password"
 msgstr "Senha"
 
@@ -115,191 +135,191 @@ msgstr "Advisor não existe"
 msgid "Wrong password informed"
 msgstr "Senha errada informada"
 
-#: apps/investment/models.py:27 templates/investment/plans.html:32
+#: apps/investment/models.py:31 templates/investment/plans.html:32
 #: templates/investment/reinvestment.html:34
 msgid "Min down"
 msgstr "Invest. Min:"
 
-#: apps/investment/models.py:28 templates/investment/plans.html:33
+#: apps/investment/models.py:32 templates/investment/plans.html:33
 #: templates/investment/reinvestment.html:35
 msgid "Max down"
 msgstr "Invest. Max:"
 
-#: apps/investment/models.py:29 templates/investment/plans.html:35
+#: apps/investment/models.py:33 templates/investment/plans.html:35
 #: templates/investment/reinvestment.html:37
 msgid "Min reinvest"
 msgstr "Reinvest. min."
 
-#: apps/investment/models.py:30 apps/investment/models.py:87
+#: apps/investment/models.py:34 apps/investment/models.py:96
 msgid "Membership Fee"
 msgstr "Taxa de adesão"
 
-#: apps/investment/models.py:31
+#: apps/investment/models.py:35
 #, fuzzy
 #| msgid "Total Comissions"
 msgid "Promoter Comission"
 msgstr "Total Comissões"
 
-#: apps/investment/models.py:32
+#: apps/investment/models.py:36
 #, fuzzy
 #| msgid "Comission"
 msgid "Advisor Comission"
 msgstr "Minhas Comissões"
 
-#: apps/investment/models.py:33
+#: apps/investment/models.py:37
 msgid "Allow monthly draw"
 msgstr "Permite saque mensal"
 
-#: apps/investment/models.py:37 apps/investment/models.py:61
+#: apps/investment/models.py:41 apps/investment/models.py:70
 #: templates/core/statement.html:123 templates/core/statement.html:186
 #: templates/investment/reinvestment.html:32
 msgid "Plan"
 msgstr "Plano"
 
-#: apps/investment/models.py:38
+#: apps/investment/models.py:42
 msgid "Plans"
 msgstr "Planos"
 
-#: apps/investment/models.py:46
+#: apps/investment/models.py:55
 msgid "Months"
 msgstr "Meses"
 
-#: apps/investment/models.py:49
+#: apps/investment/models.py:58
 msgid "Grace period"
 msgstr "Carência"
 
-#: apps/investment/models.py:50
+#: apps/investment/models.py:59
 msgid "Grace periods"
 msgstr "Carências"
 
-#: apps/investment/models.py:62 templates/investment/plans.html:49
+#: apps/investment/models.py:71 templates/investment/plans.html:49
 #: templates/investment/reinvestment.html:40
 msgid "Grace Period"
 msgstr "Carência"
 
-#: apps/investment/models.py:63
+#: apps/investment/models.py:72
 msgid "Income percent"
 msgstr "Porcentagem de rendimento:"
 
-#: apps/investment/models.py:65 templates/core/statement.html:95
+#: apps/investment/models.py:74 templates/core/statement.html:95
 #: templates/core/statement.html:122
 msgid "Currency"
 msgstr "Moeda"
 
-#: apps/investment/models.py:68 apps/investment/models.py:85
+#: apps/investment/models.py:77 apps/investment/models.py:94
 msgid "Plan grace period"
 msgstr "Carência do plano"
 
-#: apps/investment/models.py:69
+#: apps/investment/models.py:78
 msgid "Plan grace periods"
 msgstr "Carências do plano"
 
-#: apps/investment/models.py:74
+#: apps/investment/models.py:83
 #, python-brace-format
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
 
-#: apps/investment/models.py:86 templates/boleto/pay.html:61
+#: apps/investment/models.py:95 templates/boleto/pay.html:63
 #: templates/core/statement.html:94 templates/core/statement.html:121
 #: templates/core/statement.html:183 templates/core/statement.html:212
 #: templates/investment/credit-line.html:74
 msgid "Amount"
 msgstr ""
 
-#: apps/investment/models.py:88 apps/investment/models.py:216
-#: apps/investment/models.py:263
+#: apps/investment/models.py:97 apps/investment/models.py:234
+#: apps/investment/models.py:281
 msgid "Account"
 msgstr "Conta"
 
-#: apps/investment/models.py:89
+#: apps/investment/models.py:98
 msgid "Paid Date"
 msgstr "Data de Pagamento"
 
-#: apps/investment/models.py:136
+#: apps/investment/models.py:154
 msgid "Investment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:151
+#: apps/investment/models.py:169
 msgid "Income"
 msgstr "Rendimento"
 
-#: apps/investment/models.py:152 templates/core/statement.html:74
+#: apps/investment/models.py:170 templates/core/statement.html:74
 msgid "Incomes"
 msgstr "Rendimentos"
 
-#: apps/investment/models.py:158
+#: apps/investment/models.py:176
 msgid "Date to be ignored"
 msgstr "Data a ser ignorada"
 
-#: apps/investment/models.py:161
+#: apps/investment/models.py:179
 msgid "Ignore income date"
 msgstr "Data de rendimento ignorada"
 
-#: apps/investment/models.py:162
+#: apps/investment/models.py:180
 msgid "Ignore income dates"
 msgstr "Datas de rendimento ignoradas"
 
-#: apps/investment/models.py:172
+#: apps/investment/models.py:190
 msgid "Investment Promoter"
 msgstr "Promotor de Investimentos"
 
-#: apps/investment/models.py:172
+#: apps/investment/models.py:190
 msgid "Investment Advisor"
 msgstr "Investment Advisor"
 
-#: apps/investment/models.py:180
+#: apps/investment/models.py:198
 msgid "Graduation"
 msgstr "Graduação"
 
-#: apps/investment/models.py:181
+#: apps/investment/models.py:199
 msgid "Graduations"
 msgstr "Graduações"
 
-#: apps/investment/models.py:224
+#: apps/investment/models.py:242
 msgid "Loan"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:225
+#: apps/investment/models.py:243
 msgid "Loans"
 msgstr "Empréstimo"
 
-#: apps/investment/models.py:237 templates/accounts/checking.html:113
+#: apps/investment/models.py:255 templates/accounts/checking.html:113
 #: templates/accounts/investment.html:55 templates/core/statement.html:6
 #: templates/core/statement.html:63
 msgid "Statement"
 msgstr "Extrato"
 
-#: apps/investment/models.py:250
+#: apps/investment/models.py:268
 msgid "Installment"
 msgstr "Investimento"
 
-#: apps/investment/models.py:251
+#: apps/investment/models.py:269
 msgid "Installments"
 msgstr "Investimentos"
 
-#: apps/investment/models.py:279
+#: apps/investment/models.py:297
 msgid "Credit"
 msgstr "Crédito"
 
-#: apps/investment/models.py:280
+#: apps/investment/models.py:298
 msgid "Credits"
 msgstr "Créditos"
 
-#: apps/investment/models.py:296 templates/core/my-customers.html:19
+#: apps/investment/models.py:314 templates/core/my-customers.html:19
 #: templates/core/my-customers.html:41
 msgid "Comission"
 msgstr "Minhas Comissões"
 
-#: apps/investment/models.py:297 templates/core/my-customers.html:63
+#: apps/investment/models.py:315 templates/core/my-customers.html:63
 #: templates/core/statement.html:80
 msgid "Comissions"
 msgstr "Minhas Comissões"
 
-#: apps/investment/models.py:323 templates/core/statement.html:151
+#: apps/investment/models.py:344 templates/core/statement.html:151
 msgid "Reinvestment"
 msgstr "Reinvestimento"
 
-#: apps/investment/models.py:324 templates/core/statement.html:77
+#: apps/investment/models.py:345 templates/core/statement.html:77
 msgid "Reinvestments"
 msgstr "Reinvestimentos"
 
@@ -336,28 +356,28 @@ msgstr "ERRO! Valor a ser investido está fora do limite do plano"
 msgid "ERROR! Your {} account does not have enought deposit amount"
 msgstr "ERRO! Sua conta {} não possui saldo suficiente"
 
-#: apps/investment/views.py:137
+#: apps/investment/views.py:136
 msgid "Congratulations! Your investing plan was created."
 msgstr "Parabéns! Seu plano de investimento foi criado."
 
-#: apps/investment/views.py:138
+#: apps/investment/views.py:137
 msgid "Someting in your new investment plan didn't work as expected."
 msgstr ""
 "Alguma coisa no seu novo plano de investimento não funcionou corretamente."
 
-#: apps/investment/views.py:165
+#: apps/investment/views.py:164
 msgid "ERROR! Selected grace period is not valid."
 msgstr ""
 
-#: apps/investment/views.py:201
+#: apps/investment/views.py:200
 msgid "ERROR! The min reinvestment for this plan is {}"
 msgstr "ERRO! O valor mínimo para reinvestimento é {}"
 
-#: apps/investment/views.py:203
+#: apps/investment/views.py:202
 msgid "ERROR! You does not have enought balance"
 msgstr "ERRO! Você não possui saldo suficiente"
 
-#: apps/investment/views.py:293
+#: apps/investment/views.py:292
 msgid "Congratulations! Your reinvesting plan was created."
 msgstr "Parabéns! Seu plano de reinvestimento foi criado."
 
@@ -451,8 +471,8 @@ msgid "Change My Password"
 msgstr "Mudar Minha Senha"
 
 #: templates/account/settings.html:73 templates/account/settings.html:97
-#: templates/account/settings.html:108 templates/core/settings.html:48
-#: templates/core/settings.html:74
+#: templates/account/settings.html:108 templates/card.html:82
+#: templates/core/settings.html:48 templates/core/settings.html:74
 msgid "Save"
 msgstr "Salvar"
 
@@ -646,54 +666,54 @@ msgstr ""
 msgid "Copy address"
 msgstr "Copiar endereço"
 
-#: templates/boleto/pay.html:27 templates/card.html:30
+#: templates/boleto/pay.html:28 templates/card.html:103
 msgid "Request your Xfactor card to access this feature"
 msgstr "Solicite seu cartão Xfactor para ter acesso a essa funcionalidade"
 
-#: templates/boleto/pay.html:34
+#: templates/boleto/pay.html:36
 msgid "NEW PAYMENT"
 msgstr "NOVO PAGAMENTO"
 
-#: templates/boleto/pay.html:35
+#: templates/boleto/pay.html:37
 msgid "Request new payment"
 msgstr "Solicitar novo pagamento"
 
-#: templates/boleto/pay.html:37
+#: templates/boleto/pay.html:39
 msgid "Barcode"
 msgstr "Código de barras"
 
-#: templates/boleto/pay.html:38
+#: templates/boleto/pay.html:40
 msgid "Your name or campany name"
 msgstr "Seu nome ou da empresa"
 
-#: templates/boleto/pay.html:39
+#: templates/boleto/pay.html:41
 msgid "CPF/CNPJ"
 msgstr ""
 
-#: templates/boleto/pay.html:40
+#: templates/boleto/pay.html:42
 msgid "NEXT"
 msgstr "PRÓXIMO"
 
-#: templates/boleto/pay.html:49
+#: templates/boleto/pay.html:51
 msgid "CHECK THE DATA AND PAY YOUR BANK SLIP"
 msgstr "VERIFIQUE OS DADOS E PAGUE SEU BOLETO"
 
-#: templates/boleto/pay.html:50
+#: templates/boleto/pay.html:52
 msgid ""
 "Check if the bank slip data below is correct and click on the right pay "
 "button"
 msgstr ""
 "Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
 
-#: templates/boleto/pay.html:55
+#: templates/boleto/pay.html:57
 msgid "Bank name"
 msgstr "Nome do banco"
 
-#: templates/boleto/pay.html:58
+#: templates/boleto/pay.html:60
 msgid "Due date"
 msgstr "Vencimento"
 
-#: templates/boleto/pay.html:64
+#: templates/boleto/pay.html:66
 msgid "PAY BANK SLIP"
 msgstr "PAGAR BOLETO"
 
@@ -868,14 +888,55 @@ msgid "SIGN ME UP"
 msgstr "INSCREVER-ME"
 
 #: templates/card.html:30
+msgid "XFACTOR CARD DATA"
+msgstr "XFACTOR DADOS DO CARTÃO"
+
+#: templates/card.html:36
+msgid "Carrier"
+msgstr "Portador"
+
+#: templates/card.html:37
+msgid "Carrier document"
+msgstr "Documento portador"
+
+#: templates/card.html:44 templates/card.html:45
+msgid "What is the number of the card who you receive?"
+msgstr "Qual o número do cartão que recebeu?"
+
+#: templates/card.html:53 templates/card.html:54
+msgid "What is your birth date?"
+msgstr "Qual a sua data de aniversário?"
+
+#: templates/card.html:62 templates/card.html:63
+msgid "What is your mothers full name?"
+msgstr "Qual o nome completo da sua mãe?"
+
+#: templates/card.html:71 templates/card.html:72
+msgid "What is your fathers full name?"
+msgstr "Qual o nome completo do seu pai?"
+
+#: templates/card.html:94
+#| msgid "Your card request has been successfully made."
+msgid "Your card has being processed"
+msgstr "Seu cartão está sendo processado"
+
+#: templates/card.html:95
+msgid ""
+"You have successfully request your card activation. In 24 hours or less your "
+"card will be activated. A e-mail will be send to you when it is done!"
+msgstr ""
+"Você solicitou com sucesso a ativação do seu cartão. Em 24 horas ou menos, seu "
+"cartão será ativado. Um e-mail será enviado para você quando estiver pronto!"
+
+#: templates/card.html:103
 msgid "Request card"
 msgstr "Solicitar cartão"
 
-#: templates/card.html:34
+#: templates/card.html:108
 msgid "MY CARD"
 msgstr "MEU CARTÃO"
 
-#: templates/card.html:35
+#: templates/card.html:109
 msgid ""
 "This is yours card. You can add money in it when you need. The amount will "
 "be discount from your checking account"
@@ -883,39 +944,39 @@ msgstr ""
 "Este é o seu cartão. Você pode adicionar dinheiro nele sempre que precisar. "
 "O valor será descontado automáticamente da sua conta corrente"
 
-#: templates/card.html:41
+#: templates/card.html:128
 msgid "Available for use"
 msgstr "Disponível para uso"
 
-#: templates/card.html:45
+#: templates/card.html:132
 msgid "NEW RECHARGE"
 msgstr "NOVA RECARGA"
 
-#: templates/card.html:47 templates/card.html:65
+#: templates/card.html:134 templates/card.html:152
 msgid "Amount local currency"
 msgstr "Valor em moeda local"
 
-#: templates/card.html:48 templates/card.html:66
+#: templates/card.html:135 templates/card.html:153
 msgid "Amount BTC"
 msgstr "Valor em BTC"
 
-#: templates/card.html:50
+#: templates/card.html:137
 msgid "Two Factor Code"
 msgstr "Código Two Factor"
 
-#: templates/card.html:52
+#: templates/card.html:139
 msgid "Recharge"
 msgstr "Recarga"
 
-#: templates/card.html:53
+#: templates/card.html:140
 msgid "Card balance"
 msgstr "Saldo do Cartão"
 
-#: templates/card.html:58
+#: templates/card.html:145
 msgid "RECHARGES"
 msgstr "RECARGAS"
 
-#: templates/card.html:64 templates/core/statement.html:92
+#: templates/card.html:151 templates/core/statement.html:92
 #: templates/core/statement.html:120 templates/core/statement.html:149
 #: templates/core/statement.html:182 templates/core/statement.html:211
 msgid "Date"
@@ -1115,11 +1176,11 @@ msgstr "Movimentações"
 msgid "Transfers"
 msgstr "Transferências"
 
-#: templates/core/statement.html:93
+#: templates/core/statement.html:93 templates/core/statement.html:213
 msgid "Description"
 msgstr "Descrição"
 
-#: templates/core/statement.html:96 templates/core/statement.html:215
+#: templates/core/statement.html:96 templates/core/statement.html:216
 msgid "Account Type"
 msgstr "Tipo de Conta"
 
@@ -1151,11 +1212,11 @@ msgstr "Taxa de upgrade"
 msgid "Referral"
 msgstr ""
 
-#: templates/core/statement.html:213
+#: templates/core/statement.html:214
 msgid "Destination Address"
 msgstr "Endereço de Destino"
 
-#: templates/core/statement.html:214
+#: templates/core/statement.html:215
 msgid "TX ID"
 msgstr ""
 
@@ -1557,7 +1618,6 @@ msgstr ""
 "corrente."
 
 #: templates/payments/withdraw.html:51
-#| msgid "Description"
 msgid "description (optional)"
 msgstr "descrição (opcional)"
 
@@ -1641,8 +1701,8 @@ msgstr "Esqueceu sua senha?"
 msgid "Don't have an account?"
 msgstr "Não possui uma conta?"
 
-#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:155
-#: xfactor/views.py:191
+#: templates/two_factor/core/setup_complete.html:5 xfactor/views.py:160
+#: xfactor/views.py:196
 msgid "Congratulations!"
 msgstr "Parabéns!"
 
@@ -1751,12 +1811,12 @@ msgstr ""
 msgid "Enable Two-Factor Authentication"
 msgstr ""
 
-#: xfactor/views.py:126 xfactor/views.py:129 xfactor/views.py:143
-#: xfactor/views.py:162 xfactor/views.py:165 xfactor/views.py:179
+#: xfactor/views.py:131 xfactor/views.py:134 xfactor/views.py:148
+#: xfactor/views.py:167 xfactor/views.py:170 xfactor/views.py:184
 msgid "Error!"
 msgstr "Erro!"
 
-#: xfactor/views.py:126
+#: xfactor/views.py:131
 #, fuzzy
 #| msgid ""
 #| "You are not a investor yet, please make a Xfactor investment plan first "
@@ -1767,7 +1827,7 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:129 xfactor/views.py:162
+#: xfactor/views.py:134 xfactor/views.py:167
 msgid ""
 "You are not a investor yet, please make a Xfactor investment plan first and "
 "go back here to get your card."
@@ -1775,37 +1835,37 @@ msgstr ""
 "Você ainda não é um investidor, por favor faça primeiro um investimento na "
 "Xfactor e depois volte aqui para obter o seu cartão."
 
-#: xfactor/views.py:134 xfactor/views.py:170
+#: xfactor/views.py:139 xfactor/views.py:175
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: xfactor/views.py:134
+#: xfactor/views.py:139
 msgid "Your already have requested your Advisor course."
 msgstr "Você já solicitou o seu curso Advisor"
 
-#: xfactor/views.py:143
+#: xfactor/views.py:148
 msgid "You not have enought balance for make your subscription."
 msgstr "Você não possui saldo suficiente para fazer a inscrição."
 
-#: xfactor/views.py:155
+#: xfactor/views.py:160
 msgid "Your subscription in the Advisor has been successfully made."
 msgstr "Sua inscrição no curso Advisor foi realizada com sucesso!"
 
-#: xfactor/views.py:165
+#: xfactor/views.py:170
 #, fuzzy
 #| msgid "You not have enought balance for request your card."
 msgid "You need be a investment advisor first, to request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:170
+#: xfactor/views.py:175
 msgid "Your already have requested your card."
 msgstr "Você já solicitou o seu cartão."
 
-#: xfactor/views.py:179
+#: xfactor/views.py:184
 msgid "You not have enought balance for request your card."
 msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 
-#: xfactor/views.py:191
+#: xfactor/views.py:196
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
 

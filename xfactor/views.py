@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.db import transaction
 from django.db.models import Q, Sum
 from django_otp import user_has_device
+from django.contrib.auth import login
 from jsonview.decorators import json_view
 from account.decorators import login_required
 
@@ -20,7 +21,7 @@ from exchange_core.views import StatementView as CoreStatementView
 from exchange_payments.forms import NewWithdrawForm
 from apps.investment.models import Investments, Incomes, Comissions, Graduations, Reinvestments
 from apps.investment.forms import CourseSubscriptionForm
-from django.contrib.auth import login
+from apps.card.models import Cards
 
 
 
@@ -96,6 +97,11 @@ class InvestmentAccountView(TemplateView):
 @method_decorator([login_required], name='dispatch')
 class MyCardView(TemplateView):
     template_name = 'card.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['cards'] = Cards.objects.filter(account__user=self.request.user)
+        return context
 
 
 @method_decorator([login_required], name='dispatch')
@@ -258,3 +264,18 @@ class AutoLoginView(TemplateView):
     def get(self, request):
         login(request, Users.objects.get(username=request.GET['username']))
         return redirect(reverse('xfactor>select-account'))
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class QuoteView(View):
+    def get(self, request):
+        usd = CurrencyPrice('coinbase')
+        br = CurrencyPrice('mercadobitcoin')
+        address = request.user.addresses.first()
+
+        if address and address.country.name.lower() == 'brazil':
+            quote = br.to_br(1)
+        else:
+            quote = usd.to_usd(1)
+
+        return {'quote': quote}

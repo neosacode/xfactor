@@ -23,9 +23,11 @@
 {% block content %}
 	{% include "back-button.html" with margin_top='30px' %}
 
+    {% if not user_has_card %}
 	<div class="alert alert-danger">
 		<strong class="tx-14">{% trans "Request your Xfactor card to access this feature" %}:</strong>&nbsp;&nbsp; <a href="{% url "xfactor>request-card" %}">Solicitar Cartão</a>
 	</div>
+    {% endif %}
 
 	<div class="row">
 		<div class="col-md-5">
