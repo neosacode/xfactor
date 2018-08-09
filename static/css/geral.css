@@ -599,3 +599,11 @@ p {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+
+.nav-tabs .nav-link {
+    font-size: 13px;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: bold;
+}

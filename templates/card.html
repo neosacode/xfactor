@@ -124,25 +124,65 @@
                       </div>
                     </div>
                 {% endif %}
-					<h3>{{ CCS }} 0,00</h3>
-					<p>{% trans "Available for use" %}:</p>
+					<h3 class="mt-10">{{ CCS }} {{ cards.first.deposit|floatformat:2 }}</h3>
+                    <div class="clearfix"></div>
+					<p>{% trans "Available for use" %}</p>
 				</div>
 			</div>
 			<div class="box-3">
 				<h2>{% trans "NEW RECHARGE" %}</h2>
 				<form action="" id="recharge-card-app">
-					<input type="number" placeholder="{% trans "Amount local currency" %}" v-model="local_amount">
-					<input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}" v-model="btc_amount"><br>
-					<input type="password" placeholder="{% trans "Password" %}" v-model="password">
-					<input type="text" placeholder="{% trans "Two Factor Code" %}" v-model="code">
+					<div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="number" placeholder="{% trans "Amount local currency" %}" v-model="amount">
+                                <div class="help-block form-text text-muted form-control-feedback" v-show="errors.amount">
+                                    <ul class="parsley-errors-list filled">
+                                        <li v-for="error_message in errors.amount" v-text="error_message"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" disabled="disabled" placeholder="{% trans "Amount BTC" %}" v-model="btc_amount">
+                                <div class="help-block form-text text-muted form-control-feedback" v-show="errors.btc_amount">
+                                    <ul class="parsley-errors-list filled">
+                                        <li v-for="error_message in errors.btc_amount" v-text="error_message"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="password" placeholder="{% trans "Password" %}" v-model="password">
+                                <div class="help-block form-text text-muted form-control-feedback" v-show="errors.password">
+                                    <ul class="parsley-errors-list filled">
+                                        <li v-for="error_message in errors.password" v-text="error_message"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" placeholder="{% trans "Two Factor Code" %}" v-model="code">
+                                <div class="help-block form-text text-muted form-control-feedback" v-show="errors.code">
+                                    <ul class="parsley-errors-list filled">
+                                        <li v-for="error_message in errors.code" v-text="error_message"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 					<div class="enviar">
-						<a href="#" class="btn btn-pink btn-round">{% trans "Recharge" %}</a>
+						<a href="#" @click.prevent="create_recharge()" class="btn btn-pink btn-round">{% trans "Recharge" %}</a>
 						<h3><span>{% trans "Card balance" %}</span> 0,00</h3>
 					</div>
 				</form>
 			</div>
 			<div class="box-4">
-				<h2>{% trans "RECHARGES" %}</h2>
+				<h2>{% trans "YOUR RECHARGES" %}</h2>
 
 				<div class="table-wrapper">
 					<table class="table">
@@ -150,9 +190,20 @@
 							<tr>
 								<th>{% trans "Date" %}</th>
 								<th>{% trans "Amount local currency" %}</th>
-								<th>{% trans "Amount BTC" %}</th>
+								<th>{% trans "Quote" %}</th>
+								<th>{% trans "BTC amount" %}</th>
 							</tr>
 						</thead>
+                        <tbody>
+                            {% for recharge in recharges %}
+                                <tr>
+                                    <td>{{ recharge.created }}</td>
+                                    <td>{{ CCS }} {{ recharge.quote_amount }}</td>
+                                    <td>{{ CCS }} {{ recharge.quote|floatformat:2 }}</td>
+                                    <td>{{ recharge.amount }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
 					</table>
 				</div>
 			</div>
@@ -217,25 +268,46 @@
                 el: '#recharge-card-app',
                 data: {
                     quote: 0,
-                    local_amount: '',
+                    amount: '',
                     btc_amount: '',
                     password: '',
-                    code: ''
+                    code: '',
+                    errors: {}
+                },
+                methods: {
+                    create_recharge: function() {
+                        var vm = this;
+                        var data = {
+                            amount: vm.amount,
+                            password: vm.password,
+                            code: vm.code
+                        };
+                        $.post('{% url "card>recharge" %}', data, function(response) {
+                            if ('errors' in response) {
+                                vm.errors = response.errors;
+                                return;
+                            }
+
+                            swal('{% trans "Message" %}', response.message_text, response.message_type).then(function() {
+                                window.location.reload();
+                            });
+                        });
+                    }
                 },
                 watch: {
                     quote: function () {
                         var vm = this;
-                        var result = (vm.local_amount / vm.quote).toFixed(8);
+                        var result = (vm.amount / vm.quote).toFixed(8);
 
                         if (isNaN(result)) {
                             result = 0;
                         }
 
-                        vm.btc_amount = result
+                        vm.btc_amount = result;
                     },
-                    local_amount: function () {
+                    amount: function () {
                         var vm = this;
-                        var result = (vm.local_amount / vm.quote).toFixed(8);
+                        var result = (vm.amount / vm.quote).toFixed(8);
 
                         if (isNaN(result)) {
                             result = (0).toFixed(8);

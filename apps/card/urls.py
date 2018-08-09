@@ -3,5 +3,6 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('update-card/', views.UpdateCardView.as_view(), name='card>update'),
+    path('card/update/', views.UpdateCardView.as_view(), name='card>update'),
+    path('card/recharge/', views.RechargeView.as_view(), name='card>recharge'),
 ]

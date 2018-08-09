@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
@@ -15,6 +16,8 @@ class Cards(TimeStampedModel, BaseModel, models.Model):
     birth_date = models.DateField(null=True, blank=True)
     mothers_name = models.CharField(max_length=50, null=True, blank=True)
     fathers_name = models.CharField(max_length=50, null=True, blank=True)
+    deposit = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Balance in the moment"), default=Decimal('0'))
+    reserved = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Balance in the moment"), default=Decimal('0'))
     is_active = models.BooleanField(default=False)
 
     @property
@@ -25,6 +28,22 @@ class Cards(TimeStampedModel, BaseModel, models.Model):
     class Meta:
         verbose_name = _("Card")
         verbose_name_plural = _("Cards")
+
+
+class Recharges(TimeStampedModel, BaseModel, models.Model):
+    card = models.ForeignKey(Cards, related_name='recharges', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Amount"))
+    quote =  models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Quote"))
+    deposit = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Deposit in the moment"))
+    reserved = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Reserved in the moment"))
+
+    @property
+    def quote_amount(self):
+        return round(self.amount * self.quote, 2)
+
+    class Meta:
+        verbose_name = _("Recharge")
+        verbose_name_plural = _("Recharges")
 
 
 @admin.register(Cards)

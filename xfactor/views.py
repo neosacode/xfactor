@@ -21,7 +21,7 @@ from exchange_core.views import StatementView as CoreStatementView
 from exchange_payments.forms import NewWithdrawForm
 from apps.investment.models import Investments, Incomes, Comissions, Graduations, Reinvestments
 from apps.investment.forms import CourseSubscriptionForm
-from apps.card.models import Cards
+from apps.card.models import Cards, Recharges
 
 
 
@@ -101,6 +101,7 @@ class MyCardView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['cards'] = Cards.objects.filter(account__user=self.request.user)
+        context['recharges'] = Recharges.objects.filter(card__account__user=self.request.user).order_by('-created')
         return context
 
 
@@ -278,4 +279,4 @@ class QuoteView(View):
         else:
             quote = usd.to_usd(1)
 
-        return {'quote': quote}
+        return {'quote': quote * Decimal('1.07')}
