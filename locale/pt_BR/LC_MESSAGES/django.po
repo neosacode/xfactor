@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 03:58+0000\n"
+"POT-Creation-Date: 2018-08-09 04:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,22 +63,68 @@ msgstr "Senha errada informada"
 msgid "Wrong two factor code informed"
 msgstr "Senha errada informada"
 
-#: apps/card/models.py:19 apps/card/models.py:20
-msgid "Balance in the moment"
+#: apps/card/models.py:15 apps/investment/models.py:97
+#: apps/investment/models.py:234 apps/investment/models.py:281
+msgid "Account"
+msgstr "Conta"
+
+#: apps/card/models.py:16
+msgid "Number"
 msgstr ""
 
-#: apps/card/models.py:29 templates/card.html:35
+#: apps/card/models.py:17 templates/core/my-customers.html:155
+#: templates/core/statement.html:188 templates/investment/my-customers.html:22
+msgid "Name"
+msgstr ""
+
+#: apps/card/models.py:18
+#, fuzzy
+#| msgid "Document Selfie"
+msgid "Document 1"
+msgstr "Selfie com o Documento"
+
+#: apps/card/models.py:19
+#, fuzzy
+#| msgid "Document Selfie"
+msgid "Document 2"
+msgstr "Selfie com o Documento"
+
+#: apps/card/models.py:20
+msgid "Birth date"
+msgstr "Data de nascimento"
+
+#: apps/card/models.py:21
+#| msgid "First name"
+msgid "Mothers name"
+msgstr "Nome da mãe"
+
+#: apps/card/models.py:22
+#| msgid "First name"
+msgid "Fathers name"
+msgstr "Nome do pai"
+
+#: apps/card/models.py:23
+msgid "Deposit"
+msgstr ""
+
+#: apps/card/models.py:24
+msgid "Reserved"
+msgstr ""
+
+#: apps/card/models.py:25
+msgid "Is active"
+msgstr "Esta ativo"
+
+#: apps/card/models.py:37 templates/card.html:35
 #: templates/core/statement.html:248
-#| msgid "My Card"
 msgid "Card"
 msgstr "Cartão"
 
-#: apps/card/models.py:30
-#| msgid "My Card"
+#: apps/card/models.py:38
 msgid "Cards"
 msgstr "Cartões"
 
-#: apps/card/models.py:35 apps/investment/models.py:95
+#: apps/card/models.py:43 apps/investment/models.py:95
 #: templates/boleto/pay.html:63 templates/core/statement.html:97
 #: templates/core/statement.html:124 templates/core/statement.html:186
 #: templates/core/statement.html:215 templates/core/statement.html:246
@@ -86,23 +132,23 @@ msgstr "Cartões"
 msgid "Amount"
 msgstr ""
 
-#: apps/card/models.py:36 templates/card.html:192
+#: apps/card/models.py:44 templates/card.html:193
 msgid "Quote"
 msgstr "Cotação"
 
-#: apps/card/models.py:37
+#: apps/card/models.py:45
 msgid "Deposit in the moment"
 msgstr ""
 
-#: apps/card/models.py:38
+#: apps/card/models.py:46
 msgid "Reserved in the moment"
 msgstr ""
 
-#: apps/card/models.py:45 templates/card.html:178
+#: apps/card/models.py:53 templates/card.html:179
 msgid "Recharge"
 msgstr "Recarga"
 
-#: apps/card/models.py:46
+#: apps/card/models.py:54
 #, fuzzy
 #| msgid "Recharge"
 msgid "Recharges"
@@ -119,8 +165,8 @@ msgid ""
 "Your recharge has been processed by our team and will be available in your "
 "card within 24 hours"
 msgstr ""
-"Sua recarga esta sendo processado e estará disponível em seu "
-"cartão dentro de 24 horas"
+"Sua recarga esta sendo processado e estará disponível em seu cartão dentro "
+"de 24 horas"
 
 #: apps/investment/apps.py:7 apps/investment/models.py:155
 msgid "Investments"
@@ -168,7 +214,7 @@ msgid "Confirm e-mail"
 msgstr "Confirmar e-mail"
 
 #: apps/investment/forms.py:59 apps/investment/forms.py:91
-#: templates/card.html:157
+#: templates/card.html:158
 msgid "Password"
 msgstr "Senha"
 
@@ -271,11 +317,6 @@ msgstr "Carências do plano"
 #, python-brace-format
 msgid "{plan} with {grace_period} months"
 msgstr "{plan} com {grace_period} meses"
-
-#: apps/investment/models.py:97 apps/investment/models.py:234
-#: apps/investment/models.py:281
-msgid "Account"
-msgstr "Conta"
 
 #: apps/investment/models.py:98
 msgid "Paid Date"
@@ -990,47 +1031,46 @@ msgstr ""
 "Este é o seu cartão. Você pode adicionar dinheiro nele sempre que precisar. "
 "O valor será descontado automáticamente da sua conta corrente"
 
-#: templates/card.html:128
+#: templates/card.html:129
 msgid "Available for use"
 msgstr "Disponível para uso"
 
-#: templates/card.html:132
+#: templates/card.html:133
 msgid "NEW RECHARGE"
 msgstr "NOVA RECARGA"
 
-#: templates/card.html:137 templates/card.html:191
+#: templates/card.html:138 templates/card.html:192
 msgid "Amount local currency"
 msgstr "Valor em moeda local"
 
-#: templates/card.html:147
+#: templates/card.html:148
 msgid "Amount BTC"
 msgstr "Valor em BTC"
 
-#: templates/card.html:167
+#: templates/card.html:168
 msgid "Two Factor Code"
 msgstr "Código Two Factor"
 
-#: templates/card.html:179
+#: templates/card.html:180
 msgid "Card balance"
 msgstr "Saldo do Cartão"
 
-#: templates/card.html:184
-#| msgid "RECHARGES"
+#: templates/card.html:185
 msgid "YOUR RECHARGES"
 msgstr "SUAS RECARGAS"
 
-#: templates/card.html:190 templates/core/statement.html:95
+#: templates/card.html:191 templates/core/statement.html:95
 #: templates/core/statement.html:123 templates/core/statement.html:152
 #: templates/core/statement.html:185 templates/core/statement.html:214
 #: templates/core/statement.html:245
 msgid "Date"
 msgstr "Data"
 
-#: templates/card.html:193
+#: templates/card.html:194
 msgid "BTC amount"
 msgstr "Quantidade em BTC"
 
-#: templates/card.html:290 templates/investment/plans.html:121
+#: templates/card.html:291 templates/investment/plans.html:121
 #: templates/investment/reinvestment.html:101
 msgid "Message"
 msgstr "Mensagem"
@@ -1122,11 +1162,6 @@ msgstr ""
 
 #: templates/core/my-customers.html:129
 msgid "Search"
-msgstr ""
-
-#: templates/core/my-customers.html:155 templates/core/statement.html:188
-#: templates/investment/my-customers.html:22
-msgid "Name"
 msgstr ""
 
 #: templates/core/my-customers.html:156
@@ -1230,7 +1265,6 @@ msgid "Transfers"
 msgstr "Transferências"
 
 #: templates/core/statement.html:86
-#| msgid "Credit"
 msgid "Credit Card"
 msgstr "Cartões"
 
@@ -1279,7 +1313,6 @@ msgid "TX ID"
 msgstr ""
 
 #: templates/core/statement.html:247
-#| msgid "Installment"
 msgid "Establishment"
 msgstr "Estabelecimentos"
 
