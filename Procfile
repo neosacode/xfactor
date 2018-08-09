@@ -4,3 +4,4 @@ income: python manage.py income
 comissions: python manage.py comissions
 reinvestment_comissions: python manage.py reinvestment_comissions
 auto_withdraw_investments: python manage.py auto_withdraw_investments
+release: python manage.py migrate
