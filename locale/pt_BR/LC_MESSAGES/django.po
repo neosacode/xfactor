@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 04:38+0000\n"
+"POT-Creation-Date: 2018-08-10 19:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps/boleto/models.py:23
+#: apps/boleto/models.py:22
 msgid "Receipt"
 msgstr "Comprovante"
 
-#: apps/boleto/models.py:27
+#: apps/boleto/models.py:26
 msgid "Boleto"
 msgstr ""
 
-#: apps/boleto/models.py:28
+#: apps/boleto/models.py:27
 msgid "Boletos"
 msgstr ""
 
-#: apps/boleto/views.py:21
+#: apps/boleto/views.py:22
 msgid "Services > Bank Slip"
 msgstr "Serviços > Boleto"
 
-#: apps/boleto/views.py:28
+#: apps/boleto/views.py:29
 msgid "Your bank slip payment request was created"
 msgstr "Sua solicitação de pagamento foi criada"
 
-#: apps/boleto/views.py:37
+#: apps/boleto/views.py:38
 msgid "This bank slip is already registered in our system"
 msgstr "O boleto já está registrado em nosso sistema"
 
-#: apps/boleto/views.py:40
+#: apps/boleto/views.py:41
 msgid "Insufficient funds"
 msgstr "Saldo insuficiente"
 
@@ -53,15 +53,19 @@ msgstr "Número do cartão deve possuir 16 digitos"
 msgid "Card not found in our system"
 msgstr "Cartão não encontrado no sistema"
 
-#: apps/card/forms.py:45 apps/investment/forms.py:103
+#: apps/card/forms.py:45 apps/card/forms.py:75 apps/investment/forms.py:103
 msgid "Wrong password informed"
 msgstr "Senha errada informada"
 
-#: apps/card/forms.py:51
+#: apps/card/forms.py:51 apps/card/forms.py:81
 #, fuzzy
 #| msgid "Wrong password informed"
 msgid "Wrong two factor code informed"
 msgstr "Senha errada informada"
+
+#: apps/card/forms.py:69
+msgid "Min digits for bank slip is 47"
+msgstr "Quantidade mínima de digitos é 47"
 
 #: apps/card/models.py:15 apps/investment/models.py:97
 #: apps/investment/models.py:234 apps/investment/models.py:281
@@ -70,12 +74,12 @@ msgstr "Conta"
 
 #: apps/card/models.py:16
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: apps/card/models.py:17 templates/core/my-customers.html:155
 #: templates/core/statement.html:188 templates/investment/my-customers.html:22
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: apps/card/models.py:18
 #, fuzzy
@@ -94,12 +98,10 @@ msgid "Birth date"
 msgstr "Data de nascimento"
 
 #: apps/card/models.py:21
-#| msgid "First name"
 msgid "Mothers name"
 msgstr "Nome da mãe"
 
 #: apps/card/models.py:22
-#| msgid "First name"
 msgid "Fathers name"
 msgstr "Nome do pai"
 
@@ -125,10 +127,9 @@ msgid "Cards"
 msgstr "Cartões"
 
 #: apps/card/models.py:43 apps/investment/models.py:95
-#: templates/boleto/pay.html:63 templates/core/statement.html:97
-#: templates/core/statement.html:124 templates/core/statement.html:186
-#: templates/core/statement.html:215 templates/core/statement.html:246
-#: templates/investment/credit-line.html:74
+#: templates/core/statement.html:97 templates/core/statement.html:124
+#: templates/core/statement.html:186 templates/core/statement.html:215
+#: templates/core/statement.html:246 templates/investment/credit-line.html:74
 msgid "Amount"
 msgstr ""
 
@@ -138,11 +139,11 @@ msgstr "Cotação"
 
 #: apps/card/models.py:45
 msgid "Deposit in the moment"
-msgstr ""
+msgstr "Deposito no momento"
 
 #: apps/card/models.py:46
 msgid "Reserved in the moment"
-msgstr ""
+msgstr "Reservado no momento"
 
 #: apps/card/models.py:53 templates/card.html:179
 msgid "Recharge"
@@ -154,7 +155,7 @@ msgstr "Recarga"
 msgid "Recharges"
 msgstr "Recarga"
 
-#: apps/card/views.py:65
+#: apps/card/views.py:65 apps/card/views.py:103
 #, fuzzy
 #| msgid "ERROR! You does not have enought balance"
 msgid "You does not have enought balance"
@@ -167,6 +168,17 @@ msgid ""
 msgstr ""
 "Sua recarga esta sendo processado e estará disponível em seu cartão dentro "
 "de 24 horas"
+
+#: apps/card/views.py:126
+#| msgid ""
+#| "Your recharge has been processed by our team and will be available in "
+#| "your card within 24 hours"
+msgid ""
+"Your bank slip has been processed by our team and will be paid within 24 "
+"hours"
+msgstr ""
+"Seu boleto esta sendo processado pela nossa equipe e sera pago em até 24 "
+"horas"
 
 #: apps/investment/apps.py:7 apps/investment/models.py:155
 msgid "Investments"
@@ -214,7 +226,7 @@ msgid "Confirm e-mail"
 msgstr "Confirmar e-mail"
 
 #: apps/investment/forms.py:59 apps/investment/forms.py:91
-#: templates/card.html:158
+#: templates/boleto/pay.html:90 templates/card.html:158
 msgid "Password"
 msgstr "Senha"
 
@@ -608,7 +620,7 @@ msgstr "Linha de Crédito"
 msgid "Invest"
 msgstr "Investir"
 
-#: templates/accounts/checking.html:107 templates/boleto/pay.html:6
+#: templates/accounts/checking.html:107
 msgid "Pay Bill"
 msgstr "Pagar Conta"
 
@@ -753,56 +765,106 @@ msgstr ""
 msgid "Copy address"
 msgstr "Copiar endereço"
 
+#: templates/boleto/pay.html:6
+#, fuzzy
+#| msgid "Bank name"
+msgid "Bank slip payment"
+msgstr "Nome do banco"
+
 #: templates/boleto/pay.html:28 templates/card.html:103
 msgid "Request your Xfactor card to access this feature"
 msgstr "Solicite seu cartão Xfactor para ter acesso a essa funcionalidade"
 
-#: templates/boleto/pay.html:36
-msgid "NEW PAYMENT"
-msgstr "NOVO PAGAMENTO"
-
-#: templates/boleto/pay.html:37
-msgid "Request new payment"
-msgstr "Solicitar novo pagamento"
-
-#: templates/boleto/pay.html:39
-msgid "Barcode"
-msgstr "Código de barras"
+#: templates/boleto/pay.html:38
+#| msgid "NEW PAYMENT"
+msgid "NEW BANK SLIP PAYMENT"
+msgstr "NOVO PAGAMENTO DE BOLETO"
 
 #: templates/boleto/pay.html:40
-msgid "Your name or campany name"
-msgstr "Seu nome ou da empresa"
+#| msgid "Type the amount to be reinvested"
+msgid "1 - Type the bank slip document number"
+msgstr "1 - Digite o número do documento do boleto"
 
 #: templates/boleto/pay.html:41
-msgid "CPF/CNPJ"
-msgstr ""
+msgid "2 - Wait for the bank slip fields appear to be filled"
+msgstr "2 - Preencha os campos"
 
 #: templates/boleto/pay.html:42
-msgid "NEXT"
-msgstr "PRÓXIMO"
+msgid "3 - Type the bank name of the bank slip"
+msgstr "3 - Digite o nome do banco que emitiu o boleto"
 
-#: templates/boleto/pay.html:51
-msgid "CHECK THE DATA AND PAY YOUR BANK SLIP"
-msgstr "VERIFIQUE OS DADOS E PAGUE SEU BOLETO"
+#: templates/boleto/pay.html:43
+msgid "4 - Type the due date of the bank slip"
+msgstr "4 - Digite o vencimento do boleto"
 
-#: templates/boleto/pay.html:52
-msgid ""
-"Check if the bank slip data below is correct and click on the right pay "
-"button"
-msgstr ""
-"Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
+#: templates/boleto/pay.html:44
+#| msgid "Type the amount to be reinvested"
+msgid "5 - Type the amount of the bank slip"
+msgstr "5 - Digite o valor do boleto que será pago"
 
-#: templates/boleto/pay.html:57
-msgid "Bank name"
+#: templates/boleto/pay.html:46
+#| msgid "Card balance"
+msgid "Your card balance is"
+msgstr "Saldo do Cartão"
+
+#: templates/boleto/pay.html:50
+#| msgid "Type the amount to be reinvested"
+msgid "Type the document number"
+msgstr "Digite o numero do documento"
+
+#: templates/boleto/pay.html:60 templates/boleto/pay.html:125
+#, fuzzy
+#| msgid "Bank name"
+msgid "Bank"
 msgstr "Nome do banco"
 
-#: templates/boleto/pay.html:60
+#: templates/boleto/pay.html:70 templates/boleto/pay.html:126
 msgid "Due date"
 msgstr "Vencimento"
 
-#: templates/boleto/pay.html:66
-msgid "PAY BANK SLIP"
-msgstr "PAGAR BOLETO"
+#: templates/boleto/pay.html:80 templates/boleto/pay.html:127
+#, fuzzy
+#| msgid "Amount BTC"
+msgid "Amount in"
+msgstr "Valor em BTC"
+
+#: templates/boleto/pay.html:100
+#, fuzzy
+#| msgid "two factor code"
+msgid "Two factor code"
+msgstr "código 2 fatores"
+
+#: templates/boleto/pay.html:111
+msgid "Pay"
+msgstr "Pagar"
+
+#: templates/boleto/pay.html:117
+#| msgid "NEW PAYMENT"
+msgid "YOUR PAYMENTS"
+msgstr "SEUS PAGAMENTOS"
+
+#: templates/boleto/pay.html:123 templates/card.html:191
+#: templates/core/statement.html:95 templates/core/statement.html:123
+#: templates/core/statement.html:152 templates/core/statement.html:185
+#: templates/core/statement.html:214 templates/core/statement.html:245
+msgid "Date"
+msgstr "Data"
+
+#: templates/boleto/pay.html:124
+msgid "Final"
+msgstr ""
+
+#: templates/boleto/pay.html:128 templates/core/my-customers.html:161
+#: templates/investment/credit-line.html:204
+#: templates/investment/credit-line.html:251
+msgid "Status"
+msgstr ""
+
+#: templates/boleto/pay.html:204 templates/card.html:291
+#: templates/investment/plans.html:121
+#: templates/investment/reinvestment.html:101
+msgid "Message"
+msgstr "Mensagem"
 
 #: templates/card-advisor-modal.html:12
 msgid "REQUEST YOUR CREDIT CARD"
@@ -1059,21 +1121,9 @@ msgstr "Saldo do Cartão"
 msgid "YOUR RECHARGES"
 msgstr "SUAS RECARGAS"
 
-#: templates/card.html:191 templates/core/statement.html:95
-#: templates/core/statement.html:123 templates/core/statement.html:152
-#: templates/core/statement.html:185 templates/core/statement.html:214
-#: templates/core/statement.html:245
-msgid "Date"
-msgstr "Data"
-
 #: templates/card.html:194
 msgid "BTC amount"
 msgstr "Quantidade em BTC"
-
-#: templates/card.html:291 templates/investment/plans.html:121
-#: templates/investment/reinvestment.html:101
-msgid "Message"
-msgstr "Mensagem"
 
 #: templates/core/documents.html:7 templates/core/documents.html:21
 #: templates/core/index.html:112
@@ -1185,12 +1235,6 @@ msgstr ""
 #: templates/core/my-customers.html:160
 #: templates/investment/my-customers.html:26
 msgid "Register Date"
-msgstr ""
-
-#: templates/core/my-customers.html:161
-#: templates/investment/credit-line.html:204
-#: templates/investment/credit-line.html:251
-msgid "Status"
 msgstr ""
 
 #: templates/core/my-customers.html:187
@@ -1959,3 +2003,27 @@ msgstr "Você não possui saldo suficiente para solicitar seu cartão."
 #: xfactor/views.py:197
 msgid "Your card request has been successfully made."
 msgstr "A solicitação do seu cartão foi feita com sucesso!"
+
+#~ msgid "Request new payment"
+#~ msgstr "Solicitar novo pagamento"
+
+#~ msgid "Barcode"
+#~ msgstr "Código de barras"
+
+#~ msgid "Your name or campany name"
+#~ msgstr "Seu nome ou da empresa"
+
+#~ msgid "NEXT"
+#~ msgstr "PRÓXIMO"
+
+#~ msgid "CHECK THE DATA AND PAY YOUR BANK SLIP"
+#~ msgstr "VERIFIQUE OS DADOS E PAGUE SEU BOLETO"
+
+#~ msgid ""
+#~ "Check if the bank slip data below is correct and click on the right pay "
+#~ "button"
+#~ msgstr ""
+#~ "Verifique se os dados do boleto abaixo estão corretos e clique em pagar"
+
+#~ msgid "PAY BANK SLIP"
+#~ msgstr "PAGAR BOLETO"

@@ -8,7 +8,7 @@ from account.decorators import login_required
 
 from exchange_core.models import Accounts, Statement
 from exchange_core.rates import CurrencyPrice
-from apps.card.forms import CardForm, RechargeForm
+from apps.card.forms import CardForm, RechargeForm, BankSlipForm
 from apps.card.models import Cards
 
 
@@ -87,3 +87,40 @@ class RechargeView(View):
             br_account.to_deposit(recharge.quote_amount)
 
             return {'message_type':  'success', 'message_text': _("Your recharge has been processed by our team and will be available in your card within 24 hours")}
+
+
+@method_decorator([login_required, json_view], name='dispatch')
+class BankSlipView(View):
+    def post(self, request):
+        account = Accounts.objects.filter(user=request.user, currency__symbol='BRL', currency__type='checking').first()
+        form = BankSlipForm(request.POST, user=request.user)
+
+        if not form.is_valid():
+            return {'errors': form.errors}
+
+        amount = form.cleaned_data['amount']
+        if amount > account.deposit:
+            form.add_error('amount', _("You does not have enought balance"))
+            return {'errors': form.errors}
+
+        with transaction.atomic():
+            boleto = form.save(commit=False)
+            boleto.card = Cards.objects.filter(account__user=request.user).first()
+            boleto.payer_name = request.user.name
+            boleto.payer_document = request.user.document_1
+            boleto.save()
+
+            account.takeout(amount)
+            amount = Decimal('0') - amount
+            statement = Statement(account=account, amount=amount, fk=boleto.pk)
+            statement.description = 'Bank slip payment'
+            statement.type = 'bank_slip_payment'
+            statement.save()
+
+            card = boleto.card
+            card.deposit -= abs(boleto.amount)
+            card.save()
+
+            account.takeout(abs(boleto.amount))
+
+            return {'message_type':  'success', 'message_text': _("Your bank slip has been processed by our team and will be paid within 24 hours")}

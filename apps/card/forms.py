@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from apps.card import models
 from exchange_core.mixins import RequiredFieldsMixin
 from django_otp import user_has_device, match_token
-from exchange_core.rates import CurrencyPrice
+from apps.boleto.models import Boletos
 
 
 class CardForm(RequiredFieldsMixin, forms.ModelForm):
@@ -38,6 +38,36 @@ class RechargeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if not self.user.check_password(password):
+            raise forms.ValidationError(_("Wrong password informed"))
+        return password
+
+    def clean_code(self):
+        code = self.cleaned_data['code']
+        if user_has_device(self.user) and not match_token(self.user, code):
+            raise forms.ValidationError(_("Wrong two factor code informed"))
+        return code
+
+
+class BankSlipForm(forms.ModelForm):
+    password = forms.CharField()
+    code = forms.CharField()
+
+    class Meta:
+        model = Boletos
+        fields = ['barcode', 'bank_name', 'amount', 'expiration_date']
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+
+    def clean_barcode(self):
+        if len(self.cleaned_data['barcode']) < 40:
+            raise forms.ValidationError(_("Min digits for bank slip is 47"))
+        return self.cleaned_data['barcode']
 
     def clean_password(self):
         password = self.cleaned_data['password']

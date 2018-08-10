@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_title %}
-    {% trans "Pay Bill" %}
+    {% trans "Bank slip payment" %}
 {% endblock %}
 
 {% block page_subtitle %}
@@ -30,46 +30,184 @@
     {% endif %}
 
 	<div class="row">
-		<div class="col-md-5">
-			<div class="box-3">
-				<div class="margem">
-					<h2 class="b tx-20">{% trans "NEW PAYMENT" %}</h2>
-					<p>{% trans "Request new payment" %}</p>
-					<form action="">
-						<input type="text" placeholder="{% trans "Barcode" %}">
-						<input type="text" placeholder="{% trans "Your name or campany name" %}">
-						<input type="text" placeholder="{% trans "CPF/CNPJ" %}">
-						<button>{% trans "NEXT" %}</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box-2 mb-5">
+						<div class="margem" id="boleto-app">
+							<h2 class="b tx-16"><i class="fas fa-barcode"></i> {% trans "NEW BANK SLIP PAYMENT" %}</h2>
+							<ul style="font-size: 14px; padding: 0; list-style: none;">
+								<li>{% trans "1 - Type the bank slip document number" %}</li>
+								<li>{% trans "2 - Wait for the bank slip fields appear to be filled" %}</li>
+								<li>{% trans "3 - Type the bank name of the bank slip" %}</li>
+								<li>{% trans "4 - Type the due date of the bank slip" %}</li>
+								<li>{% trans "5 - Type the amount of the bank slip" %}</li>
+							</ul>
+							<p><strong>{% trans "Your card balance is" %}: {{ CCS }} {{ real_account.deposit|floatformat:2 }}</strong></p>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="text" class="form-control document-number" placeholder="{% trans "Type the document number" %}" v-model="barcode">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.barcode">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.barcode" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="{% trans "Bank" %}" v-model="bank_name">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.bank_name">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.bank_name" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<input type="text" class="form-control due-date" placeholder="{% trans "Due date" %}" v-model="expiration_date" onfocus="(this.type='date')">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.expiration_date">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.expiration_date" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<input type="number" class="form-control" placeholder="{% trans "Amount in" %} {{ CCS }}" v-model="amount">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.amount">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.amount" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<input type="password" class="form-control" placeholder="{% trans "Password" %}" v-model="password">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.password">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.password" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="{% trans "Two factor code" %}" v-model="code">
+										<div class="help-block form-text text-muted form-control-feedback" v-show="errors.code">
+											<ul class="parsley-errors-list filled">
+												<li v-for="error_message in errors.code" v-text="error_message"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="boleto"></div>
 
-		<div class="col-md-7">
-			<div class="box-2">
-				<div class="margem">
-					<h2 class="b tx-20">{% trans "CHECK THE DATA AND PAY YOUR BANK SLIP" %}</h2>
-					<p>{% trans "Check if the bank slip data below is correct and click on the right pay button" %}</p>
-					<img src="{% static "img/barras.png" %}" alt="">
-					<form action="">
-						<div class="row">
-							<div class="col-md-4">
-								<input type="text" class="form-control" placeholder="{% trans "Bank name" %}">
-							</div>
-							<div class="col-md-4">
-								<input type="text" class="form-control" placeholder="{% trans "Due date" %}">
-							</div>
-							<div class="col-md-4">
-								<input type="text" class="form-control" placeholder="{% trans "Amount" %}">
-							</div>
+							<a href="#" class="btn btn-block btn-pink btn-round float-right" @click.prevent="pay()">{% trans "Pay" %}</a>
+
+							<div class="clearfix"></div>
 						</div>
-						<button>{% trans "PAY BANK SLIP" %}</button>
-					</form>
+					</div>
+
+					<h2 style="font-weight: bold; font-size: 20px; margin-bottom: 30px; color: #666;"><i class="fas fa-barcode"></i> {% trans "YOUR PAYMENTS" %}</h2>
+
+					<div class="table-wrapper">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>{% trans "Date" %}</th>
+									<th>{% trans "Final" %}</th>
+									<th>{% trans "Bank" %}</th>
+									<th>{% trans "Due date" %}</th>
+									<th>{% trans "Amount in" %} {{ CCS }}</th>
+									<th>{% trans "Status" %}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for boleto in boletos %}
+									<tr>
+										<td>{{ boleto.created|date:"SHORT_DATETIME_FORMAT" }}</td>
+										<td>{{ boleto.final }}</td>
+										<td>{{ boleto.bank_name }}</td>
+										<td>{{ boleto.expiration_date }}</td>
+										<td>{{ boleto.amount }}</td>
+										<td>{{ boleto.status }}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>	
+		<div class="col-md-4">
+			<div class="conteudo-2 col-md-4">
+				{% get_current_language as LANGUAGE_CODE %}
+				{% with "img/1_"|add:LANGUAGE_CODE|add:'.png' as banner_url %}
+					<img src="{% static banner_url %}" alt="">
+				{% endwith %}
+			</div>
+		</div>
+	</div>
 
 
 
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+	<script src="{% static "boleto.js" %}"></script>
+	<script>
+	  jQuery(function($) {
+	      var boleto_app = new Vue({
+			  el: '#boleto-app',
+			  data: {
+			      barcode: '',
+			      bank_name: '',
+			      expiration_date: '',
+			      amount: '',
+			      password: '',
+			      code: '',
+				  errors: {}
+			  },
+			  watch: {
+			      barcode: function () {
+			        $('#boleto').empty();
+					var vm = this;
+					if (vm.barcode.length >= 47) {
+						var boleto = new Boleto(vm.barcode).toSVG('#boleto');
+					}
+				  }
+			  },
+			  methods: {
+			      pay: function () {
+			           var vm = this;
+                        var data = {
+                            barcode: vm.barcode,
+                            bank_name: vm.bank_name,
+                            expiration_date: vm.expiration_date,
+                            amount: vm.amount,
+                            password: vm.password,
+                            code: vm.code
+                        };
+                        $.post('{% url "card>bank-slip" %}', data, function(response) {
+                            if ('errors' in response) {
+                                vm.errors = response.errors;
+                                return;
+                            }
+
+                            swal('{% trans "Message" %}', response.message_text, response.message_type).then(function() {
+                                window.location.reload();
+                            });
+                        });
+				  }
+			  }
+		  });
+	  });
+	</script>
 {% endblock %}
