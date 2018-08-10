@@ -190,7 +190,6 @@
 							<tr>
 								<th>{% trans "Date" %}</th>
 								<th>{% trans "Amount local currency" %}</th>
-								<th>{% trans "Quote" %}</th>
 								<th>{% trans "BTC amount" %}</th>
 							</tr>
 						</thead>
@@ -199,7 +198,6 @@
                                 <tr>
                                     <td>{{ recharge.created }}</td>
                                     <td>{{ CCS }} {{ recharge.quote_amount }}</td>
-                                    <td>{{ CCS }} {{ recharge.quote|floatformat:2 }}</td>
                                     <td>{{ recharge.amount }}</td>
                                 </tr>
                             {% endfor %}
