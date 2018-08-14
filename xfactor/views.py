@@ -279,4 +279,4 @@ class QuoteView(View):
         else:
             quote = usd.to_usd(1)
 
-        return {'quote': quote * Decimal('1.07')}
+        return {'quote': quote * Decimal('0.93')}

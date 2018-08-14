@@ -56,7 +56,7 @@ class RechargeView(View):
         else:
             quote = usd.to_usd(1)
 
-        quote = quote * Decimal('1.07')
+        quote = quote * Decimal('0.93')
         recharge = form.save(commit=False)
         recharge.quote = quote
         btc_amount = round(recharge.amount / quote, 8)
