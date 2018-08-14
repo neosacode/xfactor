@@ -17,7 +17,7 @@ class Boletos(TimeStampedModel, models.Model):
     expiration_date = models.DateField()
     payment_date = models.DateField(null=True, blank=True)
     card = models.ForeignKey('card.Cards', related_name='boletos', on_delete=models.CASCADE, null=True)
-    payer_name = models.CharField(max_length=20)
+    payer_name = models.CharField(max_length=100)
     payer_document = models.CharField(max_length=20)
     receipt = models.ImageField(null=True, blank=True, verbose_name=_("Receipt"))
     status = models.CharField(max_length=15, choices=STATUS, default=STATUS.created)
