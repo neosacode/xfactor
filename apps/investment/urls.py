@@ -12,5 +12,10 @@ urlpatterns = [
     path('investment/get-plan-lacks/', views.GetPlanLacksView.as_view(), name='investment>get-plan-lacks'),
     path('investment/my-customers/', views.MyCustomersView.as_view(), name='investment>my-customers'),
     path('investment/credit-line/', views.CreditLineView.as_view(), name='investment>credit-line'),
-    
+    path('investment/generate-loan-table/', views.GenerateLoanTableView.as_view(), name='investment>generate-loan-table'),
+    path('investment/create-loan/', views.CreateLoanView.as_view(), name='investment>create-loan'),
+    path('investment/loan/', views.LoanView.as_view(), name='investment>loan'),
+    path('investment/overdraft/', views.OverdraftView.as_view(), name='investment>overdraft'),
+    path('investment/create-overdraft/', views.CreateOverdraftView.as_view(), name='investment>create-overdraft'),
+
 ]

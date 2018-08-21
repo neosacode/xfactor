@@ -1,0 +1,174 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans "Credit Line" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "back-button.html" with margin_top='20px' %}
+
+    <div class="page-big-title mb-0">
+        <h2 class="uppercase"><i class="fas fa-hand-holding-usd"></i> {% trans "NEW OVERDRAFT" %}</h2>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+            <thead>
+            <tr>
+                <th>{% trans "Limit" %}</th>
+                <th>{% trans "In Use" %}</th>
+                <th>{% trans "Available" %}</th>
+                <th>{% trans "Days to Pay" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ credit.overdraft.limit|floatformat:8 }}</td>
+                <td>{{ credit.overdraft.in_use|floatformat:8 }}</td>
+                <td>{{ credit.overdraft.available|floatformat:8 }}</td>
+                <td>{{ credit.overdraft.free_days }} days</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+
+            <div class="white-box white-box-border">
+                <form action="" id="overdraft-app" method="POST" class="hidden">{% csrf_token %}
+                    <h6 class="b text-blue">1 - {% trans "Type the overdraft amount on the field below" %}</h6>
+
+                    <div class="form-group">
+                        <input name="amount"  class="form-control" type="text" v-model="amount">
+                        <small class="text-danger">* {% trans "The min amount for overdraft is" %}: 0,00100000</small>
+                    </div>
+
+                    <hr>
+                    <h6 class="b text-blue">2 - {% trans "Read the overdraft contract and accept the terms" %}</h6>
+                    <p>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" v-model="terms"> {% trans "I accept the contract terms" %}. <a
+                                    href="#">{% trans "Click here" %}</a> {% trans "to open the overdraft contract." %}
+                            </label>
+                        </div>
+                    </p>
+                    <hr>
+                    <h6 class="b text-blue">4 - {% trans "Finish your overdraft" %}</h6>
+                    <a class="btn btn-primary top15" @click.prevent="to_overdraft()" href="#"><i class="fa fa-check"></i><strong> {% trans "TO WITHDRAW" %}</strong></a>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-12">
+            <div class="white-box white-box-border">
+                <h6 class="b"><i class="fas fa-hand-holding-usd"></i> {% trans "MY OVERDRAFTS" %}</h6>
+                <hr>
+                {% if overdrafts %}
+                    <div class="table-wrapper">
+                        <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                            <thead>
+                            <tr>
+                                <th>{% trans "Started At" %}</th>
+                                <th>{% trans "Due Date" %}</th>
+                                <th>{% trans "Remaining Days" %}</th>
+                                <th>{% trans "Amount To Be Paid" %}</th>
+                                <th>{% trans "Payment" %}</th>
+                                <th>{% trans "Status" %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for credit in overdrafts %}
+                                <tr>
+                                    <td>{{ credit.created }}</td>
+                                    <td>{{ credit.due_date }}</td>
+                                    <td>{{ credit.remaining_days }}</td>
+                                    <td>{{ credit.total_amount }}</td>
+                                    <td>{% trans "Discount in checking account" %}</td>
+                                    <td>
+                                        {% if credit.status == 'pending' %}
+                                            <span class="label label-warning"><i
+                                                    class="fa fa-clock-o"></i> {{ credit.status }}</span>
+                                        {% else %}
+                                            <span class="label label-success">{{ credit.status }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <strong>{% trans "No overdrafts to show" %}</strong>
+                {% endif %}
+            </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        jQuery(($) => {
+            var overdraft_app = new Vue({
+                el: '#overdraft-app',
+                data: {
+                    amount: (0).toFixed(8),
+                    terms: false
+                },
+                watch: {
+                    amount: function () {
+                        var vm = this;
+
+                        $.get('{% url "investment>generate-loan-table" %}?amount=' + vm.amount, (r) => {
+                            vm.installments = r.data;
+                        });
+                    }
+                },
+                methods: {
+                    select_installment: function (installment) {
+                        if (this.times == installment.times) {
+                            this.times = 0;
+                        }
+                        else {
+                            this.times = installment.times;
+                        }
+                    },
+                    to_overdraft: function() {
+                        var vm = this;
+
+                        if (vm.amount < 0.001) {
+                            swal('{% trans "Message" %}', '{% trans "Min amount for overdraft is 0.001 BTC" %}', 'error')
+                        }
+                        else if (!vm.terms) {
+                            swal('{% trans "Message" %}', '{% trans "You must accept the overdraft terms to continue" %}', 'error')
+                        }
+                        else {
+                            var data = {
+                                amount: vm.amount,
+                                times: vm.times
+                            };
+                            $.post('{% url "investment>create-overdraft" %}', data, (r) => {
+                                swal('{% trans "Message" %}', r.message_text, r.message_type).then(() => {
+                                    if (r.message_type == 'success') {
+                                        window.location.reload();
+                                    }
+                                });
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -36,6 +36,18 @@ class Plans(TimeStampedModel, StatusModel, models.Model):
     advisor_comission = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Advisor Comission"), default=Decimal('0.00'))
     allow_monthly_draw = models.BooleanField(default=True, verbose_name=_("Allow monthly draw"))
     order = models.IntegerField(default=0)
+    # Porcentagem de limite de crédito sob o valor investido que o cliente tem direito
+    overdraft_percent = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Overdraft Percent"), default=Decimal('0.00'))
+    # Porcentagem de juros do limite de crédito após o vencimento da carência
+    overdraft_interest_percent = models.DecimalField(max_digits=20, decimal_places=8,verbose_name=_("Overdraft interest percent"), default=Decimal('0.00'))
+    # Quantidade de dias sem juros do limite de crédito
+    overdraft_free_days = models.IntegerField(verbose_name=_("Overdraft Free Days"), default=0)
+    # Porcentagem de empréstimo sob o valor investido que o cliente tem direito
+    loan_percent = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Loan Percent"), default=Decimal('0.00'))
+    # Porcentagem de juros do empréstimo após o vencimento da carência
+    loan_interest_percent = models.DecimalField(max_digits=20, decimal_places=8,verbose_name=_("Loan interest percent"), default=Decimal('0.00'))
+
+    # Porcentagem de juros do empréstimo após o vencimento da carência
 
     class Meta:
         verbose_name = _("Plan")
@@ -140,15 +152,56 @@ class Investments(TimeStampedModel, models.Model):
     def get_credit_by_user(cls, user):
         investment = cls.get_active_by_user(user)
 
+        loan_in_use = cls.get_loan_in_use(investment)
+        loan_limit = cls.get_loan_limit(investment)
+        loan_available = loan_limit - loan_in_use
+
+        overdraft_in_use = cls.get_overdraft_in_use(investment)
+        overdraft_limit = cls.get_overdraft_limit(investment)
+        overdraft_available = overdraft_limit - overdraft_in_use
+
         if investment:
             return {
                 'loan': {
-                    'limit': '{:8f}'.format(investment.amount * (settings.LOAN_INTEREST_PERCENT / 100))
+                    'limit': loan_limit,
+                    'in_use': loan_in_use,
+                    'available': loan_available
                 },
                 'overdraft': {
-                    'limit': '{:8f}'.format(investment.amount * (settings.OVERDRAFT_INTEREST_PERCENT / 100))
+                    'limit': overdraft_limit,
+                    'in_use': overdraft_in_use,
+                    'available': overdraft_available,
+                    'free_days': investment.plan_grace_period.plan.overdraft_free_days
                 }
             }
+
+    @classmethod
+    def get_loan_limit(self, investment):
+        if not investment:
+            return round(Decimal('0.00'), 8)
+        return investment.account.reserved * (investment.plan_grace_period.plan.loan_interest_percent / 100)
+
+    @classmethod
+    def get_loan_in_use(self, investment):
+        if not investment:
+            return round(Decimal('0.00'), 8)
+
+        statements = Statement.objects.filter(type='loan', account__user=investment.account.user)
+        return sum([item.amount for item in statements])
+
+    @classmethod
+    def get_overdraft_limit(self, investment):
+        if not investment:
+            return round(Decimal('0.00'), 8)
+        return investment.account.reserved * (investment.plan_grace_period.plan.overdraft_interest_percent / 100)
+
+    @classmethod
+    def get_overdraft_in_use(self, investment):
+        if not investment:
+            return round(Decimal('0.00'), 8)
+
+        statements = Statement.objects.filter(type='overdraft', account__user=investment.account.user)
+        return sum([item.amount for item in statements])
 
     class Meta:
         verbose_name = _("Investment")
@@ -273,8 +326,8 @@ class Installments(TimeStampedModel, StatusModel, models.Model):
         return str(self.amount)
 
 
-# Créditos
-class Credits(TimeStampedModel, StatusModel, models.Model):
+# Overdrafts
+class Overdrafts(TimeStampedModel, StatusModel, models.Model):
     STATUS = Choices('pending', 'paid')
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

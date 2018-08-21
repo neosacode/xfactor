@@ -13,6 +13,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.db import transaction
 from django.db.models import Q
+from django.contrib import messages
 from jsonview.decorators import json_view
 
 from .models import Plans, Investments, PlanGracePeriods
@@ -20,8 +21,8 @@ from .models import Plans, Investments, PlanGracePeriods
 from exchange_core.models import Accounts, Statement, Users, Currencies
 from exchange_core.views import SignupView
 from apps.investment.forms import SignupForm
-from apps.investment.models import Graduations, Referrals, Incomes, Loans, Credits, Reinvestments
-from apps.investment.utils import decimal_split, generate_loan_table
+from apps.investment.models import Graduations, Referrals, Incomes, Loans, Overdrafts, Reinvestments, Installments
+from apps.investment.utils import decimal_split, generate_loan_table, generate_fixed_loan_table
 
 
 @method_decorator(login_required, name='dispatch')
@@ -360,11 +361,62 @@ class MyCustomersView(TemplateView):
 class CreditLineView(TemplateView):
     template_name = 'investment/credit-line.html'
 
+
+@method_decorator(login_required, name='dispatch')
+class LoanView(TemplateView):
+    template_name = 'investment/loan.html'
+
     def get(self, request):
-        loans = Loans.objects.filter(account__user=request.user)
-        credits = Credits.objects.filter(account__user=request.user)
+        loans = Loans.objects.filter(account__user=request.user).order_by('-created')
         credit = Investments.get_credit_by_user(request.user)
-        return render(request, self.template_name, {'loans': loans, 'credits': credits, 'credit': credit})
+        return render(request, self.template_name, {'loans': loans, 'credit': credit})
+
+
+@method_decorator(login_required, name='dispatch')
+class OverdraftView(TemplateView):
+    template_name = 'investment/overdraft.html'
+
+    def get(self, request):
+        overdrafts = Overdrafts.objects.filter(account__user=request.user).order_by('-created')
+        credit = Investments.get_credit_by_user(request.user)
+        return render(request, self.template_name, {'overdrafts': overdrafts, 'credit': credit})
+
+
+@method_decorator([json_view, login_required], name='dispatch')
+class CreateOverdraftView(TemplateView):
+    template_name = 'investment/overdraft.html'
+
+    def post(self, request):
+        # Valor a ser emprestado
+        amount = round(Decimal(request.POST.get('amount').replace(',', '.')), 8)
+
+        investment = Investments.get_active_by_user(request.user)
+        checking_account = Accounts.objects.filter(user=request.user,
+                                                   currency__symbol=investment.account.currency.symbol,
+                                                   currency__type=Currencies.TYPES.checking).first()
+        credit = Investments.get_credit_by_user(request.user)
+
+        if credit['overdraft']['available'] >= amount and amount >= Decimal('0.001'):
+            with transaction.atomic():
+                checking_account.to_deposit(amount)
+
+                statement = Statement()
+                statement.account = checking_account
+                statement.description = 'New overdraft'
+                statement.amount = amount
+                statement.type = 'overdraft'
+                statement.save()
+
+                # Cria o novo credito
+                overdraft = Overdrafts()
+                overdraft.account = investment.account
+                overdraft.statement = statement
+                overdraft.borrowed_amount = amount
+                overdraft.total_amount = amount
+                overdraft.due_date = timezone.now() + timedelta(days=investment.plan_grace_period.plan.overdraft_free_days)
+                overdraft.save()
+
+            return {'message_text': _("Your credit application was created with success!"), 'message_type': 'success'}
 
 
 @method_decorator([login_required, json_view], name='dispatch')
@@ -373,3 +425,59 @@ class GenerateLoanTableView(TemplateView):
         charge = Investments.objects.get(pk=request.GET.get('investment'), status=Investments.STATUS.paid)
         borrow_amount = Decimal(request.GET.get('amount'))
         return generate_loan_table(charge, borrow_amount)
+
+
+@method_decorator([json_view, login_required], name='dispatch')
+class GenerateLoanTableView(View):
+    def get(self, request):
+        investment = Investments.get_active_by_user(request.user)
+        borrow_amount = Decimal(request.GET.get('amount'))
+        return generate_loan_table(investment, borrow_amount)\
+
+
+@method_decorator([json_view, login_required], name='dispatch')
+class CreateLoanView(View):
+    def post(self, request):
+        # Valor a ser emprestado
+        amount = round(Decimal(request.POST.get('amount').replace(',', '.')), 8)
+        # Numero de parcelas do empréstimo segundo a tabela
+        times = int(request.POST.get('times'))
+
+        investment = Investments.get_active_by_user(request.user)
+        installments = generate_fixed_loan_table(investment, amount, times=times, raw_date=True)
+        checking_account = Accounts.objects.filter(user=request.user, currency__symbol=investment.account.currency.symbol, currency__type=Currencies.TYPES.checking).first()
+        credit = Investments.get_credit_by_user(request.user)
+
+        if times <= len(installments['data']) and credit['loan']['available'] >= amount and amount >= Decimal('0.001'):
+            # Faz tudo via transação no banco
+            with transaction.atomic():
+                checking_account.to_deposit(amount)
+
+                # Cria um novo empréstimo associando o saldo negativo a ele
+                loan = Loans()
+                loan.account = investment.account
+                loan.borrowed_amount = amount
+                loan.total_amount = installments['data'][0]['total_amount']
+                loan.times = times
+                loan.save()
+
+                # Cria o saldo negativo do empréstimo
+                statement = Statement()
+                statement.account = checking_account
+                statement.description = 'New loan'
+                statement.type = 'loan'
+                statement.amount = amount
+                statement.fk = loan.pk
+                statement.save()
+
+                for installment in installments['data']:
+                    # Cria as parcelas
+                    inst = Installments()
+                    inst.loan = loan
+                    inst.order = installment['times']
+                    inst.due_date = installment['payment_date']
+                    inst.interest_percent = installment['interest_percent']
+                    inst.amount = Decimal(installment['amount'])
+                    inst.save()
+
+            return {'message_text': _("Your loan application was created with success!"), 'message_type': 'success'}

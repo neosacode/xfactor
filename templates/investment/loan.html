@@ -1,0 +1,253 @@
+{% extends "core/index.html" %}
+{% load i18n %}
+
+{% block page_title %}
+    {% trans "Credit Line" %}
+{% endblock %}
+
+{% block page_subtitle %}
+    {% trans "Xfactor" %}
+{% endblock %}
+
+{% block head %}
+    <style>
+        .unselected {
+            opacity: 0.2;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+    {% include "back-button.html" with margin_top='20px' %}
+
+    <div class="page-big-title mb-0">
+        <h2 class="uppercase"><i class="fas fa-hand-holding-usd"></i> {% trans "NEW LOAN" %}</h2>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="table tablesaw tablesaw-swipe mb-0" data-tablesaw-mode="swipe">
+            <thead>
+            <tr>
+                <th>{% trans "Limit" %}</th>
+                <th>{% trans "In Use" %}</th>
+                <th>{% trans "Available" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ credit.loan.limit|floatformat:8 }}</td>
+                <td>{{ credit.loan.in_use|floatformat:8 }}</td>
+                <td>{{ credit.loan.available|floatformat:8 }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="white-box white-box-border">
+                    <form action="" id="loan-app" method="POST" class="hidden">{% csrf_token %}
+                        <input type="hidden" name="twofactor_code">
+                        <input type="hidden" name="form_type" value="loan">
+                        <input type="hidden" name="times">
+                        <h6 class="b text-blue">1 - {% trans "Type the loan amount on the field below" %}</h6>
+
+                        <div class="form-group">
+                            <input name="amount" type="number" class="form-control" type="text" v-model="amount">
+                            <small class="text-danger">* {% trans "The min amount for loan is" %} 0,00100000</small>
+                        </div>
+
+                        <hr>
+                        <h6 class="b text-blue">2 - {% trans "Select the loan table" %}</h6>
+
+                        <div class="table-wrapper">
+                            <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{% trans "Times" %}</th>
+                                        <th>{% trans "Month" %}</th>
+                                        <th>{% trans "Percent" %}</th>
+                                        <th>{% trans "Amount" %}</th>
+                                        <th>{% trans "Total" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in installments" @click.prevent="select_installment(item)" :class="{unselected: item.times != times && times > 0}">
+                                        <td>
+                                            <a href="#" class="btn btn-pink btn-sm b"><i class="fas fa-check"></i></a>
+                                        </td>
+                                        <td v-text="item.times"></td>
+                                        <td v-text="item.payment_date"></td>
+                                        <td v-text="item.interest_percent + '%'"></td>
+                                        <td v-text="item.amount"></td>
+                                        <td v-text="item.total_amount"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <hr>
+                        <h6 class="b text-blue">3 - {% trans "Read the loan contract and accept the terms" %}</h6>
+                        <p>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" v-model="terms"> {% trans "I accept the contract terms" %}.
+                                <a href="#">{% trans "Click here" %}</a> {% trans "to open the loan contract." %}
+                            </label>
+                        </div>
+                        </p>
+
+                        <hr>
+
+                        <h6 class="b text-blue">4 - {% trans "Finish your loan" %}</h6>
+                        <button class="btn btn-pink" type="submit" @click.prevent="to_loan()"><i class="fa fa-check"></i><strong> {% trans "TO LOAN" %}</strong></button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="white-box white-box-border">
+                <h6 class="b"><i class="fas fa-hand-holding-usd"></i> {% trans "MY LOANS" %}</h6>
+                <hr>
+
+                {% if loans %}
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs" role="tablist">
+                            {% for loan in loans %}
+                                <li class="nav-item"><a class="{% if forloop.first %}active{% endif %} nav-link" href="#{{ loan.pk }}"
+                                                                                       data-toggle="tab"
+                                                                                       aria-expanded="true"><i class="fas fa-hand-holding-usd"></i> {% trans "Loan" %} -
+                                    {{ loan.created|date:"d/m/Y" }} {% if loan.status == 'pending' %}
+                                        <span class="badge badge-warning"><i
+                                                class="fa fa-clock-o"></i> {{ loan.status }}</span>
+                                    {% else %}
+                                        <span class="badge badge-success">{{ loan.status }}</span>
+                                    {% endif %}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <div class="tab-content">
+                            {% for loan in loans %}
+                                <div class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ loan.pk }}">
+                                    <div class="panel-body">
+                                        <p style="font-size: 12px;" class="mt-10">
+                                            <span class="b">{% trans "Started at: " %}</span> {{ loan.created|date:"d/m/Y" }}<br>
+                                            <span class="b">{% trans "Borrowed amount: " %}</span> {{ loan.borrowed_amount }}
+                                        </p>
+                                        <div class="table-wrapper">
+                                            <table class="table tablesaw tablesaw-swipe" data-tablesaw-mode="swipe">
+                                                <thead>
+                                                <tr>
+                                                    <th><i class="fa fa-bar-chart"></i></th>
+                                                    <th>{% trans "Amount To Be Paid" %}</th>
+                                                    <th>{% trans "Due Date" %}</th>
+                                                    <th><i class="fa fa-address-card"></i> {% trans "Payment" %}
+                                                    </th>
+                                                    <th><i class="fa fa-bell"></i> {% trans "Status" %}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for installment in loan.installments.all %}
+                                                    <tr>
+                                                        <td>{{ installment.order }}</td>
+                                                        <td>{{ installment.amount }}</td>
+                                                        <td>{{ installment.due_date|date:"d/m/Y" }}</td>
+                                                        <td>{% trans "Discount in checking account" %}</td>
+                                                        <td>
+                                                            {% if installment.status == 'pending' %}
+                                                                <span class="label label-warning"><i
+                                                                        class="fa fa-clock-o"></i> {{ installment.status }}</span>
+                                                            {% else %}
+                                                                <span class="label label-success">{{ installment.status }}</span>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <strong>{% trans "No loans to show" %}</strong>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        jQuery(($) => {
+            var loan_app = new Vue({
+                el: '#loan-app',
+                data: {
+                    amount: (0).toFixed(8),
+                    installments: [],
+                    times: 0,
+                    terms: false
+                },
+                watch: {
+                    amount: function () {
+                        var vm = this;
+
+                        if (vm.amount <= 0) {
+                            vm.installments = [];
+                            vm.times = 0;
+                        }
+
+                        $.get('{% url "investment>generate-loan-table" %}?amount=' + vm.amount, (r) => {
+                            vm.installments = r.data;
+                        });
+                    }
+                },
+                methods: {
+                    select_installment: function (installment) {
+                        if (this.times == installment.times) {
+                            this.times = 0;
+                        }
+                        else {
+                            this.times = installment.times;
+                        }
+                    },
+                    to_loan: function() {
+                        var vm = this;
+
+                        if (vm.amount < 0.001) {
+                            swal('{% trans "Message" %}', '{% trans "Min amount for loan is 0.001 BTC" %}', 'error')
+                        }
+                        else if (vm.times == 0) {
+                            swal('{% trans "Message" %}', '{% trans "You must select a installment before continue" %}', 'error')
+                        }
+                        else if (!vm.terms) {
+                            swal('{% trans "Message" %}', '{% trans "You must accept the loan terms to continue" %}', 'error')
+                        }
+                        else {
+                            var data = {
+                                amount: vm.amount,
+                                times: vm.times
+                            };
+                            $.post('{% url "investment>create-loan" %}', data, (r) => {
+                                swal('{% trans "Message" %}', r.message_text, r.message_type).then(() => {
+                                    if (r.message_type == 'success') {
+                                        window.location.reload();
+                                    }
+                                });
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
