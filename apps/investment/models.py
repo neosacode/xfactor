@@ -20,7 +20,7 @@ from exchange_core.admin import BaseAdmin
 
 
 def diff_month(d1, d2):
-    return abs(d1.year - d2.year) * 12 + d1.month - d2.month
+    return abs(abs(d1.year - d2.year) * 12 + d1.month - d2.month)
 
 
 class Plans(TimeStampedModel, StatusModel, models.Model):
