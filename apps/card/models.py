@@ -44,6 +44,7 @@ class Recharges(TimeStampedModel, BaseModel, models.Model):
     quote =  models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Quote"))
     deposit = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Deposit in the moment"))
     reserved = models.DecimalField(max_digits=20, decimal_places=8, verbose_name=_("Reserved in the moment"))
+    is_paid = models.BooleanField(default=False, verbose_name=_("Is paid"), help_text=_("Mark this if the rechard has been paid"))
 
     @property
     def quote_amount(self):
