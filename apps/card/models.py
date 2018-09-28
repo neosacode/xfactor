@@ -61,6 +61,12 @@ class CardsAdmin(BaseAdmin):
     list_display = ['account', 'number', 'name', 'document_1', 'document_2', 'birth_date', 'mothers_name', 'fathers_name', 'is_active', 'created']
 
 
+@admin.register(Recharges)
+class RechargesAdmin(BaseAdmin):
+    search_fields = ['card__account__user__username', 'card__name', 'card__document_1', 'card__document_2']
+    list_display = ['card', 'amount', 'quote', 'deposit', 'reserved', 'is_paid', 'created']
+
+
 @receiver(post_save, sender=Cards, dispatch_uid='save_card')
 def create_currency_user_accounts(sender, instance, created, **kwargs):
     if instance.is_active is not instance.initial_is_active and instance.is_active is True:
