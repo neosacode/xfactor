@@ -1,13 +1,21 @@
 import os
 
+if os.name == 'nt':
+    import platform
+    OSGEO4W = r"C:\OSGeo4W"
+    if '64' in platform.architecture()[0]:
+        OSGEO4W += "64"
+    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+    os.environ['OSGEO4W_ROOT'] = OSGEO4W
+    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
+    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
+    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+
 import dj_database_url
-from prettyconf.configuration import Configuration
+from prettyconf import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-config = Configuration(starting_path=BASE_DIR)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -25,8 +33,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=config.list)
 
 INSTALLED_APPS = [
     'django_admin_select2',
-    'admin_interface',
-    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,3 +139,5 @@ STATICFILES_DIRS = [
 # Loan config
 
 LOAN_INTEREST_PERCENT = '0.'
+
+GDAL_LIBRARY_PATH = 'C:\OSGeo4W64\bin\gdal300'

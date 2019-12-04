@@ -19,7 +19,7 @@ class PayView(TemplateView):
     template_name = 'boleto/pay.html'
 
     def get(self, request):
-        real_account = Accounts.objects.get(currency__symbol='BRL', user=request.user)
+        real_account = Accounts.objects.get(currency__code='BRL', user=request.user)
         boletos = Boletos.objects.filter(card__account__user=request.user)
         return render(request, self.template_name,
                       {'page_title': _("Services > Bank Slip"), 'page_icon': 'fa fa-barcode',
@@ -34,7 +34,7 @@ class CreateView(TemplateView):
 
         try:
             with transaction.atomic():
-                real_account = Accounts.objects.get(currency__symbol='BRL', user=request.user)
+                real_account = Accounts.objects.get(currency__code='BRL', user=request.user)
                 amount = Decimal(request.POST['amount'])
                 barcode = ''.join([c for c in request.POST['barcode'] if c.isdigit()])
 

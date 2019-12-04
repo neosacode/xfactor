@@ -39,8 +39,8 @@ class SelectAccountView(TemplateView):
     def get_context_data(self, **kwargs):
         usd = CurrencyPrice('coinbase')
         br = CurrencyPrice('mercadobitcoin')
-        checking_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
-        investments_account = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
+        checking_account = Accounts.objects.get(user=self.request.user, currency__code='BTC', currency__type=Currencies.TYPES.checking)
+        investments_account = Accounts.objects.get(user=self.request.user, currency__code='BTC', currency__type=Currencies.TYPES.investment)
 
         context = super().get_context_data(**kwargs)
         context['btc_usd_price'] = usd.to_usd(1)
@@ -60,7 +60,7 @@ class CheckingAccountView   (TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['account'] = Accounts.objects.get(user=self.request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
+        context['account'] = Accounts.objects.get(user=self.request.user, currency__code='BTC', currency__type=Currencies.TYPES.checking)
         return context
 
 
@@ -223,14 +223,14 @@ class IncomesWithdrawView(View):
         if not user_has_device(request.user):
             request.POST['code'] = '123'
 
-        account = Accounts.objects.get(user=request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.investment)
+        account = Accounts.objects.get(user=request.user, currency__code='BTC', currency__type=Currencies.TYPES.investment)
         withdraw_form = NewWithdrawForm(request.POST, user=request.user, account=account)
 
         if not withdraw_form.is_valid():
             return {'status': 'error', 'errors': withdraw_form.errors}
 
         fee = (withdraw_form.cleaned_data['amount'] * (account.currency.withdraw_fee / 100)) + account.currency.withdraw_fixed_fee
-        checking_account = Accounts.objects.get(user=request.user, currency__symbol='BTC', currency__type=Currencies.TYPES.checking)
+        checking_account = Accounts.objects.get(user=request.user, currency__code='BTC', currency__type=Currencies.TYPES.checking)
 
         with transaction.atomic():
             amount = abs(withdraw_form.cleaned_data['amount'])

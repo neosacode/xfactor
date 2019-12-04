@@ -40,8 +40,8 @@ class UpdateCardView(View):
 @method_decorator([login_required, json_view], name='dispatch')
 class RechargeView(View):
     def post(self, request):
-        account = Accounts.objects.filter(user=request.user, currency__symbol='BTC', currency__type='checking').first()
-        br_account = Accounts.objects.filter(user=request.user, currency__symbol='BRL').first()
+        account = Accounts.objects.filter(user=request.user, currency__code='BTC', currency__type='checking').first()
+        br_account = Accounts.objects.filter(user=request.user, currency__code='BRL').first()
         form = RechargeForm(request.POST, user=request.user)
 
         if not form.is_valid():
@@ -92,7 +92,7 @@ class RechargeView(View):
 @method_decorator([login_required, json_view], name='dispatch')
 class BankSlipView(View):
     def post(self, request):
-        account = Accounts.objects.filter(user=request.user, currency__symbol='BRL', currency__type='checking').first()
+        account = Accounts.objects.filter(user=request.user, currency__code='BRL', currency__type='checking').first()
         form = BankSlipForm(request.POST, user=request.user)
 
         if not form.is_valid():
