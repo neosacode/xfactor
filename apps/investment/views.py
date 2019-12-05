@@ -60,7 +60,7 @@ class CreateInvestmentView(View):
 
         grace_period_pk = request.POST['grace_period']
         grace_period = PlanGracePeriods.objects.get(pk=grace_period_pk)
-        checking_account = Accounts.objects.get(user=request.user, currency__code=grace_period.currency.symbol, currency__type=Currencies.TYPES.checking)
+        checking_account = Accounts.objects.get(user=request.user, currency__code=grace_period.currency.code, currency__type=Currencies.TYPES.checking)
         investment_account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
 
         amount = request.POST.get('amount', '0.00').replace(',', '.')
@@ -164,7 +164,7 @@ class CreateReinvestmentView(View):
         if grace_period.grace_period.months < investment.plan_grace_period.grace_period.months:
             return {'message': _("ERROR! Selected grace period is not valid.")}
 
-        checking_account = Accounts.objects.get(user=request.user, currency__code=grace_period.currency.symbol, currency__type=Currencies.TYPES.checking)
+        checking_account = Accounts.objects.get(user=request.user, currency__code=grace_period.currency.code, currency__type=Currencies.TYPES.checking)
         investment_account = Accounts.objects.get(user=request.user, currency=grace_period.currency)
 
         amount = request.POST.get('amount', '0.00').replace(',', '.')
@@ -392,7 +392,7 @@ class CreateOverdraftView(TemplateView):
 
         investment = Investments.get_active_by_user(request.user)
         checking_account = Accounts.objects.filter(user=request.user,
-                                                   currency__code=investment.account.currency.symbol,
+                                                   currency__code=investment.account.currency.code,
                                                    currency__type=Currencies.TYPES.checking).first()
         credit = Investments.get_credit_by_user(request.user)
 
@@ -445,7 +445,7 @@ class CreateLoanView(View):
 
         investment = Investments.get_active_by_user(request.user)
         installments = generate_fixed_loan_table(investment, amount, times=times, raw_date=True)
-        checking_account = Accounts.objects.filter(user=request.user, currency__code=investment.account.currency.symbol, currency__type=Currencies.TYPES.checking).first()
+        checking_account = Accounts.objects.filter(user=request.user, currency__code=investment.account.currency.code, currency__type=Currencies.TYPES.checking).first()
         credit = Investments.get_credit_by_user(request.user)
 
         if times <= len(installments['data']) and credit['loan']['available'] >= amount and amount >= Decimal('0.001'):
