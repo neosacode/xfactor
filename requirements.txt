@@ -4,6 +4,7 @@
 -e git+https://github.com/yourlabs/django-session-security/#egg=django-session-security
 -e git+https://github.com/julianogouveia/python-bitcoinlib.git#egg=bitcoin
 -e git+https://github.com/julianogouveia/django-bootstrap-pagination#egg=django-bootstrap-pagination
+-e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/julianogouveia/simple-crypt.git@master#egg=simplecrypt
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/julianogouveia/exchange-core.git@master#egg=exchange_core
 -e git+https://0be8afabc802eec4e54798c714671cbf46522452@github.com/julianogouveia/exchange-payments.git@master#egg=exchange_payments
 django==2.*
