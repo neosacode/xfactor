@@ -31,7 +31,6 @@ class Command(BaseCommand):
                         continue
 
                     # Transfere o rendimento para a conta do investidor
-                    income_account = investment.account
-                    income_account.new_income(income.amount, tx_id, investment.pk, income.date)
+                    investment.new_income(investment.account, income.amount, tx_id, investment.pk, income.date)
 
-                    print('Paying {} for the customer {} in date {}'.format(income.amount, income_account.user.username, income.date))
+                    print('Paying {} for the customer {} in date {}'.format(income.amount, investment.account.user.username, income.date))

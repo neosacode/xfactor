@@ -110,6 +110,23 @@ class Investments(TimeStampedModel, models.Model):
     paid_date = models.DateTimeField(null=True, blank=True, verbose_name=_("Paid Date"))
     status = models.CharField(max_length=255, choices=STATUS, default=STATUS.paid)
 
+    def new_income(self, account, amount, tx_id, fk, date):
+        # Transfere o rendimento para a conta do investidor
+        account.deposit += amount
+        account.save()
+
+        # Cria o extrato do rendimento para o investidor
+        statement = Statement(account_id=self.pk,
+                              amount=amount, tx_id=tx_id, fk=fk)
+        statement.account = account
+        statement.description = 'Income'
+        statement.type = Statement.TYPES.income
+        statement.created = date
+        statement.modified = date
+        statement.save()
+
+        return statement
+
     @property
     def end_date(self):
         reinvestment = self.reinvestments.filter(status='paid').first()
