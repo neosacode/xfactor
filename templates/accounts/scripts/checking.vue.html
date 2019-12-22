@@ -104,7 +104,7 @@
 					swal.showLoading();
 					
 					var address = '';
-					var coin = '{{ account.currency.symbol }}';
+					var coin = '{{ account.currency.code }}';
 					var name = '{{ account.currency.name }}';
 
 					$.post('{% url "payments>get-address" %}', {coin: coin}, function(response) {
@@ -126,7 +126,7 @@
 					var withdraw_amount_modal = $('#withdraw-app');
 					withdraw_amount_modal.modal('show');
 					withdraw_app.available_amount = parseFloat({{ account.deposit|safe }}).toFixed(8);
-					withdraw_app.coin = '{{ account.currency.symbol }}';
+					withdraw_app.coin = '{{ account.currency.code }}';
 					withdraw_app.is_br_withdraw = false;
 					withdraw_app.currency = {{ account.currency.dict|serialize|safe }};
 				}
