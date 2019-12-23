@@ -52,7 +52,7 @@ class Code2FAForm(forms.Form):
 
 
 class SignupForm(account.forms.SignupForm):
-    advisor = forms.CharField(label=_("Investment advisor username (optional)"), required=False)
+    advisor = forms.CharField(label=_("Advisor username (optional)"), required=False)
     first_name = forms.CharField(label=_("First name"))
     last_name = forms.CharField(label=_("Last name"))
     confirm_email = forms.EmailField(label=_("Confirm e-mail"))
